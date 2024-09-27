@@ -1,12 +1,17 @@
-import Image from 'next/image'
 import type { JSX } from 'react'
 
 const Page = (): JSX.Element => {
   return (
-    <div>
-      some...
-      <Image src='/logo.svg' alt='Juli logo' width={20} height={20} />
-    </div>
+    <section>
+      <h1 className='xl'>Hello dev</h1>
+      <h1>Hello dev</h1>
+      <h2>Hello dev</h2>
+      <h3>Hello dev</h3>
+      <h4>Hello dev</h4>
+      <h5>Hello dev</h5>
+      <p>Hello dev</p>
+      <span>Hello dev</span>
+    </section>
   )
 }
 
