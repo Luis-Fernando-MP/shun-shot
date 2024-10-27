@@ -37,6 +37,17 @@ body {
     resize: none;
   }
 
+  p,
+  a,
+  span,
+  input,
+  textarea,
+  button,
+  select {
+    font-family: $font3;
+    text-wrap: pretty;
+  }
+
   button,
   input,
   textarea,
@@ -48,17 +59,6 @@ body {
     &:focus {
       outline: none;
     }
-  }
-
-  p,
-  a,
-  span,
-  input,
-  textarea,
-  button,
-  select {
-    font-family: $font3;
-    text-wrap: pretty;
   }
 
   h4,

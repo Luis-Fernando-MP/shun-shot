@@ -4,11 +4,9 @@ import useCode, { defaultCode } from '@/app/hooks/useCode'
 import useTheme, { getTheme } from '@/app/hooks/useTheme'
 import { historyField } from '@codemirror/commands'
 import ReactCodeMirror from '@uiw/react-codemirror'
-import babel from 'prettier/parser-babel'
-import prettier from 'prettier/standalone'
 import { type JSX } from 'react'
 
-import { LANGUAGES } from './languages'
+import { codeLanguages } from './languages'
 import './style.scss'
 
 const stateFields = { history: historyField }
@@ -18,26 +16,6 @@ const Page = (): JSX.Element => {
   const { theme, colors } = getTheme(themeName)
   const serializedState = window.localStorage.getItem('myEditorState')
   const { code, setCode, title, setTitle, language, showNumbers } = useCode()
-
-  const formatCode = (code: string) => {
-    try {
-      const formatted = prettier.format(code, {
-        parser: 'babel', // O el parser que necesites
-        plugins: [babel]
-      })
-      setCode(formatted)
-    } catch (error) {
-      console.error('Error formatting code:', error)
-    }
-  }
-
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'F' && event.ctrlKey) {
-      // Ctrl + F para formatear
-      event.preventDefault()
-      formatCode(code)
-    }
-  }
 
   return (
     <div className='code' style={{ background: colors.background }}>
@@ -52,7 +30,6 @@ const Page = (): JSX.Element => {
           <div className='circle'>
             <span className='green circle2'></span>
           </div>
-          <button onClick={() => formatCode(code)}>Format</button>
         </div>
         <div className='title'>
           <input
@@ -67,11 +44,9 @@ const Page = (): JSX.Element => {
         placeholder={defaultCode}
         autoFocus
         spellCheck
-        editable
         value={code ?? ''}
-        height='100%'
         theme={theme}
-        extensions={[LANGUAGES[language]]}
+        extensions={[codeLanguages[language]]}
         basicSetup={{
           lineNumbers: showNumbers
         }}
@@ -89,7 +64,6 @@ const Page = (): JSX.Element => {
           localStorage.setItem('myEditorState', JSON.stringify(state))
           setCode(value)
         }}
-        onKeyDown={handleKeyDown} // Agregar manejo de teclas
       />
     </div>
   )

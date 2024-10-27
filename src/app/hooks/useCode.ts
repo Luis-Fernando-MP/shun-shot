@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { LanguagesType } from '../(dashboard)/(current)/languages'
+import { LanguagesType } from '../(current)/languages'
 
 type IUseCode = {
   code: string
@@ -33,7 +33,7 @@ const isEmpty = !codeLocal || codeLocal.length < 1
 const useCode = create<IUseCode>(set => ({
   code: isEmpty ? defaultCode : codeLocal,
   title: 'my-code',
-  language: 'ts-react',
+  language: 'react',
   showNumbers: true,
   setLanguage: language => set({ language }),
   setShowNumbers: showNumbers => set({ showNumbers }),

@@ -1,16 +1,9 @@
 'use client'
 
 import useCode from '@/app/hooks/useCode'
-import useTheme, { getTheme } from '@/app/hooks/useTheme'
 import html2canvas from 'html2canvas'
-import {
-  ChartNoAxesGantt,
-  DownloadCloud,
-  ExpandIcon,
-  Images,
-  ListOrdered,
-  ShrinkIcon
-} from 'lucide-react'
+import { DownloadCloud, ExpandIcon, Images, ListOrdered, ShipWheel, ShrinkIcon } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
 import { type HtmlHTMLAttributes, type JSX, type ReactNode, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -22,33 +15,12 @@ interface IOptions extends HtmlHTMLAttributes<HTMLElement> {
 
 const Options = ({ className, ...props }: IOptions): JSX.Element => {
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const themeName = useTheme(s => s.themeName)
-  const { colors } = getTheme(themeName)
-  const { title, showNumbers, setShowNumbers } = useCode()
-
-  const copyCode = format => {
-    const html = document.querySelector('.cm-content')
-    const codeWithSyntaxHighlighting = html?.innerHTML
-    let formattedCode = ''
-    if (format === 'word') {
-      formattedCode = `<pre style="font-family: 'Consolas', monospace; font-size: 12px; line-height: 1.5; background-color: ${colors.background}; color: ${colors.foreground};">${codeWithSyntaxHighlighting}</pre>`
-    } else if (format === 'table') {
-      formattedCode = `<table style="border-collapse: collapse; width: 100%;"><tr><td style="border: 1px solid #ddd; padding: 8px; font-family: 'Consolas', monospace; font-size: 12px; line-height: 1.5; background-color: ${colors.background}; color: ${
-        colors.foreground
-      };">${codeWithSyntaxHighlighting}</td></tr></table>`
-    }
-
-    const blob = new Blob([formattedCode], { type: 'text/html' })
-    const clipboardItem = new ClipboardItem({ 'text/html': blob })
-    navigator.clipboard.write([clipboardItem])
-    toast.success(`Code copied in ${format} format`)
-  }
-
-  const formatCode = () => {
-    toast.success('Código formateado')
-  }
+  const { title } = useCode()
+  const path = usePathname()
+  const { push } = useRouter()
 
   const downloadImage = async () => {
+    const id = toast.loading('Descargando...')
     try {
       const element = document.querySelector('.code')
       if (!element || !(element instanceof HTMLElement)) return
@@ -57,14 +29,16 @@ const Options = ({ className, ...props }: IOptions): JSX.Element => {
       link.download = `${title ?? 'my-code'}.png`
       link.href = canvas.toDataURL()
       link.click()
-      toast.success('Imagen descargada')
+      toast.success('A los archivos', { id })
     } catch (error: any) {
       console.error(error)
-      toast.success('No se pudo descargar la imagen')
+      toast.success('No se pudo descargar la imagen', { id })
     }
   }
 
   const copyImage = async () => {
+    const id = toast.loading('Copiando...')
+
     try {
       const element = document.querySelector('.code')
       if (!element || !(element instanceof HTMLElement)) return
@@ -73,10 +47,10 @@ const Options = ({ className, ...props }: IOptions): JSX.Element => {
       const blob = await (await fetch(dataUrl)).blob()
       const item = new ClipboardItem({ 'image/png': blob })
       await navigator.clipboard.write([item])
-      toast.success('Imagen copiada al portapapeles')
+      toast.success('Al portapapeles!!', { id })
     } catch (error: any) {
       console.error(error)
-      toast.success('No se pudo copiar la imagen')
+      toast.success('No se pudo copiar la imagen', { id })
     }
   }
 
@@ -88,15 +62,15 @@ const Options = ({ className, ...props }: IOptions): JSX.Element => {
     setIsFullscreen(!isFullscreen)
   }
 
+  const goEdit = () => {
+    const isEdit = path.includes('/edit')
+    push(isEdit ? '/' : '/edit')
+  }
+
   const actions = [
-    { icon: ChartNoAxesGantt, action: formatCode, tooltip: 'Formatear código' },
+    { icon: ShipWheel, action: goEdit, tooltip: 'Editar' },
     { icon: DownloadCloud, action: downloadImage, tooltip: 'Descargar imagen' },
     { icon: Images, action: () => copyImage(), tooltip: 'Copiar código' },
-    {
-      icon: ListOrdered,
-      action: () => setShowNumbers(!showNumbers),
-      tooltip: 'Ver números'
-    },
     {
       icon: isFullscreen ? ShrinkIcon : ExpandIcon,
       action: toggleFullscreen,
