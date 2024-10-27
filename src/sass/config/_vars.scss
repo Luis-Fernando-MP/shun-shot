@@ -1,19 +1,19 @@
 :root {
-  --bg-primary: #e3e2fd;
-  --bg-secondary: #d8d9fd;
-  --bg-tertiary: #d0d0eef5;
-  --fnt-primary: #000;
-  --fnt-secondary: #505050;
-  --tn-primary: #956ff9;
-  --tn-secondary: #f9489d;
-  --tn-tertiary: #7549a22c;
-  --xl-font-size: 3em;
+  --bg-primary: #000;
+  --bg-secondary: #131417;
+  --bg-tertiary: #1e1f26;
+  --fnt-primary: #fff;
+  --fnt-secondary: #a6aab8;
+  --tn-primary: #ffdd40;
+  --tn-secondary: #444857;
+  --tn-tertiary: #0007;
+  --xl-font-size: 4em;
   --h1-font-size: 2em;
-  --h2-font-size: 1.7em;
+  --h2-font-size: 1.8em;
   --h3-font-size: 1.6em;
-  --h4-font-size: 1.5em;
-  --h5-font-size: 1.4em;
-  --p-font-size: 1.3em;
+  --h4-font-size: 1.4em;
+  --h5-font-size: 1.2em;
+  --p-font-size: 1.1em;
   --span-font-size: 1em;
 }
 
@@ -41,37 +41,41 @@ $medium-screen: 820px;
 $large-screen: 992px;
 $extra-large-screen: 1200px;
 $big-screen: 1350px;
+
+// extra
 $radius: 10px;
 $padding: 15px;
 $icon: 20px;
+
+// font
 $family-size: 14px;
 $fontBase: 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono',
   'Segoe UI Emoji';
-$font1: var(--MontserratFont);
-$font2: var(--RobotoFont);
-$font3: var(--PlayFairFont);
-$gr1: linear-gradient(90deg, $tn1 0%, $tn2 100%);
-$sha1: 6px 5px 20px -5px $bg3;
-
-@mixin dotDark {
-  body.dark & {
-    @content;
-  }
-}
-
-@mixin border($bg: $bg1) {
-  & {
-    background-color: $bg;
-    border: 1px solid $bg3;
-  }
-}
-
-@mixin hoverS($scale: 0.99, $s: 0.2s) {
-  scale: 1;
-  transition: all $s ease-in;
-
-  &:hover {
-    scale: $scale;
-    @content;
-  }
-}
+$font1: var(--Geologica), $fontBase;
+$font2: var(--PoppinsFont), $fontBase;
+$font3: var(--Exo2Font), $fontBase;
+$gr: radial-gradient(
+    at 46.31% 50.93%,
+    hsl(35.29deg 100% 73.33% / 100%) 0%,
+    hsl(35.29deg 100% 73.33% / 0%) 100%
+  ),
+  radial-gradient(
+    at 8.65% 17.85%,
+    hsl(4.8deg 100% 75.49% / 100%) 0%,
+    hsl(4.8deg 100% 75.49% / 0%) 100%
+  ),
+  radial-gradient(
+    at 61.58% 50.01%,
+    hsl(4.8deg 100% 75.49% / 100%) 0%,
+    hsl(4.8deg 100% 75.49% / 0%) 100%
+  ),
+  radial-gradient(
+    at 44.71% 83.01%,
+    hsl(35.29deg 100% 73.33% / 100%) 0%,
+    hsl(35.29deg 100% 73.33% / 0%) 100%
+  ),
+  radial-gradient(
+    at 77.66% 68.82%,
+    hsl(4.8deg 100% 75.49% / 100%) 0%,
+    hsl(4.8deg 100% 75.49% / 0%) 100%
+  );

@@ -1,11 +1,14 @@
-import { MontserratFont, PlayFairFont, RobotoFont } from '@/shared/fonts'
+import { Exo2Font, GeologicaFont, PoppinsFont } from '@/shared/fonts'
 import '@sass/config/global.scss'
 import type { Metadata } from 'next'
 import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
-import Nav from './components/Nav'
+import Firefly from './components/Firefly'
+import Options from './components/Options'
+import Themes from './components/Themes'
 import Providers from './providers'
+import './style.scss'
 
 interface IRootLayout {
   children?: Readonly<ReactNode[]> | null | Readonly<ReactNode>
@@ -26,13 +29,25 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
   return (
     <html lang='es'>
       <body
-        className={`${MontserratFont.variable} ${RobotoFont.variable} ${PlayFairFont.variable}`}
+        className={`${GeologicaFont.variable} ${PoppinsFont.variable} ${Exo2Font.variable} grid`}
       >
         <Providers>
-          <Nav />
-          <main>{children}</main>
+          <Options className='options item' />
+          <main className='main item'>{children}</main>
+          <Themes className='themes item' />
+          <Firefly />
         </Providers>
-        <Toaster position='top-center' reverseOrder />
+        <Toaster
+          position='top-center'
+          toastOptions={{
+            className: 'toast',
+            position: 'bottom-left',
+            style: {
+              background: 'var(--bg-primary)',
+              color: 'var(--fnt-primary)'
+            }
+          }}
+        />
       </body>
     </html>
   )

@@ -1,18 +1,18 @@
 @use '@/sass/config/vars' as v;
 @use '@/sass/utils/scrollbar' as *;
 
-@mixin textGradient($gr: v.$gr1) {
+@mixin gradient($gr: v.$gr) {
   background: $gr;
   background-clip: text;
 
   -webkit-text-fill-color: transparent;
 }
 
-@mixin pointers() {
+@mixin etc() {
   @extend %scroll-hidden;
 
   overflow: auto;
-  width: 100%;
+  width: 99%;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

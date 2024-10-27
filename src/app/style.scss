@@ -1,0 +1,34 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+@use '@sass/utils/scrollbar' as *;
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    'options main themes'
+    'options main themes'
+    'options main themes';
+  grid-template-columns: 70px 1fr 250px;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.item {
+  padding: v.$padding;
+}
+
+.options {
+  grid-area: options;
+}
+
+.main {
+  @extend %scroll-hidden;
+
+  overflow-y: scroll;
+  grid-area: main;
+  background-color: v.$tn3;
+  backdrop-filter: blur(5px);
+}
+
+.themes {
+  grid-area: themes;
+}

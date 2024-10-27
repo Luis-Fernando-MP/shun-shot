@@ -1,19 +1,19 @@
-import { Montserrat, Roboto, Satisfy } from 'next/font/google'
+import { Exo_2, Geologica, Poppins } from 'next/font/google'
 
-export const MontserratFont = Montserrat({
+export const GeologicaFont = Geologica({
   subsets: ['latin'],
-  weight: ['300', '500', '600', '700', '800', '900'],
-  variable: '--MontserratFont'
+  weight: ['900', '800', '700'],
+  variable: '--Geologica'
 })
 
-export const RobotoFont = Roboto({
+export const PoppinsFont = Poppins({
   subsets: ['latin'],
-  weight: ['400', '500', '700', '900'],
-  variable: '--RobotoFont'
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--PoppinsFont'
 })
 
-export const PlayFairFont = Satisfy({
+export const Exo2Font = Exo_2({
   subsets: ['latin'],
-  weight: ['400'],
-  variable: '--PlayFairFont'
+  weight: ['200', '300', '400'],
+  variable: '--Exo2Font'
 })

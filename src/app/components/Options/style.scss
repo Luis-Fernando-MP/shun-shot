@@ -1,0 +1,35 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+@use '@sass/utils/text' as t;
+
+.options {
+  @include d.flex($ali: center, $gap: v.$padding * 2.5);
+
+  &-logo {
+    h3,
+    h2 {
+      scale: 0.5;
+      text-align: center;
+    }
+
+    h2 {
+      @include t.gradient;
+    }
+  }
+
+  &-opt {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.3s;
+
+    &:hover {
+      scale: 1.2;
+      background-color: v.$bg2;
+
+      svg {
+        stroke: v.$fn1;
+      }
+    }
+  }
+}
