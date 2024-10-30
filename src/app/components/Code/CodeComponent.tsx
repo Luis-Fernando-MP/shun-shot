@@ -7,20 +7,26 @@ import { codeLanguages } from '@/shared/languages'
 import { historyField } from '@codemirror/commands'
 import ReactCodeMirror from '@uiw/react-codemirror'
 import { type JSX, memo } from 'react'
+import { useLocalStorage as useLocal } from 'usehooks-ts'
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 const stateFields = { history: historyField }
 
 const CodeComponent = (): JSX.Element => {
   const themeName = useTheme(s => s.themeName)
   const { theme } = getTheme(themeName)
+  const [serializedState] = useLocal('ju-shots-serialized', '')
+  const [_, setEditorSate] = useLocal('myEditorState', '')
+  const [__, setCodeLocal] = useLocal('code', '')
 
   const { language, code, showNumbers, setCode } = useCode()
-  const serializedState = window.localStorage.getItem('ju-shots-serialized')
+  // const serializedState = window.localStorage.getItem('ju-shots-serialized')
 
   const handleCodeChange = (value: string, viewUpdate: any) => {
-    localStorage.setItem('code', value)
+    setCodeLocal(value)
     const state = viewUpdate.state.toJSON(stateFields)
-    localStorage.setItem('myEditorState', JSON.stringify(state))
+    setEditorSate(JSON.stringify(state))
     setCode(value)
   }
 

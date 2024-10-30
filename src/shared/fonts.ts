@@ -1,6 +1,6 @@
-import { Exo_2, Geologica, Poppins } from 'next/font/google'
+import { Exo_2, Inter, Poppins } from 'next/font/google'
 
-export const GeologicaFont = Geologica({
+export const GeologicaFont = Inter({
   subsets: ['latin'],
   weight: ['900', '800', '700'],
   variable: '--Geologica'

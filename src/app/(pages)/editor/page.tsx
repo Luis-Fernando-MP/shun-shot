@@ -1,3 +1,5 @@
+'use client'
+
 import { type JSX } from 'react'
 
 import CodeImage64 from './components/CodeImage64'

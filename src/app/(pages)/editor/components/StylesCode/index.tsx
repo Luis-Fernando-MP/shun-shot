@@ -2,7 +2,7 @@
 
 import useCode from '@/app/hooks/useCode'
 import useStyleCode from '@/app/hooks/useStyleCode'
-import { copyToSvg, downloadToPng, downloadToSvg } from '@/shared/imageEditor'
+import { downloadToSvg } from '@/shared/imageEditor'
 import DomToImage from 'dom-to-image'
 import { DownloadCloud, Images } from 'lucide-react'
 import Link from 'next/link'

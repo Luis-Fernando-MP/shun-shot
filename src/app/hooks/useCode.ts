@@ -28,10 +28,13 @@ export const defaultCode = `<CodeMirror
         editable={true}
       />
 `
-const codeLocal = window.localStorage.getItem('code')?.trim()
-const isEmpty = !codeLocal || codeLocal.length < 1
+let codeLocal = defaultCode
+if (typeof localStorage !== 'undefined') {
+  codeLocal = localStorage.getItem('code')?.trim() ?? ''
+}
+
 const useCode = create<IUseCode>(set => ({
-  code: isEmpty ? defaultCode : codeLocal,
+  code: codeLocal,
   title: 'my-code',
   language: 'react',
   showNumbers: true,

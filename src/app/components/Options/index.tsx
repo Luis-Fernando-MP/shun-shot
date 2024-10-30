@@ -10,7 +10,6 @@ import {
   saveImage
 } from '@/shared/imageEditor'
 import { CodepenIcon, DownloadCloud, ExpandIcon, Images, ShipWheel, ShrinkIcon } from 'lucide-react'
-import { usePathname, useRouter } from 'next/navigation'
 import { type HtmlHTMLAttributes, type JSX, type ReactNode, useState } from 'react'
 
 import './style.scss'
@@ -21,9 +20,7 @@ interface IOptions extends HtmlHTMLAttributes<HTMLElement> {
 
 const Options = ({ className, ...props }: IOptions): JSX.Element => {
   const setImage64 = useCodeImage(s => s.setImage64)
-  const path = usePathname()
   const { title } = useCode()
-  const { push } = useRouter()
   const [isFullscreen, setIsFullscreen] = useState(false)
 
   const downloadImage = async () => {

@@ -1,3 +1,5 @@
+'use client'
+
 import CodeEditor from '@/app/components/Code'
 import Options from '@/app/components/Options'
 import Themes from '@/app/components/Themes'
