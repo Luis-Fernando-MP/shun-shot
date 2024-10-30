@@ -1,22 +1,31 @@
+/* stylelint-disable selector-class-pattern */
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
+@use '@sass/utils/scrollbar' as *;
+
+.code-container {
+  max-height: 95vh;
+  padding: v.$padding;
+  background-image: v.$gr;
+  border-radius: v.$radius;
+}
 
 .code {
   overflow: hidden;
 
   width: 100%;
-  height: max-content;
+  height: 100%;
+  max-height: 90vh;
+  padding-right: 15px;
 
-  background-color: v.$tn3;
-  border: 2px solid v.$bg2;
+  background-color: rgb(v.$tn3);
+  border: 2px solid rgb(v.$bg2);
   border-radius: 10px;
-
-  span {
-    font-family: inherit;
-  }
 
   &-header {
     width: 100%;
+    height: max-content;
+    min-height: 40px;
     padding: 5px 0 15px;
 
     @include d.flex($dir: row, $gap: 10px, $ali: center);
@@ -52,6 +61,23 @@
       .green {
         background-color: #00ca4e;
       }
+    }
+  }
+
+  @include d.flex($gap: 0);
+
+  .react-code-mirror {
+    @extend %scroll-hidden;
+
+    overflow-y: auto;
+    width: 100%;
+
+    .cm-scroller {
+      padding: 0 10px 15px;
+    }
+
+    span {
+      font-family: inherit;
     }
   }
 }

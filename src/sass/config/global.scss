@@ -27,14 +27,26 @@ body {
   font-family: $font2;
   font-size: $family-size;
   line-height: 1.25;
-  color: $fn1;
+  color: rgb($fn1);
 
-  background-color: $bg1;
+  background-color: rgb($bg1);
 
   textarea {
     @extend %scroll-hidden;
 
     resize: none;
+  }
+
+  // font 3
+  p,
+  a,
+  input,
+  button,
+  textarea,
+  select {
+    font-size: $fP;
+    font-weight: 800;
+    color: rgb($fn2);
   }
 
   p,
@@ -96,19 +108,6 @@ body {
     font-weight: 500;
   }
 
-  // font 3
-
-  p,
-  a,
-  input,
-  button,
-  textarea,
-  select {
-    font-size: $fP;
-    font-weight: 800;
-    color: $fn2;
-  }
-
   a {
     display: block;
     text-decoration: none;
@@ -116,7 +115,7 @@ body {
 
   span {
     font-weight: 300;
-    color: $fn2;
+    color: rgb($fn2);
   }
 
   ul {
@@ -150,5 +149,32 @@ $listOfFontsSize: (
 @include m.smallerScreen {
   body {
     font-size: 10px;
+  }
+}
+
+.typing {
+  overflow: hidden;
+  display: block;
+
+  width: fit-content;
+
+  white-space: nowrap;
+
+  border-right: 4px solid rgb($fn1);
+
+  animation:
+    typing 2s steps(12),
+    blink 0.5s infinite step-end alternate;
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
   }
 }

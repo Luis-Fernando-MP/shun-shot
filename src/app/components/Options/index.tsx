@@ -1,11 +1,17 @@
 'use client'
 
 import useCode from '@/app/hooks/useCode'
-import html2canvas from 'html2canvas'
-import { DownloadCloud, ExpandIcon, Images, ListOrdered, ShipWheel, ShrinkIcon } from 'lucide-react'
+import useCodeImage from '@/app/hooks/useCodeImage'
+import {
+  copyToPng,
+  downloadToPng,
+  downloadToSvg,
+  loadDefaultImageEditor,
+  saveImage
+} from '@/shared/imageEditor'
+import { CodepenIcon, DownloadCloud, ExpandIcon, Images, ShipWheel, ShrinkIcon } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { type HtmlHTMLAttributes, type JSX, type ReactNode, useState } from 'react'
-import toast from 'react-hot-toast'
 
 import './style.scss'
 
@@ -14,44 +20,28 @@ interface IOptions extends HtmlHTMLAttributes<HTMLElement> {
 }
 
 const Options = ({ className, ...props }: IOptions): JSX.Element => {
-  const [isFullscreen, setIsFullscreen] = useState(false)
-  const { title } = useCode()
+  const setImage64 = useCodeImage(s => s.setImage64)
   const path = usePathname()
+  const { title } = useCode()
   const { push } = useRouter()
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
   const downloadImage = async () => {
-    const id = toast.loading('Descargando...')
-    try {
-      const element = document.querySelector('.code')
-      if (!element || !(element instanceof HTMLElement)) return
-      const canvas = await html2canvas(element, { backgroundColor: null })
-      const link = document.createElement('a')
-      link.download = `${title ?? 'my-code'}.png`
-      link.href = canvas.toDataURL()
-      link.click()
-      toast.success('A los archivos', { id })
-    } catch (error: any) {
-      console.error(error)
-      toast.success('No se pudo descargar la imagen', { id })
-    }
+    const element = document.querySelector('#code-container')
+    if (!element || !(element instanceof HTMLElement)) return
+    downloadToPng(element, title)
+  }
+
+  const downloadSvg = async () => {
+    const element = document.querySelector('#code-container')
+    if (!element || !(element instanceof HTMLElement)) return
+    downloadToSvg(element, title)
   }
 
   const copyImage = async () => {
-    const id = toast.loading('Copiando...')
-
-    try {
-      const element = document.querySelector('.code')
-      if (!element || !(element instanceof HTMLElement)) return
-      const canvas = await html2canvas(element, { backgroundColor: null })
-      const dataUrl = canvas.toDataURL()
-      const blob = await (await fetch(dataUrl)).blob()
-      const item = new ClipboardItem({ 'image/png': blob })
-      await navigator.clipboard.write([item])
-      toast.success('Al portapapeles!!', { id })
-    } catch (error: any) {
-      console.error(error)
-      toast.success('No se pudo copiar la imagen', { id })
-    }
+    const element = document.querySelector('#code-container')
+    if (!element || !(element instanceof HTMLElement)) return
+    copyToPng(element)
   }
 
   const toggleFullscreen = () => {
@@ -62,14 +52,23 @@ const Options = ({ className, ...props }: IOptions): JSX.Element => {
     setIsFullscreen(!isFullscreen)
   }
 
-  const goEdit = () => {
-    const isEdit = path.includes('/edit')
-    push(isEdit ? '/' : '/edit')
+  const goEdit = async () => {
+    const element = document.querySelector('#code-component')
+    if (!element || !(element instanceof HTMLElement)) return
+    const image64 = await loadDefaultImageEditor(element)
+    if (!image64) return
+    const isUpload = await saveImage(image64)
+    console.log('isUpload', isUpload)
+
+    setImage64(image64)
+    // const isEdit = path.includes('/editor')
+    // push(isEdit ? '/' : '/editor')
   }
 
   const actions = [
     { icon: ShipWheel, action: goEdit, tooltip: 'Editar' },
     { icon: DownloadCloud, action: downloadImage, tooltip: 'Descargar imagen' },
+    { icon: CodepenIcon, action: () => downloadSvg(), tooltip: 'Descargar svg código' },
     { icon: Images, action: () => copyImage(), tooltip: 'Copiar código' },
     {
       icon: isFullscreen ? ShrinkIcon : ExpandIcon,
@@ -79,17 +78,23 @@ const Options = ({ className, ...props }: IOptions): JSX.Element => {
   ]
 
   return (
-    <div className={`${className}`} {...props}>
+    <section className={`${className} options`} {...props}>
       <div className='options-logo'>
-        <h3>JU 愛</h3>
         <h2>CODE</h2>
+        <h4 className='typing'>Shots</h4>
       </div>
-      {actions.map(({ icon: Icon, action, tooltip }) => (
-        <button key={tooltip} onClick={action} className='options-opt' title={tooltip}>
-          <Icon />
-        </button>
-      ))}
-    </div>
+      <article className='options-container'>
+        {actions.map(({ icon: Icon, action, tooltip }) => (
+          <button key={tooltip} onClick={action} className='options-opt' title={tooltip}>
+            <Icon />
+          </button>
+        ))}
+      </article>
+      <h2>
+        愛<br />
+        JULIS
+      </h2>
+    </section>
   )
 }
 

@@ -25,7 +25,6 @@ import {
 } from '@codemirror/lang-sql'
 import { langs } from '@uiw/codemirror-extensions-langs'
 
-// Importa los iconos que necesitas de react-icons
 export type LanguagesType = keyof typeof codeLanguages
 
 export const codeLanguages = {

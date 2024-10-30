@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { LanguagesType } from '../(current)/languages'
+import { LanguagesType } from '../../shared/languages'
 
 type IUseCode = {
   code: string

@@ -10,9 +10,7 @@ interface IProviders {
 const queryClient = new QueryClient()
 
 const Providers = ({ children }: IProviders): JSX.Element => {
-  return (
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  )
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }
 
 export default Providers

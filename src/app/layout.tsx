@@ -5,8 +5,7 @@ import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
 import Firefly from './components/Firefly'
-import Options from './components/Options'
-import Themes from './components/Themes'
+import './globals.css'
 import Providers from './providers'
 import './style.scss'
 
@@ -32,9 +31,7 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
         className={`${GeologicaFont.variable} ${PoppinsFont.variable} ${Exo2Font.variable} grid`}
       >
         <Providers>
-          <Options className='options item' />
-          <main className='main item'>{children}</main>
-          <Themes className='themes item' />
+          {children}
           <Firefly />
         </Providers>
         <Toaster
@@ -43,8 +40,8 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
             className: 'toast',
             position: 'bottom-left',
             style: {
-              background: 'var(--bg-primary)',
-              color: 'var(--fnt-primary)'
+              background: 'rgb(var(--bg-primary))',
+              color: 'rgb(var(--fnt-primary))'
             }
           }}
         />

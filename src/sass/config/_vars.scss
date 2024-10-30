@@ -1,12 +1,12 @@
 :root {
-  --bg-primary: #000;
-  --bg-secondary: #131417;
-  --bg-tertiary: #1e1f26;
-  --fnt-primary: #fff;
-  --fnt-secondary: #a6aab8;
-  --tn-primary: #ffdd40;
-  --tn-secondary: #444857;
-  --tn-tertiary: #0007;
+  --bg-primary: 0, 0, 0;
+  --bg-secondary: 19, 20, 23;
+  --bg-tertiary: 39, 39, 41;
+  --fnt-primary: 255, 255, 255;
+  --fnt-secondary: 130, 130, 130;
+  --tn-primary: 255, 0, 101;
+  --tn-secondary: 146, 82, 255;
+  --tn-tertiary: 0, 0, 0, 0.467;
   --xl-font-size: 4em;
   --h1-font-size: 2em;
   --h2-font-size: 1.8em;
@@ -15,6 +15,7 @@
   --h5-font-size: 1.2em;
   --p-font-size: 1.1em;
   --span-font-size: 1em;
+  --p: #545454;
 }
 
 $fXl: var(--xl-font-size);
@@ -48,34 +49,10 @@ $padding: 15px;
 $icon: 20px;
 
 // font
-$family-size: 14px;
+$family-size: 12px;
 $fontBase: 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono',
   'Segoe UI Emoji';
 $font1: var(--Geologica), $fontBase;
 $font2: var(--PoppinsFont), $fontBase;
 $font3: var(--Exo2Font), $fontBase;
-$gr: radial-gradient(
-    at 46.31% 50.93%,
-    hsl(35.29deg 100% 73.33% / 100%) 0%,
-    hsl(35.29deg 100% 73.33% / 0%) 100%
-  ),
-  radial-gradient(
-    at 8.65% 17.85%,
-    hsl(4.8deg 100% 75.49% / 100%) 0%,
-    hsl(4.8deg 100% 75.49% / 0%) 100%
-  ),
-  radial-gradient(
-    at 61.58% 50.01%,
-    hsl(4.8deg 100% 75.49% / 100%) 0%,
-    hsl(4.8deg 100% 75.49% / 0%) 100%
-  ),
-  radial-gradient(
-    at 44.71% 83.01%,
-    hsl(35.29deg 100% 73.33% / 100%) 0%,
-    hsl(35.29deg 100% 73.33% / 0%) 100%
-  ),
-  radial-gradient(
-    at 77.66% 68.82%,
-    hsl(4.8deg 100% 75.49% / 100%) 0%,
-    hsl(4.8deg 100% 75.49% / 0%) 100%
-  );
+$gr: linear-gradient(140deg, rgb(255 100 50) 12.8%, rgb(255 0 101) 43.52%, rgb(123 46 255) 84.34%);

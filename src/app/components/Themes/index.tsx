@@ -28,7 +28,7 @@ const Themes = ({ className, ...props }: IThemesComponent): JSX.Element => {
   )
 
   return (
-    <article className={`${className}`} {...props}>
+    <section className={`${className}`} {...props}>
       {Object.entries(th).map(([themeName, themeData]) => {
         const {
           background,
@@ -66,7 +66,7 @@ const Themes = ({ className, ...props }: IThemesComponent): JSX.Element => {
           </button>
         )
       })}
-    </article>
+    </section>
   )
 }
 

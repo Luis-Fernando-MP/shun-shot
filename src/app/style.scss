@@ -2,33 +2,42 @@
 @use '@sass/utils/defs' as d;
 @use '@sass/utils/scrollbar' as *;
 
-.grid {
-  display: grid;
-  grid-template-areas:
-    'options main themes'
-    'options main themes'
-    'options main themes';
-  grid-template-columns: 70px 1fr 250px;
-  grid-template-rows: repeat(3, 1fr);
-}
-
-.item {
-  padding: v.$padding;
-}
-
-.options {
-  grid-area: options;
-}
-
 .main {
   @extend %scroll-hidden;
 
   overflow-y: scroll;
   grid-area: main;
-  background-color: v.$tn3;
+  background-color: transparent;
   backdrop-filter: blur(5px);
 }
 
-.themes {
+body.grid {
+  display: grid;
+  grid-template-areas:
+    'options main themes'
+    'options main themes'
+    'options main themes';
+  grid-template-columns: 70px 1fr 230px;
+  grid-template-rows: repeat(3, 1fr);
+  gap: v.$padding;
+
+  padding: v.$padding;
+
+  &:has(> .code-left.editor),
+  &:has(> .code-right.editor) {
+    grid-template-columns: 300px 1fr calc(750px / 4);
+  }
+}
+
+.code-left,
+.code-right {
+  padding: v.$padding;
+}
+
+.code-left {
+  grid-area: options;
+}
+
+.code-right {
   grid-area: themes;
 }
