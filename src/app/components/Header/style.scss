@@ -10,6 +10,11 @@
     @include d.flex($dir: row, $ali: center);
   }
 
+  &-logo svg {
+    width: 35px;
+    height: 35px;
+  }
+
   &-nav {
     gap: v.$padding * 2;
 
