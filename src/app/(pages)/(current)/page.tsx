@@ -1,10 +1,15 @@
+'use server'
+
 import type { JSX } from 'react'
+
+import Monaco from './components/Monaco'
+import './style.scss'
 
 const Page = (): JSX.Element => {
   return (
-    <div>
-      <h1>hola como andas</h1>
-    </div>
+    <article className='h-code'>
+      <Monaco />
+    </article>
   )
 }
 

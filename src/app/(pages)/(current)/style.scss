@@ -1,0 +1,12 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.h-code {
+  min-width: 900px;
+  height: auto;
+  min-height: 200px;
+  padding: v.$padding;
+
+  background-image: v.$gr1;
+  border-radius: v.$radius;
+}

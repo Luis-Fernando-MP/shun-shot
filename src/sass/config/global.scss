@@ -64,7 +64,6 @@ body {
 
   p,
   a,
-  span,
   small,
   input,
   textarea,
@@ -77,12 +76,6 @@ body {
   a {
     display: block;
     text-decoration: none;
-  }
-
-  span {
-    font-family: $font3;
-    font-weight: 400;
-    color: rgb($fn2);
   }
 
   h5 {
@@ -117,8 +110,7 @@ $listOfFontsSize: (
   'h3': $fH3,
   'h4': $fH4,
   'h5': $fH5,
-  'p': $fP,
-  'span': $fSpan
+  'p': $fP
 );
 
 @each $tag, $value in $listOfFontsSize {

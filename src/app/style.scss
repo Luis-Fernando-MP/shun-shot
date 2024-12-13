@@ -29,8 +29,11 @@ body {
 
   &-main {
     grid-area: main;
+    justify-content: center;
     background-color: transparent;
     backdrop-filter: blur(5px);
+
+    @include d.flex($ali: center);
   }
 
   &-footer {
