@@ -1,7 +1,8 @@
-@use '@/sass/utils/scrollbar';
-@use '@/sass/config/vars' as *;
-@use '@/sass/utils/media' as m;
-@use '@/sass/utils/text' as t;
+@use '@sass/utils/scrollbar';
+@use '@sass/config/vars' as *;
+@use '@sass/utils/media' as m;
+@use '@sass/utils/text' as t;
+@use '@sass/utils/tooltip' as tol;
 
 *,
 ::before,
@@ -9,7 +10,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  border: none;
   outline: none;
+}
+
+html {
+  font-size: $family-size;
 }
 
 body {
@@ -17,16 +24,14 @@ body {
 
   position: relative;
 
-  overflow: hidden;
+  overflow-y: auto;
 
   width: 100dvw;
   height: 100dvh;
   min-height: 100dvh;
   max-height: 100dvh;
 
-  font-family: $font2;
-  font-size: $family-size;
-  line-height: 1.25;
+  font-family: $font1;
   color: rgb($fn1);
 
   background-color: rgb($bg1);
@@ -37,75 +42,36 @@ body {
     resize: none;
   }
 
-  // font 3
-  p,
-  a,
+  button {
+    cursor: pointer;
+
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+
+    background-color: $bg2;
+
+    @include hoverS;
+  }
+
   input,
-  button,
   textarea,
-  select {
+  button,
+  select,
+  p {
     font-size: $fP;
-    font-weight: 800;
-    color: rgb($fn2);
   }
 
   p,
   a,
   span,
+  small,
   input,
   textarea,
   button,
   select {
-    font-family: $font3;
+    color: rgb($fn2);
     text-wrap: pretty;
-  }
-
-  button,
-  input,
-  textarea,
-  select {
-    display: block;
-    background-color: transparent;
-    border: none;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  h4,
-  h5 {
-    font-family: $font2;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-family: $font1;
-    text-wrap: balance;
-  }
-
-  // font 1
-  h1 {
-    font-weight: 900;
-  }
-
-  h2 {
-    font-weight: 800;
-  }
-
-  h3 {
-    font-weight: 700;
-  }
-
-  // font 2
-
-  h4 {
-    font-weight: 600;
-  }
-
-  h5 {
-    font-weight: 500;
   }
 
   a {
@@ -114,18 +80,33 @@ body {
   }
 
   span {
-    font-weight: 300;
+    font-family: $font3;
+    font-weight: 400;
     color: rgb($fn2);
   }
 
-  ul {
-    list-style: none;
+  h5 {
+    font-weight: 500;
+    color: rgb($fn1);
+    text-wrap: balance;
   }
 
-  svg {
-    display: block;
-    width: $icon;
-    height: $icon;
+  p {
+    font-weight: normal;
+  }
+
+  h5,
+  p,
+  a,
+  input,
+  textarea,
+  button,
+  select {
+    font-family: $font2;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 
@@ -146,35 +127,65 @@ $listOfFontsSize: (
   }
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font1;
+  color: rgb($fn1);
+  text-wrap: balance;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+h2 {
+  font-weight: 800;
+}
+
+h3 {
+  font-weight: 700;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+ul {
+  list-style: none;
+}
+
+.icon,
+.lucide {
+  display: block;
+  width: 17px;
+  height: 17px;
+  stroke: rgb($fn1);
+}
+
+.tn1 {
+  color: rgb($tn1);
+}
+
 @include m.smallerScreen {
-  body {
+  html {
     font-size: 10px;
   }
 }
 
-.typing {
-  overflow: hidden;
-  display: block;
+::selection {
+  color: rgb($fn1);
+  background-color: rgb($tn1);
+}
 
-  width: fit-content;
+.delay {
+  animation-delay: 700ms;
+}
 
-  white-space: nowrap;
+.btn-tooltip {
+  position: relative;
+  padding: $padding * 0.7;
 
-  border-right: 4px solid rgb($fn1);
-
-  animation:
-    typing 2s steps(12),
-    blink 0.5s infinite step-end alternate;
-
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-  }
-
-  @keyframes blink {
-    50% {
-      border-color: transparent;
-    }
-  }
+  @include tol.tooltip;
 }

@@ -1,19 +1,10 @@
-'use client'
-
-import { type JSX } from 'react'
-
-import CodeImage64 from './components/CodeImage64'
-import Perspectives from './components/Perspectives'
-import StylesCode from './components/StylesCode'
-import './style.scss'
+import type { JSX } from 'react'
 
 const Page = (): JSX.Element => {
   return (
-    <>
-      <StylesCode className='code-left editor' />
-      <CodeImage64 />
-      <Perspectives className='code-right editor' />
-    </>
+    <div>
+      <h1>Editor</h1>
+    </div>
   )
 }
 

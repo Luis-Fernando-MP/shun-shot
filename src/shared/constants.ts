@@ -2,4 +2,6 @@ export enum DEV_MODE {
   PROD = 'production',
   DEV = 'development'
 }
-export const DEV_ENV = process.env.NODE_ENV ?? DEV_MODE.DEV
+const { NODE_ENV } = process.env
+
+// export constants ?? DEV_MODE.DEV

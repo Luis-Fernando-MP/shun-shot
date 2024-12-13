@@ -1,8 +1,0 @@
-@use '@sass/config/vars' as v;
-@use '@sass/utils/defs' as d;
-
-.main.editor {
-  @include d.flex($ali: center);
-
-  justify-content: center;
-}

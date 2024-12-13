@@ -1,10 +1,12 @@
-import { Exo2Font, GeologicaFont, PoppinsFont } from '@/shared/fonts'
+import { exclamationFont, paragraphFont, titleFont } from '@/shared/fonts'
 import '@sass/config/global.scss'
 import type { Metadata } from 'next'
 import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
-import Firefly from './components/Firefly'
+import Footer from './components/Footer'
+import FooterTools from './components/FooterTools'
+import Header from './components/Header'
 import './globals.css'
 import Providers from './providers'
 import './style.scss'
@@ -14,13 +16,10 @@ interface IRootLayout {
 }
 
 export const metadata: Metadata = {
-  title: 'Juli dev',
+  title: 'code scape',
   description: 'Some...',
   icons: {
-    icon: [
-      { url: '/favicon.ico', media: '(prefers-color-scheme: light)' },
-      { url: '/favicon-dark.ico', media: '(prefers-color-scheme: dark)' }
-    ]
+    icon: [{ url: '/simple-logo.svg', media: '(prefers-color-scheme: light)' }]
   }
 }
 
@@ -28,11 +27,13 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
   return (
     <html lang='es'>
       <body
-        className={`${GeologicaFont.variable} ${PoppinsFont.variable} ${Exo2Font.variable} grid`}
+        className={`${titleFont.variable} ${paragraphFont.variable} ${exclamationFont.variable}`}
       >
         <Providers>
-          {children}
-          <Firefly />
+          <Header className='root-header' />
+          <main className='root-main'>{children}</main>
+          <FooterTools className='root-tools' />
+          <Footer className='root-footer' />
         </Providers>
         <Toaster
           position='top-center'

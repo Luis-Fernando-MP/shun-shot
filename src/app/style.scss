@@ -1,43 +1,44 @@
+@use '@sass/config/global';
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
 @use '@sass/utils/scrollbar' as *;
 
-.main {
-  @extend %scroll-hidden;
-
-  overflow-y: scroll;
-  grid-area: main;
-  background-color: transparent;
-  backdrop-filter: blur(5px);
-}
-
-body.grid {
+body {
   display: grid;
   grid-template-areas:
-    'options main themes'
-    'options main themes'
-    'options main themes';
-  grid-template-columns: 70px 1fr 230px;
-  grid-template-rows: repeat(3, 1fr);
+    'header'
+    'main'
+    'tools'
+    'footer';
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px calc(100vh - 150px) 50px 200px;
   gap: v.$padding;
 
   padding: v.$padding;
+}
 
-  &:has(> .code-left.editor),
-  &:has(> .code-right.editor) {
-    grid-template-columns: 300px 1fr calc(750px / 4);
+.root {
+  &-header,
+  &-footer {
+    padding: v.$padding;
   }
-}
 
-.code-left,
-.code-right {
-  padding: v.$padding;
-}
+  &-header {
+    grid-area: header;
+  }
 
-.code-left {
-  grid-area: options;
-}
+  &-main {
+    grid-area: main;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+  }
 
-.code-right {
-  grid-area: themes;
+  &-footer {
+    grid-area: footer;
+  }
+
+  &-tools {
+    grid-area: tools;
+    padding: 0 v.$padding;
+  }
 }
