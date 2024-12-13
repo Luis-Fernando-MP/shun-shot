@@ -1,202 +1,168 @@
-// import DomToImage from 'dom-to-image'
-// import html2canvas from 'html2canvas'
-// import toast from 'react-hot-toast'
+'use client'
 
-// export const loadDefaultImageEditor = async (element: HTMLElement) => {
-//   const id = toast.loading('Preparando entorno...')
-//   // try {
-//   //   const scale = 2.5
-//   //   const style = {
-//   //     transform: `scale(${scale})`,
-//   //     transformOrigin: 'top left',
-//   //     width: `${element.offsetWidth}px`,
-//   //     height: `${element.offsetHeight}px`
-//   //   }
-//   //   const pngDataUrl = await DomToImage.toPng(element, {
-//   //     quality: 1,
-//   //     width: element.offsetWidth * scale,
-//   //     height: element.offsetHeight * scale,
-//   //     style: style
-//   //   })
+import DomToImage from 'dom-to-image'
+import { jsPDF } from 'jspdf'
+import toast from 'react-hot-toast'
 
-//   //   toast.success('Todo Listo!!', { id })
-//   //   return pngDataUrl
-//   // } catch (error: any) {
-//   //   console.error(error)
-//   //   toast.error('No se pudo convertir la imagen', { id })
-//   // }
+import { sleep } from './sleep'
 
-//   element.style.animation = 'null'
+const fullContainer = async (element: HTMLElement) => {
+  element.style.minHeight = 'auto'
+  element.style.maxWidth = '900px'
+  await sleep(50)
+  const clone = element.cloneNode(true) as HTMLElement
+  const editor = clone.querySelector('.monaco') as HTMLElement
+  editor.style.height = 'fit-content'
+  document.body.appendChild(clone)
 
-//   try {
-//     const canvas = await html2canvas(element, {
-//       backgroundColor: null
-//     })
+  editor.style.all = ''
+  element.style.all = ''
+  return clone
+}
 
-//     const pngDataUrl = canvas.toDataURL('image/png', 1)
+const scaleMap = {
+  high: 4,
+  medium: 2,
+  low: 1
+}
 
-//     toast.success('Todo Listo!!', { id })
-//     console.log(pngDataUrl)
+export const downloadFullImage = async (element: HTMLElement, name: string = 'code-scape.png') => {
+  const clone = await fullContainer(element)
+  const id = toast.loading('Clonando todo el código...')
+  const elementHeight = clone.offsetHeight
+  const scale =
+    elementHeight < 1000 ? scaleMap.low : elementHeight <= 1500 ? scaleMap.medium : scaleMap.high
 
-//     return pngDataUrl
-//   } catch (error: any) {
-//     console.error(error)
-//     toast.error('No se pudo convertir la imagen', { id })
-//     return null // Asegúrate de retornar null en caso de error
-//   }
-// }
+  const style = {
+    transform: `scale(${scale})`,
+    transformOrigin: 'top left',
+    width: `${clone.offsetWidth}px`,
+    height: `${clone.offsetHeight}px`,
+    backgroundColor: 'transparent'
+  }
 
-// export const downloadToPng = async (element: HTMLElement, name?: string | null) => {
-//   const id = toast.loading('Descargando...')
-//   try {
-//     const scale = 2.5
-//     const style = {
-//       transform: `scale(${scale})`,
-//       transformOrigin: 'top left',
-//       width: `${element.offsetWidth}px`,
-//       height: `${element.offsetHeight}px`,
-//       backgroundColor: 'transparent'
-//     }
-//     const pngDataUrl = await DomToImage.toPng(element, {
-//       quality: 1,
-//       width: element.offsetWidth * scale,
-//       height: element.offsetHeight * scale,
-//       style: style
-//     })
+  try {
+    const pngDataUrl = await DomToImage.toPng(clone, {
+      quality: 1,
+      width: clone.offsetWidth * scale,
+      height: clone.offsetHeight * scale,
+      style: style
+    })
 
-//     const downloadLink = document.createElement('a')
-//     downloadLink.href = pngDataUrl
-//     downloadLink.download = `${name ?? 'my-code'}.svg`
+    const downloadLink = document.createElement('a')
+    downloadLink.href = pngDataUrl
+    downloadLink.download = name
+    downloadLink.click()
 
-//     downloadLink.click()
+    toast.success('Todo Listo!!', { id })
+  } catch (error: any) {
+    console.error(error)
+    toast.error('No se pudo descargar la imagen', { id })
+  } finally {
+    document.body.removeChild(clone)
+  }
+}
 
-//     toast.success('Todo Listo!!', { id })
-//   } catch (error: any) {
-//     console.error(error)
-//     toast.error('No se pudo descargar la imagen', { id })
-//   }
-// }
+export const downloadToPng = async (element: HTMLElement, name: string = 'code-scape.png') => {
+  const id = toast.loading('Descargando...')
+  const scale = scaleMap.high
+  const style = {
+    transform: `scale(${scale})`,
+    transformOrigin: 'top left',
+    width: `${element.offsetWidth}px`,
+    height: `${element.offsetHeight}px`,
+    backgroundColor: 'transparent'
+  }
+  try {
+    const pngDataUrl = await DomToImage.toPng(element, {
+      quality: 1,
+      width: element.offsetWidth * scale,
+      height: element.offsetHeight * scale,
+      style: style
+    })
 
-// export const downloadToSvg = async (element: HTMLElement, name?: string | null) => {
-//   const id = toast.loading('Preparando...')
+    const downloadLink = document.createElement('a')
+    downloadLink.href = pngDataUrl
+    downloadLink.download = name
+    downloadLink.click()
 
-//   try {
-//     const svgDataUrl = await DomToImage.toSvg(element)
+    toast.success('Todo Listo!!', { id })
+  } catch (error: any) {
+    console.error(error)
+    toast.error('No se pudo descargar la imagen', { id })
+  }
+}
 
-//     const downloadLink = document.createElement('a')
-//     downloadLink.href = svgDataUrl
-//     downloadLink.download = `${name ?? 'my-code'}.svg`
-//     downloadLink.click()
+export const copyToPng = async (element: HTMLElement) => {
+  const id = toast.loading('Descargando...')
+  const scale = scaleMap.high
+  const style = {
+    transform: `scale(${scale})`,
+    transformOrigin: 'top left',
+    width: `${element.offsetWidth}px`,
+    height: `${element.offsetHeight}px`,
+    backgroundColor: 'transparent'
+  }
 
-//     toast.success('Todo Listo!!', { id })
-//   } catch (error: any) {
-//     console.error(error)
-//     toast.error('No se pudo descargar la imagen', { id })
-//   }
-// }
+  try {
+    const pngDataUrl = await DomToImage.toPng(element, {
+      quality: 1,
+      width: element.offsetWidth * scale,
+      height: element.offsetHeight * scale,
+      style: style
+    })
 
-// export const copyToPng = async (element: HTMLElement) => {
-//   const id = toast.loading('Preparando...')
+    const response = await fetch(pngDataUrl)
+    const blob = await response.blob()
 
-//   try {
-//     const scale = 2.5
-//     const style = {
-//       transform: `scale(${scale})`,
-//       transformOrigin: 'top left',
-//       width: `${element.offsetWidth}px`,
-//       height: `${element.offsetHeight}px`,
-//       backgroundColor: 'transparent'
-//     }
-//     const pngDataUrl = await DomToImage.toPng(element, {
-//       quality: 1,
-//       width: element.offsetWidth * scale,
-//       height: element.offsetHeight * scale,
-//       style: style
-//     })
+    if (!navigator.clipboard || !window.ClipboardItem) {
+      toast.error('El navegador no soporta la API de portapapeles.', { id })
+      return
+    }
 
-//     const response = await fetch(pngDataUrl)
-//     const blob = await response.blob()
-//     const item = new ClipboardItem({ 'image/png': blob })
+    const item = new ClipboardItem({ 'image/png': blob })
+    await navigator.clipboard.write([item])
+    toast.success('¡Copiado al portapapeles!', { id })
+  } catch (error: any) {
+    console.error(error)
+    toast.error('No se pudo copiar la imagen', { id })
+  }
+}
 
-//     await navigator.clipboard.write([item])
+export const downloadPDF = async (element: HTMLElement, filename: string = 'code-scape.pdf') => {
+  const id = toast.loading('Preparando...')
 
-//     toast.success('Al portapapeles!!', { id })
-//   } catch (error: any) {
-//     console.error(error)
-//     toast.error('No se pudo copiar la imagen', { id })
-//   }
-// }
+  try {
+    const scale = 5
+    const style = {
+      transform: `scale(${scale})`,
+      transformOrigin: 'top left',
+      width: `${element.offsetWidth}px`,
+      height: `${element.offsetHeight}px`,
+      backgroundColor: 'transparent'
+    }
+    const pngDataUrl = await DomToImage.toPng(element, {
+      quality: 1,
+      width: element.offsetWidth * scale,
+      height: element.offsetHeight * scale,
+      style
+    })
 
-// export const copyToSvg2 = async (element: HTMLElement) => {
-//   const id = toast.loading('Preparando...')
+    const pdfWidth = (element.offsetWidth * scale) / 2
+    const pdfHeight = (element.offsetHeight * scale) / 2
 
-//   try {
-//     const svgText = await DomToImage.toSvg(element)
-//     const svgContent = svgText.replace(/^data:image\/svg\+xml;charset=utf-8,/, '')
+    const pdf = new jsPDF({
+      orientation: pdfWidth > pdfHeight ? 'landscape' : 'portrait',
+      unit: 'px',
+      format: [pdfWidth, pdfHeight]
+    })
 
-//     const blob = new Blob([svgContent], { type: 'text/html' })
-//     const item = new ClipboardItem({ 'text/html': blob })
+    pdf.addImage(pngDataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight)
 
-//     await navigator.clipboard.write([item])
-
-//     toast.success('Al portapapeles!!', { id })
-//   } catch (error) {
-//     console.error(error)
-//     toast.error('No se pudo copiar la imagen', { id })
-//   }
-// }
-
-// export const copyToSvg = async (element: HTMLElement) => {
-//   const id = toast.loading('Preparando entorno...')
-//   try {
-//     const scale = 3
-
-//     const style = {
-//       transform: `scale(${scale})`,
-//       transformOrigin: 'top left',
-//       width: `${element.offsetWidth}px`,
-//       height: `${element.offsetHeight}px`
-//     }
-
-//     const pngDataUrl = await DomToImage.toPng(element, {
-//       width: element.offsetWidth * scale,
-//       height: element.offsetHeight * scale,
-//       style: style
-//     })
-
-//     console.log('URLLLL ', pngDataUrl)
-
-//     const response = await fetch(pngDataUrl)
-//     const blob = await response.blob()
-//     const item = new ClipboardItem({ 'image/png': blob })
-
-//     await navigator.clipboard.write([item])
-//     console.log(item)
-
-//     toast.success('Todo Listo!!', { id })
-//     return pngDataUrl
-//   } catch (error: any) {
-//     console.error(error)
-//     toast.error('No se pudo convertir la imagen', { id })
-//     return null // Asegúrate de retornar null en caso de error
-//   }
-// }
-
-// export const saveImage = async (base64Image: string) => {
-//   console.log('sending, ', JSON.stringify({ imageBase64: base64Image }))
-
-//   try {
-//     const response = await fetch('/api', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({ a: 1, imageBase64: base64Image })
-//     })
-
-//     const data = await response.json()
-//     return data
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+    pdf.save(filename)
+    toast.success('¡PDF Listo!', { id })
+  } catch (error: any) {
+    console.error('Error al generar el PDF:', error)
+    toast.error('No se pudo copiar la imagen', { id })
+  }
+}

@@ -3,17 +3,21 @@
 import Editor from '@monaco-editor/react'
 import { useRef, useState } from 'react'
 
+import { useMonacoStore } from '../../store/monaco-store'
+import exampleCode from './exampleCode'
 import './style.scss'
 
 const minHeight = 200
 
 const Monaco = () => {
+  const { fontSize, setRefIde, language } = useMonacoStore()
   const $ide = useRef<HTMLElement>(null)
 
   const [editorHeight, setEditorHeight] = useState(minHeight)
 
   const handleMountIde = (editor: any) => {
     ;($ide as any).current = editor
+    setRefIde(editor)
     const contentHeight = editor.getContentHeight() > 100 ? editor.getContentHeight() : minHeight
     setEditorHeight(contentHeight)
   }
@@ -33,20 +37,21 @@ const Monaco = () => {
         </div>
         <input type='text' value={'code-scape'} />
       </header>
+
       <Editor
+        loading={<h5>Loading....</h5>}
         className='monaco-editor'
         height={editorHeight ?? 50}
-        defaultLanguage='javascript'
-        defaultValue={''}
+        defaultLanguage={language}
+        defaultValue={(exampleCode as any)[language]?.code ?? ''}
         theme='vs-dark'
         onMount={handleMountIde}
         onChange={handleChange}
         options={{
           automaticLayout: true,
           roundedSelection: true,
-          fontSize: 16,
+          fontSize,
           lineHeight: 19,
-
           scrollBeyondLastLine: false
         }}
       />

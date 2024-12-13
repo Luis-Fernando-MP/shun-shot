@@ -7,7 +7,7 @@ import './style.scss'
 
 const Page = (): JSX.Element => {
   return (
-    <article className='h-code'>
+    <article className='h-code' id='monacoParent'>
       <Monaco />
     </article>
   )

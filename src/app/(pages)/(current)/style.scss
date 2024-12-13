@@ -3,10 +3,32 @@
 
 .h-code {
   min-width: 900px;
+  max-width: 900px;
   height: auto;
   min-height: 200px;
   padding: v.$padding;
 
   background-image: v.$gr1;
   border-radius: v.$radius;
+
+  &.shooting {
+    position: relative;
+    z-index: 1;
+
+    overflow: hidden;
+    display: inline-block;
+
+    animation: flash-effect 0.5s ease-in-out infinite;
+
+    @keyframes flash-effect {
+      0%,
+      100% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+  }
 }

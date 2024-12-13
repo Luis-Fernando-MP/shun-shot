@@ -15,6 +15,10 @@
     &.center {
       padding: 5px v.$padding * 2;
     }
+
+    > div {
+      @include d.flex($dir: row, $ali: center, $gap: 0);
+    }
   }
 
   &-action {
@@ -29,6 +33,16 @@
       padding-right: v.$padding * 1.2;
       border-right: 2px solid rgb(v.$bg3);
     }
+  }
+
+  &-font {
+    width: 30px;
+
+    color: rgb(v.$fn2);
+    text-align: center;
+
+    appearance: none;
+    background-color: transparent;
   }
 
   &-action.tools-shared {
