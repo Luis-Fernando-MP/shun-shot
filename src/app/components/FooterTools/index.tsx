@@ -1,3 +1,6 @@
+'use client'
+
+import { toggleFullscreen } from '@/shared/utils/tools-app'
 import {
   AArrowDownIcon,
   AArrowUpIcon,
@@ -7,13 +10,14 @@ import {
   LanguagesIcon,
   LetterText,
   Maximize,
+  Minimize,
   Redo2Icon,
   Share2Icon,
   SwatchBookIcon,
   Undo2Icon,
   UserIcon
 } from 'lucide-react'
-import type { JSX } from 'react'
+import { type JSX, useState } from 'react'
 
 import './style.scss'
 
@@ -21,11 +25,18 @@ interface IFooterTools {
   className?: string
 }
 const FooterTools = ({ className }: IFooterTools): JSX.Element => {
+  const [isFullScreen, setIsFullScreen] = useState(false)
+
+  const handleScreen = (): void => {
+    setIsFullScreen(!isFullScreen)
+    toggleFullscreen()
+  }
+
   return (
     <footer className={`${className} tools`}>
       <section className='tools-section'>
-        <button className='tools-action btn-tooltip border-right'>
-          <Maximize />
+        <button className='tools-action btn-tooltip border-right' onClick={handleScreen}>
+          {isFullScreen ? <Minimize /> : <Maximize />}
           <p className='tooltip top'>Maximizar</p>
         </button>
         <button className='tools-action btn-tooltip'>
