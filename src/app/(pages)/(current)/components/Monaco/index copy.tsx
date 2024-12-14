@@ -156,7 +156,7 @@ const Monaco = () => {
         onChange={value => setCode(value || '')}
         options={{
           fontSize,
-          fontFamily,
+          fontFamily: 'Fira Code',
           automaticLayout: true
         }}
         onMount={editor => {
@@ -168,3 +168,9 @@ const Monaco = () => {
 }
 
 export default Monaco
+
+// editorRef.current.updateOptions({
+//   fontFamily: 'Fira Code', // Cambia por la fuente que quieras usar
+//   fontSize: 14,           // Opcional: ajusta el tamaño de la fuente
+//   fontLigatures: true     // Opcional: activa ligaduras si la fuente las soporta
+// });

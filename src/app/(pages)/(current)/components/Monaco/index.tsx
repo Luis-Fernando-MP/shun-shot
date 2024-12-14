@@ -13,7 +13,7 @@ const minHeight = 200
 const bg = (bg: string | undefined) => ({ style: { backgroundColor: bg } })
 
 const Monaco = () => {
-  const { fontSize, setRefIde, language, fileName, setFileName } = useMonacoStore()
+  const { fontSize, setRefIde, language, fileName, setFileName, fontFamily } = useMonacoStore()
   const theme = useThemeMonacoStore(s => s.theme)
   const $ide = useRef<HTMLElement>(null)
 
@@ -49,7 +49,7 @@ const Monaco = () => {
 
       <Editor
         loading={<h5>Loading....</h5>}
-        className='monaco-editor'
+        className={`monaco-editor`}
         height={editorHeight ?? minHeight}
         defaultLanguage={language}
         onChange={handleChange}
@@ -58,10 +58,9 @@ const Monaco = () => {
         onMount={handleMountIde}
         options={{
           automaticLayout: true,
-          // roundedSelection: true,
+          fontFamily,
           fontSize,
           lineHeight: 19
-          // scrollBeyondLastLine: false
         }}
       />
     </section>

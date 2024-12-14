@@ -64,18 +64,17 @@
   }
 
   &-modal {
-    $height: 200px;
+    $height: 500px;
 
     @extend %scroll-hidden;
 
     position: absolute;
     top: -1 * $height / 2;
-    left: 50%;
-    transform: translateX(-50%);
+    left: v.$padding;
 
     overflow: hidden scroll;
 
-    width: 900px;
+    width: 450px;
     height: $height;
     padding: v.$padding;
 

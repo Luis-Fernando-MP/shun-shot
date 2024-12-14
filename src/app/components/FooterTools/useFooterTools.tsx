@@ -11,8 +11,7 @@ const useFooterTools = () => {
   const [clipStatus, setClipStatus] = useState<StatusApp>('idle')
   const [pdfStatus, setPDFStatus] = useState<StatusApp>('idle')
   const [windStatus, setWindStatus] = useState<StatusApp>('idle')
-  const [showThemes, setShowThemes] = useState(false)
-  const [showLanguages, setShowLanguages] = useState(false)
+
   const store = useMonacoStore()
   const { setFontSize, refIde, fileName } = store
 
@@ -101,16 +100,6 @@ const useFooterTools = () => {
     }
   }
 
-  const handleShowThemes = (): void => {
-    setShowThemes(!showThemes)
-    setShowLanguages(false)
-  }
-
-  const handleShowLanguages = (): void => {
-    setShowLanguages(!showLanguages)
-    setShowThemes(false)
-  }
-
   return {
     handleScreen,
     handleFontSize,
@@ -121,10 +110,6 @@ const useFooterTools = () => {
     handleDownload,
     handleCopyToClip,
     handleDownloadPDF,
-    handleShowThemes,
-    handleShowLanguages,
-    showThemes,
-    showLanguages,
     isFullScreen,
     downloadStatus,
     clipStatus,

@@ -1,5 +1,7 @@
 import { create } from 'zustand'
 
+import { monacoFonts } from '../components/languages/fonts'
+
 type LineNumbersOption = 'on' | 'off' | 'relative' | 'interval'
 type CursorStyle = 'block' | 'line' | 'underline' | 'phase'
 type wordWrap = 'off' | 'on' | 'bounded' | 'wordWrapColumn'
@@ -8,6 +10,7 @@ type AutoIndent = 'none' | 'keep' | 'brackets' | 'advanced' | 'full'
 type Store = {
   language: string
   fontSize: number
+  fontFamily: string
   tabSize: number
   lineNumbers: LineNumbersOption
   minimap: boolean
@@ -21,6 +24,7 @@ type Store = {
   setLanguage: (language: string) => void
   setFontSize: (fontSize: number) => void
   setTabSize: (tabSize: number) => void
+  setFontFamily: (fontFamily: string) => void
   setLineNumbers: (lineNumbers: LineNumbersOption) => void
   setMinimap: (minimap: boolean) => void
   setCursorStyle: (cursorStyle: CursorStyle) => void
@@ -34,6 +38,7 @@ export const useMonacoStore = create<Store>(set => ({
   language: 'javascript',
   fontSize: 16,
   tabSize: 2,
+  fontFamily: monacoFonts.monospace.var,
   lineNumbers: 'relative',
   minimap: false,
   cursorStyle: 'line',
@@ -46,6 +51,7 @@ export const useMonacoStore = create<Store>(set => ({
   setLanguage: language => set({ language }),
   setFontSize: fontSize => set({ fontSize }),
   setTabSize: tabSize => set({ tabSize }),
+  setFontFamily: fontFamily => set({ fontFamily }),
   setLineNumbers: lineNumbers => set({ lineNumbers }),
   setMinimap: minimap => set({ minimap }),
   setCursorStyle: cursorStyle => set({ cursorStyle }),

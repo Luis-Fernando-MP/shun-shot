@@ -1,27 +1,23 @@
 'use client'
 
-import Themes from '@/app/(pages)/(current)/components/themes'
-import { acl } from '@/shared/acl'
 import {
   AArrowDownIcon,
   AArrowUpIcon,
   ClipboardCopyIcon,
   CloudDownloadIcon,
   FileCode2Icon,
-  LanguagesIcon,
   LetterText,
   Loader2Icon,
   Maximize,
   Minimize,
   Redo2Icon,
   Share2Icon,
-  SwatchBookIcon,
   Undo2Icon,
-  UserIcon,
   WindIcon
 } from 'lucide-react'
 import { type JSX } from 'react'
 
+import ToolsModal from './ToolsModal'
 import './style.scss'
 import useFooterTools from './useFooterTools'
 
@@ -44,10 +40,6 @@ const FooterTools = ({ className }: IFooterTools): JSX.Element => {
     handleScreen,
     handleUndo,
     handleWindDownload,
-    handleShowLanguages,
-    handleShowThemes,
-    showLanguages,
-    showThemes,
     isFullScreen,
     clipStatus,
     downloadStatus,
@@ -58,37 +50,20 @@ const FooterTools = ({ className }: IFooterTools): JSX.Element => {
 
   return (
     <footer className={`${className} tools`}>
-      <section className={`tools-modal ${acl(showLanguages || showThemes)}`}>
-        {showThemes && <Themes />}
-      </section>
-      <section className='tools-section'>
-        <button className='tools-action btn-tooltip border-right' onClick={handleScreen}>
-          {isFullScreen ? <Minimize /> : <Maximize />}
-          <p className='tooltip top'>Maximizar</p>
-        </button>
-        <button className='tools-action btn-tooltip' onClick={handleUndo}>
-          <Undo2Icon />
-          <p className='tooltip top'>Deshacer</p>
-        </button>
-        <button className='tools-action btn-tooltip' onClick={handleRedo}>
-          <Redo2Icon />
-          <p className='tooltip top'>Rehacer</p>
-        </button>
-        <button className='tools-action btn-tooltip'>
-          <UserIcon />
-          <p className='tooltip top'>Iniciar sesión</p>
-        </button>
-      </section>
-
+      <ToolsModal />
       <section className='tools-section center'>
         <div>
-          <button className='tools-action btn-tooltip' onClick={handleShowLanguages}>
-            <LanguagesIcon />
-            <p className='tooltip top'>Lenguajes</p>
+          <button className='tools-action btn-tooltip' onClick={handleScreen}>
+            {isFullScreen ? <Minimize /> : <Maximize />}
+            <p className='tooltip top'>Maximizar</p>
           </button>
-          <button className='tools-action btn-tooltip border-right' onClick={handleShowThemes}>
-            <SwatchBookIcon />
-            <p className='tooltip top'>Temas</p>
+          <button className='tools-action btn-tooltip' onClick={handleUndo}>
+            <Undo2Icon />
+            <p className='tooltip top'>Deshacer</p>
+          </button>
+          <button className='tools-action btn-tooltip border-right' onClick={handleRedo}>
+            <Redo2Icon />
+            <p className='tooltip top'>Rehacer</p>
           </button>
         </div>
 

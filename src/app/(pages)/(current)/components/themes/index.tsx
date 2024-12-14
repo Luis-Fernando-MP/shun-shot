@@ -1,9 +1,10 @@
+import { acl } from '@/shared/acl'
+import { themesData } from '@/shared/themes/loadStaticThemes'
 import { useMonaco } from '@monaco-editor/react'
 import { type JSX, useCallback, useEffect } from 'react'
 
 import { useMonacoStore } from '../../store/monaco-store'
 import { useThemeMonacoStore } from '../../store/monaco-theme'
-import { themesData } from './loadStaticThemes'
 import './style.scss'
 
 const bg = (bg: string | undefined) => ({ style: { backgroundColor: bg } })
@@ -11,13 +12,11 @@ const bg = (bg: string | undefined) => ({ style: { backgroundColor: bg } })
 const Themes = (): JSX.Element => {
   const monaco = useMonaco()
   const { refIde } = useMonacoStore()
-  const { setTheme } = useThemeMonacoStore()
+  const { setTheme, theme } = useThemeMonacoStore()
 
   const loadThemes = useCallback(async () => {
     try {
       Object.entries(themesData).forEach(([themeName, themeData]) => {
-        console.log(themeName, themeData)
-
         monaco?.editor.defineTheme(themeName, themeData as any)
       })
     } catch (error) {
@@ -33,22 +32,25 @@ const Themes = (): JSX.Element => {
   const handleSetTheme = (th: any): void => {
     if (!refIde) return
     const [key, json] = th
-    setTheme(json)
+    setTheme({ ...json, name: key })
     refIde?._themeService.setTheme(key)
   }
 
   return (
     <section className='themes'>
-      {Object.entries(themesData).map((th: any, i: number) => {
+      {Object.entries(themesData).map((th: any, i: number, arr) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [key, json] = th
-        const { base, colors } = json
+        const { base, colors, name } = json
 
         return (
           <button
             key={`${base}-${i}`}
-            className={`themes-item`}
-            {...bg(colors['editor.background'])}
+            className={`themes-item animate-blurred-fade-in ${acl(name === theme.name)}`}
+            style={{
+              backgroundColor: colors['editor.background'],
+              animationDelay: `${i / arr.length}s`
+            }}
             onClick={() => handleSetTheme(th)}
             title={key}
           >

@@ -1,6 +1,6 @@
+import { themesData } from '@/shared/themes/loadStaticThemes'
 import { create } from 'zustand'
 
-import vsDark from '../components/themes/data/vs-dark.json'
 import { ThemesMonaco } from '../components/themes/monaco-type'
 
 type Store = {
@@ -9,6 +9,9 @@ type Store = {
 }
 
 export const useThemeMonacoStore = create<Store>(set => ({
-  theme: vsDark,
+  theme: {
+    ...themesData['vs-dark'],
+    name: 'vs-dark'
+  },
   setTheme: theme => set({ theme })
 }))

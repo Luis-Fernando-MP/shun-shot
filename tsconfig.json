@@ -22,6 +22,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@dashboard/*": ["./src/app/(dashboard)/*"],
+      "@shared/*": ["./src/shared/*"],
       "@pages/*": ["./src/app/(dashboard)/(pages)/*"],
       "@sass/*": ["./src/sass/*"]
     }
