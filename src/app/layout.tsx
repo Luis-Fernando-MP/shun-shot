@@ -5,7 +5,6 @@ import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
 import Footer from './components/Footer'
-import FooterTools from './components/FooterTools'
 import Header from './components/Header'
 import './globals.css'
 import Providers from './providers'
@@ -31,8 +30,7 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
       >
         <Providers>
           <Header className='root-header' />
-          <main className='root-main'>{children}</main>
-          <FooterTools className='root-tools' />
+          {children}
           <Footer className='root-footer' />
         </Providers>
         <Toaster

@@ -1,7 +1,9 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
+@use '@sass/utils/scrollbar' as *;
 
 .tools {
+  position: relative;
   justify-content: space-between;
 
   @include d.flex($dir: row, $ali: center);
@@ -58,6 +60,36 @@
 
     svg {
       stroke: rgb(v.$fn3);
+    }
+  }
+
+  &-modal {
+    $height: 200px;
+
+    @extend %scroll-hidden;
+
+    position: absolute;
+    top: -1 * $height / 2;
+    left: 50%;
+    transform: translateX(-50%);
+
+    overflow: hidden scroll;
+
+    width: 900px;
+    height: $height;
+    padding: v.$padding;
+
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgb(v.$bg2);
+    border-radius: v.$radius;
+
+    transition: all 0.5s v.$bezier;
+
+    &.active {
+      top: -1 * $height - v.$padding;
+      visibility: visible;
+      opacity: 1;
     }
   }
 }

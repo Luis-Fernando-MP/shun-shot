@@ -7,7 +7,6 @@ type AutoIndent = 'none' | 'keep' | 'brackets' | 'advanced' | 'full'
 
 type Store = {
   language: string
-  theme: string
   fontSize: number
   tabSize: number
   lineNumbers: LineNumbersOption
@@ -17,9 +16,9 @@ type Store = {
   // Nivel de indentación automática
   autoIndent: AutoIndent
   refIde: any
+  fileName: string
 
   setLanguage: (language: string) => void
-  setTheme: (theme: string) => void
   setFontSize: (fontSize: number) => void
   setTabSize: (tabSize: number) => void
   setLineNumbers: (lineNumbers: LineNumbersOption) => void
@@ -28,11 +27,11 @@ type Store = {
   setWordWrap: (wordWrap: wordWrap) => void
   setAutoIndent: (autoIndent: AutoIndent) => void
   setRefIde: (refIde: any) => void
+  setFileName: (fileName: any) => void
 }
 
 export const useMonacoStore = create<Store>(set => ({
   language: 'javascript',
-  theme: 'vs-dark',
   fontSize: 16,
   tabSize: 2,
   lineNumbers: 'relative',
@@ -41,10 +40,10 @@ export const useMonacoStore = create<Store>(set => ({
   wordWrap: 'off',
   autoIndent: 'advanced',
   refIde: null,
+  fileName: 'code-scape',
 
   // Métodos para actualizar el estado
   setLanguage: language => set({ language }),
-  setTheme: theme => set({ theme }),
   setFontSize: fontSize => set({ fontSize }),
   setTabSize: tabSize => set({ tabSize }),
   setLineNumbers: lineNumbers => set({ lineNumbers }),
@@ -52,5 +51,6 @@ export const useMonacoStore = create<Store>(set => ({
   setCursorStyle: cursorStyle => set({ cursorStyle }),
   setWordWrap: wordWrap => set({ wordWrap }),
   setAutoIndent: autoIndent => set({ autoIndent }),
-  setRefIde: refIde => set({ refIde })
+  setRefIde: refIde => set({ refIde }),
+  setFileName: fileName => set({ fileName })
 }))

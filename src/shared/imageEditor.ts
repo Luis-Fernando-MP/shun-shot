@@ -26,7 +26,7 @@ const scaleMap = {
   low: 1
 }
 
-export const downloadFullImage = async (element: HTMLElement, name: string = 'code-scape.png') => {
+export const downloadFullImage = async (fileName: string, element: HTMLElement) => {
   const clone = await fullContainer(element)
   const id = toast.loading('Clonando todo el código...')
   const elementHeight = clone.offsetHeight
@@ -51,7 +51,7 @@ export const downloadFullImage = async (element: HTMLElement, name: string = 'co
 
     const downloadLink = document.createElement('a')
     downloadLink.href = pngDataUrl
-    downloadLink.download = name
+    downloadLink.download = `${fileName}.png`
     downloadLink.click()
 
     toast.success('Todo Listo!!', { id })
@@ -63,7 +63,7 @@ export const downloadFullImage = async (element: HTMLElement, name: string = 'co
   }
 }
 
-export const downloadToPng = async (element: HTMLElement, name: string = 'code-scape.png') => {
+export const downloadToPng = async (fileName: string, element: HTMLElement) => {
   const id = toast.loading('Descargando...')
   const scale = scaleMap.high
   const style = {
@@ -83,7 +83,7 @@ export const downloadToPng = async (element: HTMLElement, name: string = 'code-s
 
     const downloadLink = document.createElement('a')
     downloadLink.href = pngDataUrl
-    downloadLink.download = name
+    downloadLink.download = `${fileName}.png`
     downloadLink.click()
 
     toast.success('Todo Listo!!', { id })
@@ -129,7 +129,7 @@ export const copyToPng = async (element: HTMLElement) => {
   }
 }
 
-export const downloadPDF = async (element: HTMLElement, filename: string = 'code-scape.pdf') => {
+export const downloadPDF = async (fileName: string, element: HTMLElement) => {
   const id = toast.loading('Preparando...')
 
   try {
@@ -159,7 +159,7 @@ export const downloadPDF = async (element: HTMLElement, filename: string = 'code
 
     pdf.addImage(pngDataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight)
 
-    pdf.save(filename)
+    pdf.save(`${fileName}.pdf`)
     toast.success('¡PDF Listo!', { id })
   } catch (error: any) {
     console.error('Error al generar el PDF:', error)
