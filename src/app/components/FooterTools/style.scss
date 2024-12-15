@@ -1,5 +1,6 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
+@use '@sass/utils/boxLoader' as loader;
 @use '@sass/utils/scrollbar' as *;
 
 .tools {
@@ -13,6 +14,7 @@
 
     padding: 5px;
     background-color: rgb(v.$bg2);
+    border-radius: v.$radius;
 
     &.center {
       padding: 5px v.$padding * 2;
@@ -20,6 +22,13 @@
 
     > div {
       @include d.flex($dir: row, $ali: center, $gap: 0);
+    }
+
+    &__downloader.load {
+      pointer-events: none;
+      user-select: none;
+
+      @include loader.boxLoader;
     }
   }
 

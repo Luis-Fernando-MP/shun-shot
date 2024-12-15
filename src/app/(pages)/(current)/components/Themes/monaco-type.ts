@@ -27,5 +27,5 @@ export type ThemesMonaco = {
   rules: ThemeRule[]
   colors: ThemeColors
   default: Theme
-  // name: string
+  name: string
 }

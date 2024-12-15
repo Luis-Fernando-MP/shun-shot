@@ -2,7 +2,7 @@ import { acl } from '@/shared/acl'
 import { monacoFonts } from '@shared/fonts/monaco-fonts'
 import { type JSX } from 'react'
 
-import { useMonacoStore } from '../../store/monaco-store'
+import { useMonacoStore } from '../../store/config-monaco.store'
 import './style.scss'
 
 const FontFamily = (): JSX.Element => {
@@ -12,7 +12,7 @@ const FontFamily = (): JSX.Element => {
     <section className='fontMonaco'>
       <h4>Tipos de fuente</h4>
       <div className='fontMonaco-fonts'>
-        {Object.entries(monacoFonts).map((font, i, arr) => {
+        {Object.entries(monacoFonts).map((font, i) => {
           const [key, name] = font
           const currentFont = { fontFamily: name.var }
           return (
@@ -23,7 +23,7 @@ const FontFamily = (): JSX.Element => {
                 setFontFamily(name.var)
               }}
               style={{
-                animationDelay: `${i / arr.length}s`
+                animationDelay: `${i * 0.1}s`
               }}
             >
               <span style={currentFont}>- Code Scape -</span>

@@ -34,166 +34,200 @@ import typescript from './assets/typescript'
 import yaml from './assets/yaml'
 
 const languageIcons = {
-  'Lenguajes Web': {
+  'Frontend Web': {
     html: {
       Icon: html,
-      language: 'html'
+      language: 'html',
+      status: 'ok'
     },
     css: {
       Icon: css,
-      language: 'css'
+      language: 'css',
+      status: 'ok'
     },
     javascript: {
       Icon: javascriptreact,
-      language: 'javascript'
+      language: 'javascript',
+      status: 'soon'
     },
     typescript: {
       Icon: typescript,
-      language: 'typescript'
+      language: 'typescript',
+      status: 'soon'
     },
     astro: {
       Icon: astro,
-      language: 'astro'
+      language: 'astro',
+      status: 'beta'
     },
     pug: {
       Icon: pug,
-      language: 'pug'
+      language: 'pug',
+      status: 'ok'
     },
     handlebars: {
       Icon: handlebars,
-      language: 'handlebars'
+      language: 'handlebars',
+      status: 'ok'
     },
     sass: {
       Icon: scss,
-      language: 'scss'
+      language: 'scss',
+      status: 'ok'
     },
     markdown: {
       Icon: markdown,
-      language: 'markdown'
+      language: 'markdown',
+      status: 'ok'
     }
   },
 
-  'Lenguajes Backend/Servidores': {
+  'Backend/Servidores': {
     php: {
       Icon: php,
-      language: 'php'
+      language: 'php',
+      status: 'ok'
     },
     python: {
       Icon: python,
-      language: 'python'
+      language: 'python',
+      status: 'ok'
     },
     ruby: {
       Icon: ruby,
-      language: 'ruby'
+      language: 'ruby',
+      status: 'ok'
     },
     go: {
       Icon: go,
-      language: 'go'
+      language: 'go',
+      status: 'ok'
     },
     java: {
       Icon: java,
-      language: 'java'
+      language: 'java',
+      status: 'ok'
     },
     c: {
       Icon: c,
-      language: 'c'
+      language: 'c',
+      status: 'ok'
     },
     'c#': {
       Icon: csharp,
-      language: 'csharp'
+      language: 'csharp',
+      status: 'ok'
     },
     'c++': {
       Icon: cpp,
-      language: 'cpp'
+      language: 'cpp',
+      status: 'ok'
     },
     kotlin: {
       Icon: kotlin,
-      language: 'kotlin'
+      language: 'kotlin',
+      status: 'ok'
     },
     rust: {
       Icon: rust,
-      language: 'rust'
+      language: 'rust',
+      status: 'ok'
     }
   },
 
   'Base de Datos y Consulta': {
     sql: {
       Icon: sql,
-      language: 'sql'
+      language: 'sql',
+      status: 'ok'
     },
     graphql: {
       Icon: graphql,
-      language: 'graphql'
+      language: 'graphql',
+      status: 'ok'
     },
     prisma: {
       Icon: prisma,
-      language: 'graphql'
+      language: 'graphql',
+      status: 'dev'
     }
   },
 
   'Scripting y Automatización': {
     bash: {
       Icon: shell,
-      language: 'shell'
+      language: 'shell',
+      status: 'ok'
     },
     powershell: {
       Icon: powershell,
-      language: 'powershell'
+      language: 'powershell',
+      status: 'ok'
     },
     bat: {
       Icon: bat,
-      language: 'bat'
+      language: 'bat',
+      status: 'ok'
     }
   },
 
   'Contenedores y DevOps': {
     dockerfile: {
       Icon: dockerfile,
-      language: 'dockerfile'
+      language: 'dockerfile',
+      status: 'ok'
     }
   },
 
   'Lenguajes Funcionales': {
     clojure: {
       Icon: clojure,
-      language: 'clojure'
+      language: 'clojure',
+      status: 'ok'
     }
   },
 
   'Lenguajes de Markup': {
     yaml: {
       Icon: yaml,
-      language: 'yaml'
+      language: 'yaml',
+      status: 'ok'
     },
     json: {
       Icon: json,
-      language: 'json'
+      language: 'json',
+      status: 'ok'
     }
   },
 
   'Desarrollo Móvil': {
     dart: {
       Icon: dart,
-      language: 'dart'
+      language: 'dart',
+      status: 'ok'
     },
     swift: {
       Icon: swift,
-      language: 'swift'
+      language: 'swift',
+      status: 'ok'
     }
   },
 
   'Otros Lenguajes': {
     coffeescript: {
       Icon: coffeescript,
-      language: 'coffeescript'
+      language: 'coffeescript',
+      status: 'ok'
     },
     lua: {
       Icon: lua,
-      language: 'lua'
+      language: 'lua',
+      status: 'ok'
     },
     shell: {
       Icon: shell,
-      language: 'shell'
+      language: 'shell',
+      status: 'ok'
     }
   }
 }

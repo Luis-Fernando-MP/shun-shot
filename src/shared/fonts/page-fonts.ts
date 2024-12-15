@@ -14,6 +14,6 @@ export const paragraphFont = Roboto({
 
 export const exclamationFont = Exo_2({
   subsets: ['latin'],
-  weight: ['200', '300', '400'],
+  weight: ['200', '300', '400', '500', '700'],
   variable: '--exclamationFont'
 })

@@ -1,8 +1,8 @@
 'use client'
 
 import FontFamily from '@/app/(pages)/(current)/components/FontFamily'
+import Themes from '@/app/(pages)/(current)/components/Themes'
 import Languages from '@/app/(pages)/(current)/components/languages'
-import Themes from '@/app/(pages)/(current)/components/themes'
 import { acl } from '@/shared/acl'
 import { ALargeSmallIcon, LanguagesIcon, SwatchBookIcon, UserIcon } from 'lucide-react'
 import { type JSX, useState } from 'react'
@@ -25,29 +25,20 @@ const ToolsModal = (): JSX.Element => {
         {view === 'languages' && <Languages />}
       </section>
       <section className='tools-section'>
-        <button className='tools-action btn-tooltip border-right badge draft'>
+        <button className='tools-action btn-tooltip border-right badge beta'>
           <UserIcon />
           <p className='tooltip top'>Iniciar sesión</p>
         </button>
 
-        <button
-          className='tools-action btn-tooltip badge soon'
-          onClick={() => handleSetView('languages')}
-        >
+        <button className='tools-action btn-tooltip' onClick={() => handleSetView('languages')}>
           <LanguagesIcon />
           <p className='tooltip top'>Lenguajes</p>
         </button>
-        <button
-          className='tools-action btn-tooltip badge dev'
-          onClick={() => handleSetView('fontFamily')}
-        >
+        <button className='tools-action btn-tooltip' onClick={() => handleSetView('fontFamily')}>
           <ALargeSmallIcon />
           <p className='tooltip top'>Fuente de letra</p>
         </button>
-        <button
-          className='tools-action btn-tooltip badge wip'
-          onClick={() => handleSetView('themes')}
-        >
+        <button className='tools-action btn-tooltip' onClick={() => handleSetView('themes')}>
           <SwatchBookIcon />
           <p className='tooltip top'>Temas</p>
         </button>
