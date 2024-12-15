@@ -1,10 +1,10 @@
-import { exclamationFont, paragraphFont, titleFont } from '@/shared/fonts/fonts'
+import { monacoClassFont } from '@/shared/fonts/monaco-fonts'
+import { exclamationFont, paragraphFont, titleFont } from '@/shared/fonts/page-fonts'
 import '@sass/config/global.scss'
 import type { Metadata } from 'next'
 import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
-import { monacoClassFont } from './(pages)/(current)/components/languages/fonts'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import './globals.css'

@@ -1,3 +1,4 @@
+@use '@sass/config/badge';
 @use '@sass/utils/scrollbar';
 @use '@sass/config/vars' as *;
 @use '@sass/utils/media' as m;
@@ -88,7 +89,6 @@ body {
     font-weight: normal;
   }
 
-  h5,
   p,
   a,
   input,
@@ -131,9 +131,19 @@ $listOfFontsSize: (
 
 h1,
 h2,
+h3 {
+  font-family: $fontTitle;
+}
+
+h4,
+h5 {
+  font-family: $font1;
+}
+
+h1,
+h2,
 h3,
 h4 {
-  font-family: $font1;
   color: rgb($fn1);
   text-wrap: balance;
 }

@@ -7,24 +7,39 @@
   flex-wrap: wrap;
   width: 100%;
 
-  @include d.flex();
-  &-fonts {
-    @include d.flex($dir: row);
+  @include d.flex;
+
+  &-category {
+    @include d.flex;
+  }
+
+  &-options {
+    @include d.flex($dir: row, $gap: v.$padding * 0.7);
+
     flex-wrap: wrap;
   }
 
-  &-font {
-    background-color: rgb(v.$bg1);
-    width: fit-content;
-    border-radius: v.$radius;
+  &-option {
+    justify-content: center;
+
+    width: min-content;
+    height: min-content;
     padding: v.$padding;
+
+    background-color: rgb(v.$bg1);
     border: 2px solid transparent;
+    border-radius: v.$radius;
+
+    @include d.flex($ali: center);
 
     &.active {
       border-color: rgb(v.$tn1);
-      h3 {
-        color: rgb(v.$tn1);
-      }
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      filter: drop-shadow(0 0 10px rgba(var(--fnt-tertiary), 0.4));
     }
   }
 }

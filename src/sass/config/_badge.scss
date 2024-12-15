@@ -1,0 +1,192 @@
+@use '@sass/config/vars' as v;
+@use 'sass:color';
+
+$badges: (
+  // Fase de pruebas iniciales y abierto a comentarios.
+  'beta':
+    (
+      content: 'Beta',
+      color: #fff,
+      background: linear-gradient(90deg, #ff7f50, #8a2be2),
+      animation: bounce 2s infinite ease-in-out
+    ),
+  // Algo emocionante está por llegar muy pronto.
+  'soon':
+    (
+      content: 'Soon',
+      color: #fff,
+      background: #1e90ff,
+      animation: slide-in 2s ease-out forwards
+    ),
+  // Está en desarrollo activo y puede cambiar.
+  'dev':
+    (
+      content: 'Dev',
+      color: #fff,
+      background: #ffa500,
+      animation: pulse 3s infinite
+    ),
+  // Trabajo en curso; sujeto a cambios frecuentes.
+  'wip':
+    (
+      content: 'WIP',
+      color: #fff,
+      background: #ffd700,
+      animation: shake 1s infinite
+    ),
+  // Un trabajo inicial que aún no está listo para producción.
+  'draft':
+    (
+      content: 'Draft',
+      color: #fff,
+      background: #d3d3d3,
+      animation: scale-up 2s cubic-bezier(0.25, 1, 0.5, 1) infinite
+    ),
+
+  // Concepto o idea inicial; aún no implementado.
+  'idea':
+    (
+      content: 'Idea',
+      color: #ffffff,
+      background: #ff1493,
+      animation: spin 2s linear infinite
+    )
+);
+
+.badge {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+
+    padding: 2px 5px;
+
+    font-size: 0.8rem;
+
+    border-radius: 5px;
+  }
+
+  @each $name, $styles in $badges {
+    &.#{$name}::after {
+      content: map-get($styles, content);
+      color: map-get($styles, color);
+      background: map-get($styles, background);
+      animation: map-get($styles, animation);
+    }
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scale-up {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25%,
+  75% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}

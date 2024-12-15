@@ -1,6 +1,5 @@
+import { monacoFonts } from '@/shared/fonts/monaco-fonts'
 import { create } from 'zustand'
-
-import { monacoFonts } from '../components/languages/fonts'
 
 type LineNumbersOption = 'on' | 'off' | 'relative' | 'interval'
 type CursorStyle = 'block' | 'line' | 'underline' | 'phase'

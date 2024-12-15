@@ -25,20 +25,29 @@ const ToolsModal = (): JSX.Element => {
         {view === 'languages' && <Languages />}
       </section>
       <section className='tools-section'>
-        <button className='tools-action btn-tooltip border-right'>
+        <button className='tools-action btn-tooltip border-right badge draft'>
           <UserIcon />
           <p className='tooltip top'>Iniciar sesión</p>
         </button>
 
-        <button className='tools-action btn-tooltip' onClick={() => handleSetView('languages')}>
+        <button
+          className='tools-action btn-tooltip badge soon'
+          onClick={() => handleSetView('languages')}
+        >
           <LanguagesIcon />
           <p className='tooltip top'>Lenguajes</p>
         </button>
-        <button className='tools-action btn-tooltip' onClick={() => handleSetView('fontFamily')}>
+        <button
+          className='tools-action btn-tooltip badge dev'
+          onClick={() => handleSetView('fontFamily')}
+        >
           <ALargeSmallIcon />
           <p className='tooltip top'>Fuente de letra</p>
         </button>
-        <button className='tools-action btn-tooltip' onClick={() => handleSetView('themes')}>
+        <button
+          className='tools-action btn-tooltip badge wip'
+          onClick={() => handleSetView('themes')}
+        >
           <SwatchBookIcon />
           <p className='tooltip top'>Temas</p>
         </button>

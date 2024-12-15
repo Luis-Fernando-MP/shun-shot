@@ -122,7 +122,7 @@ const FooterTools = ({ className }: IFooterTools): JSX.Element => {
           </button>
 
           <button
-            className='tools-action btn-tooltip border-left'
+            className='tools-action btn-tooltip border-left badge'
             onClick={handleWindDownload}
             disabled={windStatus === 'loading'}
           >
