@@ -1,5 +1,4 @@
 @use '@sass/components/badge';
-@use '@sass/utils/scrollbar';
 @use '@sass/config/vars' as *;
 @use '@sass/utils/media' as m;
 @use '@sass/utils/text' as t;
@@ -21,16 +20,14 @@ html {
 }
 
 body {
-  @extend %scroll-hidden;
-
   position: relative;
 
+  overflow-x: hidden;
   overflow-y: auto;
 
   width: 100dvw;
   height: 100dvh;
   min-height: 100dvh;
-  max-height: 100dvh;
 
   font-family: $font1;
   color: rgb($fn1);

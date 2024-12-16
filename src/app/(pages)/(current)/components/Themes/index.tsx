@@ -36,7 +36,7 @@ const Themes = (): JSX.Element => {
           <ThemeComponent
             key={key}
             theme={themeData}
-            className={`themes-item animate-blurred-fade-in ${acl(name === theme?.name)}`}
+            className={`themes-item animate-fade-in-up ${acl(name === theme?.name)}`}
             style={{
               backgroundColor: colors['editor.background'],
               animationDelay: `${i / arr.length}s`

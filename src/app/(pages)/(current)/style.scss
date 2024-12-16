@@ -1,33 +1,53 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
 
-.h-code {
-  min-width: 900px;
-  max-width: 900px;
-  height: auto;
-  min-height: 200px;
-  padding: v.$padding;
+.root-main.codePage {
+  @include d.flex($gap: 0, $ali: center);
+}
 
-  background-image: v.$gr1;
-  border-radius: v.$radius;
+.codePage {
+  &-tools {
+    width: 100%;
+    height: 50px;
+    padding: 0 v.$padding;
+  }
 
-  &.shooting {
-    position: relative;
-    z-index: 1;
+  &-container {
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 
-    overflow: hidden;
-    display: inline-block;
+    @include d.flex($ali: center);
+  }
 
-    animation: flash-effect 0.5s ease-in-out infinite;
+  &-monaco {
+    min-width: 900px;
+    max-width: 900px;
+    height: auto;
+    min-height: 200px;
+    padding: v.$padding;
 
-    @keyframes flash-effect {
-      0%,
-      100% {
-        opacity: 0;
-      }
+    background-image: v.$gr1;
+    border-radius: v.$radius;
 
-      50% {
-        opacity: 1;
+    &.shooting {
+      position: relative;
+      z-index: 1;
+
+      overflow: hidden;
+      display: inline-block;
+
+      animation: flash-effect 0.5s ease-in-out infinite;
+
+      @keyframes flash-effect {
+        0%,
+        100% {
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 1;
+        }
       }
     }
   }

@@ -26,7 +26,7 @@ const LanguageSection = ({
       <p>{category}</p>
       <div className='languages-options'>
         {Object.entries(languages).map(([name, { Icon, language, status }], i) => {
-          const className = `languages-option btn-tooltip ${acl(currentLanguage === language)} badge ${status} animate-blurred-fade-in`
+          const className = `languages-option btn-tooltip ${acl(currentLanguage === language)} badge ${status} animate-fade-in-up`
           return (
             <button
               key={name}

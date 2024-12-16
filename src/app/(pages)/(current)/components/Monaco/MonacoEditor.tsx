@@ -30,7 +30,7 @@ const MonacoEditor = (): JSX.Element => {
   return (
     <Editor
       loading={<h5>Loading....</h5>}
-      className={`monaco-editor`}
+      className='monaco-editor delay animate-blurred-fade-in'
       height={editorHeight ?? minHeight}
       defaultLanguage={language}
       onChange={handleChange}

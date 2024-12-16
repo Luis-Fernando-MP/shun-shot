@@ -3,7 +3,8 @@
 import { useMonacoStore } from '@/app/(pages)/(current)/store/config-monaco.store'
 import FullScreen from '@/shared/components/FullScreen'
 import useMonacoTools from '@/shared/hooks/monaco-tools'
-import { Redo2Icon, Share2Icon, Undo2Icon } from 'lucide-react'
+import { LayersIcon, Redo2Icon, Share2Icon, Undo2Icon } from 'lucide-react'
+import Link from 'next/link'
 import { type JSX } from 'react'
 
 import DownloadTools from './DownloadTools'
@@ -42,11 +43,16 @@ const FooterTools = ({ className }: IFooterTools): JSX.Element => {
       </section>
 
       <section className='tools-section'>
-        <button className='tools-action tools-shared btn-tooltip badge idea'>
+        <button className='tools-action btn-tooltip'>
           <Share2Icon />
-          Compartir
           <p className='tooltip top'>Compartir</p>
         </button>
+
+        <Link href='/editor' className='tools-action tools-especial btn-tooltip badge dev'>
+          <LayersIcon />
+          <h5>Editar</h5>
+          <p className='tooltip top'>Editar imagen</p>
+        </Link>
       </section>
     </footer>
   )

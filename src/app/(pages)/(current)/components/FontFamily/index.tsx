@@ -18,7 +18,7 @@ const FontFamily = (): JSX.Element => {
           return (
             <button
               key={key}
-              className={`fontMonaco-font ${acl(fontFamily === name.var)} animate-blurred-fade-in`}
+              className={`fontMonaco-font ${acl(fontFamily === name.var)} animate-fade-in-up`}
               onClick={() => {
                 setFontFamily(name.var)
               }}

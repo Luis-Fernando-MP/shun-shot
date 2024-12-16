@@ -10,10 +10,10 @@ interface IRootLayout {
 
 const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
   return (
-    <>
-      <main className='root-main'>{children}</main>
-      <FooterTools className='root-tools' />
-    </>
+    <main className='root-main codePage'>
+      {children}
+      <FooterTools className='codePage-tools' />
+    </main>
   )
 }
 

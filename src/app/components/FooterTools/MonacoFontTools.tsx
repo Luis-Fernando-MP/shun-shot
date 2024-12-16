@@ -23,10 +23,7 @@ const MonacoFontTools = (): JSX.Element => {
         value={fontSize}
         onChange={e => handleFontSize(Number(e.target.value))}
       />
-      <button
-        className='tools-action btn-tooltip badge idea'
-        onClick={() => handleFontSize(fontSize + 1)}
-      >
+      <button className='tools-action btn-tooltip' onClick={() => handleFontSize(fontSize + 1)}>
         <AArrowUpIcon />
         <p className='tooltip top'>Aumentar fuente</p>
       </button>

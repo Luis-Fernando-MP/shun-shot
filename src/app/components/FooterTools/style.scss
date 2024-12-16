@@ -56,11 +56,12 @@
     background-color: transparent;
   }
 
-  &-action.tools-shared {
+  &-action.tools-especial {
     @include d.flex($dir: row, $ali: center, $gap: 10px);
 
-    padding: v.$padding * 0.7 v.$padding * 1.5;
+    padding: v.$padding * 0.5 v.$padding;
 
+    font-size: 1rem;
     font-weight: 500;
     color: rgb(v.$fn3);
 

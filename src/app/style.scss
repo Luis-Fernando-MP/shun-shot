@@ -4,25 +4,21 @@
 @use '@sass/utils/scrollbar' as *;
 
 body {
+  @extend %scroll-hidden;
+
   display: grid;
   grid-template-areas:
     'header'
     'main'
-    'tools'
     'footer';
   grid-template-columns: 1fr;
-  grid-template-rows: 40px calc(100vh - 150px) 50px 200px;
+  grid-template-rows: 40px calc(100vh - 90px) 200px;
   gap: v.$padding;
 
   padding: v.$padding;
 }
 
 .root {
-  &-header,
-  &-footer {
-    padding: v.$padding;
-  }
-
   &-header {
     grid-area: header;
   }
@@ -38,10 +34,5 @@ body {
 
   &-footer {
     grid-area: footer;
-  }
-
-  &-tools {
-    grid-area: tools;
-    padding: 0 v.$padding;
   }
 }
