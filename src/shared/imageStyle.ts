@@ -58,34 +58,28 @@ export const stacksStyles = {
 }
 
 export const blurStyles = {
-  // Sombra simple, ligera pero definida
   SIMPLE: {
-    style: '3px 3px 6px 0 rgba(0, 0, 0, 0.2)',
+    style: '-10px -3px 3px 0 black',
     blur: 10
   },
-  // Sombra suave y envolvente
   HUG: {
-    style: '5px 5px 10px 0 rgba(0, 0, 0, 0.25)',
+    style: '-10px -3px 10px 0px black',
     blur: 20
   },
-  // Sombra ancha, con un aire envolvente
   SPREAD: {
-    style: '0px 8px 15px 2px rgba(0, 0, 0, 0.15)',
+    style: '-7px -2px 11px 4px black',
     blur: 40
   },
-  // Sombra profunda, creando realismo
   DEEP: {
-    style: '5px 5px 20px 5px rgba(0, 0, 0, 0.3)',
+    style: '-10px -3px 20px 3px black',
     blur: 50
   },
-  // Sombra ultra ligera, casi imperceptible
   GLOW: {
-    style: '2px 2px 4px 0 rgba(0, 0, 0, 0.1)', // Sombra tenue y limpia
+    style: 'black -10px -3px 33px 4px, black -10px -3px 9px 1px',
     blur: 60
   },
-  // Sombra dual para texturizar
   MULTI: {
-    style: '3px 3px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 15px 2px rgba(0, 0, 0, 0.1)',
+    style: 'black -10px -3px 58px 12px, black -10px -3px 16px 2px',
     blur: 70
   }
 }
