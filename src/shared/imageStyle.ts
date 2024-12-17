@@ -96,3 +96,22 @@ export const perspectivesStyles = [
   { transform: 'rotateX(-30deg)' },
   { transform: 'rotateY(-45deg) rotateX(15deg)' }
 ]
+
+type TGenerateShadows = {
+  x: number
+  y: number
+  blur: number
+  spread: number
+  opacity: number
+}
+
+export function generateShadow(props: TGenerateShadows) {
+  const { x, y, blur, spread, opacity } = props
+  const shadow1 = `${x}px ${y}px ${blur}px ${spread}px rgba(0, 0, 0, ${opacity / 100})`
+  const shadow2 = `${x * 1.2}px ${y * 1.2}px ${blur * 1.1}px ${spread * 1.1}px rgba(0, 0, 0, ${(opacity * 0.9) / 100})`
+  const shadow3 = `${x * 0.8}px ${y * 0.8}px ${blur * 0.9}px ${spread * 0.9}px rgba(0, 0, 0, ${(opacity * 0.7) / 100})`
+  const shadow4 = `${x * 1.5}px ${y * 1.5}px ${blur * 1.2}px ${spread * 1.2}px rgba(0, 0, 0, ${(opacity * 1.1) / 100})`
+  const shadow5 = `${x * 0.5}px ${y * 0.5}px ${blur * 0.7}px ${spread * 0.7}px rgba(0, 0, 0, ${(opacity * 0.5) / 100})`
+
+  return `${shadow1}, ${shadow2}, ${shadow3}, ${shadow4}, ${shadow5}`
+}

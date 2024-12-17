@@ -1,12 +1,10 @@
 'use client'
 
-import BoldText from '@/shared/components/BoldText'
+import { CirclePositionXY } from '@editor/components/CirclesComponent/Circles'
+import usePositionImage from '@editor/store/usePositionImage'
 import { type JSX } from 'react'
 
-import usePositionImage from '../../store/usePositionImage'
-import { CirclePositionXY } from '../CirclesComponent/Circles'
-import RangeSlider from '../RangeSlider'
-import './style.scss'
+import RangeSlider from '../../RangeSlider'
 
 const PositionComponent = (): JSX.Element | null => {
   const { scale, setPosition, setScale } = usePositionImage()
@@ -38,7 +36,7 @@ const PositionComponent = (): JSX.Element | null => {
 
   return (
     <div className='editorStyles-section'>
-      <BoldText text='Size &/Position' />
+      <h3 className='editorStyles-title'>Size & Position</h3>
       <RangeSlider
         label='Scale'
         onChange={v => setScale(0.7 + v / 100)}

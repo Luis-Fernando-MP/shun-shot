@@ -3,9 +3,8 @@
 import '@sass/config/global.scss'
 import type { JSX, ReactNode } from 'react'
 
-import EditorRightStyles from './components/EditorRightStyles'
+import EditorImageTools from './components/EditorImageTools'
 import EditorStyles from './components/EditorStyles'
-import EditorTools from './components/EditorTools'
 import './style.scss'
 
 interface IRootLayout {
@@ -17,8 +16,7 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
     <main className='root-main editorPage'>
       <EditorStyles className='editorPage-styles animate-blurred-fade-in' />
       {children}
-      <EditorTools className='editorPage-tools animate-blurred-fade-in' />
-      <EditorRightStyles className='editorPage-rightStyles animate-blurred-fade-in' />
+      <EditorImageTools className='editorPage-tools animate-blurred-fade-in' />
       {children}
     </main>
   )

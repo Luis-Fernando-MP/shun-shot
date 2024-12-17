@@ -5,6 +5,7 @@
 
 .themes {
   flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
 
   @include d.flex($dir: row);

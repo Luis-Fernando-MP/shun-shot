@@ -63,9 +63,47 @@ export const downloadFullImage = async (fileName: string, element: HTMLElement) 
   }
 }
 
-export const downloadToPng = async (fileName: string, element: HTMLElement) => {
+export const downloadToJpeg = async (
+  fileName: string,
+  element: HTMLElement,
+  size: number = scaleMap.high
+) => {
   const id = toast.loading('Descargando...')
-  const scale = scaleMap.high
+  const scale = size
+  const style = {
+    transform: `scale(${scale})`,
+    transformOrigin: 'top left',
+    width: `${element.offsetWidth}px`,
+    height: `${element.offsetHeight}px`,
+    backgroundColor: 'transparent'
+  }
+  try {
+    const pngDataUrl = await DomToImage.toJpeg(element, {
+      quality: 1,
+      width: element.offsetWidth * scale,
+      height: element.offsetHeight * scale,
+      style: style
+    })
+
+    const downloadLink = document.createElement('a')
+    downloadLink.href = pngDataUrl
+    downloadLink.download = `${fileName}.png`
+    downloadLink.click()
+
+    toast.success('Todo Listo!!', { id })
+  } catch (error: any) {
+    console.error(error)
+    toast.error('No se pudo descargar la imagen', { id })
+  }
+}
+
+export const downloadToPng = async (
+  fileName: string,
+  element: HTMLElement,
+  size: number = scaleMap.high
+) => {
+  const id = toast.loading('Descargando...')
+  const scale = size
   const style = {
     transform: `scale(${scale})`,
     transformOrigin: 'top left',
@@ -93,9 +131,9 @@ export const downloadToPng = async (fileName: string, element: HTMLElement) => {
   }
 }
 
-export const copyToPng = async (element: HTMLElement) => {
+export const copyToPng = async (element: HTMLElement, size: number = scaleMap.high) => {
   const id = toast.loading('Descargando...')
-  const scale = scaleMap.high
+  const scale = size
   const style = {
     transform: `scale(${scale})`,
     transformOrigin: 'top left',
@@ -129,18 +167,22 @@ export const copyToPng = async (element: HTMLElement) => {
   }
 }
 
-export const downloadPDF = async (fileName: string, element: HTMLElement) => {
+export const downloadPDF = async (
+  fileName: string,
+  element: HTMLElement,
+  size: number = scaleMap.high
+) => {
   const id = toast.loading('Preparando...')
+  const scale = size
+  const style = {
+    transform: `scale(${scale})`,
+    transformOrigin: 'top left',
+    width: `${element.offsetWidth}px`,
+    height: `${element.offsetHeight}px`,
+    backgroundColor: 'transparent'
+  }
 
   try {
-    const scale = 5
-    const style = {
-      transform: `scale(${scale})`,
-      transformOrigin: 'top left',
-      width: `${element.offsetWidth}px`,
-      height: `${element.offsetHeight}px`,
-      backgroundColor: 'transparent'
-    }
     const pngDataUrl = await DomToImage.toPng(element, {
       quality: 1,
       width: element.offsetWidth * scale,

@@ -1,16 +1,18 @@
+import { acl } from '@/shared/acl'
 import type { JSX } from 'react'
 
 interface IBlurCard {
   style: [string, any]
-  handleClick: (spread: number) => void
+  handleClick: (spread: number, key: string) => void
+  active: boolean
 }
 
-const BlurCard = ({ style, handleClick }: IBlurCard): JSX.Element => {
+const BlurCard = ({ style, handleClick, active }: IBlurCard): JSX.Element => {
   const [key, value] = style
 
   return (
-    <button className='SStyleCard' onClick={() => handleClick(value.blur)}>
-      <div className='SStyleCard-cube shape'>
+    <button className={`styleBlurCard ${acl(active)}`} onClick={() => handleClick(value.blur, key)}>
+      <div className='styleBlurCard-cube'>
         <span style={{ boxShadow: value.style }} />
       </div>
       <p>{key}</p>

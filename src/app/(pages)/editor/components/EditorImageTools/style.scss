@@ -3,21 +3,22 @@
 @use '@sass/utils/boxLoader' as loader;
 @use '@sass/utils/scrollbar' as *;
 
-.tools {
+.editorImageTools {
   position: relative;
   justify-content: space-between;
 
   @include d.flex($dir: row, $ali: center);
 
   &-section {
-    @include d.flex($dir: row, $ali: center, $gap: v.$padding * 0.5);
+    @include d.flex($dir: row, $ali: center, $gap: v.$padding);
 
-    padding: 5px;
+    padding: v.$padding;
     background-color: rgb(v.$bg2);
     border-radius: v.$radius;
 
     &.center {
-      padding: 5px v.$padding * 2;
+      justify-content: center;
+      width: 200px;
     }
 
     > div {
@@ -26,6 +27,15 @@
   }
 
   &-action {
+    &.active {
+      background-color: rgb(v.$tn1);
+      border-radius: v.$radius;
+
+      svg {
+        stroke: rgb(v.$fn3);
+      }
+    }
+
     &.border-left {
       margin-left: v.$padding;
       padding-left: v.$padding * 1.2;
@@ -39,17 +49,7 @@
     }
   }
 
-  &-font {
-    width: 30px;
-
-    color: rgb(v.$fn2);
-    text-align: center;
-
-    appearance: none;
-    background-color: transparent;
-  }
-
-  &-action.tools-especial {
+  &-action.editorImageTools-especial {
     @include d.flex($dir: row, $ali: center, $gap: 10px);
 
     padding: v.$padding * 0.5 v.$padding;
@@ -63,35 +63,6 @@
 
     svg {
       stroke: rgb(v.$fn3);
-    }
-  }
-
-  &-modal {
-    $height: 500px;
-
-    @extend %scroll-hidden;
-
-    position: absolute;
-    top: -1 * $height / 2;
-    left: v.$padding;
-
-    overflow: hidden scroll;
-
-    width: 350px;
-    height: $height;
-    padding: v.$padding;
-
-    visibility: hidden;
-    opacity: 0;
-    background-color: rgb(v.$bg2);
-    border-radius: v.$radius;
-
-    transition: all 0.5s v.$bezier;
-
-    &.active {
-      top: -1 * $height - v.$padding;
-      visibility: visible;
-      opacity: 1;
     }
   }
 }

@@ -21,9 +21,12 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@dashboard/*": ["./src/app/(dashboard)/*"],
       "@shared/*": ["./src/shared/*"],
-      "@pages/*": ["./src/app/(dashboard)/(pages)/*"],
+      "@pages/*": ["./src/app/(pages)/*"],
+      "@editor/*": ["./src/app/(pages)/editor/*"],
+      "@editor-store/*": ["./src/app/(pages)/editor/store/*"],
+      "@home/*": ["./src/app/(pages)/(current)/*"],
+      "@home-store/*": ["./src/app/(pages)/(current)/store/*"],
       "@sass/*": ["./src/sass/*"]
     }
   },

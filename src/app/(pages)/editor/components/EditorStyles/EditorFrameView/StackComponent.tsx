@@ -4,9 +4,9 @@ import BoldText from '@/shared/components/BoldText'
 import { stacksStyles } from '@/shared/imageStyle'
 import { type JSX } from 'react'
 
-import useStackImage from '../../store/stackImage.store'
-import RangeSlider from '../RangeSlider'
-import StackCard from '../StyleCard/StackCard'
+import useStackImage from '../../../store/stackImage.store'
+import RangeSlider from '../../RangeSlider'
+import StackCard from '../../StyleCard/StackCard'
 import './style.scss'
 
 const StackComponent = (): JSX.Element => {

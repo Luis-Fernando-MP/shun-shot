@@ -2,9 +2,9 @@
 
 import { type JSX } from 'react'
 
-import BorderComponent from './BorderComponent'
-import PositionComponent from './PositionComponent'
-import ShadowComponent from './ShadowComponent'
+import useViewNavImage from '../../store/viewNavImage'
+import EditorFrameView from './EditorFrameView'
+import EditorTransformView from './EditorTransformView'
 import './style.scss'
 
 interface IEditorStyles {
@@ -12,11 +12,12 @@ interface IEditorStyles {
 }
 
 const EditorStyles = ({ className }: IEditorStyles): JSX.Element => {
+  const view = useViewNavImage(s => s.view)
+
   return (
     <section className={`${className} editorStyles`}>
-      <BorderComponent />
-      <ShadowComponent />
-      <PositionComponent />
+      {view === 'TRANSFORM' && <EditorTransformView />}
+      {view === 'FRAME' && <EditorFrameView />}
     </section>
   )
 }

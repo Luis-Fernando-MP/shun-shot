@@ -3,6 +3,7 @@
 @use '@sass/utils/media' as m;
 @use '@sass/utils/text' as t;
 @use '@sass/utils/tooltip' as tol;
+@use '@sass/utils/boxLoader' as loader;
 
 *,
 ::before,
@@ -197,4 +198,11 @@ ul {
   padding: $padding * 0.7;
 
   @include tol.tooltip;
+}
+
+.loading {
+  pointer-events: none;
+  user-select: none;
+
+  @include loader.boxLoader;
 }

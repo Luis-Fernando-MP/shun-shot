@@ -6,7 +6,7 @@
   grid-template-areas:
     'styles main'
     'styles tools';
-  grid-template-columns: 270px 1fr;
+  grid-template-columns: 250px 1fr;
   grid-template-rows: 1fr 50px;
   gap: v.$padding;
 
@@ -39,37 +39,6 @@
 
   &-tools {
     grid-area: tools;
-  }
-}
-
-.editorMP-transformer {
-  overflow: hidden;
-  justify-content: center;
-
-  width: 980px;
-  height: 800px;
-  padding: v.$padding;
-
-  background-image: v.$gr1;
-  border-radius: v.$radius;
-
-  @include d.flex($ali: center);
-
-  img {
-    pointer-events: none;
-    user-select: none;
-
-    transform-origin: center;
-
-    width: 700px;
-    height: min-content;
-
-    object-fit: contain;
-
-    transition:
-      scale 0.3s ease-out,
-      top 0.3s ease-out,
-      left 0.3s ease-out;
   }
 }
 

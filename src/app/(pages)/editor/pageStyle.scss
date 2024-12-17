@@ -1,0 +1,33 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.editorMP-transformer {
+  overflow: hidden;
+  justify-content: center;
+
+  width: 940px;
+  height: 700px;
+  padding: v.$padding;
+
+  background-image: v.$gr1;
+  border-radius: v.$radius;
+
+  @include d.flex($ali: center);
+
+  img {
+    pointer-events: none;
+    user-select: none;
+
+    transform-origin: center;
+
+    width: 700px;
+    height: min-content;
+
+    object-fit: contain;
+
+    transition:
+      scale 0.3s ease-out,
+      top 0.3s ease-out,
+      left 0.3s ease-out;
+  }
+}

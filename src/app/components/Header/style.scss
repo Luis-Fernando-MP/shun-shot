@@ -3,6 +3,7 @@
 
 .header {
   justify-content: space-between;
+  padding: v.$padding;
 
   &-logo,
   &,
@@ -10,9 +11,11 @@
     @include d.flex($dir: row, $ali: center);
   }
 
-  &-logo svg {
-    width: 35px;
-    height: 35px;
+  &-logo {
+    svg {
+      width: 25px;
+      height: 25px;
+    }
   }
 
   &-nav {

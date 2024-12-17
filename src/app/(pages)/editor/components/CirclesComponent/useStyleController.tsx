@@ -53,6 +53,7 @@ const useStyleController = ({ onMouseMove }: IStyleController): IUseStyleControl
 
   const handleMouseUp = useCallback(() => {
     isDraggingRef.current = false
+    console.log('-', isDraggingRef.current)
   }, [])
 
   useEffect(() => {

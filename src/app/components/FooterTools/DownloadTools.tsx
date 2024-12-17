@@ -2,11 +2,11 @@
 
 import { useExtraMonacoStore } from '@/app/(pages)/(current)/store/extra-monaco.store'
 import { acl } from '@/shared/acl'
-import { copyToPng, downloadFullImage, downloadPDF, downloadToPng } from '@/shared/imageEditor'
+import { copyToPng, downloadFullImage, downloadPDF, downloadToPng } from '@/shared/imageDownloader'
 import { ClipboardCopyIcon, CloudDownloadIcon, FileCode2Icon, WindIcon } from 'lucide-react'
 import { type JSX, memo, useState } from 'react'
 
-type StatusApp = 'idle' | 'loading' | 'error'
+export type StatusApp = 'idle' | 'loading' | 'error'
 
 interface IDownloadTools {
   refElement: any
@@ -78,7 +78,7 @@ const DownloadTools = ({ refElement }: IDownloadTools): JSX.Element => {
   }
 
   return (
-    <div className={`tools-section__downloader ${acl(downloadStatus === 'loading', 'load')}`}>
+    <div className={`tools-section__downloader ${acl(downloadStatus === 'loading', 'loading')}`}>
       <button
         className='tools-action btn-tooltip border-left'
         onClick={handleCopyToClip}
