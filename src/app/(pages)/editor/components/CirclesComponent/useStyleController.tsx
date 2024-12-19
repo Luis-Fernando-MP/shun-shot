@@ -1,17 +1,13 @@
-import {
-  MouseEvent,
-  MutableRefObject,
-  RefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react'
+'use client'
 
-type IStylePosition = { x: number; y: number }
+import { MouseEvent, MutableRefObject, RefObject, useCallback, useEffect, useRef } from 'react'
+import { useLocalStorage } from 'usehooks-ts'
+
+export type IStylePosition = { x: number; y: number }
 
 interface IStyleController {
   onMouseMove?: (positions: IStylePosition) => void
+  localKey: string
 }
 
 export interface IUseStyleController {
@@ -25,10 +21,11 @@ export interface IUseStyleController {
 export const GRID_SIZE = 4
 export const circles = Array.from({ length: GRID_SIZE * GRID_SIZE }).fill(0)
 
-const useStyleController = ({ onMouseMove }: IStyleController): IUseStyleController => {
+const useStyleController = ({ onMouseMove, localKey }: IStyleController): IUseStyleController => {
+  const [xy, setXY] = useLocalStorage<IStylePosition>(localKey, { x: 50, y: 50 })
+
   const containerRef = useRef<HTMLDivElement>(null)
-  // const [lightPosition, setLightPosition]
-  const [xy, setXY] = useState<IStylePosition>({ x: 50, y: 50 })
+
   const isDraggingRef = useRef(false)
 
   const handleMouseMove = useCallback(
@@ -36,7 +33,7 @@ const useStyleController = ({ onMouseMove }: IStyleController): IUseStyleControl
       if (!isDraggingRef.current || !containerRef.current) return
       // Obtiene el área del contenedor
       const { left, top, width, height } = containerRef.current.getBoundingClientRect()
-      // calcula las coordenadas relativas del puntero
+      // Calcula las coordenadas relativas del puntero
       const x = ((e.clientX - left) / width) * 100
       const y = ((e.clientY - top) / height) * 100
 
@@ -48,12 +45,11 @@ const useStyleController = ({ onMouseMove }: IStyleController): IUseStyleControl
       if (!onMouseMove) return
       onMouseMove({ x, y })
     },
-    [onMouseMove]
+    [onMouseMove, setXY]
   )
 
   const handleMouseUp = useCallback(() => {
     isDraggingRef.current = false
-    console.log('-', isDraggingRef.current)
   }, [])
 
   useEffect(() => {
@@ -76,7 +72,7 @@ const useStyleController = ({ onMouseMove }: IStyleController): IUseStyleControl
       if (!onMouseMove) return
       onMouseMove({ x: newX, y: newY })
     },
-    [onMouseMove]
+    [onMouseMove, setXY]
   )
 
   const handleDown = useCallback(

@@ -60,41 +60,63 @@ export const stacksStyles = {
 export const blurStyles = {
   SIMPLE: {
     style: '-10px -3px 3px 0 black',
-    blur: 10
+    blur: 20
   },
   HUG: {
     style: '-10px -3px 10px 0px black',
-    blur: 20
+    blur: 40
   },
   SPREAD: {
     style: '-7px -2px 11px 4px black',
-    blur: 40
+    blur: 50
   },
   DEEP: {
     style: '-10px -3px 20px 3px black',
-    blur: 50
+    blur: 70
   },
   GLOW: {
     style: 'black -10px -3px 33px 4px, black -10px -3px 9px 1px',
-    blur: 60
+    blur: 90
   },
   MULTI: {
     style: 'black -10px -3px 58px 12px, black -10px -3px 16px 2px',
-    blur: 70
+    blur: 100
   }
 }
 
 export const perspectivesStyles = [
-  { transform: 'rotateY(0deg) rotateX(0deg)' },
-  { transform: 'rotateY(-15deg) rotateX(5deg)' },
-  { transform: 'rotateY(15deg) rotateX(-5deg)' },
-  { transform: 'rotateX(15deg)' },
-  { transform: 'rotateX(-15deg)' },
-  { transform: 'rotateY(-30deg) rotateX(10deg)' },
-  { transform: 'rotateY(30deg) rotateX(-10deg)' },
-  { transform: 'rotateX(30deg)' },
-  { transform: 'rotateX(-30deg)' },
-  { transform: 'rotateY(-45deg) rotateX(15deg)' }
+  '',
+  'rotateX(16deg) rotateY(5deg)',
+  'perspective(1500px) rotateY(-15deg) rotateX(6deg) skew(-8deg,4deg) translate3d(-4%,-2%,0)',
+  'perspective(1500px) rotateY(15deg) rotateX(6deg) skew(8deg,-4deg) translate3d(4%,-2%,0)',
+  'perspective(1500px) translate3d(0,-6%,0) rotateX(34deg) scale(.84)',
+  'rotateX(40deg) rotate(40deg) scale(.8)',
+  'perspective(1200px) rotateX(15deg) rotateY(20deg) scale(0.95)',
+
+  // ------------
+
+  // -
+  'perspective(600em) rotateY(10deg) rotateX(15deg) skew(5deg, -5deg) translate3d(2%, -4%, 0) scale(.9)',
+  'perspective(300em) translate3d(0, 5%, 0) rotateX(-20deg) rotateZ(15deg)',
+  'rotate(360deg) scale(.95)', // Animación de giro completo
+  'perspective(700em) rotateY(-45deg) rotateX(-20deg) translate3d(-5%, -10%, 0) scale(.75)', // Estilo dramático
+
+  // ------------
+
+  'perspective(800em) rotateX(30deg) rotateY(60deg) translate3d(10%, 10%, -20px) scale(.7)', // Vista angular dinámica
+  'rotateY(90deg) translate3d(0, 0, -10px) scale(.9)', // Rotación lateral derecha
+  'rotateY(-90deg) translate3d(0, 0, -10px) scale(.9)', // Rotación lateral izquierda
+  'perspective(1000em) translate3d(0, 0, 20px) rotateX(50deg) rotateY(10deg) scale(.75)', // Perspectiva elevada y frontal
+  'perspective(600em) rotateY(-35deg) skewX(-10deg) translate3d(-3%, -3%, 0) scale(.8)', // Efecto inclinado
+
+  // ------------
+
+  'perspective(800em) rotateX(180deg) translate3d(0, -20%, -50px) scale(.8)', // Perspectiva invertida extrema
+  '',
+  'rotateY(-15deg) rotateX(5deg)',
+  'rotateY(15deg) rotateX(-5deg)',
+  'rotateY(-30deg) rotateX(10deg)',
+  'rotate(-8deg) scale(.9)'
 ]
 
 type TGenerateShadows = {
@@ -109,9 +131,9 @@ export function generateShadow(props: TGenerateShadows) {
   const { x, y, blur, spread, opacity } = props
   const shadow1 = `${x}px ${y}px ${blur}px ${spread}px rgba(0, 0, 0, ${opacity / 100})`
   const shadow2 = `${x * 1.2}px ${y * 1.2}px ${blur * 1.1}px ${spread * 1.1}px rgba(0, 0, 0, ${(opacity * 0.9) / 100})`
-  const shadow3 = `${x * 0.8}px ${y * 0.8}px ${blur * 0.9}px ${spread * 0.9}px rgba(0, 0, 0, ${(opacity * 0.7) / 100})`
+  const shadow3 = `${x * 0.8}px ${y * 0.8}px ${blur * 0.9}px ${spread * 0.9}px rgba(0, 0, 0, ${(opacity * 2) / 100})`
   const shadow4 = `${x * 1.5}px ${y * 1.5}px ${blur * 1.2}px ${spread * 1.2}px rgba(0, 0, 0, ${(opacity * 1.1) / 100})`
-  const shadow5 = `${x * 0.5}px ${y * 0.5}px ${blur * 0.7}px ${spread * 0.7}px rgba(0, 0, 0, ${(opacity * 0.5) / 100})`
+  const shadow5 = `${x * 0.5}px ${y * 0.5}px ${blur * 0.7}px ${spread * 0.7}px rgba(0, 0, 0, ${(opacity * 0.8) / 100})`
 
   return `${shadow1}, ${shadow2}, ${shadow3}, ${shadow4}, ${shadow5}`
 }

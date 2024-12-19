@@ -16,8 +16,8 @@ const EditorStyles = ({ className }: IEditorStyles): JSX.Element => {
 
   return (
     <section className={`${className} editorStyles`}>
-      {view === 'TRANSFORM' && <EditorTransformView />}
       {view === 'FRAME' && <EditorFrameView />}
+      {view === 'TRANSFORM' && <EditorTransformView />}
     </section>
   )
 }

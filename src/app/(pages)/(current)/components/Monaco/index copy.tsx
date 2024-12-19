@@ -89,9 +89,6 @@ const Monaco = () => {
     }
   }
 
-  // Obtenemos dinámicamente los lenguajes disponibles en Monaco
-  console.log(monaco?.languages.getLanguages())
-
   const languages = monaco?.languages.getLanguages() ?? []
 
   return (

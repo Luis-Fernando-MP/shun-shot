@@ -1,5 +1,6 @@
 import { blurStyles } from '@/shared/imageStyle'
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 type TUseShadowsImage = {
   keyBlur: string
@@ -14,14 +15,19 @@ type TUseShadowsImage = {
 
 // -11px 5px 20px     8px      black   0.8
 //  x     y  blur  spread   color  opacity
-const useShadowsImage = create<TUseShadowsImage>(set => ({
-  keyBlur: 'MULTI',
-  blur: blurStyles.MULTI.blur,
-  opacity: 20,
-  XYSize: [10, 10, 10],
-  setKeyBlur: keyBlur => set({ keyBlur }),
-  setBlur: blur => set({ blur }),
-  setOpacity: opacity => set({ opacity }),
-  setXYSize: XYSize => set({ XYSize })
-}))
+const useShadowsImage = create(
+  persist<TUseShadowsImage>(
+    set => ({
+      keyBlur: 'SPREAD',
+      blur: blurStyles.SPREAD.blur,
+      opacity: 10,
+      XYSize: [0, 0, 0],
+      setKeyBlur: keyBlur => set({ keyBlur }),
+      setBlur: blur => set({ blur }),
+      setOpacity: opacity => set({ opacity }),
+      setXYSize: XYSize => set({ XYSize })
+    }),
+    { name: 'shadowsImageXYS' }
+  )
+)
 export default useShadowsImage

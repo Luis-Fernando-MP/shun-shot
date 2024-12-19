@@ -83,8 +83,6 @@ function StackedCard({ variant, stackCount }: StackedCardProps) {
     }
   }
 
-  console.log(stackCount)
-
   return (
     <div className='EStack'>
       <section className='EStack-card'>

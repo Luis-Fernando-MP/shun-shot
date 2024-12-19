@@ -1,12 +1,16 @@
 'use client'
 
 import { blurStyles } from '@/shared/imageStyle'
+import dynamic from 'next/dynamic'
 import { type JSX } from 'react'
 
 import useShadowsImage from '../../../store/shadowImage.store'
-import { CircleShadowXYS } from '../../CirclesComponent/Circles'
 import RangeSlider from '../../RangeSlider'
 import BlurCard from '../../StyleCard/BlurCard'
+
+const CircleShadowXYS = dynamic(() => import('../../CirclesComponent/CircleShadowXYS'), {
+  ssr: false
+})
 
 const ShadowComponent = (): JSX.Element => {
   const { setBlur, opacity, setOpacity, keyBlur, setKeyBlur } = useShadowsImage()

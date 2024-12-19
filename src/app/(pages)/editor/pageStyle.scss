@@ -5,29 +5,37 @@
   overflow: hidden;
   justify-content: center;
 
+  // size card image
   width: 940px;
   height: 700px;
   padding: v.$padding;
 
+  perspective: v.$per;
+  perspective-origin: 0% 0%;
   background-image: v.$gr1;
   border-radius: v.$radius;
 
   @include d.flex($ali: center);
 
-  img {
+  &__container {
     pointer-events: none;
     user-select: none;
 
-    transform-origin: center;
+    transform-origin: 0% 0%;
+    transform-style: preserve-3d;
+
+    overflow: hidden;
 
     width: 700px;
     height: min-content;
 
-    object-fit: contain;
-
     transition:
-      scale 0.3s ease-out,
-      top 0.3s ease-out,
-      left 0.3s ease-out;
+      top 0.3s ease,
+      left 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  img {
+    object-fit: contain;
   }
 }

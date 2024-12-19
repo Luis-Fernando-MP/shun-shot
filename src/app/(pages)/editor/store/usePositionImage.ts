@@ -1,17 +1,25 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+
+import { IStylePosition } from '../components/CirclesComponent/useStyleController'
 
 type TUsePositionImage = {
   scale: number
-  position: { x: number; y: number }
+  position: IStylePosition
   setScale: (scale: number) => void
-  setPosition: (position: { x: number; y: number }) => void
+  setPosition: (position: IStylePosition) => void
 }
 
-const usePositionImage = create<TUsePositionImage>(set => ({
-  scale: 1,
-  position: { x: 50, y: 50 },
-  setScale: scale => set({ scale }),
-  setPosition: position => set({ position })
-}))
+const usePositionImage = create(
+  persist<TUsePositionImage>(
+    set => ({
+      scale: 1,
+      position: { x: 50, y: 50 },
+      setScale: scale => set({ scale }),
+      setPosition: position => set({ position })
+    }),
+    { name: 'positionImage' }
+  )
+)
 
 export default usePositionImage

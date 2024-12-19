@@ -1,43 +1,29 @@
 'use client'
 
-import { generateShadow } from '@/shared/imageStyle'
 import type { JSX } from 'react'
 
+import useStyleCssImage from './hooks/useStyleCssImage'
 import './pageStyle.scss'
-import useShadowsImage from './store/shadowImage.store'
-import useStyleImage from './store/styleImage.store'
-import usePositionImage from './store/usePositionImage'
 
 const Page = (): JSX.Element => {
-  const { border } = useStyleImage()
-  const { XYSize, blur, opacity } = useShadowsImage()
-  const { scale, position } = usePositionImage()
-
-  const [x, y, spread] = XYSize
-
-  const shadowStyle = generateShadow({
-    x,
-    y,
-    blur,
-    spread,
-    opacity
-  })
+  const { border, position, scale, shadowStyle, perspective } = useStyleCssImage()
 
   return (
     <div className='editorPage-main animate-blurred-fade-in'>
       <div className='editorMP-transformer relative' id='editorMP-transformer'>
-        <img
-          src='/code-scape.png'
-          alt='canvas editor style'
+        <div
+          className='editorMP-transformer__container'
           style={{
             position: 'absolute',
             borderRadius: `${border}px`,
             boxShadow: shadowStyle,
             left: `${position.x}%`,
             top: `${position.y}%`,
-            transform: `translate(-50%, -50%) scale(${scale})`
+            transform: `${perspective} scale(${scale}) translate(-50%, -50%)`
           }}
-        />
+        >
+          <img src='/code-scape.png' alt='canvas editor style' />
+        </div>
       </div>
     </div>
   )

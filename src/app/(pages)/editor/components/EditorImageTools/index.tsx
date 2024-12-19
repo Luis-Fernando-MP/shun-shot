@@ -5,6 +5,7 @@ import type { JSX } from 'react'
 
 import EditorHistoryButtons from './EditorHistoryButtons'
 import EditorPageImageTools from './EditorPageImageTools'
+import ResetTransform from './ResetTransform'
 import './style.scss'
 
 interface IEditorTools {
@@ -17,6 +18,7 @@ const EditorImageTools = ({ className }: IEditorTools): JSX.Element => {
       <EditorHistoryButtons />
       <EditorPageImageTools />
       <div className='editorImageTools-section'>
+        <ResetTransform />
         <button className='editorImageTools-action btn-tooltip editorImageTools-especial badge beta'>
           <Share2Icon />
           <h5>Compartir</h5>
