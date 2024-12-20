@@ -1,7 +1,6 @@
 'use client'
 
 import DomToImage from 'dom-to-image'
-import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import toast from 'react-hot-toast'
 

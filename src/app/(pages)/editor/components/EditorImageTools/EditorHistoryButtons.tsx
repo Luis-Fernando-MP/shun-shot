@@ -3,6 +3,7 @@ import { Redo2Icon, Undo2Icon, UserIcon } from 'lucide-react'
 import { useState } from 'react'
 
 const EditorHistoryButtons = (): JSX.Element => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [history, setHistory] = useState([])
 
   const handleUndo = (): void => {}

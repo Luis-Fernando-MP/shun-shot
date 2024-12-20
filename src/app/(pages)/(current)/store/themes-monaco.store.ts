@@ -1,11 +1,9 @@
 import { themesData } from '@/shared/themes/loadStaticThemes'
 import { create } from 'zustand'
 
-import { ThemesMonaco } from '../components/themes/monaco-type'
-
 type Store = {
-  theme: ThemesMonaco | null
-  setTheme: (theme: ThemesMonaco) => void
+  theme: any
+  setTheme: (theme: any) => void
 }
 
 export const useThemeMonacoStore = create<Store>(set => ({
