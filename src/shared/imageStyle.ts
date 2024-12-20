@@ -5,6 +5,8 @@ export const borderStyles = {
 }
 
 export const stacksStyles = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  NONE: (_: number) => '',
   OFFSET: (i: number) => `translate(${i * 8}px, ${i * 8}px)`,
   AURORA_FLOW: (i: number) =>
     `translate(${i % 2 === 0 ? i * 7 : -i * 7}px, ${Math.sin(i) * 10}px) 
@@ -12,21 +14,12 @@ export const stacksStyles = {
    rotate(${i % 2 === 0 ? i * 2 : -i * 2}deg)`,
   CASCADE: (i: number) =>
     `translate(${i * 5}px, -${i * 6}px) scale(${1 + i * 0.01}) rotate(${i * 3}deg)`,
-  CHAOTIC_MOTION: (i: number) => {
-    const translateX = Math.sin(Math.random() * i) * 50
-    const translateY = Math.cos(Math.random() * i) * 50
-    const rotate = Math.random() * 360 * i
-    const scale = 0.5 + Math.random() * 0.5
-    return `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg) scale(${scale})`
-  },
   FRACTAL_BLOOM: (i: number) =>
     `translate(${Math.sin(i * 6) * i * 10}px, ${Math.cos(i * 6) * i * 10}px) 
    scale(${1 + Math.sin(i * 0.5) * 0.1}) 
    rotate(${i * 18}deg) 
    skew(${Math.sin(i * 0.3) * 10}deg)`,
   GROWING_VINE: (i: number) => `scaleY(${1 + i * 0.05}) rotate(${i * 15}deg)`,
-  HELIX: (i: number) =>
-    `rotateY(${i * 12}deg) translateY(${i * 12}px) translateZ(${i * 12}px) rotate(${i * 6}deg)`,
   LAYERED: (i: number) => `translate(-${i * 4}px, -${i * 2}px) rotate(-${i}deg)`,
   LAYERED2: (i: number) =>
     `translate(-${i * 5}px, -${i * 3}px) rotate(-${i * 1.5}deg) scale(${1 - i * 0.02})`,
@@ -54,7 +47,14 @@ export const stacksStyles = {
     `rotate(${i * 10}deg) translate(${i * 6}px, ${i * 6}px) scale(${1 + i * 0.03})`,
   ZIGZAG: (i: number) =>
     `translate(${i * 8}px, ${(i % 2 === 0 ? 1 : -1) * i * 8}px) rotate(${i * 6}deg)`,
-  BLOOMING_FLOWER: (i: number) => `scale(${1 + i * 0.02}) rotate(${i * 30}deg)`
+  BLOOMING_FLOWER: (i: number) => `scale(${1 + i * 0.02}) rotate(${i * 30}deg)`,
+  CHAOTIC_MOTION: (i: number) => {
+    const translateX = Math.sin(Math.random() * i) * 50
+    const translateY = Math.cos(Math.random() * i) * 50
+    const rotate = Math.random() * 360 * i
+    const scale = 0.5 + Math.random() * 0.5
+    return `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg) scale(${scale})`
+  }
 }
 
 export const blurStyles = {
@@ -86,37 +86,10 @@ export const blurStyles = {
 
 export const perspectivesStyles = [
   '',
-  'rotateX(16deg) rotateY(5deg)',
-  'perspective(1500px) rotateY(-15deg) rotateX(6deg) skew(-8deg,4deg) translate3d(-4%,-2%,0)',
-  'perspective(1500px) rotateY(15deg) rotateX(6deg) skew(8deg,-4deg) translate3d(4%,-2%,0)',
-  'perspective(1500px) translate3d(0,-6%,0) rotateX(34deg) scale(.84)',
+  'rotate(-8deg) scale(.9)',
+  'perspective(400em) rotateY(-15deg) rotateX(6deg) skew(-8deg,4deg) scale(.86)',
   'rotateX(40deg) rotate(40deg) scale(.8)',
-  'perspective(1200px) rotateX(15deg) rotateY(20deg) scale(0.95)',
-
-  // ------------
-
-  // -
-  'perspective(600em) rotateY(10deg) rotateX(15deg) skew(5deg, -5deg) translate3d(2%, -4%, 0) scale(.9)',
-  'perspective(300em) translate3d(0, 5%, 0) rotateX(-20deg) rotateZ(15deg)',
-  'rotate(360deg) scale(.95)', // Animación de giro completo
-  'perspective(700em) rotateY(-45deg) rotateX(-20deg) translate3d(-5%, -10%, 0) scale(.75)', // Estilo dramático
-
-  // ------------
-
-  'perspective(800em) rotateX(30deg) rotateY(60deg) translate3d(10%, 10%, -20px) scale(.7)', // Vista angular dinámica
-  'rotateY(90deg) translate3d(0, 0, -10px) scale(.9)', // Rotación lateral derecha
-  'rotateY(-90deg) translate3d(0, 0, -10px) scale(.9)', // Rotación lateral izquierda
-  'perspective(1000em) translate3d(0, 0, 20px) rotateX(50deg) rotateY(10deg) scale(.75)', // Perspectiva elevada y frontal
-  'perspective(600em) rotateY(-35deg) skewX(-10deg) translate3d(-3%, -3%, 0) scale(.8)', // Efecto inclinado
-
-  // ------------
-
-  'perspective(800em) rotateX(180deg) translate3d(0, -20%, -50px) scale(.8)', // Perspectiva invertida extrema
-  '',
-  'rotateY(-15deg) rotateX(5deg)',
-  'rotateY(15deg) rotateX(-5deg)',
-  'rotateY(-30deg) rotateX(10deg)',
-  'rotate(-8deg) scale(.9)'
+  'perspective(400em) rotateY(15deg) rotateX(6deg) skew(8deg,-4deg)'
 ]
 
 type TGenerateShadows = {
@@ -136,4 +109,10 @@ export function generateShadow(props: TGenerateShadows) {
   const shadow5 = `${x * 0.5}px ${y * 0.5}px ${blur * 0.7}px ${spread * 0.7}px rgba(0, 0, 0, ${(opacity * 0.8) / 100})`
 
   return `${shadow1}, ${shadow2}, ${shadow3}, ${shadow4}, ${shadow5}`
+}
+
+export function generateStackShadow(props: TGenerateShadows) {
+  const { x, y, blur, spread, opacity } = props
+  const shadow = `${x * 0.5}px ${y * 0.5}px ${blur}px ${spread * 0.5}px rgba(0, 0, 0, ${opacity / 30})`
+  return `${shadow}`
 }

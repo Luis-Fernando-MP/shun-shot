@@ -1,4 +1,4 @@
-import { generateShadow } from '@/shared/imageStyle'
+import { generateShadow, generateStackShadow } from '@/shared/imageStyle'
 
 import usePerspectivesImages from '../store/perspectivesImages'
 import useShadowsImage from '../store/shadowImage.store'
@@ -13,13 +13,17 @@ const useStyleCssImage = () => {
 
   const [x, y, spread] = XYSize
 
-  const shadowStyle = generateShadow({
+  const propsShadow = {
     x,
     y,
     blur,
     spread,
     opacity
-  })
+  }
+
+  const shadowStyle = generateShadow(propsShadow)
+
+  const stackShadow = generateStackShadow(propsShadow)
 
   return {
     border,
@@ -27,6 +31,7 @@ const useStyleCssImage = () => {
     position,
     shadowStyle,
     perspective,
+    stackShadow,
     setPerspective
   }
 }

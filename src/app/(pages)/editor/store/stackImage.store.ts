@@ -5,22 +5,17 @@ import { persist } from 'zustand/middleware'
 type TUseStackImage = {
   amount: number
   stackStyle: string
-  stackKey: string
   setAmount: (amount: number) => void
   setStackStyle: (style: string) => void
-  setStackKey: (key: string) => void
 }
 
 const useStackImage = create(
   persist<TUseStackImage>(
     set => ({
-      amount: 2,
-      stackStyle: stacksStyles.OFFSET(2),
-      stackKey: 'OFFSET',
-
+      amount: 1,
+      stackStyle: stacksStyles.NONE(1),
       setAmount: amount => set({ amount }),
-      setStackStyle: style => set({ stackStyle: style }),
-      setStackKey: key => set({ stackKey: key })
+      setStackStyle: style => set({ stackStyle: style })
     }),
     { name: 'stackImage' }
   )

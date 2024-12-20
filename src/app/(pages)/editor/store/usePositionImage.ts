@@ -13,7 +13,7 @@ type TUsePositionImage = {
 const usePositionImage = create(
   persist<TUsePositionImage>(
     set => ({
-      scale: 1,
+      scale: 0.8,
       position: { x: 50, y: 50 },
       setScale: scale => set({ scale }),
       setPosition: position => set({ position })

@@ -23,7 +23,7 @@ const ShadowComponent = (): JSX.Element => {
   return (
     <div className='editorStyles-section'>
       <h3 className='editorStyles-title'>Box Shadow</h3>
-      <RangeSlider label='Opacity' onChange={v => setOpacity(v)} range={opacity} max={80} />
+      <RangeSlider label='Opacity' onChange={v => setOpacity(v)} range={opacity} max={50} />
       <div className='editorStyles-section__items'>
         {Object.entries(blurStyles).map(border => {
           return (

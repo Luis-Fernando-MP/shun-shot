@@ -7,21 +7,25 @@
   flex-wrap: wrap;
   width: 100%;
 
-  @include d.flex();
+  @include d.flex;
+
   &-fonts {
     @include d.flex($dir: row);
+
     flex-wrap: wrap;
   }
 
   &-font {
-    background-color: rgb(v.$bg1);
     width: fit-content;
-    border-radius: v.$radius;
     padding: v.$padding;
+
+    background-color: rgb(v.$bg1);
     border: 2px solid transparent;
+    border-radius: v.$radius;
 
     &.active {
       border-color: rgb(v.$tn1);
+
       h3 {
         color: rgb(v.$tn1);
       }

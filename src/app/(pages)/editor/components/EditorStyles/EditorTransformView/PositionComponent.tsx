@@ -46,8 +46,8 @@ const PositionComponent = (): JSX.Element | null => {
       <h3 className='editorStyles-title'>Size & Position</h3>
       <RangeSlider
         label='Scale'
-        onChange={v => setScale(0.7 + v / 100)}
-        range={Math.round((scale - 0.7) * 100)}
+        onChange={v => setScale(0.5 + v / 100)}
+        range={Math.round((scale - 0.5) * 100)}
       />
       <CirclePositionXY onPositionChange={handlePositionChange} />
     </div>

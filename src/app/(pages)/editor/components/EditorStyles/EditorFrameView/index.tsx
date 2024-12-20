@@ -1,14 +1,15 @@
+import { acl } from '@/shared/acl'
 import { Layers, Spline } from 'lucide-react'
 import { useState } from 'react'
 
 import DownloadTransformImage from '../../DownloadTransformImage'
 import PerspectivesImages from '../../PerspectivesImages'
-import StackComponent from './StackComponent'
+import StacksImages from '../../StacksImages'
 import './style.scss'
 
 type TEditorFrameView = 'PERSPECTIVE' | 'STACKS'
 const EditorFrameView = (): JSX.Element => {
-  const [view, setView] = useState<TEditorFrameView>('PERSPECTIVE')
+  const [view, setView] = useState<TEditorFrameView>('STACKS')
 
   const handleView = (value: TEditorFrameView): void => {
     if (value === view) return
@@ -18,14 +19,14 @@ const EditorFrameView = (): JSX.Element => {
     <div className='editorStyles-view editorFrameView animate-blurred-fade-in'>
       <section className='editorStyles-stickyTop editorFrameView-bottom'>
         <button
-          className={`editorFrameView-action ${view === 'PERSPECTIVE'}`}
+          className={`editorFrameView-action ${acl(view === 'PERSPECTIVE')}`}
           onClick={() => handleView('PERSPECTIVE')}
         >
           <Spline />
           Perspectivas
         </button>
         <button
-          className={`editorFrameView-action ${view === 'STACKS'}`}
+          className={`editorFrameView-action ${acl(view === 'STACKS')}`}
           onClick={() => handleView('STACKS')}
         >
           <Layers />
@@ -33,7 +34,7 @@ const EditorFrameView = (): JSX.Element => {
         </button>
       </section>
 
-      {view === 'STACKS' && <StackComponent />}
+      {view === 'STACKS' && <StacksImages />}
       {view === 'PERSPECTIVE' && <PerspectivesImages />}
       <DownloadTransformImage />
     </div>

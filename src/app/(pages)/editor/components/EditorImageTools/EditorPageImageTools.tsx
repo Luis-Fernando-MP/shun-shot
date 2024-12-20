@@ -15,21 +15,21 @@ const EditorPageImageTools = (): JSX.Element => {
   return (
     <div className='editorImageTools-section center'>
       <button
-        className={`editorImageTools-action btn-tooltip border-right badge beta ${acl(view === 'TRANSFORM')}`}
+        className={`editorImageTools-action btn-tooltip ${acl(view === 'TRANSFORM')}`}
         onClick={() => handleView('TRANSFORM')}
       >
         <Move3DIcon />
         <p className='tooltip top'>Mover y Moldear</p>
       </button>
       <button
-        className={`editorImageTools-action btn-tooltip border-right badge beta ${acl(view === 'BRUSH')}`}
+        className={`editorImageTools-action btn-tooltip ${acl(view === 'BRUSH')}`}
         onClick={() => handleView('BRUSH')}
       >
         <Paintbrush2Icon />
         <p className='tooltip top'>Diseño de Fondo</p>
       </button>
       <button
-        className={`editorImageTools-action btn-tooltip border-right badge beta ${acl(view === 'FRAME')}`}
+        className={`editorImageTools-action btn-tooltip ${acl(view === 'FRAME')}`}
         onClick={() => handleView('FRAME')}
       >
         <FrameIcon />

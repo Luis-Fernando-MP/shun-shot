@@ -1,6 +1,7 @@
 'use client'
 
 import DomToImage from 'dom-to-image'
+import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import toast from 'react-hot-toast'
 
@@ -38,6 +39,7 @@ export const downloadFullImage = async (fileName: string, element: HTMLElement) 
     transformOrigin: 'top left',
     width: `${clone.offsetWidth}px`,
     height: `${clone.offsetHeight}px`,
+    borderRadius: '0',
     backgroundColor: 'transparent'
   }
 
@@ -75,6 +77,7 @@ export const downloadToJpeg = async (
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
     height: `${element.offsetHeight}px`,
+    borderRadius: '0',
     backgroundColor: 'transparent'
   }
   try {
@@ -109,6 +112,7 @@ export const downloadToPng = async (
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
     height: `${element.offsetHeight}px`,
+    borderRadius: '0',
     backgroundColor: 'transparent'
   }
   try {
@@ -139,6 +143,7 @@ export const copyToPng = async (element: HTMLElement, size: number = scaleMap.hi
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
     height: `${element.offsetHeight}px`,
+    borderRadius: '0',
     backgroundColor: 'transparent'
   }
 
@@ -179,6 +184,7 @@ export const downloadPDF = async (
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
     height: `${element.offsetHeight}px`,
+    borderRadius: '0',
     backgroundColor: 'transparent'
   }
 
