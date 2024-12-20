@@ -12,7 +12,7 @@ import './style.scss'
 const StacksImages = (): JSX.Element => {
   const { amount, setAmount, setStackStyle, stackStyle } = useStackImage()
   return (
-    <div className='stacksImages'>
+    <div className='stacksImages animate-blurred-fade-in'>
       <BoldText text='Estilo de/Stack' />
       <RangeSlider
         className='stacksImages-range'

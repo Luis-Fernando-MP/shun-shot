@@ -109,6 +109,15 @@ body {
       appearance: none;
     }
   }
+
+  h4,
+  h5 {
+    font-family: $font1;
+  }
+
+  h4 {
+    font-weight: 600;
+  }
 }
 
 $listOfFontsSize: (
@@ -133,11 +142,6 @@ h3 {
   font-family: $fontTitle;
 }
 
-h4,
-h5 {
-  font-family: $font1;
-}
-
 h1,
 h2,
 h3,
@@ -156,10 +160,6 @@ h2 {
 
 h3 {
   font-weight: 700;
-}
-
-h4 {
-  font-weight: 600;
 }
 
 ul {

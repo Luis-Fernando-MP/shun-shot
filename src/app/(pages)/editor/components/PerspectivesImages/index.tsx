@@ -1,4 +1,3 @@
-import BoldText from '@/shared/components/BoldText'
 import { perspectivesStyles } from '@/shared/imageStyle'
 import type { JSX } from 'react'
 

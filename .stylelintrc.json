@@ -17,6 +17,7 @@
     "custom-property-pattern": null,
     "declaration-block-no-redundant-longhand-properties": null,
     "selector-class-pattern": null,
-    "scss/no-global-function-names": null
+    "scss/no-global-function-names": null,
+    "no-descending-specificity": null
   }
 }
