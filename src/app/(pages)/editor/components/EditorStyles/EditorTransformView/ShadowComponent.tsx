@@ -2,10 +2,10 @@
 
 import RangeSlider from '@/shared/components/RangeSlider'
 import { blurStyles } from '@/shared/imageStyle'
+import useShadowsImage from '@editor-store/shadowImage.store'
 import dynamic from 'next/dynamic'
 import { type JSX } from 'react'
 
-import useShadowsImage from '../../../store/shadowImage.store'
 import BlurCard from '../../StyleCard/BlurCard'
 
 const CircleShadowXYS = dynamic(() => import('../../CirclesComponent/CircleShadowXYS'), {

@@ -18,7 +18,10 @@ const Page = (): JSX.Element => {
     opacityOverlay,
     stacks,
     blurNoise,
-    opacityNoise
+    opacityNoise,
+    opacityPattern,
+    blurPattern,
+    patternClass
   } = useStyleCssImage()
 
   return (
@@ -72,13 +75,12 @@ const Page = (): JSX.Element => {
           className='editorMP-transformer__noise noise-7'
           style={{ filter: `opacity(${opacityNoise}%) blur(${blurNoise / 10}px)` }}
         />
-        {/* <div
-          className='editorMP-transformer__pattern pattern-7'
+        <div
+          className={`editorMP-transformer__pattern ${patternClass}`}
           style={{
-            filter: `opacity(${opacityNoise}%) blur(${blurNoise / 10}px)`
-            // backdropFilter: `blur(${blurNoise}px)`
+            filter: `opacity(${opacityPattern}%) blur(${blurPattern / 10}px)`
           }}
-        /> */}
+        />
       </section>
     </div>
   )

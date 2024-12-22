@@ -2,6 +2,7 @@ import { generateShadow, generateStackShadow, stacksStyles } from '@/shared/imag
 
 import useNoiseImage from '../store/noiseImage.store'
 import useOverlayImage from '../store/overlayImage.store'
+import usePatternImage from '../store/patternImage.store'
 import usePerspectivesImages from '../store/perspectivesImages'
 import useShadowsImage from '../store/shadowImage.store'
 import useStackImage from '../store/stackImage.store'
@@ -16,8 +17,10 @@ const useStyleCssImage = () => {
 
   const { overlay, opacity: opacityOverlay } = useOverlayImage()
 
+  const { opacity: opacityPattern, blur: blurPattern, patternClass } = usePatternImage()
+
   const { amount, stackStyle } = useStackImage()
-  const { blur: blurNoise, noise, opacity: opacityNoise } = useNoiseImage()
+  const { blur: blurNoise, opacity: opacityNoise } = useNoiseImage()
 
   const getStackStyles = (index: number) => {
     const functionStyle = (stacksStyles as any)[stackStyle]
@@ -50,8 +53,10 @@ const useStyleCssImage = () => {
     perspective,
     stackShadow,
     blurNoise,
-    noise,
     opacityNoise,
+    opacityPattern,
+    blurPattern,
+    patternClass,
     setPerspective,
     getStackStyles
   }

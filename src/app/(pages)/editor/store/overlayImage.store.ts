@@ -11,7 +11,7 @@ type TUseOverlayImage = {
 const useOverlayImage = create(
   persist<TUseOverlayImage>(
     set => ({
-      opacity: 40,
+      opacity: 50,
       overlay: '',
       setOpacity: opacity => set({ opacity }),
       setOverlay: overlay => set({ overlay })

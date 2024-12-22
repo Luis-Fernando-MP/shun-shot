@@ -127,12 +127,6 @@ export const generateOverlays = (start: number, amount: number): string[] => {
     .map((_, i) => `/overlays/${String(start + i + 1).padStart(3, '0')}.png`)
 }
 
-export const MIN_NOISE = 6
-export const MAX_NOISE = 100
-
-export const generateNoise = (start: number, amount: number): string[] => {
-  const end = Math.min(start + amount, MAX_OVERLAYS)
-  return Array(end - start)
-    .fill(0)
-    .map((_, i) => `/noises/${start + i + 1}.png`)
-}
+export const patterns = Array(12)
+  .fill(0)
+  .map((_, i) => `pattern-${i + 1}`)
