@@ -26,7 +26,12 @@ const PerspectiveImage = ({ transform }: IPerspectiveImage): JSX.Element => {
         }}
       >
         <div className='perspectiveImage-container'>
-          <img src={default_image} alt='perspective background' className='perspectiveImage-card' />
+          <img
+            src={default_image}
+            alt='perspective background'
+            className='perspectiveImage-card'
+            loading='lazy'
+          />
         </div>
       </div>
     </button>

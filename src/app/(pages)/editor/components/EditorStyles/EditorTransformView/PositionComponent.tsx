@@ -1,11 +1,11 @@
 'use client'
 
+import RangeSlider from '@/shared/components/RangeSlider'
 import usePositionImage from '@editor/store/usePositionImage'
 import dynamic from 'next/dynamic'
 import { type JSX, useCallback } from 'react'
 
 import { IStylePosition } from '../../CirclesComponent/useStyleController'
-import RangeSlider from '../../RangeSlider'
 
 const CirclePositionXY = dynamic(() => import('../../CirclesComponent/CirclePositionXY'), {
   ssr: false

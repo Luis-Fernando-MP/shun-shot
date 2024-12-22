@@ -116,3 +116,23 @@ export function generateStackShadow(props: TGenerateShadows) {
   const shadow = `${x * 0.5}px ${y * 0.5}px ${blur}px ${spread * 0.5}px rgba(0, 0, 0, ${opacity / 30})`
   return `${shadow}`
 }
+
+export const MIN_OVERLAY = 6
+export const MAX_OVERLAYS = 100
+
+export const generateOverlays = (start: number, amount: number): string[] => {
+  const end = Math.min(start + amount, MAX_OVERLAYS)
+  return Array(end - start)
+    .fill(0)
+    .map((_, i) => `/overlays/${String(start + i + 1).padStart(3, '0')}.png`)
+}
+
+export const MIN_NOISE = 6
+export const MAX_NOISE = 100
+
+export const generateNoise = (start: number, amount: number): string[] => {
+  const end = Math.min(start + amount, MAX_OVERLAYS)
+  return Array(end - start)
+    .fill(0)
+    .map((_, i) => `/noises/${start + i + 1}.png`)
+}

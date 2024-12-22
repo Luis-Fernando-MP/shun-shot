@@ -1,10 +1,10 @@
 'use client'
 
+import RangeSlider from '@/shared/components/RangeSlider'
 import { borderStyles } from '@/shared/imageStyle'
 import useStyleImage from '@editor-store/styleImage.store'
 import { type JSX } from 'react'
 
-import RangeSlider from '../../RangeSlider'
 import BorderCard from '../../StyleCard/BorderCard'
 
 const BorderComponent = (): JSX.Element => {

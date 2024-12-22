@@ -1,5 +1,6 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
+@use '@sass/utils/background' as bg;
 
 .stacksImages {
   @include d.flex;
@@ -77,10 +78,9 @@
       height: 100%;
 
       background-color: rgb(102 102 102);
-      background-image: url(v.$bgDef);
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      background-size: cover;
+
+      @include bg.bgImage(v.$bgDef);
+
       border-radius: v.$radius * 0.5;
     }
   }

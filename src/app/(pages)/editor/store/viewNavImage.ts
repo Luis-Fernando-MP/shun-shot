@@ -8,7 +8,7 @@ type TUseViewNavImage = {
 }
 
 const useViewNavImage = create<TUseViewNavImage>(set => ({
-  view: 'FRAME',
+  view: 'BRUSH',
   setView: view => set({ view })
 }))
 

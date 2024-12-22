@@ -1,7 +1,11 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
+@use '@sass/utils/background' as bg;
+@use '@sass/components/patterns' as *;
 
 .editorMP-transformer {
+  position: relative;
+
   overflow: hidden;
   justify-content: center;
 
@@ -13,9 +17,42 @@
   perspective: v.$per;
   perspective-origin: 0% 0%;
   background-image: v.$gr1;
+
+  // background-color: grey;
   border-radius: v.$radius;
 
   @include d.flex($ali: center);
+
+  &__overlay {
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-size: cover;
+  }
+
+  &__pattern,
+  &__noise {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__noise {
+    object-fit: fill;
+    background-image: url(v.$noise);
+  }
+
+  &__pattern {
+    @extend %patterns;
+
+    opacity: 0.5;
+  }
 
   &__styles {
     pointer-events: none;
@@ -68,9 +105,7 @@
     height: 100%;
 
     background-color: rgb(102 102 102);
-    background-image: url(v.$bgDef);
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;
+
+    @include bg.bgImage(v.$bgDef);
   }
 }

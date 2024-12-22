@@ -21,7 +21,7 @@ const StackCard = ({ stack, handleClick, amount, isActive }: IStackCard): JSX.El
     <button className={`stacksImages-action ${acl(isActive)}`} onClick={() => handleClick(name)}>
       <div className='stacksImages-stack'>
         <div className='stacksImages-stack__container'>
-          <img src={default_image} alt='canvas editor style' />
+          <img src={default_image} alt='canvas editor style' loading='lazy' />
         </div>
 
         {stacks.map((_, i) => {

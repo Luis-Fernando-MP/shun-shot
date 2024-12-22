@@ -1,11 +1,11 @@
 'use client'
 
 import BoldText from '@/shared/components/BoldText'
+import RangeSlider from '@/shared/components/RangeSlider'
 import { stacksStyles } from '@/shared/imageStyle'
 import { type JSX } from 'react'
 
 import useStackImage from '../../store/stackImage.store'
-import RangeSlider from '../RangeSlider'
 import StackCard from './StackCard'
 import './style.scss'
 

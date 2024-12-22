@@ -3,6 +3,7 @@
 import { type JSX } from 'react'
 
 import useViewNavImage from '../../store/viewNavImage'
+import EditorBrushView from './EditorBrushView'
 import EditorFrameView from './EditorFrameView'
 import EditorTransformView from './EditorTransformView'
 import './style.scss'
@@ -18,6 +19,7 @@ const EditorStyles = ({ className }: IEditorStyles): JSX.Element => {
     <section className={`${className} editorStyles`}>
       {view === 'TRANSFORM' && <EditorTransformView />}
       {view === 'FRAME' && <EditorFrameView />}
+      {view === 'BRUSH' && <EditorBrushView />}
     </section>
   )
 }

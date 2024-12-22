@@ -1,11 +1,11 @@
 'use client'
 
+import RangeSlider from '@/shared/components/RangeSlider'
 import { blurStyles } from '@/shared/imageStyle'
 import dynamic from 'next/dynamic'
 import { type JSX } from 'react'
 
 import useShadowsImage from '../../../store/shadowImage.store'
-import RangeSlider from '../../RangeSlider'
 import BlurCard from '../../StyleCard/BlurCard'
 
 const CircleShadowXYS = dynamic(() => import('../../CirclesComponent/CircleShadowXYS'), {

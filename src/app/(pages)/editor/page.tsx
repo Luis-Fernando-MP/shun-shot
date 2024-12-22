@@ -1,28 +1,34 @@
 'use client'
 
 import { default_image } from '@/shared/constants'
-import { stacksStyles } from '@/shared/imageStyle'
 import type { JSX } from 'react'
 
 import useStyleCssImage from './hooks/useStyleCssImage'
 import './pageStyle.scss'
-import useStackImage from './store/stackImage.store'
 
 const Page = (): JSX.Element => {
-  const { border, position, scale, shadowStyle, perspective, stackShadow } = useStyleCssImage()
-
-  const { amount, stackStyle } = useStackImage()
-  const stacks = new Array(amount).fill(0)
-
-  const getStackStyles = (index: number) => {
-    const functionStyle = (stacksStyles as any)[stackStyle]
-    if (!functionStyle) return ''
-    return functionStyle(index + 1)
-  }
+  const {
+    border,
+    position,
+    scale,
+    shadowStyle,
+    perspective,
+    getStackStyles,
+    overlay,
+    opacityOverlay,
+    stacks,
+    blurNoise,
+    opacityNoise
+  } = useStyleCssImage()
 
   return (
     <div className='editorPage-main animate-blurred-fade-in'>
-      <div className='editorMP-transformer relative' id='editorMP-transformer'>
+      <section className='editorMP-transformer relative' id='editorMP-transformer'>
+        <div
+          className='editorMP-transformer__overlay'
+          style={{ backgroundImage: `url(${overlay})`, opacity: opacityOverlay }}
+        />
+
         <div
           className='editorMP-transformer__styles'
           style={{
@@ -41,6 +47,7 @@ const Page = (): JSX.Element => {
               style={{
                 borderRadius: `${border}px`
               }}
+              loading='lazy'
             />
           </div>
           {stacks.map((_, i) => {
@@ -52,7 +59,7 @@ const Page = (): JSX.Element => {
                 style={{
                   borderRadius: `${border}px`,
                   zIndex: -1 * i,
-                  boxShadow: stackShadow,
+                  // boxShadow: stackShadow,
                   transform: getStackStyles(i),
                   filter: `brightness(${Math.max(0, 1 - i * 0.05)})`
                 }}
@@ -60,7 +67,19 @@ const Page = (): JSX.Element => {
             )
           })}
         </div>
-      </div>
+
+        <div
+          className='editorMP-transformer__noise noise-7'
+          style={{ filter: `opacity(${opacityNoise}%) blur(${blurNoise / 10}px)` }}
+        />
+        {/* <div
+          className='editorMP-transformer__pattern pattern-7'
+          style={{
+            filter: `opacity(${opacityNoise}%) blur(${blurNoise / 10}px)`
+            // backdropFilter: `blur(${blurNoise}px)`
+          }}
+        /> */}
+      </section>
     </div>
   )
 }
