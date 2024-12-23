@@ -1,4 +1,3 @@
-import { stacksStyles } from '@/shared/imageStyle'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -12,8 +11,8 @@ type TUseStackImage = {
 const useStackImage = create(
   persist<TUseStackImage>(
     set => ({
-      amount: 1,
-      stackStyle: stacksStyles.NONE(1),
+      amount: 4,
+      stackStyle: 'NONE',
       setAmount: amount => set({ amount }),
       setStackStyle: style => set({ stackStyle: style })
     }),

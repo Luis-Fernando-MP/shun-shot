@@ -10,9 +10,9 @@ const PatternsController = (): JSX.Element => {
   return (
     <div className='editorStyles-section patternsImage'>
       <h3 className='editorStyles-title'>Patterns</h3>
-      <PatternsItems patternClass={patternClass} setPattern={setPattern} />
       <RangeSlider range={opacity} onChange={n => setOpacity(n)} label='Opacidad' max={100} />
       <RangeSlider range={blur} onChange={n => setBlur(n)} label='Blur' max={100} />
+      <PatternsItems patternClass={patternClass} setPattern={setPattern} />
     </div>
   )
 }
