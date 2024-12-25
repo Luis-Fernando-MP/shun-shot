@@ -38,8 +38,7 @@ export const downloadFullImage = async (fileName: string, element: HTMLElement) 
     transformOrigin: 'top left',
     width: `${clone.offsetWidth}px`,
     height: `${clone.offsetHeight}px`,
-    borderRadius: '0',
-    backgroundColor: 'transparent'
+    borderRadius: '0'
   }
 
   try {
@@ -76,8 +75,7 @@ export const downloadToJpeg = async (
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
     height: `${element.offsetHeight}px`,
-    borderRadius: '0',
-    backgroundColor: 'transparent'
+    borderRadius: '0'
   }
   try {
     const pngDataUrl = await DomToImage.toJpeg(element, {
@@ -110,9 +108,7 @@ export const downloadToPng = async (
     transform: `scale(${scale})`,
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
-    height: `${element.offsetHeight}px`,
-    borderRadius: '0',
-    backgroundColor: 'transparent'
+    height: `${element.offsetHeight}px`
   }
   try {
     const pngDataUrl = await DomToImage.toPng(element, {
@@ -142,8 +138,7 @@ export const copyToPng = async (element: HTMLElement, size: number = scaleMap.hi
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
     height: `${element.offsetHeight}px`,
-    borderRadius: '0',
-    backgroundColor: 'transparent'
+    borderRadius: '0'
   }
 
   try {
@@ -183,8 +178,7 @@ export const downloadPDF = async (
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
     height: `${element.offsetHeight}px`,
-    borderRadius: '0',
-    backgroundColor: 'transparent'
+    borderRadius: '0'
   }
 
   try {

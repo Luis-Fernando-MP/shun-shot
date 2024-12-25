@@ -206,3 +206,24 @@ ul {
 
   @include loader.boxLoader;
 }
+
+.error {
+  pointer-events: none;
+  user-select: none;
+  position: relative;
+  outline: 2px solid $error;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgb($error, 0.2);
+
+    animation: flicker 1s infinite alternate;
+  }
+}

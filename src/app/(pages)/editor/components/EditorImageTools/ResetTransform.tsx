@@ -1,4 +1,8 @@
 import { blurStyles, borderStyles } from '@/shared/imageStyle'
+import useBackgroundImage from '@editor-store/backgroundImage.store'
+import useNoiseImage from '@editor-store/noiseImage.store'
+import useOverlayImage from '@editor-store/overlayImage.store'
+import usePatternImage from '@editor-store/patternImage.store'
 import usePerspectivesImages from '@editor-store/perspectivesImages'
 import useShadowsImage from '@editor-store/shadowImage.store'
 import useStackImage from '@editor-store/stackImage.store'
@@ -8,9 +12,6 @@ import useViewNavImage from '@editor-store/viewNavImage'
 import { RotateCcwIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
-import useNoiseImage from '../../store/noiseImage.store'
-import useOverlayImage from '../../store/overlayImage.store'
-import usePatternImage from '../../store/patternImage.store'
 import { LOCAL_CIRCLE_POSITION_KEY } from '../CirclesComponent/CirclePositionXY'
 import { LOCAL_CIRCLE_SHADOW_KEY } from '../CirclesComponent/CircleShadowXYS'
 
@@ -24,6 +25,7 @@ const ResetTransform = (): JSX.Element => {
   const ov = useOverlayImage()
   const pt = usePatternImage()
   const noi = useNoiseImage()
+  const bg = useBackgroundImage()
   const router = useRouter()
 
   const handleClick = (): void => {
@@ -31,7 +33,7 @@ const ResetTransform = (): JSX.Element => {
     localStorage.setItem(LOCAL_CIRCLE_SHADOW_KEY, JSON.stringify(defaultPositions))
     localStorage.setItem(LOCAL_CIRCLE_POSITION_KEY, JSON.stringify(defaultPositions))
 
-    view.setView('FRAME')
+    view.setView('BRUSH')
 
     pos.setPosition(defaultPositions)
     pos.setScale(0.8)
@@ -57,6 +59,10 @@ const ResetTransform = (): JSX.Element => {
 
     noi.setBlur(10)
     noi.setOpacity(0)
+
+    bg.setBackground(
+      'linear-gradient(140deg, rgb(255 100 50) 12.8%, rgb(255 0 101) 43.52%, rgb(123 46 255) 84.34%)'
+    )
 
     router.refresh()
   }
