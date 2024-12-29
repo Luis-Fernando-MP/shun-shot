@@ -47,14 +47,7 @@ export const stacksStyles = {
     `rotate(${i * 10}deg) translate(${i * 6}px, ${i * 6}px) scale(${1 + i * 0.03})`,
   ZIGZAG: (i: number) =>
     `translate(${i * 8}px, ${(i % 2 === 0 ? 1 : -1) * i * 8}px) rotate(${i * 6}deg)`,
-  BLOOMING_FLOWER: (i: number) => `scale(${1 + i * 0.02}) rotate(${i * 30}deg)`,
-  CHAOTIC_MOTION: (i: number) => {
-    const translateX = Math.sin(Math.random() * i) * 50
-    const translateY = Math.cos(Math.random() * i) * 50
-    const rotate = Math.random() * 360 * i
-    const scale = 0.5 + Math.random() * 0.5
-    return `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg) scale(${scale})`
-  }
+  BLOOMING_FLOWER: (i: number) => `scale(${1 + i * 0.02}) rotate(${i * 30}deg)`
 }
 
 export const blurStyles = {

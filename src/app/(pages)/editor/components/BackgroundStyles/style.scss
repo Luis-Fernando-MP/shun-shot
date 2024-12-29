@@ -1,6 +1,17 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
 
+// Style of other components
+.bgStyles {
+  &-palette {
+    @include d.flex($dir: row, $ali: center);
+
+    flex-wrap: wrap;
+  }
+}
+
+// -
+
 .linearBg {
   &-container {
     position: relative;

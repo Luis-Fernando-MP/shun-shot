@@ -22,15 +22,21 @@ const Page = (): JSX.Element => {
     opacityPattern,
     blurPattern,
     patternClass,
-    background
+    background,
+    blendMode
   } = useStyleCssImage()
+
+  const bg =
+    background.includes('url') || background.includes('gradient')
+      ? { backgroundImage: background, backgroundColor: '#000' }
+      : { backgroundColor: background }
 
   return (
     <div className='editorPage-main animate-blurred-fade-in'>
       <section
         className='editorMP-transformer relative'
         id='editorMP-transformer'
-        style={{ background }}
+        style={{ ...bg, backgroundBlendMode: blendMode }}
       >
         <div
           className='editorMP-transformer__overlay'

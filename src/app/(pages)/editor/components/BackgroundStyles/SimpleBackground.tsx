@@ -1,8 +1,8 @@
+import { styleSetBackground } from '@editor-store/backgroundImage.store'
 import Colorful from '@uiw/react-color-colorful'
 import { ImageIcon } from 'lucide-react'
 import { type JSX, useEffect, useRef, useState } from 'react'
 
-import { styleSetBackground } from '../../store/backgroundImage.store'
 import ImageUploader from './ImageUploader'
 
 interface ISimpleBackground {

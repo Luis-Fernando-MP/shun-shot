@@ -1,0 +1,19 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.GradientColorsImg {
+  &-color,
+  &-toggle {
+    width: 70px;
+    height: 40px;
+    background-color: #000;
+    border-radius: v.$radius;
+  }
+
+  &-toggle {
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    background-color: rgb(v.$bg3);
+  }
+}

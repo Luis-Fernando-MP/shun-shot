@@ -23,7 +23,7 @@ const useStyleCssImage = () => {
   const { amount, stackStyle } = useStackImage()
   const { blur: blurNoise, opacity: opacityNoise } = useNoiseImage()
 
-  const { background } = useBackgroundImage()
+  const { background, blendMode } = useBackgroundImage()
 
   const getStackStyles = (index: number) => {
     const functionStyle = (stacksStyles as any)[stackStyle]
@@ -61,6 +61,7 @@ const useStyleCssImage = () => {
     blurPattern,
     patternClass,
     background,
+    blendMode,
     setPerspective,
     getStackStyles
   }

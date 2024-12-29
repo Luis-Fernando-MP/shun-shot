@@ -9,7 +9,7 @@ import './style.scss'
 
 type TEditorFrameView = 'PERSPECTIVE' | 'STACKS'
 const EditorFrameView = (): JSX.Element => {
-  const [view, setView] = useState<TEditorFrameView>('STACKS')
+  const [view, setView] = useState<TEditorFrameView>('PERSPECTIVE')
 
   const handleView = (value: TEditorFrameView): void => {
     if (value === view) return

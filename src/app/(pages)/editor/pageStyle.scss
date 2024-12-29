@@ -16,7 +16,6 @@
 
   perspective: v.$per;
   perspective-origin: 0% 0%;
-  background-image: v.$gr1;
   border-radius: v.$radius;
 
   @include d.flex($ali: center);
