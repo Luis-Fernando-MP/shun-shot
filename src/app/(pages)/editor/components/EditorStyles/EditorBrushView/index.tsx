@@ -1,5 +1,3 @@
-import { Spline } from 'lucide-react'
-
 import BackgroundImage from '../../BackgroundImage'
 import DownloadTransformImage from '../../DownloadTransformImage'
 import './style.scss'
