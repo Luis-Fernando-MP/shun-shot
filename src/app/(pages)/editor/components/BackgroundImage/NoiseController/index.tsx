@@ -2,6 +2,8 @@ import RangeSlider from '@/shared/components/RangeSlider'
 import useNoiseImage from '@editor-store/noiseImage.store'
 import type { JSX } from 'react'
 
+import IndexImageComponent from '../../IndexImage'
+
 const NoiseController = (): JSX.Element => {
   const { blur, opacity, setOpacity, setBlur } = useNoiseImage()
 
@@ -10,6 +12,7 @@ const NoiseController = (): JSX.Element => {
       <h3 className='editorStyles-title'>Noise</h3>
       <RangeSlider range={opacity} onChange={n => setOpacity(n)} label='Opacidad' max={100} />
       <RangeSlider range={blur} onChange={b => setBlur(b)} label='Blur' max={50} />
+      <IndexImageComponent indexImage={3} />
     </div>
   )
 }

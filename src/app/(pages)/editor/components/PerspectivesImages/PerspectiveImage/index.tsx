@@ -9,18 +9,21 @@ interface IPerspectiveImage {
 }
 
 const PerspectiveImage = ({ transform }: IPerspectiveImage): JSX.Element => {
-  const { border, shadowStyle, setPerspective, perspective } = useStyleCssImage()
+  const { imgBorder, shadowStyle, imgPerspective } = useStyleCssImage()
 
   const handleClick = (): void => {
-    setPerspective(transform)
+    imgPerspective.setPerspective(transform)
   }
 
   return (
-    <button className={`perspectiveImage ${acl(perspective === transform)}`} onClick={handleClick}>
+    <button
+      className={`perspectiveImage ${acl(imgPerspective.perspective === transform)}`}
+      onClick={handleClick}
+    >
       <div
         className='perspectiveImage-styles'
         style={{
-          borderRadius: `${border}px`,
+          borderRadius: `${imgBorder.border}px`,
           boxShadow: shadowStyle,
           transform: `${transform} translate(-50%, -50%)`
         }}

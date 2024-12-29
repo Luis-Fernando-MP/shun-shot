@@ -12,6 +12,8 @@ import useViewNavImage from '@editor-store/viewNavImage'
 import { RotateCcwIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
+import useBackgroundFilterImage from '../../store/backgroundFilterImage.store'
+import useIndexImage from '../../store/indexImage.store'
 import { LOCAL_CIRCLE_POSITION_KEY } from '../CirclesComponent/CirclePositionXY'
 import { LOCAL_CIRCLE_SHADOW_KEY } from '../CirclesComponent/CircleShadowXYS'
 
@@ -26,6 +28,8 @@ const ResetTransform = (): JSX.Element => {
   const pt = usePatternImage()
   const noi = useNoiseImage()
   const bg = useBackgroundImage()
+  const filters = useBackgroundFilterImage()
+  const indexImage = useIndexImage()
   const router = useRouter()
 
   const handleClick = (): void => {
@@ -60,9 +64,19 @@ const ResetTransform = (): JSX.Element => {
     noi.setBlur(10)
     noi.setOpacity(0)
 
+    bg.setBlendMode('normal')
     bg.setBackground(
-      'linear-gradient(140deg, rgb(255 100 50) 12.8%, rgb(255 0 101) 43.52%, rgb(123 46 255) 84.34%)'
+      'linear-gradient(135deg, rgb(215, 235, 235), rgb(244, 175, 233), rgb(114, 123, 251))'
     )
+
+    filters.setBlur(0)
+    filters.setBrightness(100)
+    filters.setOpacity(100)
+    filters.setHueRotation(360)
+    filters.setSepia(0)
+    filters.setGrayscale(0)
+
+    indexImage.setIndex(4)
 
     router.refresh()
   }

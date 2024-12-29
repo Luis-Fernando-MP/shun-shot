@@ -34,19 +34,20 @@ export const downloadFullImage = async (fileName: string, element: HTMLElement) 
     elementHeight < 1000 ? scaleMap.low : elementHeight <= 1500 ? scaleMap.medium : scaleMap.high
 
   const style = {
+    borderRadius: 0,
     transform: `scale(${scale})`,
     transformOrigin: 'top left',
     width: `${clone.offsetWidth}px`,
-    height: `${clone.offsetHeight}px`,
-    borderRadius: '0'
+    height: `${clone.offsetHeight}px`
   }
 
   try {
     const pngDataUrl = await DomToImage.toPng(clone, {
+      bgcolor: 'black',
       quality: 1,
       width: clone.offsetWidth * scale,
       height: clone.offsetHeight * scale,
-      style: style
+      style
     })
 
     const downloadLink = document.createElement('a')
@@ -71,18 +72,19 @@ export const downloadToJpeg = async (
   const id = toast.loading('Descargando...')
   const scale = size
   const style = {
+    borderRadius: 0,
     transform: `scale(${scale})`,
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
-    height: `${element.offsetHeight}px`,
-    borderRadius: '0'
+    height: `${element.offsetHeight}px`
   }
   try {
     const pngDataUrl = await DomToImage.toJpeg(element, {
+      bgcolor: 'black',
       quality: 1,
       width: element.offsetWidth * scale,
       height: element.offsetHeight * scale,
-      style: style
+      style
     })
 
     const downloadLink = document.createElement('a')
@@ -105,6 +107,7 @@ export const downloadToPng = async (
   const id = toast.loading('Descargando...')
   const scale = size
   const style = {
+    borderRadius: 0,
     transform: `scale(${scale})`,
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
@@ -112,10 +115,11 @@ export const downloadToPng = async (
   }
   try {
     const pngDataUrl = await DomToImage.toPng(element, {
+      bgcolor: 'black',
       quality: 1,
       width: element.offsetWidth * scale,
       height: element.offsetHeight * scale,
-      style: style
+      style
     })
 
     const downloadLink = document.createElement('a')
@@ -134,19 +138,20 @@ export const copyToPng = async (element: HTMLElement, size: number = scaleMap.hi
   const id = toast.loading('Descargando...')
   const scale = size
   const style = {
+    borderRadius: 0,
     transform: `scale(${scale})`,
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
-    height: `${element.offsetHeight}px`,
-    borderRadius: '0'
+    height: `${element.offsetHeight}px`
   }
 
   try {
     const pngDataUrl = await DomToImage.toPng(element, {
+      bgcolor: 'black',
       quality: 1,
       width: element.offsetWidth * scale,
       height: element.offsetHeight * scale,
-      style: style
+      style
     })
 
     const response = await fetch(pngDataUrl)
@@ -174,15 +179,16 @@ export const downloadPDF = async (
   const id = toast.loading('Preparando...')
   const scale = size
   const style = {
+    borderRadius: 0,
     transform: `scale(${scale})`,
     transformOrigin: 'top left',
     width: `${element.offsetWidth}px`,
-    height: `${element.offsetHeight}px`,
-    borderRadius: '0'
+    height: `${element.offsetHeight}px`
   }
 
   try {
     const pngDataUrl = await DomToImage.toPng(element, {
+      bgcolor: 'black',
       quality: 1,
       width: element.offsetWidth * scale,
       height: element.offsetHeight * scale,

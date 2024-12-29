@@ -22,6 +22,9 @@ const GradientColorsImages = ({ gradients, title }: IGradientBackground): JSX.El
     <div className='GradientColorsImg editorStyles-section'>
       <h3 className='editorStyles-title'>{title}</h3>
       <div className='bgStyles-palette'>
+        <button onClick={toggleGradients} className='GradientColorsImg-toggle'>
+          <EllipsisIcon />
+        </button>
         {gradientsToShow.map(({ gradient, blendMode }) => (
           <button
             key={`${gradient}-gradient-colors`}
@@ -33,9 +36,6 @@ const GradientColorsImages = ({ gradients, title }: IGradientBackground): JSX.El
             className='GradientColorsImg-color'
           />
         ))}
-        <button onClick={toggleGradients} className='GradientColorsImg-toggle'>
-          <EllipsisIcon />
-        </button>
       </div>
     </div>
   )

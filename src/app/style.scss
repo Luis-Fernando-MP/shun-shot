@@ -12,7 +12,7 @@ body {
     'main'
     'footer';
   grid-template-columns: 1fr;
-  grid-template-rows: 40px calc(100vh - 90px) 200px;
+  grid-template-rows: 40px calc(100vh - 70px) 200px;
   gap: v.$padding;
 
   padding: v.$padding;

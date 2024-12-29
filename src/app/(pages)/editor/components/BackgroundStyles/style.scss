@@ -10,6 +10,18 @@
   }
 }
 
+// Boton de mostrar todo
+.filterToggleView {
+  display: grid;
+  place-content: center;
+
+  width: 100%;
+  padding: v.$padding;
+
+  background-color: rgb(v.$bg3);
+  border-radius: v.$radius;
+}
+
 // -
 
 .linearBg {
