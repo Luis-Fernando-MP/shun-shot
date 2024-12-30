@@ -9,6 +9,7 @@
   padding: v.$padding * 1.5 0;
 
   background-color: #1e1e1e;
+  background-color: red;
   border-radius: v.$radius;
 
   @include d.flex($ali: center, $gap: v.$padding * 2);

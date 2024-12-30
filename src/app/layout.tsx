@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
+import Firefly from './components/Firefly'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import './globals.css'
@@ -33,12 +34,13 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
           <Header className='root-header' />
           {children}
           <Footer className='root-footer' />
+          <Firefly />
         </Providers>
         <Toaster
           position='top-center'
           toastOptions={{
             className: 'toast',
-            position: 'bottom-left',
+            position: 'top-center',
             style: {
               background: 'rgb(var(--bg-primary))',
               color: 'rgb(var(--fnt-primary))'

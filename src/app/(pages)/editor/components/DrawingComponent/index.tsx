@@ -1,9 +1,9 @@
 'use client'
 
-import { default_image } from '@/shared/constants'
 import type { JSX } from 'react'
 
 import useStyleCssImage from '../../hooks/useStyleCssImage'
+import DrawingImage from './DrawingImage'
 import './style.scss'
 
 const DrawingComponent = (): JSX.Element => {
@@ -18,7 +18,9 @@ const DrawingComponent = (): JSX.Element => {
     shadowStyle,
     imgPosition,
     imgPerspective,
-    indexImage
+    indexImage,
+    stacks,
+    getStackStyles
   } = useStyleCssImage()
 
   const bg = getBackgroundStyle(imgBg.background)
@@ -46,32 +48,26 @@ const DrawingComponent = (): JSX.Element => {
           zIndex: indexImage.index
         }}
       >
-        <div className='drawing-image__container'>
-          <img
-            src={default_image}
-            alt='canvas editor style'
-            style={{
-              borderRadius: `${imgBorder.border}px`
-            }}
-            loading='lazy'
-          />
-        </div>
-        {/* {stacks.map((_, i) => {
-            const key = `${i}-editorMP-stack`
-            return (
-              <div
-                key={key}
-                className='drawing-stack'
-                style={{
-                  borderRadius: `${border}px`,
-                  zIndex: -1 * i,
-                  // boxShadow: stackShadow,
-                  transform: getStackStyles(i),
-                  filter: `brightness(${Math.max(0, 1 - i * 0.05)})`
-                }}
-              />
-            )
-          })} */}
+        {stacks.map((_, i) => {
+          const key = `${i}-editorMP-stack`
+          return (
+            <div
+              key={key}
+              className='drawing-stack'
+              style={{
+                borderRadius: `${imgBorder.border}px`,
+                zIndex: -1 * i,
+                transform: getStackStyles(i),
+                filter: `brightness(${Math.max(0, 1 - i * 0.05)})`
+              }}
+            />
+          )
+        })}
+        <DrawingImage
+          style={{
+            borderRadius: `${imgBorder.border}px`
+          }}
+        />
       </div>
       <span
         className={`drawing-pattern ${pattern.patternClass}`}

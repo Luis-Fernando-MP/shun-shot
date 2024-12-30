@@ -13,6 +13,7 @@ import useBackgroundImage from '../../store/backgroundImage.store'
 import GradientColorsImages from '../GradientColorsImages'
 import SolidColorsImages from '../SolidColorsImages'
 import BackgroundFilterImages from './BackgroundFilterImages'
+import MagicColors from './MagicColors'
 import SimpleBackground from './SimpleBackground'
 import './style.scss'
 
@@ -28,6 +29,7 @@ const BackgroundStyles = ({ className }: IBackgroundStyle): JSX.Element => {
         <SimpleBackground background={background} setBackground={setBackground} />
         <UnsplashComponent />
       </div>
+      <MagicColors />
       <BackgroundFilterImages />
       <SolidColorsImages />
       <GradientColorsImages title='Gradientes' gradients={onlyGradients} />

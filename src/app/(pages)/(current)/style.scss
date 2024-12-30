@@ -2,17 +2,25 @@
 @use '@sass/utils/defs' as d;
 
 .root-main.codePage {
-  @include d.flex($gap: 0, $ali: center);
+  display: grid;
+  grid-template-areas:
+    'code'
+    'tools';
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 50px;
+  gap: v.$padding;
 }
 
 .codePage {
   &-tools {
+    grid-area: 'tools';
     width: 100%;
     height: 50px;
     padding: 0 v.$padding;
   }
 
   &-container {
+    grid-area: 'code';
     justify-content: center;
     width: 100%;
     height: 100%;
@@ -25,10 +33,20 @@
     max-width: 900px;
     height: auto;
     min-height: 200px;
+    max-height: 700px;
     padding: v.$padding;
 
-    background-image: v.$gr1;
     border-radius: v.$radius;
+
+    &.downloader {
+      max-width: 900px;
+      min-height: auto;
+      max-height: max-content;
+
+      .monaco {
+        height: fit-content;
+      }
+    }
 
     &.shooting {
       position: relative;

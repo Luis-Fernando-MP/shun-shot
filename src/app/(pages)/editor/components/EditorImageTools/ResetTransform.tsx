@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation'
 
 import useBackgroundFilterImage from '../../store/backgroundFilterImage.store'
 import useIndexImage from '../../store/indexImage.store'
+import useImage from '../../store/useImage'
 import { LOCAL_CIRCLE_POSITION_KEY } from '../CirclesComponent/CirclePositionXY'
 import { LOCAL_CIRCLE_SHADOW_KEY } from '../CirclesComponent/CircleShadowXYS'
 
@@ -30,6 +31,7 @@ const ResetTransform = (): JSX.Element => {
   const bg = useBackgroundImage()
   const filters = useBackgroundFilterImage()
   const indexImage = useIndexImage()
+  const image = useImage()
   const router = useRouter()
 
   const handleClick = (): void => {
@@ -77,6 +79,9 @@ const ResetTransform = (): JSX.Element => {
     filters.setGrayscale(0)
 
     indexImage.setIndex(4)
+
+    image.setSrc(null)
+    image.setColors([])
 
     router.refresh()
   }

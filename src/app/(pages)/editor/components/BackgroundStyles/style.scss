@@ -10,6 +10,22 @@
   }
 }
 
+.magicColors {
+  @include d.flex($dir: row);
+
+  flex-wrap: wrap;
+  width: 100%;
+  height: max-content;
+
+  &-color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+
+// Estilos de los colores generados con IA
+
 // Boton de mostrar todo
 .filterToggleView {
   display: grid;

@@ -20,6 +20,11 @@ const MonacoEditor = (): JSX.Element => {
     setRefIde(editor)
     const contentHeight = editor.getContentHeight() > 100 ? editor.getContentHeight() : minHeight
     setEditorHeight(contentHeight)
+
+    // editor.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
+    //   noSemanticValidation: true,
+    //   noSyntaxValidation: true
+    // })
   }
 
   const handleChange = () => {
@@ -36,12 +41,35 @@ const MonacoEditor = (): JSX.Element => {
       onChange={handleChange}
       defaultValue={(exampleCode as any)[language]?.code ?? ''}
       theme={'vs-dark'}
+      onValidate={p => {
+        console.log(p)
+      }}
       onMount={handleMountIde}
+      beforeMount={bef => {
+        console.log('bef', bef)
+      }}
       options={{
         automaticLayout: true,
         fontFamily,
         fontSize,
-        lineHeight: 19
+        lineHeight: 19,
+        overviewRulerLanes: 0,
+        renderValidationDecorations: 'off',
+        lineNumbers: 'on', // Sin números de línea
+        minimap: { enabled: false }, // Desactiva el minimapa
+        scrollbar: {
+          vertical: 'hidden',
+          horizontal: 'hidden'
+        },
+        folding: false, // Desactiva la funcionalidad de plegado
+        renderLineHighlight: 'none', // Elimina el resaltado de líneas
+        scrollBeyondLastLine: false, // Sin espacio adicional al final del archivo
+        contextmenu: false, // Desactiva el menú contextual
+        padding: { bottom: 10 },
+
+        wordWrap: 'on',
+        wordWrapColumn: 60,
+        wrappingIndent: 'same'
       }}
     />
   )

@@ -7,16 +7,16 @@ import toast from 'react-hot-toast'
 import { sleep } from './sleep'
 
 const fullContainer = async (element: HTMLElement) => {
-  element.style.minHeight = 'auto'
-  element.style.maxWidth = '900px'
+  element.classList.add('downloader')
+  // element.style.minHeight = 'auto'
+  // element.style.maxWidth = '900px'
   await sleep(50)
   const clone = element.cloneNode(true) as HTMLElement
-  const editor = clone.querySelector('.monaco') as HTMLElement
-  editor.style.height = 'fit-content'
+  // editor.style.height = 'fit-content'
   document.body.appendChild(clone)
 
-  editor.style.all = ''
-  element.style.all = ''
+  // editor.style.all = ''
+  // element.style.all = ''
   return clone
 }
 
@@ -29,9 +29,9 @@ const scaleMap = {
 export const downloadFullImage = async (fileName: string, element: HTMLElement) => {
   const clone = await fullContainer(element)
   const id = toast.loading('Clonando todo el código...')
-  const elementHeight = clone.offsetHeight
-  const scale =
-    elementHeight < 1000 ? scaleMap.low : elementHeight <= 1500 ? scaleMap.medium : scaleMap.high
+  const scale = scaleMap.medium
+
+  return
 
   const style = {
     borderRadius: 0,

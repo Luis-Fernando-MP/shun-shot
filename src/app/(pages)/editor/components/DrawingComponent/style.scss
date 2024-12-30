@@ -4,6 +4,7 @@
 @use '@sass/components/patterns' as *;
 
 $index-bg: 0;
+$index-stack: 0;
 $index-image: 1;
 $index-noise: 2;
 $index-pattern: 3;
@@ -14,6 +15,9 @@ $index-overlay: 4;
   &-pattern,
   &-noise,
   &-overlay {
+    pointer-events: none;
+    user-select: none;
+
     position: absolute;
     top: 0;
     left: 0;
@@ -50,7 +54,7 @@ $index-overlay: 4;
   }
 
   &-image {
-    pointer-events: none;
+    cursor: pointer;
     user-select: none;
 
     position: absolute;
@@ -72,10 +76,13 @@ $index-overlay: 4;
 
     &__container {
       position: relative;
+      scale: initial;
       width: auto;
       height: auto;
 
       img {
+        user-select: none;
+
         width: 100%;
         max-width: 800px;
         height: 100%;
@@ -87,18 +94,19 @@ $index-overlay: 4;
     }
   }
 
-  // &-stack {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
+  &-stack {
+    position: absolute;
+    z-index: $index-stack;
+    top: 0;
+    left: 0;
 
-  //   overflow: hidden;
+    overflow: hidden;
 
-  //   width: 100%;
-  //   height: 100%;
+    width: 100%;
+    height: 100%;
 
-  //   background-color: rgb(102 102 102);
+    background-color: rgb(102 102 102);
 
-  //   @include bg.bgImage(v.$bgDef);
-  // }
+    @include bg.bgImage(v.$bgDef);
+  }
 }
