@@ -40,7 +40,7 @@ export const useDropzone = () => {
         setIsLoading(false)
       }
     },
-    [setSrc]
+    [setColors, setSrc]
   )
 
   const handleDrop = useCallback(
