@@ -1,10 +1,11 @@
 'use client'
 
 import { themesData } from '@/shared/themes/loadStaticThemes'
+import { useMonacoStore } from '@code-store/config-monaco.store'
+import { useRefMonacoStore } from '@code-store/refMonaco.store'
 import Editor, { useMonaco } from '@monaco-editor/react'
 import { memo, useEffect, useRef, useState } from 'react'
 
-import { useMonacoStore } from '../../store/config-monaco.store'
 import exampleCode from './exampleCode'
 
 const minHeight = 200
@@ -15,7 +16,8 @@ interface IMonacoEditor {
 }
 
 const MonacoEditor = ({ theme }: IMonacoEditor): JSX.Element => {
-  const { fontSize, setRefIde, language, fontFamily } = useMonacoStore()
+  const { fontSize, language, fontFamily } = useMonacoStore()
+  const { setRefIde } = useRefMonacoStore()
   const monaco = useMonaco()
 
   const $ide = useRef<any>(null)
@@ -58,7 +60,7 @@ const MonacoEditor = ({ theme }: IMonacoEditor): JSX.Element => {
       defaultLanguage={language}
       onChange={handleChange}
       defaultValue={(exampleCode as any)[language]?.code ?? ''}
-      theme={theme} // Tema inicial
+      theme={theme}
       onMount={handleMountIde}
       options={{
         automaticLayout: true,

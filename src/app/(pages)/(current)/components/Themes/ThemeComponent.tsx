@@ -1,7 +1,6 @@
+import { useRefMonacoStore } from '@code-store/refMonaco.store'
+import { useThemeMonacoStore } from '@code-store/themes-monaco.store'
 import { HtmlHTMLAttributes, JSX, ReactNode, memo } from 'react'
-
-import { useMonacoStore } from '../../store/config-monaco.store'
-import { useThemeMonacoStore } from '../../store/themes-monaco.store'
 
 interface IThemeComponent extends HtmlHTMLAttributes<HTMLElement> {
   theme: any
@@ -11,7 +10,7 @@ interface IThemeComponent extends HtmlHTMLAttributes<HTMLElement> {
 const bg = (bg: string | undefined) => ({ style: { backgroundColor: bg } })
 
 const ThemeComponent = ({ className, theme, ...props }: IThemeComponent): JSX.Element => {
-  const { refIde } = useMonacoStore()
+  const { refIde } = useRefMonacoStore()
   const setTheme = useThemeMonacoStore(s => s.setTheme)
 
   const [key, json] = theme

@@ -44,35 +44,10 @@
 
     border-radius: v.$radius;
 
-    // &.downloader {
-    //   max-width: 900px;
-    //   min-height: auto;
-    //   max-height: max-content;
-
-    //   .monaco {
-    //     height: fit-content;
-    //   }
-    // }
-
-    // &.shooting {
-    //   position: relative;
-    //   z-index: 1;
-
-    //   overflow: hidden;
-    //   display: inline-block;
-
-    //   animation: flash-effect 0.5s ease-in-out infinite;
-
-    //   @keyframes flash-effect {
-    //     0%,
-    //     100% {
-    //       opacity: 0;
-    //     }
-
-    //     50% {
-    //       opacity: 1;
-    //     }
-    //   }
-    // }
+    &.downloader {
+      max-width: 900px;
+      min-height: auto;
+      max-height: max-content;
+    }
   }
 }

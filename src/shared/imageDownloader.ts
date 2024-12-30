@@ -1,90 +1,55 @@
 'use client'
 
-import DomToImage from 'dom-to-image'
+import domToImageMore from 'dom-to-image-more'
 import { jsPDF } from 'jspdf'
 import toast from 'react-hot-toast'
 
-import { sleep } from './sleep'
-
-const fullContainer = async (element: HTMLElement) => {
-  element.classList.add('downloader')
-  // element.style.minHeight = 'auto'
-  // element.style.maxWidth = '900px'
-  await sleep(50)
-  const clone = element.cloneNode(true) as HTMLElement
-  // editor.style.height = 'fit-content'
-  document.body.appendChild(clone)
-
-  // editor.style.all = ''
-  // element.style.all = ''
-  return clone
-}
-
 const scaleMap = {
-  high: 4,
+  high: 3,
   medium: 2,
   low: 1
 }
 
-export const downloadFullImage = async (fileName: string, element: HTMLElement) => {
-  const clone = await fullContainer(element)
-  const id = toast.loading('Clonando todo el código...')
-  const scale = scaleMap.medium
-
-  return
-
-  const style = {
-    borderRadius: 0,
-    transform: `scale(${scale})`,
-    transformOrigin: 'top left',
-    width: `${clone.offsetWidth}px`,
-    height: `${clone.offsetHeight}px`
-  }
-
+export const getPngUrl = async (element: HTMLElement, scale: number = scaleMap.high) => {
+  const id = toast.loading('Transformando...')
   try {
-    const pngDataUrl = await DomToImage.toPng(clone, {
+    const pngDataUrl = await domToImageMore.toPng(element, {
       bgcolor: 'black',
       quality: 1,
-      width: clone.offsetWidth * scale,
-      height: clone.offsetHeight * scale,
-      style
+      width: element.offsetWidth * scale,
+      height: element.offsetHeight * scale,
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        borderRadius: 0
+      }
     })
-
-    const downloadLink = document.createElement('a')
-    downloadLink.href = pngDataUrl
-    downloadLink.download = `${fileName}.png`
-    downloadLink.click()
-
-    toast.success('Todo Listo!!', { id })
+    toast.success('Transformación lista!!', { id })
+    return pngDataUrl
   } catch (error: any) {
     console.error(error)
-    toast.error('No se pudo descargar la imagen', { id })
-  } finally {
-    document.body.removeChild(clone)
+    toast.error('No se pudo transformar la imagen', { id })
   }
 }
 
 export const downloadToJpeg = async (
   fileName: string,
   element: HTMLElement,
-  size: number = scaleMap.high
+  scale: number = scaleMap.high
 ) => {
   const id = toast.loading('Descargando...')
-  const scale = size
-  const style = {
-    borderRadius: 0,
-    transform: `scale(${scale})`,
-    transformOrigin: 'top left',
-    width: `${element.offsetWidth}px`,
-    height: `${element.offsetHeight}px`
-  }
+
   try {
-    const pngDataUrl = await DomToImage.toJpeg(element, {
+    const pngDataUrl = await domToImageMore.toJpeg(element, {
       bgcolor: 'black',
       quality: 1,
       width: element.offsetWidth * scale,
       height: element.offsetHeight * scale,
-      style
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        borderRadius: 0
+      }
     })
 
     const downloadLink = document.createElement('a')
@@ -102,24 +67,20 @@ export const downloadToJpeg = async (
 export const downloadToPng = async (
   fileName: string,
   element: HTMLElement,
-  size: number = scaleMap.high
+  scale: number = scaleMap.high
 ) => {
   const id = toast.loading('Descargando...')
-  const scale = size
-  const style = {
-    borderRadius: 0,
-    transform: `scale(${scale})`,
-    transformOrigin: 'top left',
-    width: `${element.offsetWidth}px`,
-    height: `${element.offsetHeight}px`
-  }
   try {
-    const pngDataUrl = await DomToImage.toPng(element, {
+    const pngDataUrl = await domToImageMore.toPng(element, {
       bgcolor: 'black',
       quality: 1,
       width: element.offsetWidth * scale,
       height: element.offsetHeight * scale,
-      style
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        borderRadius: 0
+      }
     })
 
     const downloadLink = document.createElement('a')
@@ -134,24 +95,19 @@ export const downloadToPng = async (
   }
 }
 
-export const copyToPng = async (element: HTMLElement, size: number = scaleMap.high) => {
+export const copyToPng = async (element: HTMLElement, scale: number = scaleMap.high) => {
   const id = toast.loading('Descargando...')
-  const scale = size
-  const style = {
-    borderRadius: 0,
-    transform: `scale(${scale})`,
-    transformOrigin: 'top left',
-    width: `${element.offsetWidth}px`,
-    height: `${element.offsetHeight}px`
-  }
-
   try {
-    const pngDataUrl = await DomToImage.toPng(element, {
+    const pngDataUrl = await domToImageMore.toPng(element, {
       bgcolor: 'black',
       quality: 1,
       width: element.offsetWidth * scale,
       height: element.offsetHeight * scale,
-      style
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        borderRadius: 0
+      }
     })
 
     const response = await fetch(pngDataUrl)
@@ -174,25 +130,20 @@ export const copyToPng = async (element: HTMLElement, size: number = scaleMap.hi
 export const downloadPDF = async (
   fileName: string,
   element: HTMLElement,
-  size: number = scaleMap.high
+  scale: number = scaleMap.high
 ) => {
   const id = toast.loading('Preparando...')
-  const scale = size
-  const style = {
-    borderRadius: 0,
-    transform: `scale(${scale})`,
-    transformOrigin: 'top left',
-    width: `${element.offsetWidth}px`,
-    height: `${element.offsetHeight}px`
-  }
-
   try {
-    const pngDataUrl = await DomToImage.toPng(element, {
+    const pngDataUrl = await domToImageMore.toPng(element, {
       bgcolor: 'black',
       quality: 1,
       width: element.offsetWidth * scale,
       height: element.offsetHeight * scale,
-      style
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        borderRadius: 0
+      }
     })
 
     const pdfWidth = (element.offsetWidth * scale) / 2
@@ -208,7 +159,7 @@ export const downloadPDF = async (
 
     pdf.save(`${fileName}.pdf`)
     toast.success('¡PDF Listo!', { id })
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error al generar el PDF:', error)
     toast.error('No se pudo copiar la imagen', { id })
   }

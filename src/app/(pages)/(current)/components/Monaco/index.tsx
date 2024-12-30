@@ -13,7 +13,7 @@ const Monaco = () => {
   const theme = useThemeMonacoStore(s => s.theme)
 
   return (
-    <section className='monaco' {...bg(theme?.colors['editor.background'] ?? '')}>
+    <section className='monaco' {...bg(theme?.colors['editor.background'] ?? '')} id='monacoEditor'>
       <header className='monaco-header'>
         <div className='monaco-header__buttons'>
           <span className='red circle'></span>

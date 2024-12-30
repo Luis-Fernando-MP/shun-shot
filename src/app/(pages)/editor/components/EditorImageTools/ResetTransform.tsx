@@ -88,7 +88,7 @@ const ResetTransform = (): JSX.Element => {
 
   return (
     <button className='editorImageTools-action btn-tooltip' onClick={handleClick}>
-      <RotateCcwIcon className='animate-spin-counter-clockwise animate-iteration-count-infinite' />
+      <RotateCcwIcon />
       <p className='tooltip top'>Restablecer</p>
     </button>
   )

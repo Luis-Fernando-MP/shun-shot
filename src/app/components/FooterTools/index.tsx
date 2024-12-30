@@ -1,13 +1,12 @@
 'use client'
 
-import { useMonacoStore } from '@/app/(pages)/(current)/store/config-monaco.store'
 import FullScreen from '@/shared/components/FullScreen'
 import useMonacoTools from '@/shared/hooks/monaco-tools'
-import { LayersIcon, Redo2Icon, Share2Icon, Undo2Icon } from 'lucide-react'
-import Link from 'next/link'
-import { type JSX } from 'react'
+import { Redo2Icon, Share2Icon, Undo2Icon } from 'lucide-react'
+import { type JSX, memo } from 'react'
 
 import DownloadTools from './DownloadTools'
+import EditImage from './EditImage'
 import MonacoFontTools from './MonacoFontTools'
 import ToolsModal from './ToolsModal'
 import './style.scss'
@@ -48,20 +47,15 @@ const FooterTools = ({ className }: IFooterTools): JSX.Element => {
           <p className='tooltip top'>Compartir</p>
         </button>
 
-        <Link href='/editor' className='tools-action tools-especial btn-tooltip badge dev'>
-          <LayersIcon />
-          <h5>Editar</h5>
-          <p className='tooltip top'>Editar imagen</p>
-        </Link>
+        <EditImage />
       </section>
     </footer>
   )
 }
 
-function DownloadMonacoTools(): JSX.Element {
-  const refIde = useMonacoStore(s => s.refIde)
-
-  return <DownloadTools refElement={refIde} />
+const DownloadMonacoTools = memo(DownloadMonacoToolsCOmponent)
+function DownloadMonacoToolsCOmponent(): JSX.Element {
+  return <DownloadTools />
 }
 
 export default FooterTools

@@ -2,37 +2,15 @@
 
 import { useExtraMonacoStore } from '@/app/(pages)/(current)/store/extra-monaco.store'
 import { acl } from '@/shared/acl'
-import { copyToPng, downloadFullImage, downloadPDF, downloadToPng } from '@/shared/imageDownloader'
-import { ClipboardCopyIcon, CloudDownloadIcon, FileCode2Icon, WindIcon } from 'lucide-react'
+import { copyToPng, downloadPDF, downloadToPng } from '@/shared/imageDownloader'
+import { ClipboardCopyIcon, CloudDownloadIcon, FileCode2Icon, RotateCcwIcon } from 'lucide-react'
 import { type JSX, memo, useState } from 'react'
 
 export type StatusApp = 'idle' | 'loading' | 'error'
 
-interface IDownloadTools {
-  refElement: any
-}
-
-const DownloadTools = ({ refElement }: IDownloadTools): JSX.Element => {
+const DownloadTools = (): JSX.Element => {
   const [downloadStatus, setDownloadStatus] = useState<StatusApp>('idle')
   const fileName = useExtraMonacoStore(s => s.fileName)
-
-  const handleWindDownload = async () => {
-    setDownloadStatus('loading')
-    const $monacoParent = document.querySelector('#monacoParent')
-    if (!$monacoParent || !($monacoParent instanceof HTMLElement)) return
-    const monHeight = $monacoParent.offsetHeight
-    const parentHeight = $monacoParent.parentElement?.offsetHeight
-
-    try {
-      await downloadFullImage(fileName, $monacoParent)
-      if (parentHeight && monHeight >= parentHeight) refElement.layout({})
-    } catch (error) {
-      console.error(error)
-      setDownloadStatus('error')
-    } finally {
-      setDownloadStatus('idle')
-    }
-  }
 
   const handleDownload = async () => {
     setDownloadStatus('loading')
@@ -40,7 +18,7 @@ const DownloadTools = ({ refElement }: IDownloadTools): JSX.Element => {
     if (!$monacoParent || !($monacoParent instanceof HTMLElement)) return
 
     try {
-      await downloadToPng(fileName, $monacoParent)
+      await downloadToPng(fileName, $monacoParent, 2)
     } catch (error) {
       setDownloadStatus('error')
       console.error(error)
@@ -54,7 +32,7 @@ const DownloadTools = ({ refElement }: IDownloadTools): JSX.Element => {
     const $monacoParent = document.querySelector('#monacoParent')
     if (!$monacoParent || !($monacoParent instanceof HTMLElement)) return
     try {
-      await copyToPng($monacoParent)
+      await copyToPng($monacoParent, 2)
     } catch (error) {
       console.error(error)
       setDownloadStatus('error')
@@ -108,11 +86,10 @@ const DownloadTools = ({ refElement }: IDownloadTools): JSX.Element => {
 
       <button
         className='tools-action btn-tooltip border-left badge soon'
-        onClick={handleWindDownload}
         disabled={downloadStatus === 'loading'}
       >
-        <WindIcon />
-        <p className='tooltip top'>Descargar todo el código</p>
+        <RotateCcwIcon />
+        <p className='tooltip top'>Restaurar</p>
       </button>
     </div>
   )
