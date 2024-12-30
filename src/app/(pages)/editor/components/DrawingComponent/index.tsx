@@ -1,5 +1,6 @@
 'use client'
 
+import { getBackgroundStyle } from '@editor-store/backgroundImage.store'
 import type { JSX } from 'react'
 
 import useStyleCssImage from '../../hooks/useStyleCssImage'
@@ -13,7 +14,6 @@ const DrawingComponent = (): JSX.Element => {
     pattern,
     overlay,
     filter,
-    getBackgroundStyle,
     imgBorder,
     shadowStyle,
     imgPosition,

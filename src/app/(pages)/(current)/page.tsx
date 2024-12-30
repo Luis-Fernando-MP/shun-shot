@@ -1,5 +1,6 @@
 'use client'
 
+import { getBackgroundStyle } from '@editor-store/backgroundImage.store'
 import type { JSX } from 'react'
 
 import useBackgroundImage from '../editor/store/backgroundImage.store'
@@ -8,10 +9,8 @@ import './style.scss'
 
 const Page = (): JSX.Element => {
   const { background, blendMode } = useBackgroundImage()
-  const bg =
-    background.includes('url') || background.includes('gradient')
-      ? { backgroundImage: background, backgroundColor: '#000' }
-      : { backgroundColor: background }
+  const bg = getBackgroundStyle(background)
+
   return (
     <div className='codePage-container'>
       <article

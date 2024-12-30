@@ -1,5 +1,7 @@
 'use client'
 
+import { memo } from 'react'
+
 import { useThemeMonacoStore } from '../../store/themes-monaco.store'
 import MonacoEditor from './MonacoEditor'
 import MonacoFileName from './MonacoFileName'
@@ -20,9 +22,9 @@ const Monaco = () => {
         </div>
         <MonacoFileName />
       </header>
-      <MonacoEditor />
+      <MonacoEditor theme={theme} />
     </section>
   )
 }
 
-export default Monaco
+export default memo(Monaco)

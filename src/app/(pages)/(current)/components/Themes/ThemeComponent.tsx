@@ -1,4 +1,4 @@
-import type { HtmlHTMLAttributes, JSX, ReactNode } from 'react'
+import { HtmlHTMLAttributes, JSX, ReactNode, memo } from 'react'
 
 import { useMonacoStore } from '../../store/config-monaco.store'
 import { useThemeMonacoStore } from '../../store/themes-monaco.store'
@@ -41,4 +41,4 @@ const ThemeComponent = ({ className, theme, ...props }: IThemeComponent): JSX.El
   )
 }
 
-export default ThemeComponent
+export default memo(ThemeComponent)

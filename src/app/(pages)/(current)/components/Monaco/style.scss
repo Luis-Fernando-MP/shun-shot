@@ -8,8 +8,6 @@
   min-height: 200px;
   padding: v.$padding * 1.5 0;
 
-  background-color: #1e1e1e;
-  background-color: red;
   border-radius: v.$radius;
 
   @include d.flex($ali: center, $gap: v.$padding * 2);
@@ -47,7 +45,7 @@
 
       background-color: transparent;
       border: 2px solid transparent;
-      border-radius: v.$radius;
+      border-radius: 5px;
 
       transition: all 0.3s ease;
 
@@ -58,6 +56,6 @@
   }
 
   &-editor {
-    height: auto;
+    height: 100%;
   }
 }

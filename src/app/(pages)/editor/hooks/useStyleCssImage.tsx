@@ -32,14 +32,6 @@ const useStyleCssImage = () => {
     return functionStyle(index + 1)
   }
 
-  const getBackgroundStyle = (background: string): { [key: string]: string } => {
-    if (background.includes('url')) return { background }
-    if (background.includes('gradient'))
-      return { backgroundImage: background, backgroundColor: '#000' }
-
-    return { backgroundColor: background }
-  }
-
   const [ShadowX, shadowY, shadowSpread] = shadow.XYSize
 
   const shadowStyle = generateShadow({
@@ -62,7 +54,6 @@ const useStyleCssImage = () => {
     },
     stacks: new Array(stacks.amount).fill(0),
     getStackStyles,
-    getBackgroundStyle,
     pattern,
     noise: {
       blur: noise.blur / 10,
