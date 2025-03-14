@@ -1,14 +1,20 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { memo } from 'react'
 
 import { useThemeMonacoStore } from '../../store/themes-monaco.store'
-import MonacoEditor from './MonacoEditor'
 import MonacoFileName from './MonacoFileName'
 import './style.scss'
 
 const bg = (bg: string | undefined) => ({ style: { backgroundColor: bg } })
 
+const MonacoEditor = dynamic(() => import('./MonacoEditor'), {
+  ssr: false,
+  loading() {
+    return <p>loading</p>
+  }
+})
 const Monaco = () => {
   const theme = useThemeMonacoStore(s => s.theme)
 

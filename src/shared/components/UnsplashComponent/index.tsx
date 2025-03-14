@@ -34,7 +34,7 @@ const UnsplashComponent = () => {
       page.current++
       setImages(prev => [...data.results, ...prev])
     } catch (error) {
-      console.error('Error fetching photos:', error)
+      console.log('Error fetching photos:', error)
       toast.error('Error al buscar imágenes.')
       status.current = 'error'
     } finally {

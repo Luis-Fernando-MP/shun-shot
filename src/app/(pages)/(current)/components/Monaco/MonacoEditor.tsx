@@ -15,13 +15,13 @@ interface IMonacoEditor {
   theme: any
 }
 
-const MonacoEditor = ({ theme }: IMonacoEditor): JSX.Element => {
+const MonacoEditor = ({ theme }: IMonacoEditor) => {
   const { fontSize, language, fontFamily } = useMonacoStore()
   const { setRefIde } = useRefMonacoStore()
   const monaco = useMonaco()
 
   const $ide = useRef<any>(null)
-  const [editorHeight, setEditorHeight] = useState(minHeight)
+  const [editorHeight, setEditorHeight] = useState(minHeight) // Inicialización segura
 
   const handleMountIde = (editor: any) => {
     $ide.current = editor
@@ -37,10 +37,11 @@ const MonacoEditor = ({ theme }: IMonacoEditor): JSX.Element => {
 
   useEffect(() => {
     if (!monaco?.editor) return
+
     themesArr.forEach(([themeName, themeData]) => {
       monaco.editor.defineTheme(themeName, themeData as any)
     })
-  }, [monaco])
+  }, [monaco]) // Dependencia simplificada
 
   useEffect(() => {
     if (!monaco?.editor || !theme) return
@@ -48,19 +49,20 @@ const MonacoEditor = ({ theme }: IMonacoEditor): JSX.Element => {
   }, [theme, monaco])
 
   const handleChange = () => {
-    const newHeight = $ide.current?.getModel().getLineCount() * 19
+    if (!$ide.current) return // Verificación adicional
+    const newHeight = $ide.current.getModel().getLineCount() * 19
     setEditorHeight(Math.max(newHeight, minHeight))
   }
 
   return (
     <Editor
-      loading={<h5>Loading....</h5>}
+      loading={<h5>Cargando....</h5>}
       className='monaco-editor delay animate-fade-in-up'
-      height={editorHeight ?? minHeight}
+      height={editorHeight}
       defaultLanguage={language}
       onChange={handleChange}
       defaultValue={(exampleCode as any)[language]?.code ?? ''}
-      theme={theme}
+      theme={theme.name}
       onMount={handleMountIde}
       options={{
         automaticLayout: true,
@@ -69,18 +71,18 @@ const MonacoEditor = ({ theme }: IMonacoEditor): JSX.Element => {
         lineHeight: 19,
         overviewRulerLanes: 0,
         renderValidationDecorations: 'off',
-        lineNumbers: 'on', // Muestra números de línea
-        minimap: { enabled: false }, // Desactiva el minimapa
+        lineNumbers: 'on',
+        minimap: { enabled: false },
         scrollbar: {
           vertical: 'hidden',
           horizontal: 'hidden'
         },
-        folding: false, // Desactiva el plegado de código
-        renderLineHighlight: 'none', // Elimina el resaltado de líneas
-        scrollBeyondLastLine: false, // Sin espacio adicional al final del archivo
-        contextmenu: false, // Desactiva el menú contextual
+        folding: false,
+        renderLineHighlight: 'none',
+        scrollBeyondLastLine: false,
+        contextmenu: false,
         padding: { bottom: 10 },
-        wordWrap: 'on', // Ajusta líneas automáticamente
+        wordWrap: 'on',
         wordWrapColumn: 60,
         wrappingIndent: 'same'
       }}
