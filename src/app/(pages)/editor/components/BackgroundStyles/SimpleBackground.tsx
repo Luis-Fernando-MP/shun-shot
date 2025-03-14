@@ -38,18 +38,12 @@ const SimpleBackground = ({ background, setBackground }: ISimpleBackground): JSX
       <h3 className='editorStyles-title'>Backgrounds</h3>
 
       <div className='linearBg-container'>
-        <button
-          className='linearBg-style linearBg-transparent'
-          onClick={() => setBackground('rgba(0, 0, 0, 0.5)')}
-        >
+        <button className='linearBg-style linearBg-transparent' onClick={() => setBackground('rgba(0, 0, 0, 0.5)')}>
           <div />
           <span>Vació</span>
         </button>
 
-        <button
-          className='linearBg-style linearBg-color'
-          onClick={() => setHiddenPick(!hiddenPick)}
-        >
+        <button className='linearBg-style linearBg-color' onClick={() => setHiddenPick(!hiddenPick)}>
           <div />
           <span>Color</span>
         </button>
@@ -59,11 +53,7 @@ const SimpleBackground = ({ background, setBackground }: ISimpleBackground): JSX
             <ImageIcon />
             <span>Imagen</span>
           </div>
-          <ImageUploader
-            className='linearBg-image__file'
-            id='imageUploader'
-            handleBackground={handleLoadImage}
-          />
+          <ImageUploader className='linearBg-image__file' id='imageUploader' handleBackground={handleLoadImage} />
         </label>
 
         <Colorful

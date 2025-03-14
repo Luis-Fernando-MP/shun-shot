@@ -11,14 +11,24 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
   border: none;
+
   outline: none;
 }
 
 html {
   font-size: $family-size;
 }
+
+$listOfFontsSize: (
+  '.xl': $fXl,
+  'h1': $fH1,
+  'h2': $fH2,
+  'h3': $fH3,
+  'h4': $fH4,
+  'h5': $fH5,
+  'p': $fP
+);
 
 body {
   position: relative;
@@ -118,114 +128,104 @@ body {
   h4 {
     font-weight: 600;
   }
-}
 
-$listOfFontsSize: (
-  '.xl': $fXl,
-  'h1': $fH1,
-  'h2': $fH2,
-  'h3': $fH3,
-  'h4': $fH4,
-  'h5': $fH5,
-  'p': $fP
-);
-
-@each $tag, $value in $listOfFontsSize {
-  #{$tag} {
-    font-size: $value;
+  h1,
+  h2,
+  h3 {
+    font-family: $fontTitle;
   }
-}
 
-h1,
-h2,
-h3 {
-  font-family: $fontTitle;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  color: rgb($fn1);
-  text-wrap: balance;
-}
-
-h1 {
-  font-weight: 900;
-}
-
-h2 {
-  font-weight: 800;
-}
-
-h3 {
-  font-weight: 700;
-}
-
-ul {
-  list-style: none;
-}
-
-.icon,
-.lucide {
-  display: block;
-  width: 17px;
-  height: 17px;
-  stroke: rgb($fn1);
-}
-
-.tn1 {
-  color: rgb($tn1);
-}
-
-@include m.smallerScreen {
-  html {
-    font-size: 10px;
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: rgb($fn1);
+    text-wrap: balance;
   }
-}
 
-::selection {
-  color: rgb($fn1);
-  background-color: rgb($tn1);
-}
+  h1 {
+    font-weight: 900;
+  }
 
-.delay {
-  animation-delay: 700ms;
-}
+  h2 {
+    font-weight: 800;
+  }
 
-.btn-tooltip {
-  position: relative;
-  padding: $padding * 0.7;
+  h3 {
+    font-weight: 700;
+  }
 
-  @include tol.tooltip;
-}
+  ul {
+    list-style: none;
+  }
 
-.loading {
-  pointer-events: none;
-  user-select: none;
+  .icon,
+  .lucide {
+    display: block;
+    width: 17px;
+    height: 17px;
+    stroke: rgb($fn1);
+  }
 
-  @include loader.boxLoader;
-}
+  .tn1 {
+    color: rgb($tn1);
+  }
 
-.error {
-  pointer-events: none;
-  user-select: none;
-  position: relative;
-  outline: 2px solid $error;
+  ::selection {
+    color: rgb($fn1);
+    background-color: rgb($tn1);
+  }
 
-  &::after {
-    content: '';
+  .delay {
+    animation-delay: 700ms;
+  }
 
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
+  .btn-tooltip {
+    position: relative;
+    padding: $padding * 0.7;
 
-    width: 100%;
-    height: 100%;
+    @include tol.tooltip;
+  }
 
-    background-color: rgb($error, 0.2);
+  .loading {
+    pointer-events: none;
+    user-select: none;
 
-    animation: flicker 1s infinite alternate;
+    @include loader.boxLoader;
+  }
+
+  .error {
+    pointer-events: none;
+    user-select: none;
+    position: relative;
+    outline: 2px solid $error;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      background-color: rgb($error, 0.2);
+
+      animation: flicker 1s infinite alternate;
+    }
+  }
+
+  @each $tag, $value in $listOfFontsSize {
+    #{$tag} {
+      font-size: $value;
+    }
+  }
+
+  @include m.smallerScreen {
+    html {
+      font-size: 10px;
+    }
   }
 }

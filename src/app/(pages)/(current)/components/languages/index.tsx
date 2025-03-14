@@ -25,14 +25,7 @@ const Languages = (): JSX.Element => {
     <section className='languages'>
       <h4>Lenguajes de programación</h4>
       {Object.entries(languageIcons).map(lgc => {
-        return (
-          <LanguageSection
-            key={lgc[0]}
-            languageCategory={lgc}
-            changeLang={changeLang}
-            currentLanguage={language}
-          />
-        )
+        return <LanguageSection key={lgc[0]} languageCategory={lgc} changeLang={changeLang} currentLanguage={language} />
       })}
     </section>
   )

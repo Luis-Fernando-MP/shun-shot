@@ -18,10 +18,10 @@
   &-font {
     width: fit-content;
     padding: v.$padding;
-
-    background-color: rgb(v.$bg1);
     border: 2px solid transparent;
     border-radius: v.$radius;
+
+    background-color: rgb(v.$bg1);
 
     &.active {
       border-color: rgb(v.$tn1);

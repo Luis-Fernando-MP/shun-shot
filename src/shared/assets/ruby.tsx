@@ -4,50 +4,26 @@ const Ruby = (): JSX.Element => {
   return (
     <svg viewBox='0 -0.5 256 256' preserveAspectRatio='xMidYMid'>
       <defs>
-        <linearGradient
-          x1='84.7503645%'
-          y1='111.399353%'
-          x2='58.2543962%'
-          y2='64.5837087%'
-          id='linearGradient-1'
-        >
+        <linearGradient x1='84.7503645%' y1='111.399353%' x2='58.2543962%' y2='64.5837087%' id='linearGradient-1'>
           <stop stopColor='#FB7655' offset='0%'></stop>
           <stop stopColor='#FB7655' offset='0%'></stop>
           <stop stopColor='#E42B1E' offset='41%'></stop>
           <stop stopColor='#990000' offset='99%'></stop>
           <stop stopColor='#990000' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='116.651024%'
-          y1='60.8903211%'
-          x2='1.74616041%'
-          y2='19.2879503%'
-          id='linearGradient-2'
-        >
+        <linearGradient x1='116.651024%' y1='60.8903211%' x2='1.74616041%' y2='19.2879503%' id='linearGradient-2'>
           <stop stopColor='#871101' offset='0%'></stop>
           <stop stopColor='#871101' offset='0%'></stop>
           <stop stopColor='#911209' offset='99%'></stop>
           <stop stopColor='#911209' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='75.7744024%'
-          y1='219.327131%'
-          x2='38.9781357%'
-          y2='7.82868176%'
-          id='linearGradient-3'
-        >
+        <linearGradient x1='75.7744024%' y1='219.327131%' x2='38.9781357%' y2='7.82868176%' id='linearGradient-3'>
           <stop stopColor='#871101' offset='0%'></stop>
           <stop stopColor='#871101' offset='0%'></stop>
           <stop stopColor='#911209' offset='99%'></stop>
           <stop stopColor='#911209' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='50.012428%'
-          y1='7.23449921%'
-          x2='66.4830414%'
-          y2='79.1354134%'
-          id='linearGradient-4'
-        >
+        <linearGradient x1='50.012428%' y1='7.23449921%' x2='66.4830414%' y2='79.1354134%' id='linearGradient-4'>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#E57252' offset='23%'></stop>
@@ -55,13 +31,7 @@ const Ruby = (): JSX.Element => {
           <stop stopColor='#A60003' offset='99%'></stop>
           <stop stopColor='#A60003' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='46.1741749%'
-          y1='16.347907%'
-          x2='49.9323342%'
-          y2='83.0468449%'
-          id='linearGradient-5'
-        >
+        <linearGradient x1='46.1741749%' y1='16.347907%' x2='49.9323342%' y2='83.0468449%' id='linearGradient-5'>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#E4714E' offset='23%'></stop>
@@ -69,13 +39,7 @@ const Ruby = (): JSX.Element => {
           <stop stopColor='#A80D00' offset='99%'></stop>
           <stop stopColor='#A80D00' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='36.9653573%'
-          y1='15.5936471%'
-          x2='49.5282324%'
-          y2='92.4776332%'
-          id='linearGradient-6'
-        >
+        <linearGradient x1='36.9653573%' y1='15.5936471%' x2='49.5282324%' y2='92.4776332%' id='linearGradient-6'>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#E46342' offset='18%'></stop>
@@ -83,39 +47,21 @@ const Ruby = (): JSX.Element => {
           <stop stopColor='#A80D00' offset='99%'></stop>
           <stop stopColor='#A80D00' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='13.6086166%'
-          y1='58.3456855%'
-          x2='85.7636612%'
-          y2='-46.7167814%'
-          id='linearGradient-7'
-        >
+        <linearGradient x1='13.6086166%' y1='58.3456855%' x2='85.7636612%' y2='-46.7167814%' id='linearGradient-7'>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#C81F11' offset='54%'></stop>
           <stop stopColor='#BF0905' offset='99%'></stop>
           <stop stopColor='#BF0905' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='27.6242038%'
-          y1='21.1345847%'
-          x2='50.7445145%'
-          y2='79.0557818%'
-          id='linearGradient-8'
-        >
+        <linearGradient x1='27.6242038%' y1='21.1345847%' x2='50.7445145%' y2='79.0557818%' id='linearGradient-8'>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#FFFFFF' offset='0%'></stop>
           <stop stopColor='#DE4024' offset='31%'></stop>
           <stop stopColor='#BF190B' offset='99%'></stop>
           <stop stopColor='#BF190B' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='-20.6671297%'
-          y1='122.281897%'
-          x2='104.241521%'
-          y2='-6.34211007%'
-          id='linearGradient-9'
-        >
+        <linearGradient x1='-20.6671297%' y1='122.281897%' x2='104.241521%' y2='-6.34211007%' id='linearGradient-9'>
           <stop stopColor='#BD0012' offset='0%'></stop>
           <stop stopColor='#BD0012' offset='0%'></stop>
           <stop stopColor='#FFFFFF' offset='7%'></stop>
@@ -127,38 +73,20 @@ const Ruby = (): JSX.Element => {
           <stop stopColor='#E82609' offset='99%'></stop>
           <stop stopColor='#E82609' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='58.7919609%'
-          y1='65.2049657%'
-          x2='11.9636556%'
-          y2='50.1275621%'
-          id='linearGradient-10'
-        >
+        <linearGradient x1='58.7919609%' y1='65.2049657%' x2='11.9636556%' y2='50.1275621%' id='linearGradient-10'>
           <stop stopColor='#8C0C01' offset='0%'></stop>
           <stop stopColor='#8C0C01' offset='0%'></stop>
           <stop stopColor='#990C00' offset='54%'></stop>
           <stop stopColor='#A80D0E' offset='99%'></stop>
           <stop stopColor='#A80D0E' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='79.3194899%'
-          y1='62.7538068%'
-          x2='23.088288%'
-          y2='17.8876818%'
-          id='linearGradient-11'
-        >
+        <linearGradient x1='79.3194899%' y1='62.7538068%' x2='23.088288%' y2='17.8876818%' id='linearGradient-11'>
           <stop stopColor='#7E110B' offset='0%'></stop>
           <stop stopColor='#7E110B' offset='0%'></stop>
           <stop stopColor='#9E0C00' offset='99%'></stop>
           <stop stopColor='#9E0C00' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='92.8800277%'
-          y1='74.1223655%'
-          x2='59.8414537%'
-          y2='39.7039965%'
-          id='linearGradient-12'
-        >
+        <linearGradient x1='92.8800277%' y1='74.1223655%' x2='59.8414537%' y2='39.7039965%' id='linearGradient-12'>
           <stop stopColor='#79130D' offset='0%'></stop>
           <stop stopColor='#79130D' offset='0%'></stop>
           <stop stopColor='#9E120B' offset='99%'></stop>
@@ -177,39 +105,20 @@ const Ruby = (): JSX.Element => {
           <stop stopColor='#7E0E08' offset='99%'></stop>
           <stop stopColor='#7E0E08' offset='100%'></stop>
         </radialGradient>
-        <radialGradient
-          cx='13.5493795%'
-          cy='40.859922%'
-          fx='13.5493795%'
-          fy='40.859922%'
-          r='88.3861936%'
-          id='radialGradient-14'
-        >
+        <radialGradient cx='13.5493795%' cy='40.859922%' fx='13.5493795%' fy='40.859922%' r='88.3861936%' id='radialGradient-14'>
           <stop stopColor='#A30C00' offset='0%'></stop>
           <stop stopColor='#A30C00' offset='0%'></stop>
           <stop stopColor='#800E08' offset='99%'></stop>
           <stop stopColor='#800E08' offset='100%'></stop>
         </radialGradient>
-        <linearGradient
-          x1='56.5701955%'
-          y1='101.716594%'
-          x2='3.10480737%'
-          y2='11.9932603%'
-          id='linearGradient-15'
-        >
+        <linearGradient x1='56.5701955%' y1='101.716594%' x2='3.10480737%' y2='11.9932603%' id='linearGradient-15'>
           <stop stopColor='#8B2114' offset='0%'></stop>
           <stop stopColor='#8B2114' offset='0%'></stop>
           <stop stopColor='#9E100A' offset='43%'></stop>
           <stop stopColor='#B3100C' offset='99%'></stop>
           <stop stopColor='#B3100C' offset='100%'></stop>
         </linearGradient>
-        <linearGradient
-          x1='30.8698732%'
-          y1='35.5989756%'
-          x2='92.4707626%'
-          y2='100.693616%'
-          id='linearGradient-16'
-        >
+        <linearGradient x1='30.8698732%' y1='35.5989756%' x2='92.4707626%' y2='100.693616%' id='linearGradient-16'>
           <stop stopColor='#B31000' offset='0%'></stop>
           <stop stopColor='#B31000' offset='0%'></stop>
           <stop stopColor='#910F08' offset='44%'></stop>
@@ -246,10 +155,7 @@ const Ruby = (): JSX.Element => {
           d='M214.190955,0.990552764 L170.799598,24.9696482 L143.424322,0.668944724 L214.190955,0.990552764 Z'
           fill='url(#linearGradient-7)'
         ></path>
-        <path
-          d='M0,203.37206 L18.1772864,170.220704 L3.47336683,130.727236 L0,203.37206 Z'
-          fill='url(#linearGradient-8)'
-        ></path>
+        <path d='M0,203.37206 L18.1772864,170.220704 L3.47336683,130.727236 L0,203.37206 Z' fill='url(#linearGradient-8)'></path>
         <path
           d='M2.49567839,129.479397 L17.2896482,171.442814 L81.5726633,157.020623 L154.963618,88.8139899 L175.675176,23.0271357 L143.062834,0 L87.617608,20.7501508 C70.1491457,36.9977889 36.2516583,69.1457286 35.0295477,69.7503518 C33.8203015,70.3678392 12.6456281,110.388744 2.49567839,129.479397 L2.49567839,129.479397 Z'
           fill='#FFFFFF'

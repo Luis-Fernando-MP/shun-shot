@@ -18,17 +18,11 @@ const EditorFrameView = (): JSX.Element => {
   return (
     <div className='editorStyles-view editorFrameView animate-blurred-fade-in'>
       <section className='editorStyles-stickyTop editorFrameView-bottom'>
-        <button
-          className={`editorFrameView-action ${acl(view === 'PERSPECTIVE')}`}
-          onClick={() => handleView('PERSPECTIVE')}
-        >
+        <button className={`editorFrameView-action ${acl(view === 'PERSPECTIVE')}`} onClick={() => handleView('PERSPECTIVE')}>
           <Spline />
           Perspectivas
         </button>
-        <button
-          className={`editorFrameView-action ${acl(view === 'STACKS')}`}
-          onClick={() => handleView('STACKS')}
-        >
+        <button className={`editorFrameView-action ${acl(view === 'STACKS')}`} onClick={() => handleView('STACKS')}>
           <Layers />
           Stacks
         </button>

@@ -75,11 +75,7 @@ const UnsplashComponent = () => {
                 <CircleXIcon /> Limpiar
               </button>
               {page.current <= totalPage.current && (
-                <button
-                  onClick={loadMore}
-                  className='unsplashCM-action__more'
-                  disabled={status.current === 'loading'}
-                >
+                <button onClick={loadMore} className='unsplashCM-action__more' disabled={status.current === 'loading'}>
                   <CircleEllipsisIcon /> {status.current === 'loading' ? 'Cargando...' : 'Más...'}
                 </button>
               )}

@@ -6,7 +6,8 @@
     $highlight2: rgb(200 200 200 / 30%);
     $accent1: rgb(100 100 100 / 20%);
 
-    background-image: radial-gradient(
+    background-image:
+      radial-gradient(
         closest-side,
         transparent 0%,
         transparent 75%,
@@ -55,14 +56,10 @@
     $bg2: rgb(255 255 255 / 100%);
 
     background:
-      radial-gradient(circle at 50% 59%, $bg2 3%, $bg 4%, $bg 11%, transparent 12%, transparent)
-        25px 0,
-      radial-gradient(circle at 50% 41%, $bg 3%, $bg2 4%, $bg2 11%, transparent 12%, transparent)
-        25px 0,
-      radial-gradient(circle at 50% 59%, $bg2 3%, $bg 4%, $bg 11%, transparent 12%, transparent) 0
-        25px,
-      radial-gradient(circle at 50% 41%, $bg 3%, $bg2 4%, $bg2 11%, transparent 12%, transparent) 0
-        25px,
+      radial-gradient(circle at 50% 59%, $bg2 3%, $bg 4%, $bg 11%, transparent 12%, transparent) 25px 0,
+      radial-gradient(circle at 50% 41%, $bg 3%, $bg2 4%, $bg2 11%, transparent 12%, transparent) 25px 0,
+      radial-gradient(circle at 50% 59%, $bg2 3%, $bg 4%, $bg 11%, transparent 12%, transparent) 0 25px,
+      radial-gradient(circle at 50% 41%, $bg 3%, $bg2 4%, $bg2 11%, transparent 12%, transparent) 0 25px,
       radial-gradient(circle at 100% 50%, $bg2 16%, transparent 17%),
       radial-gradient(circle at 0% 50%, $bg 16%, transparent 17%),
       radial-gradient(circle at 100% 50%, $bg2 16%, transparent 17%) 25px 25px,
@@ -74,7 +71,8 @@
   &.pattern-10 {
     $bg: rgb(0 0 0 / 20%);
 
-    background: linear-gradient(45deg, $bg 20%, transparent 20%, transparent 80%, $bg 80%, $bg 100%),
+    background:
+      linear-gradient(45deg, $bg 20%, transparent 20%, transparent 80%, $bg 80%, $bg 100%),
       linear-gradient(135deg, $bg 20%, transparent 20%, transparent 80%, $bg 80%, $bg 100%),
       linear-gradient(45deg, $bg 20%, transparent 20%, transparent 80%, $bg 80%, $bg 100%),
       linear-gradient(135deg, $bg 20%, transparent 20%, transparent 80%, $bg 80%, $bg 100%),
@@ -88,20 +86,13 @@
   &.pattern-9 {
     $bg: rgb(0 0 0 / 20%);
 
-    background: radial-gradient(
-        circle at top left,
-        transparent 14%,
-        $bg 15%,
-        $bg 20%,
-        transparent 21%
-      ),
+    background:
+      radial-gradient(circle at top left, transparent 14%, $bg 15%, $bg 20%, transparent 21%),
       radial-gradient(circle at top right, transparent 14%, $bg 15%, $bg 20%, transparent 21%),
       radial-gradient(circle at bottom left, transparent 14%, $bg 15%, $bg 20%, transparent 21%),
       radial-gradient(circle at bottom right, transparent 14%, $bg 15%, $bg 20%, transparent 21%),
-      radial-gradient(circle at top, $bg 20%, transparent 21%),
-      radial-gradient(circle at bottom, $bg 20%, transparent 21%),
-      radial-gradient(circle at right, $bg 20%, transparent 21%),
-      radial-gradient(circle at left, $bg 20%, transparent 21%),
+      radial-gradient(circle at top, $bg 20%, transparent 21%), radial-gradient(circle at bottom, $bg 20%, transparent 21%),
+      radial-gradient(circle at right, $bg 20%, transparent 21%), radial-gradient(circle at left, $bg 20%, transparent 21%),
       radial-gradient(circle, $bg 20%, transparent 21%);
     background-size: 2em 2em;
   }
@@ -109,7 +100,8 @@
   &.pattern-8 {
     $bg: rgb(0 0 0 / 15%);
 
-    background: radial-gradient(
+    background:
+      radial-gradient(
         circle at 50% 100%,
         $bg 5%,
         #000 5% 10%,
@@ -161,8 +153,8 @@
   }
 
   &.pattern-7 {
-    background-image: radial-gradient(rgb(0 0 0 / 100%) 3px, transparent 1px),
-      radial-gradient(rgb(0 0 0 / 100%) 1px, transparent 1px);
+    background-image:
+      radial-gradient(rgb(0 0 0 / 100%) 3px, transparent 1px), radial-gradient(rgb(0 0 0 / 100%) 1px, transparent 1px);
     background-position:
       0 0,
       8px 8px;
@@ -187,7 +179,8 @@
   }
 
   &.pattern-4 {
-    background-image: linear-gradient(135deg, rgb(0 0 0 / 50%) 25%, transparent 25%),
+    background-image:
+      linear-gradient(135deg, rgb(0 0 0 / 50%) 25%, transparent 25%),
       linear-gradient(225deg, rgb(0 0 0 / 50%) 25%, transparent 25%),
       linear-gradient(45deg, rgb(0 0 0 / 50%) 25%, transparent 25%);
     background-position:
@@ -199,7 +192,8 @@
   }
 
   &.pattern-3 {
-    background-image: linear-gradient(135deg, rgb(0 0 0 / 40%) 25%, transparent 25%),
+    background-image:
+      linear-gradient(135deg, rgb(0 0 0 / 40%) 25%, transparent 25%),
       linear-gradient(225deg, rgb(0 0 0 / 40%) 25%, transparent 25%),
       linear-gradient(45deg, rgb(0 0 0 / 40%) 25%, transparent 25%),
       linear-gradient(315deg, rgb(0 0 0 / 40%) 25%, transparent 25%);
@@ -212,27 +206,12 @@
   }
 
   &.pattern-2 {
-    background-image: repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      rgb(0 0 0 / 30%) 20px
-    );
+    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, rgb(0 0 0 / 30%) 20px);
   }
 
   &.pattern-1 {
-    background: repeating-linear-gradient(
-        45deg,
-        rgb(0 0 0) 0,
-        rgb(0 0 0) 1px,
-        transparent 1px,
-        transparent 2px
-      ),
-      repeating-linear-gradient(
-        -45deg,
-        rgb(0 0 0) 0,
-        rgb(0 0 0) 1px,
-        transparent 1px,
-        transparent 2px
-      );
+    background:
+      repeating-linear-gradient(45deg, rgb(0 0 0) 0, rgb(0 0 0) 1px, transparent 1px, transparent 2px),
+      repeating-linear-gradient(-45deg, rgb(0 0 0) 0, rgb(0 0 0) 1px, transparent 1px, transparent 2px);
   }
 }

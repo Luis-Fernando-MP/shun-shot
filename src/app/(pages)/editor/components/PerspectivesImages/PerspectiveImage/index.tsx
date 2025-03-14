@@ -16,10 +16,7 @@ const PerspectiveImage = ({ transform }: IPerspectiveImage): JSX.Element => {
   }
 
   return (
-    <button
-      className={`perspectiveImage ${acl(imgPerspective.perspective === transform)}`}
-      onClick={handleClick}
-    >
+    <button className={`perspectiveImage ${acl(imgPerspective.perspective === transform)}`} onClick={handleClick}>
       <div
         className='perspectiveImage-styles'
         style={{
@@ -29,12 +26,7 @@ const PerspectiveImage = ({ transform }: IPerspectiveImage): JSX.Element => {
         }}
       >
         <div className='perspectiveImage-container'>
-          <img
-            src={default_image}
-            alt='perspective background'
-            className='perspectiveImage-card'
-            loading='lazy'
-          />
+          <img src={default_image} alt='perspective background' className='perspectiveImage-card' loading='lazy' />
         </div>
       </div>
     </button>

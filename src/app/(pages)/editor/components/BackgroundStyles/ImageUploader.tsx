@@ -6,11 +6,7 @@ interface ISimpleBackgroundImage {
   handleBackground: (background: string) => void
 }
 
-const ImageUploader = ({
-  handleBackground,
-  className = '',
-  id
-}: ISimpleBackgroundImage): JSX.Element => {
+const ImageUploader = ({ handleBackground, className = '', id }: ISimpleBackgroundImage): JSX.Element => {
   const [imagePreview, setImagePreview] = useState<string | null>(null)
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {

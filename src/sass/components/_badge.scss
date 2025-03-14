@@ -3,43 +3,37 @@
 
 $badges: (
   // Fase de pruebas iniciales y abierto a comentarios.
-  'beta':
-    (
+  'beta': (
       content: 'Beta',
       color: #a1ffc9,
       animation: bounce
     ),
   // Algo emocionante está por llegar muy pronto.
-  'soon':
-    (
+  'soon': (
       content: 'Soon',
       color: #bcfcff,
       animation: slide-in
     ),
   // Está en desarrollo activo y puede cambiar.
-  'dev':
-    (
+  'dev': (
       content: 'Dev',
       color: #e0b9fb,
       animation: pulse
     ),
   // Trabajo en curso; sujeto a cambios frecuentes.
-  'wip':
-    (
+  'wip': (
       content: 'WIP',
       color: #fff4b7,
       animation: shake
     ),
   // Un trabajo inicial que aún no está listo para producción.
-  'draft':
-    (
+  'draft': (
       content: 'Draft',
       color: #c9d1ff,
       animation: scale-up
     ),
   // Concepto o idea inicial; aún no implementado.
-  'idea':
-    (
+  'idea': (
       content: 'Idea',
       color: #ff9beb,
       animation: spin
@@ -57,14 +51,14 @@ $badges: (
     scale: 0.8;
 
     padding: 2px 8px;
+    border: 2px solid rgb(v.$bg3);
+    border-radius: 5px;
 
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
 
     background-color: rgb(v.$bg1);
-    border: 2px solid rgb(v.$bg3);
-    border-radius: 5px;
     box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
   }
 

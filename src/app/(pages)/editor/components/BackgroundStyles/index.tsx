@@ -1,11 +1,6 @@
 'use client'
 
-import {
-  circleGradients,
-  darkGradients,
-  gradientsWithBlendMode,
-  onlyGradients
-} from '@/shared/backgroundStyle'
+import { circleGradients, darkGradients, gradientsWithBlendMode, onlyGradients } from '@/shared/backgroundStyle'
 import UnsplashComponent from '@/shared/components/UnsplashComponent'
 import type { JSX } from 'react'
 

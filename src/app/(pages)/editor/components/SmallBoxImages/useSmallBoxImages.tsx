@@ -30,9 +30,7 @@ const useSmallBoxImages = ({ generatorImages, maxValue, minValue }: TProps) => {
   }, [generatorImages, minValue])
 
   const handleToggleAll = useCallback(() => {
-    setBoxImages(prev =>
-      prev.length === maxValue ? generatorImages(0, minValue) : generatorImages(0, maxValue)
-    )
+    setBoxImages(prev => (prev.length === maxValue ? generatorImages(0, minValue) : generatorImages(0, maxValue)))
   }, [generatorImages, maxValue, minValue])
 
   return {

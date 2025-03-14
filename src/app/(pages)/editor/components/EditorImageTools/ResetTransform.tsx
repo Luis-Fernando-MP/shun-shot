@@ -67,9 +67,7 @@ const ResetTransform = (): JSX.Element => {
     noi.setOpacity(0)
 
     bg.setBlendMode('normal')
-    bg.setBackground(
-      'linear-gradient(135deg, rgb(215, 235, 235), rgb(244, 175, 233), rgb(114, 123, 251))'
-    )
+    bg.setBackground('linear-gradient(135deg, rgb(215, 235, 235), rgb(244, 175, 233), rgb(114, 123, 251))')
 
     filters.setBlur(0)
     filters.setBrightness(100)

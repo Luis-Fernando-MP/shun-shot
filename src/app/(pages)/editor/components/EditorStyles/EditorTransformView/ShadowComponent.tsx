@@ -26,14 +26,7 @@ const ShadowComponent = (): JSX.Element => {
       <RangeSlider label='Opacity' onChange={v => setOpacity(v)} range={opacity} max={50} />
       <div className='editorStyles-section__items'>
         {Object.entries(blurStyles).map(border => {
-          return (
-            <BlurCard
-              key={border[0]}
-              active={border[0] === keyBlur}
-              style={border}
-              handleClick={handleBlur}
-            />
-          )
+          return <BlurCard key={border[0]} active={border[0] === keyBlur} style={border} handleClick={handleBlur} />
         })}
       </div>
       <CircleShadowXYS />

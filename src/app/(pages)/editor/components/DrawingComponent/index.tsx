@@ -75,14 +75,8 @@ const DrawingComponent = (): JSX.Element => {
           filter: `opacity(${pattern.opacity}%) blur(${pattern.blur / 10}px)`
         }}
       />
-      <span
-        className='drawing-noise noise-7'
-        style={{ filter: `opacity(${noise.opacity}%) blur(${noise.blur}px)` }}
-      />
-      <span
-        className='drawing-overlay'
-        style={{ backgroundImage: `url(${overlay.image})`, opacity: overlay.opacity }}
-      />
+      <span className='drawing-noise noise-7' style={{ filter: `opacity(${noise.opacity}%) blur(${noise.blur}px)` }} />
+      <span className='drawing-overlay' style={{ backgroundImage: `url(${overlay.image})`, opacity: overlay.opacity }} />
     </>
   )
 }

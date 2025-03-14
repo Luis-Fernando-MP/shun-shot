@@ -19,10 +19,7 @@ const EditorHistoryButtons = (): JSX.Element => {
         <Undo2Icon />
         <p className='tooltip top'>Deshacer</p>
       </button>
-      <button
-        className='editorImageTools-action btn-tooltip border-right badge dev'
-        onClick={handleRedo}
-      >
+      <button className='editorImageTools-action btn-tooltip border-right badge dev' onClick={handleRedo}>
         <Redo2Icon />
         <p className='tooltip top'>Rehacer</p>
       </button>

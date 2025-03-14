@@ -1,6 +1,4 @@
-import useBackgroundImage, {
-  styleSetBackground
-} from '@/app/(pages)/editor/store/backgroundImage.store'
+import useBackgroundImage, { styleSetBackground } from '@/app/(pages)/editor/store/backgroundImage.store'
 import { type JSX, memo } from 'react'
 
 import { PhotosResult } from './unsplash.type'

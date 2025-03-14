@@ -9,9 +9,7 @@ interface IDrawingImage extends HtmlHTMLAttributes<HTMLImageElement> {
 const DrawingImage = ({ ...props }: IDrawingImage): JSX.Element => {
   return (
     <div className='drawing-image__container'>
-      <CustomDropzone
-        ImagePreview={src => <img src={src} alt='canvas editor style' {...props} />}
-      />
+      <CustomDropzone ImagePreview={src => <img src={src} alt='canvas editor style' {...props} />} />
     </div>
   )
 }

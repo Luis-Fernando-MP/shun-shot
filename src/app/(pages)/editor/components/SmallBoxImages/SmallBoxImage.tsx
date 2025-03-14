@@ -13,11 +13,7 @@ const SmallBoxImage = ({ image, setImage, isActive, ...props }: ISmallBoxImage):
   }
 
   return (
-    <button
-      className={`smallBoxImages-item ${acl(isActive)} animate-fade-in-up`}
-      onClick={handleClick}
-      {...props}
-    >
+    <button className={`smallBoxImages-item ${acl(isActive)} animate-fade-in-up`} onClick={handleClick} {...props}>
       <img className='smallBoxImages-item__image' src={image} alt='overlay' loading='lazy' />
     </button>
   )

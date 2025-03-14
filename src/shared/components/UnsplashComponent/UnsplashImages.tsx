@@ -31,11 +31,7 @@ const UnsplashImages = ({ images, setQuery }: IUnsplashImages): JSX.Element => {
           {Object.entries(recommendations).map(rec => {
             const [key, value] = rec
             return (
-              <button
-                key={key}
-                className='unsplashCM-recommended__option'
-                onClick={() => setQuery(value)}
-              >
+              <button key={key} className='unsplashCM-recommended__option' onClick={() => setQuery(value)}>
                 {key}
               </button>
             )

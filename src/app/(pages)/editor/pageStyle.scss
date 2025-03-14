@@ -11,11 +11,11 @@
   width: 940px;
   height: 700px;
   padding: v.$padding;
+  border-radius: v.$radius;
 
   perspective: v.$per;
   perspective-origin: 0% 0%;
   background-color: black;
-  border-radius: v.$radius;
 
   @include d.flex($ali: center);
 }

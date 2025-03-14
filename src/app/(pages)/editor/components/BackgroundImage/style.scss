@@ -20,7 +20,6 @@
 
     width: 70px;
     height: 50px;
-
     border: 2px solid transparent;
     border-radius: v.$radius;
 
@@ -70,8 +69,8 @@
     }
 
     &.active {
-      background-image: v.$gr1;
       border-color: rgb(v.$fn3);
+      background-image: v.$gr1;
 
       .backgroundImage-item__preview {
         top: 0;

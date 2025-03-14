@@ -49,9 +49,7 @@ const DownloadTransformImage = (): JSX.Element => {
   }
 
   return (
-    <article
-      className={`downloadTI editorStyles-stickyBottom ${acl(downloadStatus === 'loading', 'loading')}`}
-    >
+    <article className={`downloadTI editorStyles-stickyBottom ${acl(downloadStatus === 'loading', 'loading')}`}>
       <button className='downloadTI-extend' onClick={handleShow}>
         <EllipsisIcon />
       </button>
@@ -59,22 +57,13 @@ const DownloadTransformImage = (): JSX.Element => {
         <>
           <h3 className='editorStyles-title'>Formato de Imagen</h3>
           <section className='downloadTI-section'>
-            <button
-              className={`downloadTI-item ${acl(format === 'PNG')}`}
-              onClick={() => setFormat('PNG')}
-            >
+            <button className={`downloadTI-item ${acl(format === 'PNG')}`} onClick={() => setFormat('PNG')}>
               PNG
             </button>
-            <button
-              className={`downloadTI-item ${acl(format === 'JPEG')}`}
-              onClick={() => setFormat('JPEG')}
-            >
+            <button className={`downloadTI-item ${acl(format === 'JPEG')}`} onClick={() => setFormat('JPEG')}>
               JPEG
             </button>
-            <button
-              className={`downloadTI-item ${acl(format === 'PDF')}`}
-              onClick={() => setFormat('PDF')}
-            >
+            <button className={`downloadTI-item ${acl(format === 'PDF')}`} onClick={() => setFormat('PDF')}>
               PDF
             </button>
           </section>
@@ -85,11 +74,7 @@ const DownloadTransformImage = (): JSX.Element => {
               const [name, q] = obj
               const key = `${name}-quality-index`
               return (
-                <button
-                  key={key}
-                  onClick={() => setQuality(q)}
-                  className={`downloadTI-item ${acl(quality === q)}`}
-                >
+                <button key={key} onClick={() => setQuality(q)} className={`downloadTI-item ${acl(quality === q)}`}>
                   <h2>
                     {q}
                     <b>x</b>

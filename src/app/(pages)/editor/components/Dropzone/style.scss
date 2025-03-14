@@ -41,12 +41,12 @@
     max-width: 800px;
     height: 500px;
     max-height: 600px;
+    border-radius: v.$radius;
 
     line-height: normal;
     text-align: center;
 
     background-color: rgb(v.$bg1);
-    border-radius: v.$radius;
 
     @include d.flex($ali: center, $gap: v.$padding);
 
@@ -65,9 +65,9 @@
 
     &__open {
       padding: v.$padding * 0.5 v.$padding;
-      background-color: rgb(v.$bg2);
       border: 2px solid rgb(v.$bg3);
       border-radius: 5px;
+      background-color: rgb(v.$bg2);
 
       &:hover {
         scale: 1.45;

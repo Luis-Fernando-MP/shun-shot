@@ -12,12 +12,7 @@ const PatternItem = ({ className, setPattern, isActive }: IPatternItem): JSX.Ele
     setPattern(className)
   }
 
-  return (
-    <button
-      className={`patternsImage-item ${acl(isActive)} animate-fade-in-up ${className}`}
-      onClick={handleClick}
-    />
-  )
+  return <button className={`patternsImage-item ${acl(isActive)} animate-fade-in-up ${className}`} onClick={handleClick} />
 }
 
 export default memo(PatternItem)

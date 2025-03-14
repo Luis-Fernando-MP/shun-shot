@@ -16,11 +16,11 @@
 
     width: auto;
     padding: v.$padding;
+    border-radius: v.$radius;
 
     font-weight: 600;
 
     background-color: rgb(v.$bg3);
-    border-radius: v.$radius;
 
     @include d.flex($dir: row, $ali: center);
 

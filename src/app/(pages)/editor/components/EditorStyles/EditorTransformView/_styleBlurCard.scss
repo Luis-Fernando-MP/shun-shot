@@ -11,7 +11,6 @@
   width: 65px;
   min-height: 90px;
   padding: v.$padding;
-
   border-radius: v.$radius;
 
   transition: all 0.2s ease-in-out;
@@ -41,11 +40,11 @@
 
       width: 40px;
       height: 50px;
-
-      background-color: rgb(v.$bg3);
       border: 1px dashed rgb(v.$fn3);
       border-radius: 8px 0 0 8px;
       border-radius: v.$radius * 0.5;
+
+      background-color: rgb(v.$bg3);
 
       transition: all 0.3s ease-in-out;
     }

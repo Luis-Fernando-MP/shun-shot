@@ -21,17 +21,11 @@ const EditorPageImageTools = (): JSX.Element => {
         <Move3DIcon />
         <p className='tooltip top'>Mover y Moldear</p>
       </button>
-      <button
-        className={`editorImageTools-action btn-tooltip ${acl(view === 'BRUSH')}`}
-        onClick={() => handleView('BRUSH')}
-      >
+      <button className={`editorImageTools-action btn-tooltip ${acl(view === 'BRUSH')}`} onClick={() => handleView('BRUSH')}>
         <Paintbrush2Icon />
         <p className='tooltip top'>Diseño de Fondo</p>
       </button>
-      <button
-        className={`editorImageTools-action btn-tooltip ${acl(view === 'FRAME')}`}
-        onClick={() => handleView('FRAME')}
-      >
+      <button className={`editorImageTools-action btn-tooltip ${acl(view === 'FRAME')}`} onClick={() => handleView('FRAME')}>
         <FrameIcon />
         <p className='tooltip top'>Transformaciones y Capas</p>
       </button>

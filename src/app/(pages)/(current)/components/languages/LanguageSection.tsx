@@ -14,11 +14,7 @@ interface ILanguageSection {
   ]
 }
 
-const LanguageSection = ({
-  languageCategory,
-  changeLang,
-  currentLanguage
-}: ILanguageSection): JSX.Element => {
+const LanguageSection = ({ languageCategory, changeLang, currentLanguage }: ILanguageSection): JSX.Element => {
   const [category, languages] = languageCategory
 
   return (

@@ -11,8 +11,7 @@ type TUseBackgroundImage = {
 const useBackgroundImage = create(
   persist<TUseBackgroundImage>(
     set => ({
-      background:
-        'linear-gradient(135deg, rgb(215, 235, 235), rgb(244, 175, 233), rgb(114, 123, 251))',
+      background: 'linear-gradient(135deg, rgb(215, 235, 235), rgb(244, 175, 233), rgb(114, 123, 251))',
       blendMode: 'normal',
       setBackground: background => set({ background }),
       setBlendMode: blendMode => set({ blendMode })
@@ -28,8 +27,7 @@ export function styleSetBackground(url: string) {
 
 export const getBackgroundStyle = (background: string): { [key: string]: string } => {
   if (background.includes('url')) return { background }
-  if (background.includes('gradient'))
-    return { backgroundImage: background, backgroundColor: '#000' }
+  if (background.includes('gradient')) return { backgroundImage: background, backgroundColor: '#000' }
 
   return { backgroundColor: background }
 }

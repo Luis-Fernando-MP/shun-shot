@@ -25,10 +25,10 @@
     width: min-content;
     height: min-content;
     padding: v.$padding;
-
-    background-color: rgb(v.$bg1);
     border: 2px solid transparent;
     border-radius: v.$radius;
+
+    background-color: rgb(v.$bg1);
 
     @include d.flex($ali: center);
 

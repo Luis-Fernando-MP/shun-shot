@@ -5,7 +5,6 @@ import type { Metadata } from 'next'
 import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
-import Firefly from './components/Firefly'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import './globals.css'
@@ -27,14 +26,11 @@ export const metadata: Metadata = {
 const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
   return (
     <html lang='es'>
-      <body
-        className={`${titleFont.variable} ${paragraphFont.variable} ${exclamationFont.variable} ${monacoClassFont}`}
-      >
+      <body className={`${titleFont.variable} ${paragraphFont.variable} ${exclamationFont.variable} ${monacoClassFont}`}>
         <Providers>
           <Header className='root-header' />
           {children}
           <Footer className='root-footer' />
-          <Firefly />
         </Providers>
         <Toaster
           position='top-center'

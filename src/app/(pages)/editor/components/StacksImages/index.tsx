@@ -14,13 +14,7 @@ const StacksImages = (): JSX.Element => {
   return (
     <div className='stacksImages animate-blurred-fade-in'>
       <BoldText text='Estilo de/Stack' />
-      <RangeSlider
-        className='stacksImages-range'
-        label='Stacks'
-        onChange={v => setAmount(v)}
-        range={amount}
-        max={8}
-      />
+      <RangeSlider className='stacksImages-range' label='Stacks' onChange={v => setAmount(v)} range={amount} max={8} />
       <div className='stacksImages-items'>
         {Object.entries(stacksStyles).map(stack => {
           return (

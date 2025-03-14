@@ -4,14 +4,13 @@
 .indexImageAction {
   width: 100%;
   padding: v.$padding;
-
-  text-align: center;
-
   border: 2px dashed rgb(v.$bg3);
   border-radius: v.$radius;
 
+  text-align: center;
+
   &.overlapping {
-    color: v.$focus;
     border-color: v.$focus;
+    color: v.$focus;
   }
 }

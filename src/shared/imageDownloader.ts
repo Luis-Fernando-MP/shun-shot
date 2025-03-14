@@ -32,11 +32,7 @@ export const getPngUrl = async (element: HTMLElement, scale: number = scaleMap.h
   }
 }
 
-export const downloadToJpeg = async (
-  fileName: string,
-  element: HTMLElement,
-  scale: number = scaleMap.high
-) => {
+export const downloadToJpeg = async (fileName: string, element: HTMLElement, scale: number = scaleMap.high) => {
   const id = toast.loading('Descargando...')
 
   try {
@@ -64,11 +60,7 @@ export const downloadToJpeg = async (
   }
 }
 
-export const downloadToPng = async (
-  fileName: string,
-  element: HTMLElement,
-  scale: number = scaleMap.high
-) => {
+export const downloadToPng = async (fileName: string, element: HTMLElement, scale: number = scaleMap.high) => {
   const id = toast.loading('Descargando...')
   try {
     const pngDataUrl = await domToImageMore.toPng(element, {
@@ -127,11 +119,7 @@ export const copyToPng = async (element: HTMLElement, scale: number = scaleMap.h
   }
 }
 
-export const downloadPDF = async (
-  fileName: string,
-  element: HTMLElement,
-  scale: number = scaleMap.high
-) => {
+export const downloadPDF = async (fileName: string, element: HTMLElement, scale: number = scaleMap.high) => {
   const id = toast.loading('Preparando...')
   try {
     const pngDataUrl = await domToImageMore.toPng(element, {

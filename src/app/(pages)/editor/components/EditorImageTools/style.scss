@@ -13,8 +13,8 @@
     @include d.flex($dir: row, $ali: center, $gap: v.$padding);
 
     padding: v.$padding;
-    background-color: rgb(v.$bg2);
     border-radius: v.$radius;
+    background-color: rgb(v.$bg2);
 
     &.center {
       justify-content: center;
@@ -28,8 +28,8 @@
 
   &-action {
     &.active {
-      background-color: rgb(v.$tn1);
       border-radius: v.$radius;
+      background-color: rgb(v.$tn1);
 
       svg {
         stroke: rgb(v.$fn3);
@@ -53,13 +53,13 @@
     @include d.flex($dir: row, $ali: center, $gap: 10px);
 
     padding: v.$padding * 0.5 v.$padding;
+    border-radius: v.$radius;
 
     font-size: 1rem;
     font-weight: 500;
     color: rgb(v.$fn3);
 
     background-image: v.$gr1;
-    border-radius: v.$radius;
 
     svg {
       stroke: rgb(v.$fn3);

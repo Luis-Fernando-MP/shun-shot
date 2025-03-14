@@ -29,8 +29,8 @@
   &-styles {
     grid-area: styles;
     padding: v.$padding;
-    background-color: rgb(v.$bg2);
     border-radius: v.$radius;
+    background-color: rgb(v.$bg2);
   }
 
   &-main {
@@ -48,7 +48,7 @@
   &-background {
     grid-area: bg;
     padding: v.$padding;
-    background-color: rgb(v.$bg2);
     border-radius: v.$radius;
+    background-color: rgb(v.$bg2);
   }
 }

@@ -14,13 +14,7 @@ interface ISmallBoxImages {
   setImage: (image: string) => void
 }
 
-const SmallBoxImages = ({
-  image,
-  setImage,
-  generatorImages,
-  minValue,
-  maxValue
-}: ISmallBoxImages): JSX.Element => {
+const SmallBoxImages = ({ image, setImage, generatorImages, minValue, maxValue }: ISmallBoxImages): JSX.Element => {
   const { resetInRange, boxImages, handleAdd, handleReset, handleToggleAll } = useSmallBoxImages({
     generatorImages,
     minValue,
@@ -29,10 +23,7 @@ const SmallBoxImages = ({
 
   return (
     <section className='smallBoxImages-items'>
-      <button
-        className={`smallBoxImages-action none ${acl(image === '')}`}
-        onClick={() => setImage('')}
-      >
+      <button className={`smallBoxImages-action none ${acl(image === '')}`} onClick={() => setImage('')}>
         <CircleSlash2Icon />
       </button>
 

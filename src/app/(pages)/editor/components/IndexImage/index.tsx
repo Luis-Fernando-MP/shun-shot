@@ -18,10 +18,7 @@ const IndexImageComponent = ({ indexImage }: IIndexImageComponent): JSX.Element 
   }
 
   return (
-    <button
-      className={`indexImageAction ${acl(isOverlappingIndex, 'overlapping')}`}
-      onClick={handleClick}
-    >
+    <button className={`indexImageAction ${acl(isOverlappingIndex, 'overlapping')}`} onClick={handleClick}>
       {isOverlappingIndex ? 'subyacer' : 'Superponer'} Imagen
     </button>
   )

@@ -16,8 +16,8 @@
 
   &-header {
     padding: v.$padding;
-    background-color: rgb(v.$bg2);
     border: 2px dashed rgb(v.$bg3);
+    background-color: rgb(v.$bg2);
 
     svg {
       width: 25px;
@@ -36,9 +36,9 @@
     height: auto;
     max-height: 450px;
     padding: v.$padding 0;
+    border-radius: v.$radius;
 
     background-color: rgb(v.$bg3);
-    border-radius: v.$radius;
 
     transition: all 0.5s ease;
 
@@ -48,8 +48,8 @@
   &-search {
     top: 0;
     width: 90%;
-    background-color: rgb(v.$bg3);
     border: 2px solid transparent;
+    background-color: rgb(v.$bg3);
 
     svg {
       stroke: rgb(v.$fn2);
@@ -101,13 +101,12 @@
 
     &__option {
       padding: 8px 12px;
+      border: 2px dashed rgb(v.$bg1);
+      border-radius: 10px;
 
       font-size: 0.8rem;
       font-weight: 500;
       color: rgb(v.$fn1);
-
-      border: 2px dashed rgb(v.$bg1);
-      border-radius: 10px;
     }
   }
 
@@ -124,11 +123,11 @@
       gap: v.$padding * 0.5;
 
       padding: 8px 13px;
+      border-radius: 5px;
 
       color: rgb(v.$fn1);
 
       background-color: rgb(v.$bg1);
-      border-radius: 5px;
     }
   }
 
@@ -157,8 +156,8 @@
     img {
       max-width: 90px;
       max-height: 80px;
-      object-fit: contain;
       border-radius: v.$radius;
+      object-fit: contain;
     }
   }
 }

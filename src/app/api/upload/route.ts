@@ -11,14 +11,11 @@ export async function POST(req: Request) {
     if (!matches) {
       throw new Error('Invalid Base64 string')
     }
-    const uploadResponse = await cloudinary.uploader.upload(
-      `data:${matches[1]};base64,${matches[2]}`,
-      {
-        upload_preset: cloudPreset,
-        folder: cloudPreset,
-        colors: true
-      }
-    )
+    const uploadResponse = await cloudinary.uploader.upload(`data:${matches[1]};base64,${matches[2]}`, {
+      upload_preset: cloudPreset,
+      folder: cloudPreset,
+      colors: true
+    })
     setTimeout(
       async () => {
         try {
@@ -32,9 +29,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ image: uploadResponse.secure_url, colors: uploadResponse.colors })
   } catch (error: any) {
     console.error('error', error?.message)
-    return NextResponse.json(
-      { message: error?.message ?? 'internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ message: error?.message ?? 'internal server error' }, { status: 500 })
   }
 }

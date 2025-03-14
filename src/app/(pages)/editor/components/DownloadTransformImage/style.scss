@@ -10,13 +10,13 @@
     width: 100%;
     height: fit-content;
     padding: v.$padding 0;
-
-    @include d.flex($ali: center);
+    border-radius: v.$radius * 0.5;
 
     font-size: 2rem;
 
     background-color: rgb(v.$bg3);
-    border-radius: v.$radius * 0.5;
+
+    @include d.flex($ali: center);
   }
 
   &-section {
@@ -26,9 +26,9 @@
 
     width: 100%;
     padding: v.$padding;
+    border-radius: v.$radius;
 
     background-color: rgb(v.$bg1);
-    border-radius: v.$radius;
   }
 
   &-item {
@@ -36,10 +36,9 @@
 
     width: auto;
     padding: v.$padding * 0.5 v.$padding;
+    border-radius: v.$radius * 0.5;
 
     font-weight: 600;
-
-    border-radius: v.$radius * 0.5;
 
     &.active {
       color: v.$fn1;
@@ -61,8 +60,8 @@
   &-output {
     width: 100%;
     padding: v.$padding;
-    background-color: rgb(v.$bg1);
     border-radius: v.$radius;
+    background-color: rgb(v.$bg1);
   }
 
   &-action {
@@ -83,7 +82,6 @@
     &__copy {
       width: fit-content;
       height: 100%;
-
       border-left: 2px solid rgb(v.$bg3);
       border-top-right-radius: v.$radius;
       border-bottom-right-radius: v.$radius;

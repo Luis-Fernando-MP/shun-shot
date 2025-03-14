@@ -13,14 +13,7 @@ interface IRangeSlider {
   onChange: (value: number) => void
 }
 
-const RangeSlider = ({
-  className = '',
-  label,
-  range,
-  onChange,
-  min = 0,
-  max = 100
-}: IRangeSlider): JSX.Element => {
+const RangeSlider = ({ className = '', label, range, onChange, min = 0, max = 100 }: IRangeSlider): JSX.Element => {
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const value = Number(target.value)
     onChange(value)
@@ -28,14 +21,7 @@ const RangeSlider = ({
 
   return (
     <section className={`range ${className}`}>
-      <input
-        type='range'
-        className='range-level'
-        min={String(min)}
-        max={String(max)}
-        value={range}
-        onChange={handleChange}
-      />
+      <input type='range' className='range-level' min={String(min)} max={String(max)} value={range} onChange={handleChange} />
       <div className='range-info'>
         <h5>{label}</h5>
         <p>{range}</p>

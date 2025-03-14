@@ -121,8 +121,7 @@ export const darkGradients = [
     gradient: 'linear-gradient(60deg, rgb(19, 30, 43) 0%, rgb(0, 0, 0) 50%, rgb(28, 4, 13) 100%)'
   },
   {
-    gradient:
-      'radial-gradient(140% 107% at 50% 20%, rgb(0, 0, 0) 30%, rgb(8, 19, 34) 60%, rgb(19, 3, 12) 80%)'
+    gradient: 'radial-gradient(140% 107% at 50% 20%, rgb(0, 0, 0) 30%, rgb(8, 19, 34) 60%, rgb(19, 3, 12) 80%)'
   },
   {
     gradient:
@@ -165,8 +164,7 @@ export const onlyGradients = [
     gradient: 'linear-gradient(rgb(33, 150, 243), rgb(227, 242, 253) 50%, rgb(33, 150, 243))'
   },
   {
-    gradient:
-      'radial-gradient(circle at 30% 110%, #ffdb8b 0%,#ee653d 25%,#d42e81 50%,#a237b6 75%,#3e5fbc 100%)'
+    gradient: 'radial-gradient(circle at 30% 110%, #ffdb8b 0%,#ee653d 25%,#d42e81 50%,#a237b6 75%,#3e5fbc 100%)'
   },
   {
     gradient:
@@ -186,12 +184,10 @@ export const onlyGradients = [
     blendMode: ''
   },
   {
-    gradient:
-      'linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)'
+    gradient: 'linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)'
   },
   {
-    gradient:
-      'linear-gradient(140deg, rgb(255, 144, 108) 12.8%, rgb(255, 33, 121) 43.52%, rgb(146, 83, 255) 84.34%)'
+    gradient: 'linear-gradient(140deg, rgb(255, 144, 108) 12.8%, rgb(255, 33, 121) 43.52%, rgb(146, 83, 255) 84.34%)'
   },
   {
     gradient:
@@ -220,8 +216,7 @@ export const onlyGradients = [
     blendMode: 'screen, color-dodge, overlay, difference, normal'
   },
   {
-    gradient:
-      'radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% )'
+    gradient: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% )'
   },
   {
     gradient: `
@@ -258,8 +253,7 @@ export const onlyGradients = [
     blendMode: ''
   },
   {
-    gradient:
-      'linear-gradient(to right bottom, rgb(247, 187, 201), rgb(219, 246, 254), rgb(147, 197, 253))'
+    gradient: 'linear-gradient(to right bottom, rgb(247, 187, 201), rgb(219, 246, 254), rgb(147, 197, 253))'
   },
   {
     gradient:
@@ -270,8 +264,7 @@ export const onlyGradients = [
       'radial-gradient(circle at 10% 0%, rgb(255, 190, 118), rgba(255, 140, 224, 0.87), rgb(196, 112, 255), rgb(11, 0, 113))'
   },
   {
-    gradient:
-      'radial-gradient(circle at center bottom, rgb(253, 230, 138), rgb(124, 58, 237), rgb(12, 74, 110))'
+    gradient: 'radial-gradient(circle at center bottom, rgb(253, 230, 138), rgb(124, 58, 237), rgb(12, 74, 110))'
   },
   {
     gradient:
@@ -282,8 +275,7 @@ export const onlyGradients = [
       'linear-gradient(180deg, #1C5152 0%, #165C5F 4.13%, #047573 13.26%, #017D79 19.96%, #169182 28.34%, #479D82 35.49%, #87A471 45.7%, #C5A052 59.55%, #D79944 68.69%, #E09549 76.3%, #DC924B 84.52%, #B5B9B8 100%)'
   },
   {
-    gradient:
-      'linear-gradient(rgb(255, 241, 165) 1.9%, rgb(200, 125, 76) 49.7%, rgb(83, 54, 54) 100.5%)'
+    gradient: 'linear-gradient(rgb(255, 241, 165) 1.9%, rgb(200, 125, 76) 49.7%, rgb(83, 54, 54) 100.5%)'
   },
   {
     gradient: 'linear-gradient(rgb(76, 160, 174),rgb(44, 62, 80))'
@@ -293,12 +285,10 @@ export const onlyGradients = [
       'linear-gradient(180deg, rgb(241, 255, 186) 0%, rgb(187, 185, 175) 24%, rgb(181, 174, 159) 30%, rgb(231, 98, 125) 46%, rgb(184, 35, 90) 59%, rgb(128, 19, 87) 71%, rgb(61, 22, 53) 84%, rgb(28, 26, 39) 100%)'
   },
   {
-    gradient:
-      'linear-gradient(to top, #040308, #AD4A28, #DD723C, #FC7001, #DCB697, #9BA5AE, #3E5879, #020B1A)'
+    gradient: 'linear-gradient(to top, #040308, #AD4A28, #DD723C, #FC7001, #DCB697, #9BA5AE, #3E5879, #020B1A)'
   },
   {
-    gradient:
-      'linear-gradient(0deg, rgb(24, 84, 148), rgb(209, 122, 124), rgb(191, 165, 111), rgb(255, 255, 255))'
+    gradient: 'linear-gradient(0deg, rgb(24, 84, 148), rgb(209, 122, 124), rgb(191, 165, 111), rgb(255, 255, 255))'
   },
   {
     gradient:

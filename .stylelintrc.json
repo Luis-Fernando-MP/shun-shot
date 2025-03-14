@@ -16,8 +16,8 @@
     "scss/dollar-variable-pattern": null,
     "custom-property-pattern": null,
     "declaration-block-no-redundant-longhand-properties": null,
-    "selector-class-pattern": null,
     "scss/no-global-function-names": null,
-    "no-descending-specificity": null
+    "declaration-property-value-no-unknown": null,
+    "selector-class-pattern": null
   }
 }

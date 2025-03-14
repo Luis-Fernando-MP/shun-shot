@@ -57,37 +57,22 @@ const DownloadTools = (): JSX.Element => {
 
   return (
     <div className={`tools-section__downloader ${acl(downloadStatus === 'loading', 'loading')}`}>
-      <button
-        className='tools-action btn-tooltip border-left'
-        onClick={handleCopyToClip}
-        disabled={downloadStatus === 'loading'}
-      >
+      <button className='tools-action btn-tooltip border-left' onClick={handleCopyToClip} disabled={downloadStatus === 'loading'}>
         <ClipboardCopyIcon />
         <p className='tooltip top'>Copiar imagen</p>
       </button>
 
-      <button
-        className='tools-action btn-tooltip'
-        onClick={handleDownloadPDF}
-        disabled={downloadStatus === 'loading'}
-      >
+      <button className='tools-action btn-tooltip' onClick={handleDownloadPDF} disabled={downloadStatus === 'loading'}>
         <FileCode2Icon />
         <p className='tooltip top'>Descargar en PDF</p>
       </button>
 
-      <button
-        className='tools-action btn-tooltip'
-        onClick={handleDownload}
-        disabled={downloadStatus === 'loading'}
-      >
+      <button className='tools-action btn-tooltip' onClick={handleDownload} disabled={downloadStatus === 'loading'}>
         <CloudDownloadIcon />
         <p className='tooltip top'>Descargar en PNG</p>
       </button>
 
-      <button
-        className='tools-action btn-tooltip border-left badge soon'
-        disabled={downloadStatus === 'loading'}
-      >
+      <button className='tools-action btn-tooltip border-left badge soon' disabled={downloadStatus === 'loading'}>
         <RotateCcwIcon />
         <p className='tooltip top'>Restaurar</p>
       </button>

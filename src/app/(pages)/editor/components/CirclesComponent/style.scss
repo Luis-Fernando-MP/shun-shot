@@ -4,11 +4,10 @@
 .circleStyle {
   position: relative;
   padding: v.$padding * 2;
+  border-radius: v.$radius;
   background-color: rgb(v.$bg1);
 
   @include d.flex($ali: center);
-
-  border-radius: v.$radius;
 
   &-container {
     cursor: pointer;
@@ -44,9 +43,9 @@
 
       width: 10px;
       height: 10px;
+      border-radius: 50%;
 
       background-color: rgba(v.$tn1, 0.5);
-      border-radius: 50%;
     }
   }
 
@@ -55,7 +54,6 @@
 
     width: 50px;
     height: 50px;
-
     border: 2px solid rgba(v.$bg2, 0.8);
 
     transition: color ease-in-out 0.2s;

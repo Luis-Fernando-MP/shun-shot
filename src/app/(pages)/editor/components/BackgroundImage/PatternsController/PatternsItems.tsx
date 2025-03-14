@@ -25,20 +25,12 @@ const PatternsItems = ({ patternClass, setPattern }: IPatternsItems): JSX.Elemen
 
   return (
     <section className='patternsImage-items'>
-      <button
-        className={`patternsImage-action ${acl(patternClass === '')}`}
-        onClick={handleResetPatter}
-      >
+      <button className={`patternsImage-action ${acl(patternClass === '')}`} onClick={handleResetPatter}>
         <CircleSlash2Icon />
       </button>
 
       {patternsList.map(className => (
-        <PatternItem
-          key={className}
-          isActive={patternClass === className}
-          className={className}
-          setPattern={setPattern}
-        />
+        <PatternItem key={className} isActive={patternClass === className} className={className} setPattern={setPattern} />
       ))}
 
       <button className='patternsImage-action' onClick={handleToggleAll}>
