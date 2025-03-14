@@ -1,0 +1,66 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+@use '@sass/utils/scrollbar' as *;
+
+.popup {
+  position: fixed;
+  z-index: 10;
+
+  display: grid;
+  grid-template-columns: 1fr 30px;
+  grid-template-rows: 1fr;
+
+  width: fit-content;
+  min-width: 200px;
+  height: fit-content;
+  min-height: 200px;
+  border: 2.5px solid rgb(v.$bg3);
+  border-radius: v.$radius * 0.7;
+
+  opacity: 1;
+  background-color: rgb(v.$bg1);
+
+  &.animate {
+    transition:
+      top 0.3s ease-in-out,
+      left 0.3s ease-in-out;
+  }
+
+  &-header {
+    user-select: none;
+
+    position: relative;
+
+    padding: v.$padding 0;
+
+    writing-mode: vertical-rl;
+
+    background-color: rgb(v.$bg2);
+
+    @include d.flex($dir: row, $ali: center);
+  }
+
+  &-closeButton {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(v.$tn1);
+  }
+
+  &-container {
+    @extend %scroll-hidden;
+
+    position: relative;
+    top: 0;
+
+    overflow-y: auto;
+    justify-content: center;
+
+    min-width: 100%;
+    min-height: 100px;
+    padding: v.$padding;
+    border-radius: v.$radius;
+
+    transition: height 0.3s ease-in-out;
+  }
+}

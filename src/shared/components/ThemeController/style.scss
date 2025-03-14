@@ -1,0 +1,79 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.theme {
+  &-controller {
+    width: 130px;
+    color: rgb(v.$fn2);
+    text-align: right;
+  }
+
+  &-popup {
+    flex-wrap: wrap;
+    max-width: 400px;
+
+    @include d.flex($dir: row, $ali: center);
+
+    max-height: 400px;
+  }
+
+  &-action {
+    user-select: none;
+
+    position: relative;
+
+    overflow: hidden;
+
+    width: 120px;
+    height: 180px;
+    border: 2px solid;
+    border-radius: v.$radius;
+
+    transition: all 0.15s ease-in-out;
+
+    &__blur {
+      position: absolute;
+      top: -120px;
+      left: -150px;
+
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+
+      filter: blur(5px);
+    }
+
+    &__circle {
+      position: absolute;
+      top: -35px;
+      right: -35px;
+
+      width: 150px;
+      height: 150px;
+      border-radius: 100%;
+    }
+
+    h4 {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      display: block;
+
+      width: 100%;
+      padding: 15px v.$padding;
+
+      text-align: center;
+
+      backdrop-filter: blur(5px);
+    }
+
+    &.selected {
+      transform: rotateZ(5deg);
+      scale: 0.9;
+      border-color: rgb(v.$tn1) !important;
+      filter: brightness(80%);
+    }
+  }
+}

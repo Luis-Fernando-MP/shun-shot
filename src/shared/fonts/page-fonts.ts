@@ -3,17 +3,19 @@ import { Exo_2, Oswald, Roboto } from 'next/font/google'
 export const titleFont = Oswald({
   subsets: ['latin'],
   weight: ['700', '600', '500'],
-  variable: '--titleFont'
+  variable: '--familyTitle'
 })
 
-export const paragraphFont = Roboto({
+export const font1 = Roboto({
   subsets: ['latin'],
   weight: ['900', '700', '500', '400', '300'],
-  variable: '--paragraphFont'
+  variable: '--family1'
 })
 
-export const exclamationFont = Exo_2({
+export const font2 = Exo_2({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500', '700'],
-  variable: '--exclamationFont'
+  variable: '--family2'
 })
+
+export const bodyFonts = `${titleFont.variable} ${font1.variable} ${font2.variable}`

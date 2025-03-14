@@ -1,13 +1,15 @@
-import { monacoClassFont } from '@/shared/fonts/monaco-fonts'
-import { exclamationFont, paragraphFont, titleFont } from '@/shared/fonts/page-fonts'
+import Hydration from '@/shared/components/Hydration'
+import Offline from '@/shared/components/Offline'
+import { bodyFonts } from '@/shared/fonts/page-fonts'
 import '@sass/config/global.scss'
-import type { Metadata } from 'next'
+import NextTopLoader from 'nextjs-toploader'
 import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
 import Footer from './components/Footer'
 import Header from './components/Header'
 import './globals.css'
+import { metadata, viewport } from './metadata'
 import Providers from './providers'
 import './style.scss'
 
@@ -15,28 +17,23 @@ interface IRootLayout {
   children?: Readonly<ReactNode[]> | null | Readonly<ReactNode>
 }
 
-export const metadata: Metadata = {
-  title: 'code scape',
-  description: 'Some...',
-  icons: {
-    icon: [{ url: '/simple-logo.svg', media: '(prefers-color-scheme: light)' }]
-  }
-}
-
 const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
   return (
     <html lang='es'>
-      <body className={`${titleFont.variable} ${paragraphFont.variable} ${exclamationFont.variable} ${monacoClassFont}`}>
+      <body className={`${bodyFonts} antialiased`}>
+        <NextTopLoader color='rgb(var(--tn-primary))' showSpinner={false} />
+        <Offline />
         <Providers>
-          <Header className='root-header' />
-          {children}
-          <Footer className='root-footer' />
+          <Hydration>
+            <Header className='root-header' />
+            {children}
+            <Footer className='root-footer' />
+          </Hydration>
         </Providers>
         <Toaster
           position='top-center'
           toastOptions={{
             className: 'toast',
-            position: 'top-center',
             style: {
               background: 'rgb(var(--bg-primary))',
               color: 'rgb(var(--fnt-primary))'
@@ -49,3 +46,4 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
 }
 
 export default RootLayout
+export { metadata, viewport }
