@@ -1,5 +1,6 @@
 @use '@sass/config/vars' as v;
 @use 'sass:color';
+@use 'sass:map';
 
 $badges: (
   // Fase de pruebas iniciales y abierto a comentarios.
@@ -64,9 +65,9 @@ $badges: (
 
   @each $name, $styles in $badges {
     &.#{$name}::after {
-      content: map-get($styles, content);
-      color: map-get($styles, color);
-      animation: map-get($styles, animation) 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+      content: map.get($styles, content);
+      color: map.get($styles, color);
+      animation: map.get($styles, animation) 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
     }
   }
 }

@@ -1,4 +1,3 @@
-/* stylelint-disable selector-class-pattern */
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
 @use '@sass/utils/text' as t;
@@ -47,14 +46,23 @@
 
     background-color: rgba(v.$bg1);
 
-    &::-webkit-slider-thumb,
-    &::-moz-range-thumb {
+    &::-webkit-slider-thumb {
       width: 4px;
       height: 70%;
-      border: 2px solid rgb(var(v.$fn2));
+      border: 2px solid rgb(v.$fn2);
       border-radius: 5px;
 
       appearance: none;
+      background: rgb(v.$bg3);
+      box-shadow: -200px 0 50px 185px rgb(v.$bg3);
+    }
+
+    &::-moz-range-thumb {
+      width: 4px;
+      height: 70%;
+      border: 2px solid rgb(v.$fn2);
+      border-radius: 5px;
+
       background: rgb(v.$bg3);
       box-shadow: -200px 0 50px 185px rgb(v.$bg3);
     }

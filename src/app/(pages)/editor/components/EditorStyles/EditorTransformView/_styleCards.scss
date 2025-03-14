@@ -64,7 +64,7 @@
     }
   }
 
-  @include v.hoverS(0.88) {
+  @include v.hoverS($scale: 0.88) {
     span {
       transform: rotate(30deg);
       scale: 1.3;
