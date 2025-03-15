@@ -34,16 +34,14 @@ html {
 }
 
 body {
-  @include scroll-hidden;
-
   position: relative;
 
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 
   width: 100dvw;
   height: 100dvh;
   min-height: 100dvh;
+  max-height: 100vh;
 
   font-family: $font1;
   color: rgb($fn1);
@@ -90,7 +88,7 @@ body {
     height: $icon;
 
     stroke: rgb($fn1);
-    stroke-width: 1.3;
+    stroke-width: 1.5;
   }
 
   ::selection {
@@ -121,7 +119,7 @@ body {
   }
 
   .border {
-    border: 1.5px solid rgb($bg3);
+    border: 1px solid rgb($bg3, 0.5);
   }
 
   button {
@@ -129,11 +127,11 @@ body {
   }
 
   .active {
-    color: rgb($fnA);
-    background-color: rgb($tn1);
+    color: rgb($fnA) !important;
+    background-color: rgb($tn1) !important;
 
     svg {
-      stroke: rgb($fnA);
+      stroke: rgb($fnA) !important;
     }
   }
 }

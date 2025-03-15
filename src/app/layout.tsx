@@ -6,6 +6,9 @@ import NextTopLoader from 'nextjs-toploader'
 import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
+import DetailBar from './components/DetailBar'
+import HeaderBar from './components/HeaderBar'
+import MainBar from './components/MainBar'
 import './globals.css'
 import { metadata, viewport } from './metadata'
 import Providers from './providers'
@@ -18,11 +21,17 @@ interface IRootLayout {
 const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
   return (
     <html lang='es'>
-      <body className={`${bodyFonts} antialiased`}>
+      <body className={`${bodyFonts} app antialiased`}>
         <NextTopLoader color='rgb(var(--tn-primary))' showSpinner={false} />
         <Offline />
         <Providers>
-          <Hydration>{children}</Hydration>
+          <Hydration>
+            <HeaderBar className='app-headerBar' />
+            <DetailBar className='app-detail' />
+            <MainBar className='app-mainBar' />
+
+            {children}
+          </Hydration>
         </Providers>
         <Toaster position='top-center' toastOptions={{ className: 'toast' }} />
       </body>

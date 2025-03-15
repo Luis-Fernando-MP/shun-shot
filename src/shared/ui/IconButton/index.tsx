@@ -1,3 +1,4 @@
+import { acl } from '@/shared/acl'
 import type { FC, ReactNode } from 'react'
 
 import LabelText from '../LabelText'
@@ -10,7 +11,18 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   outline?: boolean
   className?: string
   transparent?: boolean
+  active?: boolean
 }
+
+/**
+ * @param {ReactNode} children - The content of the button.
+ * @param {string} label - The label of the button.
+ * @param {string} position - The position of the label.
+ * @param {boolean} outline - Whether the button is outlined.
+ * @param {string} className - The class name of the button.
+ * @param {boolean} transparent - Whether the button is transparent.
+ * @param {boolean} active - Whether the button is active.
+ */
 
 const IconButton: FC<Props> = ({
   children,
@@ -19,10 +31,13 @@ const IconButton: FC<Props> = ({
   outline = false,
   className = '',
   transparent = false,
+  active = false,
   ...props
 }) => {
+  const parsedClassName = `iconButton ${acl(outline, 'outline')} ${acl(transparent, 'transparent')} ${acl(active, 'active')} ${className}`
+
   return (
-    <button className={`iconButton ${outline ? 'outline' : ''} ${transparent ? 'transparent' : ''} ${className}`} {...props}>
+    <button className={parsedClassName} {...props}>
       <div className='iconButton-content'>{children}</div>
       {label && (
         <LabelText type='darken' className={`iconButton-label ${position}`}>

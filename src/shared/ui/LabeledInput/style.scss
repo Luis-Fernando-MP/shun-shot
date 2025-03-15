@@ -5,21 +5,27 @@
   position: relative;
 
   width: fit-content;
-  height: 150px;
+  height: min-content;
   padding: v.$padding;
   border: 1.5px solid transparent;
   border-radius: v.$radius * 0.5;
 
   background-color: rgb(v.$bg2);
 
+  @include d.flex($ali: flex-start);
+
   &-input {
-    width: 120px;
-    max-width: fit-content;
-    height: 100%;
+    width: min-content;
+    height: min-content;
     padding-left: v.$padding;
 
     color: rgb(v.$fn1);
 
+    background-color: transparent;
+  }
+
+  &.transparent {
+    border-color: transparent;
     background-color: transparent;
   }
 

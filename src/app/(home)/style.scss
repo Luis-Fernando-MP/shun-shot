@@ -1,15 +1,2 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
-
-.app {
-  width: 100vw;
-  height: 100vh;
-}
-
-.app-board {
-  width: 900px;
-  height: 500px;
-  padding: v.$padding;
-
-  @include d.flex($ali: center);
-}

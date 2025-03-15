@@ -11,7 +11,7 @@
 
   width: fit-content;
   height: fit-content;
-  padding: v.$padding;
+  padding: v.$padding * 0.8;
   border-radius: v.$radius * 0.5;
 
   background-color: rgba(v.$bg2);
@@ -21,7 +21,7 @@
   }
 
   &.outline {
-    border: 1.5px dashed rgba(v.$tn1);
+    border: 1px dashed rgba(v.$tn1);
   }
 
   svg {
@@ -54,7 +54,7 @@
   }
 
   &-content {
-    @include d.flex($dir: row, $ali: center, $gap: v.$padding);
+    @include d.flex($dir: row, $ali: center, $gap: v.$padding * 0.5);
   }
 
   &:hover &-label {
