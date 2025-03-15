@@ -1,6 +1,8 @@
 'use server'
 
+import Footer from '@/app/components/Footer'
 import FooterTools from '@/app/components/FooterTools'
+import Header from '@/app/components/Header'
 import '@sass/config/global.scss'
 import type { JSX, ReactNode } from 'react'
 
@@ -11,8 +13,10 @@ interface IRootLayout {
 const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
   return (
     <main className='root-main codePage'>
+      <Header className='root-header' />
       {children}
       <FooterTools className='codePage-tools' />
+      <Footer className='root-footer' />
     </main>
   )
 }

@@ -6,8 +6,6 @@ import NextTopLoader from 'nextjs-toploader'
 import type { JSX, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
-import Footer from './components/Footer'
-import Header from './components/Header'
 import './globals.css'
 import { metadata, viewport } from './metadata'
 import Providers from './providers'
@@ -24,11 +22,7 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
         <NextTopLoader color='rgb(var(--tn-primary))' showSpinner={false} />
         <Offline />
         <Providers>
-          <Hydration>
-            <Header className='root-header' />
-            {children}
-            <Footer className='root-footer' />
-          </Hydration>
+          <Hydration>{children}</Hydration>
         </Providers>
         <Toaster
           position='top-center'
