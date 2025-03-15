@@ -85,8 +85,8 @@ const useBoard = ({ isCenter, minScale = false }: IUseBoardHook) => {
   }, [moveToChild, setScale])
 
   const handleBoardDown = (e: React.MouseEvent) => {
-    e.preventDefault()
     if (e.ctrlKey) {
+      e.preventDefault()
       setIsMoving(true)
       setLastMousePosition({ x: e.clientX, y: e.clientY })
     }
@@ -137,7 +137,6 @@ const useBoard = ({ isCenter, minScale = false }: IUseBoardHook) => {
   }, [childIndex, moveToChild])
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault()
     const touch = e.touches[0]
     handleBoardDown({ clientX: touch.clientX, clientY: touch.clientY } as React.MouseEvent)
   }

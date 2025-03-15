@@ -15,9 +15,6 @@ $index-overlay: 4;
   &-pattern,
   &-noise,
   &-overlay {
-    pointer-events: none;
-    user-select: none;
-
     position: absolute;
     top: 0;
     left: 0;
@@ -55,7 +52,6 @@ $index-overlay: 4;
 
   &-image {
     cursor: pointer;
-    user-select: none;
 
     position: absolute;
     z-index: $index-image;
@@ -81,8 +77,6 @@ $index-overlay: 4;
       height: auto;
 
       img {
-        user-select: none;
-
         width: 100%;
         max-width: 800px;
         height: 100%;

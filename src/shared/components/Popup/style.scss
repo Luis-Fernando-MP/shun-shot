@@ -27,14 +27,9 @@
   }
 
   &-header {
-    user-select: none;
-
     position: relative;
-
     padding: v.$padding 0;
-
     writing-mode: vertical-rl;
-
     background-color: rgb(v.$bg2);
 
     @include d.flex($dir: row, $ali: center);
