@@ -4,7 +4,7 @@
 @use '@sass/utils/scrollbar' as *;
 
 body {
-  @extend %scroll-hidden;
+  @include scroll-hidden;
 
   display: grid;
   grid-template-areas:

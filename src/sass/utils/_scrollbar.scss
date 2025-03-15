@@ -1,4 +1,4 @@
-%scroll-hidden {
+@mixin scroll-hidden {
   scrollbar-width: none;
 
   &::-webkit-scrollbar-thumb {
