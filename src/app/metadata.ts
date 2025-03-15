@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://code-scape.vercel.app'),
-  title: 'Code Scape',
+  title: "Shum shot's",
   description:
     'Pon a prueba y mejora tu velocidad de escritura con Key Flare, un clon de Monkeytype creado para fines educativos. ¡Compite contra ti mismo y domina el teclado!',
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   creator: 'Luis MP',
   publisher: 'SHUN',
   icons: {
-    icon: '/logo.svg'
+    icon: '/logo.webp'
   },
   openGraph: {
     title: 'Key Flare - Mejora tu velocidad de escritura',
