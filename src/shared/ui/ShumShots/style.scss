@@ -8,7 +8,6 @@
   width: fit-content;
   height: fit-content;
   border: 1.5px solid rgba(v.$tn1);
-  border-radius: 50%;
 
   background-color: rgba(v.$bg1);
 
@@ -17,7 +16,7 @@
   }
 
   &.rounded {
-    border-radius: v.$radius;
+    border-radius: v.$radius * 0.4;
   }
 
   &.xs {

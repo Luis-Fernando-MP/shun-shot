@@ -1,8 +1,12 @@
 'use client'
 
 import Board from '@/shared/components/Board'
+import { THEMES } from '@/shared/themes'
 import IconButton from '@/shared/ui/IconButton'
 import Label from '@/shared/ui/Label'
+import PaletteSphere from '@/shared/ui/PaletteSphere'
+import ShumShots from '@/shared/ui/ShumShots'
+import ThemeColorDisplay from '@/shared/ui/ThemeColorDisplay'
 import { CloudAlert, SunIcon, SwatchBookIcon } from 'lucide-react'
 import { type FC } from 'react'
 
@@ -15,12 +19,17 @@ const Page: FC = () => {
       <MainBar className='app-mainBar' />
       <Board isCenter={false} minScale>
         {() => (
-          <div className='app-board'>
+          <div className='app-board border'>
+            <ShumShots />
             <IconButton label='Tema' transparent>
+              <ThemeColorDisplay />
               <div>tema</div>
               <h5>Tema :</h5>
               <h4>Purple dark</h4>
             </IconButton>
+
+            <PaletteSphere title='Circuit' theme={THEMES['Circuit']} />
+            <PaletteSphere title='Circuit' theme={THEMES['Pastel Horizon']} selected />
 
             <IconButton transparent>
               <SwatchBookIcon />

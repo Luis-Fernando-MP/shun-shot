@@ -1,4 +1,4 @@
-interface Theme {
+export interface Theme {
   'bg-primary': string
   'bg-secondary': string
   'bg-tertiary': string
@@ -8,6 +8,8 @@ interface Theme {
   'tn-primary': string
   'tn-secondary': string
 }
+
+export type ThemeKeys = keyof typeof THEMES
 
 export const THEMES: Record<string, Theme> = {
   // Claros

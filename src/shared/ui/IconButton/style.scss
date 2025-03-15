@@ -12,7 +12,7 @@
   width: fit-content;
   height: fit-content;
   padding: v.$padding;
-  border-radius: v.$radius;
+  border-radius: v.$radius * 0.5;
 
   background-color: rgba(v.$bg2);
 

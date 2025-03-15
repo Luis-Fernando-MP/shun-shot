@@ -1,16 +1,16 @@
 :root {
-  --bg-primary: 19, 20, 23;
-  --bg-secondary: 35, 35, 37;
-  --bg-tertiary: 55, 55, 61;
+  --bg-primary: 13, 13, 13;
+  --bg-secondary: 19, 20, 23;
+  --bg-tertiary: 61, 61, 61;
 
   // Fuentes
   --fnt-primary: 255, 255, 255;
-  --fnt-secondary: 174, 174, 174;
+  --fnt-secondary: 119, 119, 120;
   --fnt-active: 255, 255, 255;
 
   // Principales
-  --tn-primary: 157, 44, 255;
-  --tn-secondary: 154, 190, 254;
+  --tn-primary: 164, 47, 238;
+  --tn-secondary: 45, 255, 238;
 
   // --
   --xl-font-size: 4rem;
@@ -49,7 +49,7 @@ $extra-large-screen: 1200px;
 $big-screen: 1350px;
 
 // Other
-$radius: 8px;
+$radius: 20px;
 $padding: 10px;
 $icon: 17px;
 $family-size: 16px;

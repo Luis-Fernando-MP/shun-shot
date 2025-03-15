@@ -120,6 +120,10 @@ body {
     }
   }
 
+  .border {
+    border: 1.5px solid rgb($bg3);
+  }
+
   button {
     cursor: pointer;
   }
