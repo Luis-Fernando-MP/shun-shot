@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react'
 
-import Label from '../Label'
+import LabelText from '../LabelText'
 import './style.scss'
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
@@ -12,7 +12,7 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   transparent?: boolean
 }
 
-const Index: FC<Props> = ({
+const IconButton: FC<Props> = ({
   children,
   label,
   position = 'top',
@@ -25,12 +25,12 @@ const Index: FC<Props> = ({
     <button className={`iconButton ${outline ? 'outline' : ''} ${transparent ? 'transparent' : ''} ${className}`} {...props}>
       <span className='iconButton-content'>{children}</span>
       {label && (
-        <Label type='darken' className={`iconButton-label ${position}`}>
+        <LabelText type='darken' className={`iconButton-label ${position}`}>
           {label}
-        </Label>
+        </LabelText>
       )}
     </button>
   )
 }
 
-export default Index
+export default IconButton

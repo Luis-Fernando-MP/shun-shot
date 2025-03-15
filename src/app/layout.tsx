@@ -24,16 +24,7 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
         <Providers>
           <Hydration>{children}</Hydration>
         </Providers>
-        <Toaster
-          position='top-center'
-          toastOptions={{
-            className: 'toast',
-            style: {
-              background: 'rgb(var(--bg-primary))',
-              color: 'rgb(var(--fnt-primary))'
-            }
-          }}
-        />
+        <Toaster position='top-center' toastOptions={{ className: 'toast' }} />
       </body>
     </html>
   )

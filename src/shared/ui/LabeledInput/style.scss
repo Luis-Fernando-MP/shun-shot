@@ -1,0 +1,34 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.labeledInput {
+  position: relative;
+
+  width: fit-content;
+  height: 150px;
+  padding: v.$padding;
+  border: 1.5px solid transparent;
+  border-radius: v.$radius * 0.5;
+
+  background-color: rgb(v.$bg2);
+
+  &-input {
+    width: 120px;
+    max-width: fit-content;
+    height: 100%;
+    padding-left: v.$padding;
+
+    color: rgb(v.$fn1);
+
+    background-color: transparent;
+  }
+
+  &-label {
+    position: absolute;
+    top: 50%;
+    right: v.$padding;
+    transform: translateY(-50%);
+
+    color: rgb(v.$fn1);
+  }
+}

@@ -15,11 +15,11 @@
   // --
   --xl-font-size: 4rem;
   --h1-font-size: 1.3rem;
-  --h2-font-size: 1.25rem;
-  --h3-font-size: 1.2rem;
-  --h4-font-size: 1.15rem;
-  --h5-font-size: 1.1rem;
-  --p-font-size: 1rem;
+  --h2-font-size: 1.2rem;
+  --h3-font-size: 1rem;
+  --h4-font-size: 0.9rem;
+  --h5-font-size: 0.9rem;
+  --p-font-size: 0.9rem;
   --s-grid: 15px;
 }
 
@@ -52,12 +52,18 @@ $big-screen: 1350px;
 $radius: 20px;
 $padding: 10px;
 $icon: 17px;
-$family-size: 16px;
+$family-size: 12px;
 $fontBase: 'Segoe UI Mono', 'Roboto Mono';
 $font1: var(--family1);
 $font2: var(--family2);
 $font3: var(--family3);
+
+// Basic colors
 $error: rgb(228 30 56);
+$success: rgb(40 167 69);
+$warning: rgb(255 193 7);
+$info: rgb(42 42 42);
+$blood: rgb(203 28 112);
 $focus: rgb(66 133 244);
 
 // app
