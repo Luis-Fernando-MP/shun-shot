@@ -1,6 +1,7 @@
 'use client'
 
 import Board from '@/shared/components/Board'
+import { monacoFonts } from '@/shared/fonts/monaco-fonts'
 import { THEMES } from '@/shared/themes'
 import IconButton from '@/shared/ui/IconButton'
 import Label from '@/shared/ui/Label'
@@ -12,6 +13,7 @@ import { type FC } from 'react'
 
 import MainBar from './components/MainBar'
 import './style.scss'
+import TypographyDisplay from './ui/TypographyDisplay'
 
 const Page: FC = () => {
   return (
@@ -27,6 +29,10 @@ const Page: FC = () => {
               <h5>Tema :</h5>
               <h4>Purple dark</h4>
             </IconButton>
+
+            <TypographyDisplay font={monacoFonts.firaCode} title='Fira Code' />
+
+            <TypographyDisplay font={monacoFonts.dm_Mono} title='DM Mono' selected />
 
             <PaletteSphere title='Circuit' theme={THEMES['Circuit']} />
             <PaletteSphere title='Circuit' theme={THEMES['Pastel Horizon']} selected />
