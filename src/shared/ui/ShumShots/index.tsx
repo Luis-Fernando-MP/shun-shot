@@ -4,13 +4,13 @@ import type { FC } from 'react'
 import './style.scss'
 
 interface Props {
-  type?: 'xs' | 'sm' | 'md' | 'lg'
-  radius?: 'circle' | 'rounded'
+  type?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  radius?: 'circle' | 'rounded' | 'none'
 }
 
 /**
- * @param {string} type - The type of the size of the shumshots logo. xs, sm, md, lg.
- * @param {string} radius - The radius of the shumshots logo.
+ * @param {string} type - The type of the size of the shumshots logo. xs, sm, md, lg, xl.
+ * @param {string} radius - The radius of the shumshots logo. circle, rounded, none.
  */
 
 const ShumShots: FC<Props> = ({ type = 'xs', radius = 'rounded' }) => {

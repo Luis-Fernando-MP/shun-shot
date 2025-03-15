@@ -19,6 +19,11 @@
     border-radius: v.$radius * 0.4;
   }
 
+  &.none {
+    border: none;
+    border-radius: 0;
+  }
+
   &.xs {
     padding: v.$padding * 0.5;
 
@@ -41,8 +46,8 @@
     padding: v.$padding * 1.2;
 
     .shumShots-logo {
-      width: v.$icon * 1.5;
-      height: v.$icon * 1.5;
+      width: v.$icon * 2;
+      height: v.$icon * 2;
     }
   }
 
@@ -50,8 +55,17 @@
     padding: v.$padding * 1.5;
 
     .shumShots-logo {
-      width: v.$icon * 2;
-      height: v.$icon * 2;
+      width: v.$icon * 4;
+      height: v.$icon * 4;
+    }
+  }
+
+  &.xl {
+    padding: v.$padding * 2;
+
+    .shumShots-logo {
+      width: v.$icon * 6;
+      height: v.$icon * 6;
     }
   }
 }
