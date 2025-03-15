@@ -110,6 +110,7 @@ const useBoard = ({ isCenter, minScale = false }: IUseBoardHook) => {
 
   const handleWheel = useCallback(
     (e: WheelEvent) => {
+      if (!e.ctrlKey) return
       e.preventDefault()
       const zoomFactor = 1.1
       const canvas = $containerRef.current

@@ -23,7 +23,7 @@ const IconButton: FC<Props> = ({
 }) => {
   return (
     <button className={`iconButton ${outline ? 'outline' : ''} ${transparent ? 'transparent' : ''} ${className}`} {...props}>
-      <span className='iconButton-content'>{children}</span>
+      <div className='iconButton-content'>{children}</div>
       {label && (
         <LabelText type='darken' className={`iconButton-label ${position}`}>
           {label}
