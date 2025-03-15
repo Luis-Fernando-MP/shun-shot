@@ -16,8 +16,10 @@ const Page: FC = () => {
       <Board isCenter={false} minScale>
         {() => (
           <div className='app-board'>
-            <IconButton label='Swatch label' className='active'>
-              <SwatchBookIcon />
+            <IconButton label='Tema' transparent>
+              <div>tema</div>
+              <h5>Tema :</h5>
+              <h4>Purple dark</h4>
             </IconButton>
 
             <IconButton transparent>
@@ -36,23 +38,6 @@ const Page: FC = () => {
             <IconButton label='Swatch label' position='bottom'>
               <SwatchBookIcon />
             </IconButton>
-            <h1>SHUM SHOT'S developer h1</h1>
-            <h2>SHUM SHOT'S developer h2</h2>
-            <h3>SHUM SHOT'S developer h3</h3>
-            <h4>SHUM SHOT'S developer h4</h4>
-            <h5>SHUM SHOT'S developer h5</h5>
-            <p>SHUM SHOT'S developer p</p>
-            <span>SHUM SHOT'S developer span</span>
-            <button>SHUM SHOT'S developer button</button>
-            <a href='#'>SHUM SHOT'S developer a</a>
-            <input type='text' defaultValue='Sum shot developer input' />
-            <textarea defaultValue='Sum shot developer textarea' />
-            <select defaultValue='1'>
-              <option value='1'>SHUM SHOT'S developer option 1</option>
-              <option value='2'>SHUM SHOT'S developer option 2</option>
-              <option value='3'>SHUM SHOT'S developer option 3</option>
-            </select>
-            <label>SHUM SHOT'S developer label</label>
           </div>
         )}
       </Board>
