@@ -2,7 +2,7 @@
 
 import React, { useLayoutEffect, useRef, useState } from 'react'
 
-import Logo from '../Logo'
+import Logo from '../../assets/Logo'
 import './style.scss'
 
 const LoaderPage = () => {

@@ -1,0 +1,58 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.shumShots {
+  display: grid;
+  place-content: center;
+
+  width: fit-content;
+  height: fit-content;
+  border: 1.5px solid rgba(v.$tn1);
+  border-radius: 50%;
+
+  background-color: rgba(v.$bg1);
+
+  &.circle {
+    border-radius: 50%;
+  }
+
+  &.rounded {
+    border-radius: v.$radius;
+  }
+
+  &.xs {
+    padding: v.$padding * 0.5;
+
+    .shumShots-logo {
+      width: v.$icon;
+      height: v.$icon;
+    }
+  }
+
+  &.sm {
+    padding: v.$padding;
+
+    .shumShots-logo {
+      width: v.$icon * 1.5;
+      height: v.$icon * 1.5;
+    }
+  }
+
+  &.md {
+    padding: v.$padding * 1.5;
+
+    .shumShots-logo {
+      width: v.$icon * 2.5;
+      height: v.$icon * 2.5;
+    }
+  }
+
+  &.lg {
+    padding: v.$padding * 2;
+
+    .shumShots-logo {
+      width: v.$icon * 3;
+      height: v.$icon * 3;
+    }
+  }
+}

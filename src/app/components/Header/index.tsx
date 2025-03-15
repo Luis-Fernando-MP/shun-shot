@@ -1,6 +1,6 @@
 'use server'
 
-import Logo from '@/shared/components/Logo'
+import Logo from '@/shared/assets/Logo'
 import Link from 'next/link'
 import type { JSX } from 'react'
 

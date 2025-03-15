@@ -47,7 +47,7 @@ const Board = ({ children, className = '', isCenter = true, minScale }: BoardPro
       onTouchEnd={handleTouchEnd}
       style={{
         opacity: noExistRefs ? 0 : 1,
-        cursor: isMoving ? 'grabbing' : 'default'
+        cursor: isMoving ? 'grabbing' : 'auto'
       }}
     >
       <div
