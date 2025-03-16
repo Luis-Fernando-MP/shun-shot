@@ -12,7 +12,10 @@ interface Props {
 const DetailBar: FC<Props> = ({ className }) => {
   return (
     <article className={`detailBar border ${className}`}>
-      <ShumShots size='md' />
+      <Link href='/'>
+        <ShumShots size='md' />
+      </Link>
+
       <h3>Shum Shots</h3>
 
       <section className='detailBar-history'>

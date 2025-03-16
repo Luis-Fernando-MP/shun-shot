@@ -7,10 +7,10 @@ import './style.scss'
 
 const Page: FC = () => {
   return (
-    <main className='app-main'>
+    <main className='app-main home'>
       <Board isCenter={false} minScale>
         {() => (
-          <div className='app-board border'>
+          <div className='app-board home-board border'>
             <h2>scale</h2>
           </div>
         )}

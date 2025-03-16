@@ -29,6 +29,7 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
             <HeaderBar className='app-headerBar' />
             <DetailBar className='app-detail' />
             <MainBar className='app-mainBar' />
+            <div className='app-gradient' />
 
             {children}
           </Hydration>

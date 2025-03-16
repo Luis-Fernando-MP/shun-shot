@@ -1,2 +1,10 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
+
+.home {
+  &-board {
+    padding: v.$padding;
+    border-radius: v.$radius;
+    background-color: rgb(v.$bg1);
+  }
+}

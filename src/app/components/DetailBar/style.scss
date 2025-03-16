@@ -4,6 +4,8 @@
 .detailBar {
   $margin: v.$padding * 2;
 
+  user-select: none;
+
   width: 250px;
   padding: v.$padding * 3 v.$padding;
   border-radius: v.$radius;
