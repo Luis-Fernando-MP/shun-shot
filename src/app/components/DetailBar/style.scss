@@ -6,7 +6,10 @@
 
   user-select: none;
 
+  position: relative;
+
   width: 250px;
+  height: fit-content;
   padding: v.$padding * 3 v.$padding;
   border-radius: v.$radius;
 
@@ -15,7 +18,31 @@
 
   @include d.flex($gap: v.$padding * 2);
 
+  &-logo {
+    @include d.flex;
+  }
+
   &-history {
     @include d.flex;
+  }
+
+  &.minimize {
+    max-height: 75px;
+    padding: v.$padding;
+
+    .detailBar-logo {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .detailBar-history {
+      display: none;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    top: calc(v.$padding * 2);
+    right: v.$padding;
   }
 }
