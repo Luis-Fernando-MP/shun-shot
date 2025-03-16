@@ -1,0 +1,19 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.detailBar {
+  $margin: v.$padding * 2;
+
+  width: 250px;
+  padding: v.$padding * 3 v.$padding;
+  border-radius: v.$radius;
+
+  background-color: rgb(v.$bg1, 0.7);
+  backdrop-filter: blur(10px);
+
+  @include d.flex($gap: v.$padding * 2);
+
+  &-history {
+    @include d.flex;
+  }
+}

@@ -35,7 +35,7 @@ const MainBar: FC<Props> = ({ className = '' }) => {
 
   return (
     <article className={`mainBar border ${className}`}>
-      <ShumShots type='xs' radius='circle' />
+      <ShumShots size='xs' radius='circle' />
 
       <section className='mainBar-section'>
         <IconButton label='Formatear código' transparent>
