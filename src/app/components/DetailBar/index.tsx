@@ -33,6 +33,13 @@ const DetailBar: FC<Props> = ({ className }) => {
       </section>
 
       <section className='detailBar-history'>
+        <p>Facilita tu movilidad con los modales con:</p>
+        <div>
+          <LabelText>Ctrl</LabelText> + <LabelText>click</LabelText>
+        </div>
+      </section>
+
+      <section className='detailBar-history'>
         <p>Además, puedes avanzar y retroceder en el historial del editor usando:</p>
         <div>
           <LabelText>Ctrl</LabelText> + <LabelText>Z</LabelText> / <LabelText>Ctrl</LabelText> + <LabelText>Y</LabelText>

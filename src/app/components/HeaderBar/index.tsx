@@ -1,8 +1,8 @@
 import ThemeController from '@/shared/components/ThemeController'
-import IconButton from '@/shared/ui/IconButton'
-import { MaximizeIcon, MinusIcon, PlusIcon } from 'lucide-react'
 import { type FC } from 'react'
 
+import FullScreen from './FullScreen'
+import ZoomController from './ZoomController'
 import './style.scss'
 
 interface Props {
@@ -13,17 +13,9 @@ const HeaderBar: FC<Props> = ({ className }) => {
   return (
     <section className={`headerBar ${className}`}>
       <ThemeController />
+      <FullScreen />
       <div className='separator' />
-      <IconButton transparent label='Maximizar la aplicación' position='bottom'>
-        <MaximizeIcon />
-      </IconButton>
-      <h5>Zoom :</h5>
-      <IconButton transparent label='Aumentar zoom' position='bottom'>
-        <PlusIcon />
-      </IconButton>
-      <IconButton transparent label='Disminuir zoom' position='bottom'>
-        <MinusIcon />
-      </IconButton>
+      <ZoomController />
     </section>
   )
 }

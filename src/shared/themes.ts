@@ -12,6 +12,36 @@ export interface Theme {
 export type ThemeKeys = keyof typeof THEMES
 
 export const THEMES: Record<string, Theme> = {
+  DeepOcean: {
+    'bg-primary': '10, 30, 50',
+    'bg-secondary': '30, 60, 90',
+    'bg-tertiary': '50, 90, 120',
+    'fnt-primary': '220, 230, 240',
+    'fnt-secondary': '180, 200, 220',
+    'fnt-active': '100, 180, 220',
+    'tn-primary': '80, 150, 180',
+    'tn-secondary': '150, 200, 230'
+  },
+  AshMountains: {
+    'bg-primary': '40, 40, 45',
+    'bg-secondary': '60, 60, 65',
+    'bg-tertiary': '80, 80, 85',
+    'fnt-primary': '230, 230, 235',
+    'fnt-secondary': '190, 190, 195',
+    'fnt-active': '140, 140, 160',
+    'tn-primary': '110, 110, 130',
+    'tn-secondary': '180, 180, 200'
+  },
+  StarryNight: {
+    'bg-primary': '10, 10, 20',
+    'bg-secondary': '20, 20, 30',
+    'bg-tertiary': '30, 30, 40',
+    'fnt-primary': '240, 240, 250',
+    'fnt-secondary': '200, 200, 220',
+    'fnt-active': '180, 180, 220',
+    'tn-primary': '150, 150, 190',
+    'tn-secondary': '200, 200, 230'
+  },
   // Claros
   'Aurora Day': {
     'bg-primary': '245, 245, 250',
@@ -72,6 +102,16 @@ export const THEMES: Record<string, Theme> = {
     'fnt-active': '255, 255, 255',
     'tn-primary': '235, 130, 180',
     'tn-secondary': '220, 130, 180'
+  },
+  'Rose Quartz': {
+    'bg-primary': '255, 192, 203',
+    'bg-secondary': '255, 160, 180',
+    'bg-tertiary': '255, 128, 150',
+    'fnt-primary': '50, 30, 40',
+    'fnt-secondary': '100, 60, 80',
+    'fnt-active': '255, 255, 255',
+    'tn-primary': '255, 100, 120',
+    'tn-secondary': '255, 80, 100'
   },
   Lavender: {
     'bg-primary': '240, 230, 255',
@@ -202,16 +242,6 @@ export const THEMES: Record<string, Theme> = {
     'fnt-active': '255, 255, 255',
     'tn-primary': '0, 0, 0',
     'tn-secondary': '80, 80, 80'
-  },
-  'Granite Gray': {
-    'bg-primary': '120, 120, 120',
-    'bg-secondary': '100, 100, 100',
-    'bg-tertiary': '80, 80, 80',
-    'fnt-primary': '230, 230, 230',
-    'fnt-secondary': '180, 180, 180',
-    'fnt-active': '255, 255, 255',
-    'tn-primary': '100, 100, 100',
-    'tn-secondary': '100, 100, 100'
   },
   'Obsidian Black': {
     'bg-primary': '30, 30, 30',
