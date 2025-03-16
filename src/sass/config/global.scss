@@ -126,6 +126,12 @@ body {
     cursor: pointer;
   }
 
+  .separator {
+    width: 1px;
+    height: 25px;
+    background-color: rgb($bg3);
+  }
+
   .active {
     color: rgb($fnA) !important;
     background-color: rgb($tn1) !important;

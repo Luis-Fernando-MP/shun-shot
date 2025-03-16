@@ -58,7 +58,7 @@ const MainBar: FC<Props> = ({ className = '' }) => {
         </IconButton>
       </section>
 
-      <div className='mainBar-separator' />
+      <div className='separator' />
 
       <section className='mainBar-section'>
         {pages.map(page => (

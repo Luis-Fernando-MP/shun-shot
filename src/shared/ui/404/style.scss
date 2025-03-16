@@ -2,9 +2,11 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
 @use '@sass/utils/scrollbar' as *;
+@use '@sass/utils/glitch' as g;
 
 .notFound {
   @include d.flex($ali: center);
+  @include g.glitch(color 5s forwards);
 
   justify-content: center;
   width: 100%;
