@@ -1,5 +1,5 @@
+import ThemeController from '@/shared/components/ThemeController'
 import IconButton from '@/shared/ui/IconButton'
-import ThemeColorDisplay from '@/shared/ui/ThemeColorDisplay'
 import { MaximizeIcon, MinusIcon, PlusIcon } from 'lucide-react'
 import { type FC } from 'react'
 
@@ -12,11 +12,7 @@ interface Props {
 const HeaderBar: FC<Props> = ({ className }) => {
   return (
     <section className={`headerBar ${className}`}>
-      <IconButton transparent label='Tema de la aplicación' position='bottom'>
-        <ThemeColorDisplay />
-        <p>Tema :</p>
-        <h4>Dark</h4>
-      </IconButton>
+      <ThemeController />
       <div className='separator' />
       <IconButton transparent label='Maximizar la aplicación' position='bottom'>
         <MaximizeIcon />

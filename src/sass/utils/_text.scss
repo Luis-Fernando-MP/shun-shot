@@ -9,7 +9,7 @@
 }
 
 @mixin etc() {
-  @extend %scroll-hidden;
+  @include scroll-hidden;
 
   overflow: auto;
   width: 99%;

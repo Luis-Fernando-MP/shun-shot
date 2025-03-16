@@ -2,6 +2,8 @@
 
 import { acl } from '@/shared/acl'
 import Popup from '@/shared/components/Popup'
+import IconButton from '@/shared/ui/IconButton'
+import ThemeColorDisplay from '@/shared/ui/ThemeColorDisplay'
 import { type JSX, MouseEvent, useState } from 'react'
 
 import { PopupPositions } from '../Popup/usePopup'
@@ -23,9 +25,11 @@ const ThemeController = (): JSX.Element => {
 
   return (
     <section className='theme'>
-      <button className='theme-controller active' onClick={handleOpenPopup}>
-        <h5>Tema: {appTheme}</h5>
-      </button>
+      <IconButton transparent label='Tema de la aplicación' position='bottom' onClick={handleOpenPopup}>
+        <ThemeColorDisplay />
+        <p>Tema :</p>
+        <h4>Dark</h4>
+      </IconButton>
       <Popup isOpen={openThemes} onClose={togglePopup} title='Temas' className='theme-popup' clickPosition={positions}>
         {Object.entries(THEMES).map(current => {
           const [key, colors] = current

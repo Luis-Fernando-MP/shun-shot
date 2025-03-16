@@ -51,7 +51,7 @@
   }
 
   &-view {
-    @extend %scroll-hidden;
+    @include scroll-hidden;
 
     position: relative;
     overflow-x: hidden;

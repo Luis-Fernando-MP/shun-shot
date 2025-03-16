@@ -22,7 +22,7 @@
   }
 
   &-container {
-    @extend %scroll-hidden;
+    @include scroll-hidden;
 
     overflow-y: hidden;
     grid-area: 'code';

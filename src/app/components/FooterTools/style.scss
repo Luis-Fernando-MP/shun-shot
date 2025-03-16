@@ -69,10 +69,10 @@
   &-modal {
     $height: 500px;
 
-    @extend %scroll-hidden;
+    @include scroll-hidden;
 
     position: absolute;
-    top: -1 * $height * .5;
+    top: -1 * $height * 0.5;
     left: v.$padding;
 
     overflow: hidden scroll;
