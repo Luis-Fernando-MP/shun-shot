@@ -1,6 +1,6 @@
 import { ThemeMonacoName, monacoThemes } from '@/shared/themes/monacoThemes'
 import { Monaco, OnMount } from '@monaco-editor/react'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import useMonacoThemeStore from '../store/monacoTheme.store'
 import useReferenceMonacoStore from '../store/referenceMonaco'
@@ -18,17 +18,17 @@ const useMonacoEditor = () => {
   const [moveBoard, setMoveBoard] = useState(false)
   const { themeName } = useMonacoThemeStore()
 
-  const handleWheel = (e: WheelEvent) => {
+  const handleWheel = useCallback((e: WheelEvent) => {
     if (e.ctrlKey) setMoveBoard(true)
-  }
+  }, [])
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Control') setMoveBoard(true)
-  }
+  }, [])
 
-  const handleKeyUp = (e: KeyboardEvent) => {
+  const handleKeyUp = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Control') setMoveBoard(false)
-  }
+  }, [])
 
   useEffect(() => {
     const domNode = $editor?.getDomNode()
@@ -42,23 +42,29 @@ const useMonacoEditor = () => {
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('keyup', handleKeyUp)
     }
-  }, [$editor])
+  }, [$editor, handleWheel, handleKeyDown, handleKeyUp])
 
-  function loadAllThemes(monaco: Monaco) {
+  const loadAllThemes = useCallback((monaco: Monaco) => {
     Object.keys(monacoThemes).forEach(themeName => {
       monaco.editor.defineTheme(themeName, monacoThemes[themeName as ThemeMonacoName] as any)
     })
-  }
+  }, [])
 
-  function handleBeforeMount(monaco: Monaco) {
-    setMonaco(monaco)
-    loadAllThemes(monaco)
-  }
+  const handleBeforeMount = useCallback(
+    (monaco: Monaco) => {
+      setMonaco(monaco)
+      loadAllThemes(monaco)
+    },
+    [setMonaco, loadAllThemes]
+  )
 
-  const handleMount: OnMount = (editor, monaco) => {
-    setEditor(editor)
-    monaco.editor.setTheme(themeName)
-  }
+  const handleMount: OnMount = useCallback(
+    (editor, monaco) => {
+      setEditor(editor)
+      monaco.editor.setTheme(themeName)
+    },
+    [setEditor, themeName]
+  )
 
   return {
     moveBoard,
