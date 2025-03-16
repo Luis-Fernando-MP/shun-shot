@@ -1,0 +1,54 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+@use '@sass/utils/browser' as b;
+
+.monacoEditor {
+  width: 100%;
+  height: 100%;
+  padding-top: v.$padding;
+  border-radius: v.$radius;
+
+  background-color: rgba(v.$bg1);
+
+  @include d.flex;
+
+  &-header {
+    @include d.flex($dir: row, $ali: center);
+  }
+
+  &-spheres {
+    @include d.flex($dir: row, $ali: center, $gap: v.$padding * 0.5);
+
+    padding-left: v.$padding * 2;
+  }
+
+  &-sphere {
+    width: v.$icon;
+    height: v.$icon;
+    border-radius: 50%;
+
+    &.red {
+      background-color: #ff605c;
+    }
+
+    &.yellow {
+      background-color: #ffbd44;
+    }
+
+    &.green {
+      background-color: #00ca4e;
+    }
+  }
+
+  &-field {
+    @include d.flex($dir: row, $ali: center, $gap: 0);
+
+    input {
+      background-color: transparent;
+    }
+  }
+
+  &-extension {
+    user-select: none;
+  }
+}

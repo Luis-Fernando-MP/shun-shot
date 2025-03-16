@@ -62,6 +62,9 @@ importers:
       react-dropzone:
         specifier: ^14.3.8
         version: 14.3.8(react@19.0.0)
+      react-field-sizing-content:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.0.0)
       react-hot-toast:
         specifier: 2.5.2
         version: 2.5.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2030,6 +2033,11 @@ packages:
     engines: {node: '>= 10.13'}
     peerDependencies:
       react: '>= 16.8 || 18.0.0'
+
+  react-field-sizing-content@1.0.0:
+    resolution: {integrity: sha512-Wu9kaurnMn4AZ4kVxcR0rmbLKdCetqOSszB8KuauwU91cAKv1YPjhOLsbUyBB+11+yYpdFPoDSuasuQ5ruz0pg==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
 
   react-hot-toast@2.5.2:
     resolution: {integrity: sha512-Tun3BbCxzmXXM7C+NI4qiv6lT0uwGh4oAfeJyNOjYUejTsm35mK9iCaYLGv8cBz9L5YxZLx/2ii7zsIwPtPUdw==}
@@ -4442,6 +4450,10 @@ snapshots:
       attr-accept: 2.2.5
       file-selector: 2.1.2
       prop-types: 15.8.1
+      react: 19.0.0
+
+  react-field-sizing-content@1.0.0(react@19.0.0):
+    dependencies:
       react: 19.0.0
 
   react-hot-toast@2.5.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):

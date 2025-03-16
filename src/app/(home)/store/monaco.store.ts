@@ -1,12 +1,9 @@
 import { editor } from 'monaco-editor'
 import { StateCreator, create } from 'zustand'
 
-type CommonType = 'on' | 'off'
-
 type Monaco = editor.IEditorOptions
 
 interface Props {
-  themeName: string
   language: string
   typography: string
 
@@ -46,7 +43,6 @@ interface Props {
 }
 
 const state: StateCreator<Props> = set => ({
-  themeName: 'vs-dark', // Tema del editor
   language: 'javascript', // Lenguaje de programación predeterminado
   typography: 'monospace', // Tipografía utilizada en el editor
 

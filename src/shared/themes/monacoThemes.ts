@@ -72,7 +72,10 @@ import viowNeon from './data/viow-neon.json'
 import vsDark from './data/vs-dark.json'
 import vsLight from './data/vs-light.json'
 
-export const themesData = {
+export type ThemeMonacoName = keyof typeof monacoThemes
+export type ThemeMonaco = (typeof monacoThemes)[ThemeMonacoName]
+
+export const monacoThemes = {
   redefinedSnazzy: { ...redefinedSnazzy, name: 'redefinedSnazzy' },
   redefinedAyu: { ...redefinedAyu, name: 'redefinedAyu' },
   earthbound: { ...earthbound, name: 'earthbound' },

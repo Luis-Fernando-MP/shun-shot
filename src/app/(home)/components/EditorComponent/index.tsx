@@ -6,8 +6,12 @@ import useMonacoStore from '../../store/monaco.store'
 import './style.scss'
 
 const EditorComponent: FC = () => {
-  const { moveBoard, exampleCode, handleMount, handleBeforeMount } = useMonacoEditor()
+  const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor()
+
   const {
+    language,
+    typography,
+
     lineNumbers,
     minimap,
     fontLigatures,
@@ -43,6 +47,9 @@ const EditorComponent: FC = () => {
       className={`editorComponent ${moveBoard ? 'zoom' : ''}`}
       height={400}
       options={{
+        theme: themeName,
+        language,
+        fontFamily: typography,
         lineNumbers,
         minimap: { enabled: minimap?.enabled },
         fontLigatures,

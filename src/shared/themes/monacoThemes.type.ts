@@ -21,7 +21,7 @@ type Theme = {
   colors: ThemeColors
 }
 
-export type ThemesMonaco = {
+export type ThemeMonaco = {
   base: string
   inherit: boolean
   rules: ThemeRule[]
