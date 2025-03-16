@@ -1,7 +1,5 @@
 'use client'
 
-import LabelText from '@/shared/ui/LabelText'
-import LabeledInput from '@/shared/ui/LabeledInput'
 import dynamic from 'next/dynamic'
 import type { FC } from 'react'
 import { Input } from 'react-field-sizing-content'
@@ -26,20 +24,11 @@ const MonacoEditor: FC = () => {
         </div>
 
         <div className='monacoEditor-field'>
-          {/* <input
-            defaultValue='Shum-shots'
-            style={{ color: theme?.colors['editor.foreground'] }}
-            aria-label='Nombre del archivo a descargar'
-            autoComplete='off'
-            spellCheck='false'
-          /> */}
           <Input fieldSizing='content' defaultValue='Shum-shots' style={{ color: theme?.colors['editor.foreground'] }} />
           <p className='monacoEditor-extension'>.ts</p>
         </div>
       </header>
-      <section className='monacoEditor-body'>
-        <EditorComponent />
-      </section>
+      <EditorComponent />
     </article>
   )
 }

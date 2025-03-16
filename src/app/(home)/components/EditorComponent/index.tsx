@@ -3,6 +3,7 @@ import { type FC } from 'react'
 
 import useMonacoEditor from '../../hooks/useMonacoEditor'
 import useMonacoStore from '../../store/monaco.store'
+import LoaderEditor from './LoaderEditor'
 import './style.scss'
 
 const EditorComponent: FC = () => {
@@ -43,7 +44,7 @@ const EditorComponent: FC = () => {
 
   return (
     <Editor
-      loading={<h5>Cargando....</h5>}
+      loading={<LoaderEditor />}
       className={`editorComponent ${moveBoard ? 'zoom' : ''}`}
       height={400}
       options={{
