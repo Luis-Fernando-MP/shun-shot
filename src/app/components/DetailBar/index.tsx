@@ -33,9 +33,13 @@ const DetailBar: FC<Props> = ({ className }) => {
       </section>
 
       <section className='detailBar-history'>
-        <p>Facilita tu movilidad con los modales con:</p>
+        <p>Facilita tu movilidad en los modales con:</p>
         <div>
           <LabelText>Ctrl</LabelText> + <LabelText>click</LabelText>
+        </div>
+        <p>Y para cerrar un modal con:</p>
+        <div>
+          <LabelText>Ctrl</LabelText> + <LabelText>x</LabelText> ó <LabelText>Escape</LabelText>
         </div>
       </section>
 
