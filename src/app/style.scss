@@ -3,36 +3,56 @@
 @use '@sass/utils/defs' as d;
 @use '@sass/utils/scrollbar' as *;
 
-body {
-  @extend %scroll-hidden;
+.app {
+  $margin: v.$padding * 2;
 
-  display: grid;
-  grid-template-areas:
-    'header'
-    'main'
-    'footer';
-  grid-template-columns: 1fr;
-  grid-template-rows: 40px calc(100vh - 70px) 200px;
-  gap: v.$padding;
+  &-headerBar,
+  &-detail,
+  &-mainBar {
+    position: absolute;
+    z-index: 1;
+  }
 
-  padding: v.$padding;
-}
+  &-headerBar {
+    top: $margin;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-.root {
-  &-header {
-    grid-area: header;
+  &-detail {
+    top: $margin;
+    left: $margin;
+  }
+
+  &-mainBar {
+    bottom: $margin;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   &-main {
-    grid-area: main;
-    justify-content: center;
-    background-color: transparent;
-    backdrop-filter: blur(5px);
-
-    @include d.flex($ali: center);
+    width: 100%;
+    height: 100%;
   }
 
-  &-footer {
-    grid-area: footer;
+  &-board {
+    width: 900px;
+    height: 600px;
+  }
+
+  &-gradient {
+    pointer-events: none;
+
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+
+    background: linear-gradient(to right, rgb(v.$tn2), rgb(v.$tn1) 50%);
+    filter: blur(250px);
   }
 }

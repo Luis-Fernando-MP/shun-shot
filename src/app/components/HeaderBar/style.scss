@@ -1,0 +1,30 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.headerBar {
+  justify-content: center;
+
+  width: fit-content;
+  height: fit-content;
+  padding: v.$padding * 0.5;
+  border-radius: v.$radius;
+
+  background-color: rgb(v.$bg1, 0.8);
+  backdrop-filter: blur(10px);
+
+  @include d.flex($dir: row, $ali: center, $gap: v.$padding);
+
+  &-section {
+    @include d.flex($dir: row, $ali: center, $gap: v.$padding);
+  }
+
+  &-fileName {
+    align-items: flex-start;
+    width: 130px;
+    padding: 0;
+
+    input {
+      max-width: 60px;
+    }
+  }
+}

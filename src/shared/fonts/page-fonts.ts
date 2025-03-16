@@ -1,19 +1,21 @@
-import { Exo_2, Oswald, Roboto } from 'next/font/google'
+import { Montserrat, Open_Sans, Raleway } from 'next/font/google'
 
-export const titleFont = Oswald({
+export const family1 = Montserrat({
   subsets: ['latin'],
   weight: ['700', '600', '500'],
-  variable: '--titleFont'
+  variable: '--family1'
 })
 
-export const paragraphFont = Roboto({
+export const family2 = Open_Sans({
   subsets: ['latin'],
-  weight: ['900', '700', '500', '400', '300'],
-  variable: '--paragraphFont'
+  weight: ['500', '400'],
+  variable: '--family2'
 })
 
-export const exclamationFont = Exo_2({
+export const family3 = Raleway({
   subsets: ['latin'],
-  weight: ['200', '300', '400', '500', '700'],
-  variable: '--exclamationFont'
+  weight: ['400', '500'],
+  variable: '--family3'
 })
+
+export const bodyFonts = `${family1.variable} ${family2.variable} ${family3.variable}`

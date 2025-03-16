@@ -1,0 +1,16 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+@use '@sass/utils/scrollbar' as *;
+
+.sliceContainer {
+  width: fit-content;
+
+  @include d.flex;
+
+  &-content {
+    @include scroll-hidden;
+
+    overflow: auto;
+    transition: max-height 0.5s ease-in-out;
+  }
+}

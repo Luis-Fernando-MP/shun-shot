@@ -80,7 +80,7 @@
   }
 
   &-subSection {
-    @extend %scroll-hidden;
+    @include scroll-hidden;
 
     overflow-y: auto;
 
@@ -132,7 +132,7 @@
   }
 
   &-images {
-    @extend %scroll-hidden;
+    @include scroll-hidden;
 
     overflow: auto;
     padding: 0 v.$padding;

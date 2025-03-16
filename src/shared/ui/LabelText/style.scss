@@ -1,0 +1,30 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.label {
+  display: inline-flex;
+  gap: v.$padding * 0.5;
+  align-items: center;
+  justify-content: center;
+
+  padding: 3px 7px;
+  border: 1.5px solid transparent;
+  border-radius: 8px;
+
+  font-size: v.$fP;
+  text-wrap: nowrap;
+
+  label {
+    color: rgb(v.$fn1);
+  }
+
+  &.luminosity {
+    border-color: rgb(v.$bg1);
+    background-color: rgb(v.$bg3);
+  }
+
+  &.darken {
+    border-color: rgb(v.$bg3);
+    background-color: rgb(v.$bg1);
+  }
+}

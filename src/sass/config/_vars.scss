@@ -1,26 +1,24 @@
 :root {
   --bg-primary: 13, 13, 13;
-  --bg-secondary: 28, 28, 30;
-  --bg-tertiary: 46, 46, 48;
+  --bg-secondary: 19, 20, 23;
+  --bg-tertiary: 61, 61, 61;
 
   // Fuentes
-  --fnt-primary: 231, 231, 231;
+  --fnt-primary: 255, 255, 255;
   --fnt-secondary: 119, 119, 120;
-  --fnt-tertiary: 255, 255, 255;
+  --fnt-active: 255, 255, 255;
 
   // Principales
-  --tn-primary: 252, 21, 92;
-  --tn-secondary: 0, 0, 0;
-
-  // --
-
-  --xl-font-size: 3rem;
-  --h1-font-size: 2rem;
-  --h2-font-size: 1.5rem;
-  --h3-font-size: 1.4rem;
-  --h4-font-size: 1.3rem;
-  --h5-font-size: 1.2rem;
-  --p-font-size: 1.15rem;
+  --tn-primary: 164, 47, 238;
+  --tn-secondary: 45, 255, 238;
+  --xl-font-size: 4rem;
+  --h1-font-size: 1.3rem;
+  --h2-font-size: 1.2rem;
+  --h3-font-size: 1rem;
+  --h4-font-size: 0.9rem;
+  --h5-font-size: 0.9rem;
+  --p-font-size: 0.9rem;
+  --s-grid: 15px;
 }
 
 $fXl: var(--xl-font-size);
@@ -33,12 +31,12 @@ $fP: var(--p-font-size);
 $bg1: var(--bg-primary);
 $bg2: var(--bg-secondary);
 $bg3: var(--bg-tertiary);
+$bgp: var(--bg-pure);
 $fn1: var(--fnt-primary);
 $fn2: var(--fnt-secondary);
-$fn3: var(--fnt-tertiary);
+$fnA: var(--fnt-active);
 $tn1: var(--tn-primary);
 $tn2: var(--tn-secondary);
-$tn3: var(--tn-tertiary);
 
 // Window
 $min-small-screen: 450px;
@@ -49,53 +47,25 @@ $extra-large-screen: 1200px;
 $big-screen: 1350px;
 
 // Other
-$radius: 10px;
+$radius: 20px;
 $padding: 10px;
-$icon: 20px;
-$family-size: 11px;
-$fontBase: 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Segoe UI Emoji';
-$fontTitle: var(--titleFont);
-$font1: var(--paragraphFont);
-$font2: var(--exclamationFont);
+$icon: 13px;
+$family-size: 16px;
+$fontBase: 'Segoe UI Mono', 'Roboto Mono';
+$font1: var(--family1);
+$font2: var(--family2);
+$font3: var(--family3);
 
 // Basic colors
 $error: rgb(228 30 56);
 $success: rgb(40 167 69);
 $warning: rgb(255 193 7);
-$info: rgb(23 162 184);
+$info: rgb(42 42 42);
 $blood: rgb(203 28 112);
-$focus: #4285f4;
+$focus: rgb(66 133 244);
 
-// Perspective
-$per: 1000px;
-$bgDef: '/fondos/3.jpg';
-$noise: '/noise/noise-1.svg';
+// app
+$pixelSize: 30px;
 
 // bezier
 $bezier: cubic-bezier(0.68, -0.55, 0.27, 1.55);
-
-// gradients
-$gr1: linear-gradient(140deg, rgb(255 100 50) 12.8%, rgb(255 0 101) 43.52%, rgb(123 46 255) 84.34%);
-
-@mixin dotDark {
-  body.dark & {
-    @content;
-  }
-}
-
-@mixin border($bg: rgb($bg1)) {
-  & {
-    border: 1.5px solid rgb($bg3);
-    background-color: $bg;
-  }
-}
-
-@mixin hoverS($scale: 0.99, $s: 0.2s) {
-  scale: 1;
-  transition: all $s ease-in-out;
-
-  &:hover {
-    scale: $scale;
-    @content;
-  }
-}

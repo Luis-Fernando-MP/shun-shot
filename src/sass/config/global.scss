@@ -1,9 +1,11 @@
-@use '@sass/components/badge';
 @use '@sass/config/vars' as *;
+@use '@sass/config/typography' as *;
 @use '@sass/utils/media' as m;
 @use '@sass/utils/text' as t;
-@use '@sass/utils/tooltip' as tol;
+@use '@sass/utils/scrollbar' as *;
 @use '@sass/utils/boxLoader' as loader;
+@use '@sass/utils/defs' as d;
+@use 'sass:map';
 
 *,
 ::before,
@@ -13,97 +15,94 @@
   padding: 0;
   border: none;
 
+  list-style: none;
+
   outline: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 html {
   font-size: $family-size;
 }
 
-$listOfFontsSize: (
-  '.xl': $fXl,
-  'h1': $fH1,
-  'h2': $fH2,
-  'h3': $fH3,
-  'h4': $fH4,
-  'h5': $fH5,
-  'p': $fP
-);
+@include m.mediumScreen {
+  html {
+    font-size: 12px;
+  }
+}
 
 body {
   position: relative;
 
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 
   width: 100dvw;
   height: 100dvh;
   min-height: 100dvh;
+  max-height: 100vh;
 
   font-family: $font1;
   color: rgb($fn1);
 
   background-color: rgb($bg1);
 
-  textarea {
-    @extend %scroll-hidden;
+  // Typography
 
-    resize: none;
+  @each $tag, $props in $typography {
+    #{$tag} {
+      font-family: map.get($props, family);
+      font-size: map.get($props, size);
+      font-weight: map.get($props, weight);
+      color: map.get($props, color);
+    }
   }
 
-  button {
-    cursor: pointer;
-
-    width: fit-content;
-    height: fit-content;
-    margin: 0;
-
-    background-color: $bg2;
-
-    @include hoverS;
-  }
-
-  input,
   textarea,
   button,
-  select,
-  p {
-    font-size: $fP;
+  select {
+    font-family: map.get(map.get($typography, 'a'), family);
+    font-size: map.get(map.get($typography, 'a'), size);
+    font-weight: map.get(map.get($typography, 'a'), weight);
+    color: map.get(map.get($typography, 'a'), color);
+
+    background: none;
   }
 
-  p,
-  a,
   small,
-  input,
-  textarea,
-  button,
-  select {
-    color: rgb($fn2);
-    text-wrap: pretty;
+  label,
+  span,
+  input {
+    font-family: map.get(map.get($typography, 'p'), family);
+    font-size: map.get(map.get($typography, 'p'), size);
+    font-weight: map.get(map.get($typography, 'p'), weight);
+    color: map.get(map.get($typography, 'p'), color);
   }
 
-  a {
+  .icon,
+  .lucide {
     display: block;
-    text-decoration: none;
+
+    width: $icon;
+    height: $icon;
+
+    stroke: rgb($fn1);
+    stroke-width: 1.5;
   }
 
-  h5 {
-    font-weight: 500;
+  ::selection {
     color: rgb($fn1);
-    text-wrap: balance;
+    background-color: rgb($tn1);
   }
 
-  p {
-    font-weight: normal;
+  .loading {
+    @include loader.boxLoader;
   }
 
-  p,
-  a,
-  input,
-  textarea,
-  button,
-  select {
-    font-family: $font2;
+  input {
+    width: min-content;
 
     &:focus {
       outline: none;
@@ -120,112 +119,73 @@ body {
     }
   }
 
-  h4,
-  h5 {
-    font-family: $font1;
+  .border {
+    border: 1px solid rgb($bg3);
   }
 
-  h4 {
-    font-weight: 600;
+  button {
+    cursor: pointer;
   }
 
-  h1,
-  h2,
-  h3 {
-    font-family: $fontTitle;
+  .separator {
+    width: 1px;
+    height: 25px;
+    background-color: rgb($bg3);
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    color: rgb($fn1);
-    text-wrap: balance;
+  .active {
+    color: rgb($fnA) !important;
+    background-color: rgb($tn1) !important;
+
+    svg {
+      stroke: rgb($fnA) !important;
+    }
+  }
+}
+
+.toast {
+  width: fit-content !important;
+  height: fit-content !important;
+  padding: 0 !important;
+  border: 1px solid rgb($bg3, 0.5) !important;
+  border-radius: $radius !important;
+
+  line-height: normal !important;
+
+  background-color: rgb($bg2, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: none !important;
+
+  > div {
+    margin: 0 !important;
+  }
+}
+
+.paragraph {
+  &-normal,
+  &-highlight,
+  &-link {
+    display: inline;
+    margin: 0;
+    padding: 0;
   }
 
-  h1 {
-    font-weight: 900;
-  }
-
-  h2 {
-    font-weight: 800;
-  }
-
-  h3 {
-    font-weight: 700;
-  }
-
-  ul {
-    list-style: none;
-  }
-
-  .icon,
-  .lucide {
+  &-break {
     display: block;
-    width: 17px;
-    height: 17px;
-    stroke: rgb($fn1);
+    margin-top: $padding * 0.5;
   }
 
-  .tn1 {
-    color: rgb($tn1);
+  &-normal {
+    color: rgb($fn2);
   }
 
-  ::selection {
+  &-highlight {
     color: rgb($fn1);
-    background-color: rgb($tn1);
   }
 
-  .delay {
-    animation-delay: 700ms;
-  }
-
-  .btn-tooltip {
-    position: relative;
-    padding: $padding * 0.7;
-
-    @include tol.tooltip;
-  }
-
-  .loading {
-    pointer-events: none;
-    user-select: none;
-
-    @include loader.boxLoader;
-  }
-
-  .error {
-    pointer-events: none;
-    user-select: none;
-    position: relative;
-    outline: 2px solid $error;
-
-    &::after {
-      content: '';
-
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      background-color: rgb($error, 0.2);
-
-      animation: flicker 1s infinite alternate;
-    }
-  }
-
-  @each $tag, $value in $listOfFontsSize {
-    #{$tag} {
-      font-size: $value;
-    }
-  }
-
-  @include m.smallerScreen {
-    html {
-      font-size: 10px;
-    }
+  &-link {
+    color: rgb($fn1);
+    text-decoration: wavy underline rgb($tn1) 1.5px;
+    text-underline-offset: 3px;
   }
 }

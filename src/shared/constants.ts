@@ -1,13 +1,11 @@
-// export const default_image = '/fondos/1.jpg'
-// export const default_image = '/fondos/1-m.jpg'
 export const default_image = '/fondos/2-m.jpg'
 
-// export const default_image = '/fondos/2.jpg'
+export const INSPIRATION_LINK = 'https://shots.so'
 
-// export const default_image = '/fondos/3.jpg'
-// export const default_image = '/fondos/4.jpg'
-// export const default_image = '/fondos/5.jpg'
-// export const default_image = '/fondos/6.jpg'
-// export const default_image = '/fondos/7.jpg'
-// export const default_image = '/img.webp'
-// export const default_image = '/code-scape.png'
+export const GITHUB_LINK = 'https://github.com/Luis-Fernando-MP/shun-shot'
+
+export const ISSUES_GITHUB_LINK = `${GITHUB_LINK}/issues`
+
+export const EMAIL_LINK = 'mailto:luigmp@gmail.com'
+
+export const SHUM_DEV = 'https://luisjp.vercel.app'
