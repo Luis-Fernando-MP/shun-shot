@@ -30,7 +30,6 @@ const RootLayout = async ({ children }: IRootLayout): Promise<JSX.Element> => {
             <DetailBar className='app-detail' />
             <MainBar className='app-mainBar' />
             <div className='app-gradient' />
-
             {children}
           </Hydration>
         </Providers>

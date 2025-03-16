@@ -20,9 +20,7 @@ const LabeledInput: FC<Props> = ({ children, Icon, transparent, className, ...pr
   return (
     <div className={`labeledInput border ${transparent ? 'transparent' : ''} ${className}`}>
       <input className='labeledInput-input' autoComplete='off' {...props} />
-      <div className='labeledInput-label'>
-        <LabelText Icon={Icon}>{children ?? ''}</LabelText>
-      </div>
+      <div className='labeledInput-label'>{children && <LabelText Icon={Icon}>{children}</LabelText>}</div>
     </div>
   )
 }

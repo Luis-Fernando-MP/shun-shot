@@ -111,6 +111,9 @@ importers:
       eslint-plugin-tailwindcss:
         specifier: 3.18.0
         version: 3.18.0(tailwindcss@4.0.14)
+      monaco-editor:
+        specifier: ^0.52.2
+        version: 0.52.2
       postcss:
         specifier: 8.5.3
         version: 8.5.3
