@@ -21,7 +21,7 @@ const PopupComponent = ({
   clickPosition = { x: 0, y: 0 },
   ...props
 }: IPopup) => {
-  const { $popupRef, handleMouseDown, isDragging, position } = usePopup({ isOpen, clickPosition })
+  const { $popupRef, handleMouseDown, isDragging, position } = usePopup({ isOpen, clickPosition, onClose })
 
   if (!isOpen) return null
 

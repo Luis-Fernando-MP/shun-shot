@@ -5,9 +5,10 @@ export type PopupPositions = { x: number; y: number }
 interface IUsePopupHook {
   isOpen: boolean
   clickPosition?: PopupPositions
+  onClose: () => void
 }
 
-const usePopup = ({ isOpen, clickPosition }: IUsePopupHook) => {
+const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
   const $popupRef = useRef<HTMLElement>(null)
   const $dragPosition = useRef<PopupPositions | null>(null)
   const [isDragging, setIsDragging] = useState(false)
@@ -95,6 +96,18 @@ const usePopup = ({ isOpen, clickPosition }: IUsePopupHook) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen])
+
+  useEffect(() => {
+    if (!isOpen || !$popupRef.current) return
+    const handleKeyEvent = (e: KeyboardEvent): void => {
+      if (!(e.ctrlKey && (e.key === 'x' || e.key === 'Escape'))) return
+      onClose()
+    }
+    $popupRef.current.addEventListener('keydown', handleKeyEvent)
+    return () => {
+      $popupRef.current?.removeEventListener('keydown', handleKeyEvent)
+    }
+  }, [isOpen, onClose])
 
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove)
