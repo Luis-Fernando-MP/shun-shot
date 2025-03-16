@@ -27,22 +27,20 @@ const PopupComponent = ({
 
   const RenderPopup = (
     <article
+      role='button'
+      tabIndex={0}
       ref={$popupRef}
-      className='popup'
+      className='popup border'
+      onMouseDown={handleMouseDown}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
         opacity: isOpen ? 1 : 0
       }}
     >
-      <div className={`popup-container ${className}`} {...props}>
-        {children}
-      </div>
       <header
-        role='button'
-        tabIndex={0}
         className='popup-header'
-        onMouseDown={handleMouseDown}
+        id='popup-header'
         style={{
           cursor: isDragging ? 'grabbing' : 'grab'
         }}
@@ -50,6 +48,9 @@ const PopupComponent = ({
         <button className='popup-closeButton' onClick={onClose} />
         <p>{title}</p>
       </header>
+      <section className={`popup-container ${className}`} {...props}>
+        {children}
+      </section>
     </article>
   )
 

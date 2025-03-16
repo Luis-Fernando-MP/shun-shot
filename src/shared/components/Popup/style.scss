@@ -3,34 +3,59 @@
 @use '@sass/utils/scrollbar' as *;
 
 .popup {
+  user-select: none;
+
   position: fixed;
   z-index: 10;
 
-  display: grid;
-  grid-template-columns: 1fr 30px;
-  grid-template-rows: 1fr;
+  overflow: hidden;
 
   width: fit-content;
   min-width: 200px;
   height: fit-content;
-  min-height: 200px;
-  border: 2.5px solid rgb(v.$bg3);
-  border-radius: v.$radius * 0.7;
+  min-height: 300px;
+  border-radius: v.$radius;
 
   opacity: 1;
   background-color: rgb(v.$bg1);
 
+  @include d.flex;
+
+  &-container {
+    @include scroll-hidden;
+
+    position: relative;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    padding: v.$padding;
+
+    transition: height 0.3s ease-in-out;
+  }
+
   &.animate {
-    transition:
-      top 0.3s ease-in-out,
-      left 0.3s ease-in-out;
+    animation: delay-opacity 0.5s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    @keyframes delay-opacity {
+      0% {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      100% {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
   }
 
   &-header {
     position: relative;
-    padding: v.$padding 0;
-    writing-mode: vertical-rl;
-    background-color: rgb(v.$bg2);
+    padding: v.$padding;
 
     @include d.flex($dir: row, $ali: center);
   }
@@ -40,22 +65,5 @@
     height: 15px;
     border-radius: 50%;
     background-color: rgb(v.$tn1);
-  }
-
-  &-container {
-    @include scroll-hidden;
-
-    position: relative;
-    top: 0;
-
-    overflow-y: auto;
-    justify-content: center;
-
-    min-width: 100%;
-    min-height: 100px;
-    padding: v.$padding;
-    border-radius: v.$radius;
-
-    transition: height 0.3s ease-in-out;
   }
 }
