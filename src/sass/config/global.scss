@@ -4,6 +4,7 @@
 @use '@sass/utils/text' as t;
 @use '@sass/utils/scrollbar' as *;
 @use '@sass/utils/boxLoader' as loader;
+@use '@sass/utils/defs' as d;
 @use 'sass:map';
 
 *,
@@ -157,5 +158,34 @@ body {
 
   > div {
     margin: 0 !important;
+  }
+}
+
+.paragraph {
+  &-normal,
+  &-highlight,
+  &-link {
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+
+  &-break {
+    display: block;
+    margin-top: $padding * 0.5;
+  }
+
+  &-normal {
+    color: rgb($fn2);
+  }
+
+  &-highlight {
+    color: rgb($fn1);
+  }
+
+  &-link {
+    color: rgb($fn1);
+    text-decoration: wavy underline rgb($tn1) 1.5px;
+    text-underline-offset: 3px;
   }
 }

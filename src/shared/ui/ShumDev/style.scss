@@ -1,15 +1,15 @@
 @use '@sass/config/vars' as v;
 @use '@sass/utils/defs' as d;
 
-.shumShots {
+.shumDev {
   display: grid;
   place-content: center;
 
   width: fit-content;
   height: fit-content;
-  border: 1.5px solid rgba(v.$tn1);
+  border: 1.5px solid #868686;
 
-  background-color: rgba(v.$bg2);
+  background-color: #013936e3;
 
   &.circle {
     border-radius: 50%;
@@ -22,7 +22,7 @@
   &.xs {
     padding: v.$padding * 0.5;
 
-    .shumShots-logo {
+    .shumDev-logo {
       width: v.$icon * 1.3;
       height: v.$icon * 1.3;
     }
@@ -31,7 +31,7 @@
   &.sm {
     padding: v.$padding;
 
-    .shumShots-logo {
+    .shumDev-logo {
       width: v.$icon * 1.7;
       height: v.$icon * 1.7;
     }
@@ -40,7 +40,7 @@
   &.md {
     padding: v.$padding * 1.2;
 
-    .shumShots-logo {
+    .shumDev-logo {
       width: v.$icon * 2;
       height: v.$icon * 2;
     }
@@ -49,7 +49,7 @@
   &.lg {
     padding: v.$padding * 1.3;
 
-    .shumShots-logo {
+    .shumDev-logo {
       width: v.$icon * 4;
       height: v.$icon * 4;
     }
@@ -58,7 +58,7 @@
   &.xl {
     padding: v.$padding * 2;
 
-    .shumShots-logo {
+    .shumDev-logo {
       width: v.$icon * 6;
       height: v.$icon * 6;
     }

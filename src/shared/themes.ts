@@ -404,16 +404,6 @@ export const THEMES: Record<string, Theme> = {
     'tn-primary': '230, 150, 50',
     'tn-secondary': '200, 100, 40'
   },
-  'Galactic Fusion': {
-    'bg-primary': '55, 5, 75',
-    'bg-secondary': '75, 5, 105',
-    'bg-tertiary': '95, 5, 135',
-    'fnt-primary': '230, 230, 230',
-    'fnt-secondary': '190, 190, 190',
-    'fnt-active': '0, 0, 0',
-    'tn-primary': '220, 50, 220',
-    'tn-secondary': '180, 40, 180'
-  },
   Midnight: {
     'bg-primary': '10, 25, 50',
     'bg-secondary': '20, 40, 70',
