@@ -30,7 +30,7 @@ const DetailBar: FC<Props> = ({ className }) => {
       </IconButton>
 
       <Link href='/' className='detailBar-logo'>
-        <ShumShots size='md' transparent />
+        <ShumShots size={isOpen ? 'md' : 'xs'} transparent />
         <h4>Shum Shots</h4>
       </Link>
 

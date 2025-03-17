@@ -20,6 +20,8 @@
 
   &-logo {
     @include d.flex;
+
+    width: fit-content;
   }
 
   &-history {
@@ -42,7 +44,7 @@
 
   &-arrow {
     position: absolute;
-    top: calc(v.$padding * 2);
+    top: v.$padding;
     right: v.$padding;
   }
 }
