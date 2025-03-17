@@ -4,7 +4,7 @@
 
 .sliceContainer {
   position: relative;
-  width: fit-content;
+  min-width: fit-content;
 
   @include d.flex;
 

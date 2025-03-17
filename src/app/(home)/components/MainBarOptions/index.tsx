@@ -5,6 +5,7 @@ import { LetterText, Settings } from 'lucide-react'
 import type { FC } from 'react'
 
 import useReferenceMonacoStore from '../../store/referenceMonaco'
+import UserMonacoPreferences from '../UserMonacoPreferences'
 import ShotFileName from './ShotFileName'
 
 const MainBarOptions: FC = () => {
@@ -24,9 +25,7 @@ const MainBarOptions: FC = () => {
 
       <ShotFileName />
 
-      <IconButton label='Configurar monaco' transparent>
-        <Settings />
-      </IconButton>
+      <UserMonacoPreferences />
     </section>
   )
 }
