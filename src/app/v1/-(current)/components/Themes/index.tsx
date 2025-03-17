@@ -1,5 +1,5 @@
 import { acl } from '@/shared/acl'
-import { themesData } from '@/shared/themes/loadStaticThemes'
+import { themesData } from '@/shared/themes/monacoThemes'
 import { useThemeMonacoStore } from '@code-store/themes-monaco.store'
 import { type JSX } from 'react'
 

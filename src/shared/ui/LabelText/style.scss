@@ -2,6 +2,9 @@
 @use '@sass/utils/defs' as d;
 
 .label {
+  pointer-events: none;
+  user-select: none;
+
   display: inline-flex;
   gap: v.$padding * 0.5;
   align-items: center;

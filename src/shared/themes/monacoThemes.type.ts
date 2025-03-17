@@ -5,13 +5,15 @@ type ThemeRule = {
   token: string
 }
 
-type ThemeColors = {
+export type ThemeColors = {
   'editor.foreground': string
   'editor.background': string
   'editor.selectionBackground': string
   'editor.lineHighlightBackground': string
   'editorCursor.foreground': string
   'editorWhitespace.foreground': string
+  'editor.selectionHighlightBackground': string
+  'activityBarBadge.background': string
 }
 
 type Theme = {
@@ -21,7 +23,7 @@ type Theme = {
   colors: ThemeColors
 }
 
-export type ThemesMonaco = {
+export type ThemeMonaco = {
   base: string
   inherit: boolean
   rules: ThemeRule[]

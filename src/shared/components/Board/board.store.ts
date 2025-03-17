@@ -19,8 +19,8 @@ interface IBoardStore {
   setOffset: (offset: Positions) => void
 }
 
-export const MIN_SCALE = 0.7
-export const MAX_SCALE = 7
+export const MIN_SCALE = 0.5
+export const MAX_SCALE = 3
 export const INITIAL_SCALE = 1
 
 const state: StateCreator<IBoardStore> = set => ({
@@ -32,7 +32,7 @@ const state: StateCreator<IBoardStore> = set => ({
   moveToChild: () => {},
 
   setEnableScroll: enableScroll => set({ enableScroll }),
-  setScale: scale => set({ scale }),
+  setScale: scale => set({ scale: Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale)) }),
   setOffset: offset => set({ offset }),
   setNextChild: nextChild => set({ nextChild }),
   setPrevChild: prevChild => set({ prevChild }),

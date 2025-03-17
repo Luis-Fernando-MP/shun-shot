@@ -1,0 +1,45 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.monacoPreferences {
+  &-popup {
+    width: 400px;
+
+    @include d.flex($gap: v.$padding * 1.5);
+
+    height: 700px;
+    max-height: 700px;
+  }
+
+  &-themes {
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include d.flex($dir: row, $gap: v.$padding * 0.5);
+  }
+
+  &-languages,
+  &-language {
+    @include d.flex;
+  }
+
+  &-languages {
+    width: 100%;
+  }
+
+  &-icons {
+    flex-wrap: wrap;
+
+    @include d.flex($dir: row, $gap: v.$padding * 0.5);
+  }
+
+  &-language {
+    gap: v.$padding * 0.5;
+
+    &__action {
+      &.selected {
+        background-color: rgb(v.$tn1);
+      }
+    }
+  }
+}

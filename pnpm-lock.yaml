@@ -26,9 +26,6 @@ importers:
       cloudinary:
         specifier: ^2.6.0
         version: 2.6.0
-      dom-to-image:
-        specifier: ^2.6.0
-        version: 2.6.0
       dom-to-image-more:
         specifier: ^3.5.0
         version: 3.5.0
@@ -62,6 +59,9 @@ importers:
       react-dropzone:
         specifier: ^14.3.8
         version: 14.3.8(react@19.0.0)
+      react-field-sizing-content:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.0.0)
       react-hot-toast:
         specifier: 2.5.2
         version: 2.5.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -111,6 +111,9 @@ importers:
       eslint-plugin-tailwindcss:
         specifier: 3.18.0
         version: 3.18.0(tailwindcss@4.0.14)
+      monaco-editor:
+        specifier: ^0.52.2
+        version: 0.52.2
       postcss:
         specifier: 8.5.3
         version: 8.5.3
@@ -1045,9 +1048,6 @@ packages:
 
   dom-to-image-more@3.5.0:
     resolution: {integrity: sha512-VF/vwfHsPNMHJb5W/5sAmco3UIlEWSEFLppInQwqwN4joUvBULDwE3CqVcUDkUWleke/nZ5KwIVSrrFlGw7WPA==}
-
-  dom-to-image@2.6.0:
-    resolution: {integrity: sha512-Dt0QdaHmLpjURjU7Tnu3AgYSF2LuOmksSGsUcE6ItvJoCWTBEmiMXcqBdNSAm9+QbbwD7JMoVsuuKX6ZVQv1qA==}
 
   dompurify@3.2.4:
     resolution: {integrity: sha512-ysFSFEDVduQpyhzAob/kkuJjf5zWkZD8/A9ywSp1byueyuCfHamrCBa14/Oc2iiB0e51B+NpxSl5gmzn+Ms/mg==}
@@ -2027,6 +2027,11 @@ packages:
     engines: {node: '>= 10.13'}
     peerDependencies:
       react: '>= 16.8 || 18.0.0'
+
+  react-field-sizing-content@1.0.0:
+    resolution: {integrity: sha512-Wu9kaurnMn4AZ4kVxcR0rmbLKdCetqOSszB8KuauwU91cAKv1YPjhOLsbUyBB+11+yYpdFPoDSuasuQ5ruz0pg==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
 
   react-hot-toast@2.5.2:
     resolution: {integrity: sha512-Tun3BbCxzmXXM7C+NI4qiv6lT0uwGh4oAfeJyNOjYUejTsm35mK9iCaYLGv8cBz9L5YxZLx/2ii7zsIwPtPUdw==}
@@ -3372,8 +3377,6 @@ snapshots:
 
   dom-to-image-more@3.5.0: {}
 
-  dom-to-image@2.6.0: {}
-
   dompurify@3.2.4:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
@@ -4439,6 +4442,10 @@ snapshots:
       attr-accept: 2.2.5
       file-selector: 2.1.2
       prop-types: 15.8.1
+      react: 19.0.0
+
+  react-field-sizing-content@1.0.0(react@19.0.0):
+    dependencies:
       react: 19.0.0
 
   react-hot-toast@2.5.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):

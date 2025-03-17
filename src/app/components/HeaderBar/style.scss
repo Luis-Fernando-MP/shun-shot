@@ -9,7 +9,7 @@
   padding: v.$padding * 0.5;
   border-radius: v.$radius;
 
-  background-color: rgb(v.$bg1, 0.8);
+  background-color: rgb(v.$bg1, 0.7);
   backdrop-filter: blur(10px);
 
   @include d.flex($dir: row, $ali: center, $gap: v.$padding);
@@ -26,5 +26,9 @@
     input {
       max-width: 60px;
     }
+  }
+
+  &-percentage {
+    width: 60px;
   }
 }

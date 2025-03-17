@@ -5,6 +5,7 @@ import useBoardStore, { MAX_SCALE, MIN_SCALE, Positions } from './board.store'
 interface IUseBoardHook {
   isCenter: boolean
   minScale?: boolean
+  normalScale?: boolean
 }
 
 export interface BoardRef {
@@ -14,7 +15,7 @@ export interface BoardRef {
   handleScale: (scale: number) => void
 }
 
-const useBoard = ({ isCenter, minScale = false }: IUseBoardHook) => {
+const useBoard = ({ isCenter, minScale = false, normalScale = false }: IUseBoardHook) => {
   const { offset, scale, setOffset, setScale, setPrevChild, setNextChild, setMoveToChild, enableScroll } = useBoardStore()
   const $containerRef = useRef<HTMLDivElement>(null)
   const $childrenRef = useRef<HTMLDivElement>(null)
@@ -40,13 +41,25 @@ const useBoard = ({ isCenter, minScale = false }: IUseBoardHook) => {
     return { scale, maxScale, minScale }
   }
 
+  const centerChildren = useCallback(
+    (scale: number) => {
+      if (!$containerRef.current || !$childrenRef.current) return { newOffsetX: 0, newOffsetY: 0 }
+      const paRect = $containerRef.current.getBoundingClientRect()
+      const chiRect = $childrenRef.current.getBoundingClientRect()
+      const newOffsetX = (paRect.width - chiRect.width * scale) / 2
+      const newOffsetY = (paRect.height - chiRect.height * scale) / 2
+      setOffset({ x: newOffsetX, y: newOffsetY })
+      return { newOffsetX, newOffsetY }
+    },
+    [setOffset]
+  )
+
   const centerAndFit = useCallback(() => {
     if (!$containerRef.current || !$childrenRef.current) return
     const paRect = $containerRef.current.getBoundingClientRect()
     const chiRect = $childrenRef.current.getBoundingClientRect()
     const { scale } = getDynamicScale(paRect, chiRect)
-    const newOffsetX = (paRect.width - chiRect.width * scale) / 2
-    const newOffsetY = (paRect.height - chiRect.height * scale) / 2
+    const { newOffsetX, newOffsetY } = centerChildren(scale)
     setScale(scale)
     setOffset({ x: newOffsetX, y: newOffsetY })
   }, [setOffset, setScale])
@@ -162,9 +175,17 @@ const useBoard = ({ isCenter, minScale = false }: IUseBoardHook) => {
   }, [scale, offset, enableScroll, handleWheel])
 
   useEffect(() => {
+    if (normalScale) {
+      const { newOffsetX, newOffsetY } = centerChildren(1)
+      setScale(1)
+      setOffset({ x: newOffsetX, y: newOffsetY })
+      return
+    }
+
     if (isCenter) return centerAndFit()
+
     centerWithSpacing()
-  }, [centerAndFit, centerWithSpacing, isCenter])
+  }, [normalScale, centerAndFit, centerWithSpacing, isCenter, centerChildren])
 
   useEffect(() => {
     setPrevChild(prevChild)

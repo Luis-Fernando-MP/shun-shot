@@ -1,6 +1,6 @@
 'use client'
 
-import { themesData } from '@/shared/themes/loadStaticThemes'
+import { themesData } from '@/shared/themes/monacoThemes'
 import { useMonacoStore } from '@code-store/config-monaco.store'
 import { useRefMonacoStore } from '@code-store/refMonaco.store'
 import Editor, { useMonaco } from '@monaco-editor/react'

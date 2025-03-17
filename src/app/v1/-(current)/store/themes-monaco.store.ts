@@ -1,4 +1,4 @@
-import { themesData } from '@/shared/themes/loadStaticThemes'
+import { themesData } from '@/shared/themes/monacoThemes'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 

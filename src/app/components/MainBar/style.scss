@@ -19,12 +19,15 @@
   }
 
   &-fileName {
-    align-items: flex-start;
-    width: 130px;
-    padding: 0;
+    p {
+      overflow: hidden;
 
-    input {
-      max-width: 60px;
+      max-width: 120px;
+      padding: 0 v.$padding * 0.5;
+
+      color: rgb(v.$fn1);
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }

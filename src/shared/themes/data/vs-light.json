@@ -1,6 +1,6 @@
 {
   "inherit": false,
-  "base": "vs-dark",
+  "base": "vs",
   "colors": {
     "actionBar.toggledBackground": "#dddddd",
     "activityBarBadge.background": "#007acc",

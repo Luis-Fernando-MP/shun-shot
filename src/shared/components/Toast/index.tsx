@@ -38,7 +38,7 @@ const toastAction = (props: Partial<ToastType> & IToastProps & { onAction: () =>
   )
 }
 
-export const toast = (props: Partial<ToastType> & IToastProps) => {
+export const toaster = (props: Partial<ToastType> & IToastProps) => {
   const { title, description, icon, type, duration, ...rest } = props
   return hotToast(
     t => {
@@ -51,4 +51,4 @@ export const toast = (props: Partial<ToastType> & IToastProps) => {
   )
 }
 
-toast.action = toastAction
+toaster.action = toastAction

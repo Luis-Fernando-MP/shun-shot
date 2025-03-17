@@ -1,7 +1,13 @@
+'use client'
+
+import { acl } from '@/shared/acl'
+import IconButton from '@/shared/ui/IconButton'
 import LabelText from '@/shared/ui/LabelText'
 import ShumShots from '@/shared/ui/ShumShots'
+import { ArrowBigDownDashIcon, ArrowBigUpDashIcon } from 'lucide-react'
 import Link from 'next/link'
-import type { FC } from 'react'
+import { type FC } from 'react'
+import { useLocalStorage } from 'usehooks-ts'
 
 import './style.scss'
 
@@ -10,13 +16,23 @@ interface Props {
 }
 
 const DetailBar: FC<Props> = ({ className }) => {
-  return (
-    <article className={`detailBar border ${className}`}>
-      <Link href='/'>
-        <ShumShots size='md' />
-      </Link>
+  const [isOpen, setIsOpen] = useLocalStorage('detailBar', true)
 
-      <h3>Shum Shots</h3>
+  return (
+    <article className={`detailBar border ${className} ${acl(!isOpen, 'minimize')}`}>
+      <IconButton
+        label={isOpen ? 'Contraer barra informativa' : 'Expandir barra informativa'}
+        onClick={() => setIsOpen(prev => !prev)}
+        className={`detailBar-arrow ${acl(!isOpen)}`}
+        position='bottom'
+      >
+        {isOpen ? <ArrowBigUpDashIcon /> : <ArrowBigDownDashIcon />}
+      </IconButton>
+
+      <Link href='/' className='detailBar-logo'>
+        <ShumShots size={isOpen ? 'md' : 'xs'} transparent />
+        <h4>Shum Shots</h4>
+      </Link>
 
       <section className='detailBar-history'>
         <p>Navega por el dashboard utilizando:</p>
@@ -49,9 +65,18 @@ const DetailBar: FC<Props> = ({ className }) => {
           <LabelText>Ctrl</LabelText> + <LabelText>Z</LabelText> / <LabelText>Ctrl</LabelText> + <LabelText>Y</LabelText>
         </div>
       </section>
-      <p>
-        Finalmente, puedes editar tu <span>Shot</span> en la página <Link href='/image-edit'>/image-edit</Link>.
-      </p>
+      <div className='detailBar-history'>
+        <div className='paragraph'>
+          <p className='paragraph-normal'>Finalmente, puedes editar tu</p>
+          <h4 className='paragraph-highlight'>&nbsp;Shot&nbsp;</h4>
+          <p className='paragraph-normal'>
+            en la página
+            <Link href='/image-edit' className='paragraph-link'>
+              &nbsp;/image-edit
+            </Link>
+          </p>
+        </div>
+      </div>
     </article>
   )
 }

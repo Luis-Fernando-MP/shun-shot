@@ -28,7 +28,7 @@ const CustomToast: FC<Props> = ({ toastProps, title, description, icon, type = '
     <button className={`customToast ${type}`} onClick={handleClick}>
       <div className='customToast-icon'>{icon || <Icon />}</div>
       <div className='customToast-content'>
-        <h3 className='customToast-title'>{title}</h3>
+        <h5 className='customToast-title'>{title}</h5>
         {description && <p className='customToast-description'>{description}</p>}
       </div>
     </button>

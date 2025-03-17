@@ -1,0 +1,27 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+@use '@sass/utils/glitch' as g;
+
+.editorComponent {
+  &.zoom {
+    pointer-events: none;
+  }
+}
+
+.loaderEditor {
+  @include d.flex($ali: center);
+  @include g.glitch(color 5s forwards);
+
+  justify-content: center;
+  width: 100%;
+  height: max-content;
+  background-color: transparent !important;
+
+  &-wrapper {
+    @include d.flex($dir: row, $ali: center);
+  }
+
+  &-title {
+    text-align: center;
+  }
+}

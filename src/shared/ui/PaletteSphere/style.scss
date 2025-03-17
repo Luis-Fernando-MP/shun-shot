@@ -4,29 +4,39 @@
 .paletteSphere {
   position: relative;
 
-  overflow: hidden;
-
   min-height: 40px;
-  padding: v.$padding;
-  border: 1px solid transparent;
+  padding: v.$padding * 0.5;
+  border: 2px solid transparent;
   border-radius: v.$radius * 0.5;
 
   background-color: rgb(v.$bg2);
 
-  &::after {
-    content: '';
+  @include d.flex($dir: row, $ali: center, $gap: v.$padding * 1.5);
 
+  &-gradient {
     position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
 
-    width: 60px;
-    height: 30px;
-    border-radius: 50%;
+    overflow: hidden;
 
-    background-color: rgb(v.$fn1);
-    filter: blur(20px) opacity(0.5);
+    width: 100%;
+    height: 100%;
+    border-radius: v.$radius * 0.5;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      width: 60px;
+      height: 30px;
+      border-radius: 50%;
+
+      background-color: rgb(v.$fn1);
+      filter: blur(30px);
+    }
   }
 
   &.selected {
@@ -38,7 +48,7 @@
   }
 
   &-spheres {
-    @include d.flex($dir: row, $ali: center);
+    @include d.flex($dir: row, $ali: center, $gap: v.$padding * 0.5);
 
     position: relative;
     z-index: 1;
@@ -47,8 +57,14 @@
   &-sphere {
     width: 20px;
     height: 20px;
+    border: 1px solid rgb(v.$fn1);
     border-radius: 50%;
   }
 
-  @include d.flex($dir: row, $ali: center, $gap: v.$padding * 1.5);
+  &-title {
+    overflow: hidden;
+    max-width: 55px;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+  }
 }
