@@ -22,7 +22,6 @@ const PaletteSphere: FC<Props> = ({ title, theme, className = '', selected = fal
   if (!theme) return null
 
   const parseColor = (color: string | null) => {
-    console.log(color)
     if (!color) return ''
     if (color?.includes('#')) return color
     return `rgb(${color})`

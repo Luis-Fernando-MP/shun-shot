@@ -102,6 +102,10 @@ const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
   }, [])
 
   useEffect(() => {
+    bringPopupToFront()
+  }, [isOpen, bringPopupToFront])
+
+  useEffect(() => {
     if (!$popupRef.current || !isOpen) return
     const rect = $popupRef.current.getBoundingClientRect()
     const newPosition = calculateInitialPosition(rect)
