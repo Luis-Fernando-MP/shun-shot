@@ -12,9 +12,10 @@ interface BoardProps {
   className?: string
   isCenter?: boolean
   minScale?: boolean
+  normalScale?: boolean
 }
 
-const Board = ({ children, className = '', isCenter = true, minScale }: BoardProps): JSX.Element => {
+const Board = ({ children, className = '', isCenter = true, minScale, normalScale }: BoardProps): JSX.Element => {
   const {
     $containerRef,
     $childrenRef,
@@ -28,7 +29,7 @@ const Board = ({ children, className = '', isCenter = true, minScale }: BoardPro
     handleTouchStart,
     handleTouchMove,
     handleTouchEnd
-  } = useBoard({ isCenter, minScale })
+  } = useBoard({ isCenter, minScale, normalScale })
 
   return (
     <article

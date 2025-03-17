@@ -1,9 +1,8 @@
 'use client'
 
 import IconButton from '@/shared/ui/IconButton'
-import LabelText from '@/shared/ui/LabelText'
 import { copyImage } from '@lucide/lab'
-import { CloudDownload, Icon, LetterText, Settings } from 'lucide-react'
+import { Icon, LetterText, Settings } from 'lucide-react'
 import type { FC } from 'react'
 
 import useReferenceMonacoStore from '../../store/referenceMonaco'

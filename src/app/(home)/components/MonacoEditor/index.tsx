@@ -15,7 +15,7 @@ const MonacoEditor: FC = () => {
   const theme = getCurrentTheme()
 
   return (
-    <article className='monacoEditor' style={{ backgroundColor: theme?.colors['editor.background'] }}>
+    <article className='monacoEditor' style={{ backgroundColor: theme?.colors['editor.background'] }} id='monacoEditor'>
       <header className='monacoEditor-header'>
         <div className='monacoEditor-spheres'>
           <span className='monacoEditor-sphere red' />

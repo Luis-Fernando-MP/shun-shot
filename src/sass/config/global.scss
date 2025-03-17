@@ -152,7 +152,7 @@ body {
   height: fit-content !important;
   padding: 0 !important;
   border: 1px solid rgb($bg3, 0.5) !important;
-  border-radius: $radius !important;
+  border-radius: $radius * 0.7 !important;
 
   line-height: normal !important;
 

@@ -9,8 +9,7 @@
   width: fit-content;
   min-width: 100px;
   min-height: fit-content;
-  padding: v.$padding * 0.7 v.$padding;
-  border-radius: v.$radius;
+  padding: v.$padding * 0.8 v.$padding;
 
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
 
@@ -55,6 +54,11 @@
 
   &-description {
     max-width: 170px;
-    font-size: 1rem;
+    font-size: 0.8rem;
+  }
+
+  &-title {
+    font-size: v.$fP;
+    color: rgb(v.$fn1);
   }
 }

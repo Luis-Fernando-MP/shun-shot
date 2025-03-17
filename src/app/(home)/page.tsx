@@ -9,7 +9,7 @@ import './style.scss'
 const Page: FC = () => {
   return (
     <main className='app-main home'>
-      <Board isCenter={false} minScale>
+      <Board isCenter={false} normalScale>
         {() => (
           <div className='app-board home-board border'>
             <MonacoEditor />
