@@ -18,28 +18,9 @@
     @include d.flex($dir: row, $gap: v.$padding * 0.5);
   }
 
-  &-languages,
-  &-language {
-    @include d.flex;
-  }
-
   &-languages {
+    @include d.flex;
+
     width: 100%;
-  }
-
-  &-icons {
-    flex-wrap: wrap;
-
-    @include d.flex($dir: row, $gap: v.$padding * 0.5);
-  }
-
-  &-language {
-    gap: v.$padding * 0.5;
-
-    &__action {
-      &.selected {
-        background-color: rgb(v.$tn1);
-      }
-    }
   }
 }

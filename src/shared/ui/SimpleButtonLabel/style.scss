@@ -3,7 +3,7 @@
 
 @use '@sass/utils/tooltip' as tol;
 
-.iconButton {
+.simpleButtonLabel {
   position: relative;
 
   display: grid;
@@ -11,18 +11,6 @@
 
   width: fit-content;
   height: fit-content;
-  padding: v.$padding * 0.8;
-  border-radius: v.$radius * 0.5;
-
-  background-color: rgba(v.$bg2);
-
-  &.transparent {
-    background-color: transparent;
-  }
-
-  &.outline {
-    border: 1px dashed rgba(v.$tn1);
-  }
 
   svg {
     width: v.$icon;

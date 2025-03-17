@@ -17,10 +17,10 @@ const MonacoLanguage: FC<Props> = ({ language }) => {
   }
 
   return (
-    <div className='monacoPreferences-language paragraph'>
+    <div className='monacoThemeCategory paragraph'>
       <h4 className='paragraph-normal'>{section}</h4>
 
-      <div className='monacoPreferences-icons'>
+      <div className='monacoThemeCategory-icons'>
         {Object.entries(languages).map(([key, language]) => {
           return (
             <IconLanguage key={key} language={language} onClick={handleClick} selected={userLanguage === language.language} />

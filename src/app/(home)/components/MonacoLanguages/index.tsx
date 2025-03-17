@@ -3,6 +3,7 @@ import monacoLanguagesIcons from '@/shared/monaco-languages'
 import type { FC } from 'react'
 
 import MonacoLanguage from './MonacoLanguage'
+import './style.scss'
 
 const MonacoLanguages: FC = () => {
   return (

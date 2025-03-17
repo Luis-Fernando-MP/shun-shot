@@ -1,5 +1,5 @@
 import { acl } from '@/shared/acl'
-import IconButton from '@/shared/ui/IconButton'
+import SimpleButtonLabel from '@/shared/ui/SimpleButtonLabel'
 import { FC, memo } from 'react'
 
 interface Props {
@@ -12,14 +12,14 @@ const IconLanguage: FC<Props> = ({ language, onClick, selected }) => {
   const { Icon, language: lang } = language
 
   return (
-    <IconButton
-      label={lang}
-      transparent
+    <SimpleButtonLabel
       onClick={() => onClick(lang)}
-      className={`monacoPreferences-language__action ${acl(selected, 'selected')}`}
+      label={lang}
+      position='bottom'
+      className={`monacoThemeCategory-languageAction ${acl(selected, 'selected')}`}
     >
       <Icon />
-    </IconButton>
+    </SimpleButtonLabel>
   )
 }
 

@@ -1,0 +1,29 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.monacoThemeCategory {
+  @include d.flex($gap: v.$padding * 0.5);
+
+  // &__action {
+  //   &.selected {
+  //     background-color: rgb(v.$tn1);
+  //   }
+  // }
+
+  &-icons {
+    flex-wrap: wrap;
+
+    @include d.flex($dir: row, $gap: v.$padding * 0.5);
+  }
+
+  &-languageAction {
+    padding: v.$padding * 0.5;
+    border: 1px solid v.$bg3;
+    border-radius: 5px;
+
+    .icon {
+      width: v.$icon * 1.5;
+      height: v.$icon * 1.5;
+    }
+  }
+}
