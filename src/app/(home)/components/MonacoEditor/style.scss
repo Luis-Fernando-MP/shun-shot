@@ -44,6 +44,7 @@
     @include d.flex($dir: row, $ali: center, $gap: 0);
 
     input {
+      max-width: 300px;
       background-color: transparent;
     }
   }

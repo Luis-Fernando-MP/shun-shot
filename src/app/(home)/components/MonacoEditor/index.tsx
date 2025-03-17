@@ -2,9 +2,9 @@
 
 import dynamic from 'next/dynamic'
 import type { FC } from 'react'
-import { Input } from 'react-field-sizing-content'
 
 import useMonacoThemeStore from '../../store/monacoTheme.store'
+import ShotFileName from './ShotFileName'
 import './style.scss'
 
 const EditorComponent = dynamic(() => import('../EditorComponent'), { ssr: false })
@@ -24,8 +24,7 @@ const MonacoEditor: FC = () => {
         </div>
 
         <div className='monacoEditor-field'>
-          <Input fieldSizing='content' defaultValue='Shum-shots' style={{ color: theme?.colors['editor.foreground'] }} />
-          <p className='monacoEditor-extension'>.ts</p>
+          <ShotFileName theme={theme?.colors['editor.foreground']} />
         </div>
       </header>
       <EditorComponent />

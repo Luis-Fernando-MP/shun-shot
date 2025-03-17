@@ -20,8 +20,14 @@
 
   &-fileName {
     p {
+      overflow: hidden;
+
+      max-width: 120px;
       padding: 0 v.$padding * 0.5;
+
       color: rgb(v.$fn1);
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
