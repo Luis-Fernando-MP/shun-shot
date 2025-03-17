@@ -48,9 +48,52 @@ const useDownloadImage = () => {
     [setIsDownloading]
   )
 
+  const copyToClipboard = useCallback(
+    async ({ $element, scaleFactor }: Omit<HandleDownloadProps, 'fileName'>) => {
+      if (isDownloading) return
+      const toastId = toaster({ title: 'Procesando imagen...', type: 'pending' })
+      setIsDownloading(true)
+
+      try {
+        const dataUrl = await domToImageMore.toPng($element, {
+          quality: 1,
+          width: $element.offsetWidth * scaleFactor,
+          height: $element.offsetHeight * scaleFactor,
+          style: {
+            transform: `scale(${scaleFactor})`,
+            transformOrigin: 'top left',
+            borderRadius: 0
+          }
+        })
+
+        const response = await fetch(dataUrl)
+        const blob = await response.blob()
+
+        if (!navigator.clipboard || !window.ClipboardItem) {
+          toaster({ title: 'El navegador no soporta la API de portapapeles.', type: 'error', id: toastId })
+          return
+        }
+
+        const item = new ClipboardItem({ 'image/png': blob })
+        await navigator.clipboard.write([item])
+        toaster({ title: 'Completado', type: 'success', id: toastId })
+      } catch (error) {
+        console.log(error)
+        toaster({ title: 'No se pudo copiar la imagen', type: 'error', id: toastId })
+      } finally {
+        setTimeout(() => {
+          toast.dismiss(toastId)
+        }, 3000)
+        setIsDownloading(false)
+      }
+    },
+    [setIsDownloading]
+  )
+
   return {
     isDownloading,
-    downloadPngImage
+    downloadPngImage,
+    copyToClipboard
   }
 }
 
