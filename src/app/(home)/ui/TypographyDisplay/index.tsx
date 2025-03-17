@@ -1,3 +1,4 @@
+import { acl } from '@/shared/acl'
 import { monacoFonts } from '@/shared/fonts/monaco-fonts'
 import type { ButtonHTMLAttributes, FC } from 'react'
 
@@ -22,7 +23,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 const TypographyDisplay: FC<Props> = ({ font, title, className = '', selected = false, ...props }) => {
   const { className: fontClassName } = font
   return (
-    <button className={`typographyDisplay ${className} ${fontClassName} antialiased ${selected ? 'selected' : ''}`} {...props}>
+    <button className={`typographyDisplay ${className} ${fontClassName} antialiased ${acl(selected, 'selected')}`} {...props}>
       <p className={`typographyDisplay-extra ${fontClassName}`}>Shum shot's</p>
       <h3 className={`typographyDisplay-title ${fontClassName}`}>{title}</h3>
       <p className={`typographyDisplay-extra ${fontClassName}`}>{'=> {} [] () <-'}</p>

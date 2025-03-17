@@ -12,9 +12,11 @@
 
   &.selected {
     border-color: rgb(v.$tn1);
+    background-color: rgb(v.$tn1, 0.3);
 
-    .typographyDisplay-extra {
-      color: rgb(v.$tn1);
+    p,
+    h3 {
+      color: rgb(v.$fn1);
     }
   }
 }
