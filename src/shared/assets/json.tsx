@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Json = (): JSX.Element => {
   return (
-    <svg viewBox='0 0 256 256' preserveAspectRatio='xMinYMin meet'>
+    <svg viewBox='0 0 256 256' preserveAspectRatio='xMinYMin meet' className='icon'>
       <defs>
         <linearGradient x1='15.791%' y1='14.737%' x2='91.009%' y2='85.228%' id='a11'>
           <stop offset='0%' />

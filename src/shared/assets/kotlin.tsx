@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Kotlin = (): JSX.Element => {
   return (
-    <svg viewBox='0 0 24 24'>
+    <svg viewBox='0 0 24 24' className='icon'>
       <linearGradient
         id='c'
         gradientTransform='rotate(-45 32051.159 -83912.245) scale(31.584)'

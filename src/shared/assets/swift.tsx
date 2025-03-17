@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Swift = (): JSX.Element => {
   return (
-    <svg viewBox='0 0 256 256' preserveAspectRatio='xMinYMin meet'>
+    <svg viewBox='0 0 256 256' preserveAspectRatio='xMinYMin meet' className='icon'>
       <linearGradient
         id='a5'
         gradientUnits='userSpaceOnUse'

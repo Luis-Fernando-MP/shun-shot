@@ -9,6 +9,7 @@ const Yaml = (): JSX.Element => {
       fillRule='evenodd'
       clipRule='evenodd'
       viewBox='0 0 421 511.605'
+      className='icon'
     >
       <path
         fill='#E44B4D'

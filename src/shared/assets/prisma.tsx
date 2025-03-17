@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Prisma = (): JSX.Element => {
   return (
-    <svg viewBox='-27 0 310 310' preserveAspectRatio='xMidYMid' fill='#34c0a3' stroke='#34c0a3'>
+    <svg viewBox='-27 0 310 310' preserveAspectRatio='xMidYMid' fill='#34c0a3' stroke='#34c0a3' className='icon'>
       <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
       <g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g>
       <g id='SVGRepo_iconCarrier'>

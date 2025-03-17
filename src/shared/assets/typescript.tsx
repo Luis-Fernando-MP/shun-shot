@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react'
 
 const TypeScript = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox='0 0 256 256' width='1em' height='1em' preserveAspectRatio='xMidYMid' {...props}>
+  <svg viewBox='0 0 256 256' width='1em' height='1em' preserveAspectRatio='xMidYMid' className='icon' {...props}>
     <path
       d='M20 0h216c11.046 0 20 8.954 20 20v216c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20V20C0 8.954 8.954 0 20 0Z'
       fill='#3178C6'

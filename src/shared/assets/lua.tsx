@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Lua = (): JSX.Element => {
   return (
-    <svg viewBox='0 0 192.756 192.756'>
+    <svg viewBox='0 0 192.756 192.756' className='icon'>
       <path
         d='M159.109 100.945c0-33.834-27.42-61.259-61.246-61.259s-61.245 27.425-61.245 61.259 27.419 61.258 61.245 61.258 61.246-27.424 61.246-61.258z'
         fillRule='evenodd'

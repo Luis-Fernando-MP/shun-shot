@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 const Dart = () => (
-  <svg viewBox='0 0 256 256' preserveAspectRatio='xMidYMid'>
+  <svg viewBox='0 0 256 256' preserveAspectRatio='xMidYMid' className='icon'>
     <defs>
       <radialGradient
         id='a10'
