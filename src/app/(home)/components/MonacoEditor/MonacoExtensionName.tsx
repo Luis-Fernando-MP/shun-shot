@@ -1,13 +1,13 @@
 import type { FC } from 'react'
 
-import useMonacoStore from '../../store/monaco.store'
+import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
 
 interface Props {
   foreground: string
 }
 
 const MonacoExtensionName: FC<Props> = ({ foreground }) => {
-  const { language } = useMonacoStore()
+  const { typography, language } = useMonacoBasicOptionsStore()
 
   return (
     <p className='monacoEditor-extension' style={{ color: foreground }}>

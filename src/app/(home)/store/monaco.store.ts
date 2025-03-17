@@ -5,9 +5,6 @@ import { StateCreator, create } from 'zustand'
 type Monaco = editor.IEditorOptions
 
 interface Props {
-  language: string
-  typography: string
-
   lineNumbers: Monaco['lineNumbers']
   minimap: Monaco['minimap']
 
@@ -50,8 +47,6 @@ interface Props {
   hideCursorInOverviewRuler: Monaco['hideCursorInOverviewRuler']
   matchBrackets: Monaco['matchBrackets']
 
-  setLanguage: (language: string) => void
-  setTypography: (typography: string) => void
   setLineNumbers: (lineNumbers: Monaco['lineNumbers']) => void
   setMinimap: (minimap: Monaco['minimap']) => void
   setFontLigatures: (fontLigatures: Monaco['fontLigatures']) => void
@@ -88,9 +83,6 @@ interface Props {
 }
 
 const state: StateCreator<Props> = set => ({
-  language: 'typescript', // Lenguaje de programación predeterminado
-  typography: monacoFonts.monospace.style.fontFamily, // Tipografía utilizada en el editor
-
   lineNumbers: 'on', // Activa los números de línea
 
   minimap: {
@@ -173,8 +165,6 @@ const state: StateCreator<Props> = set => ({
   hideCursorInOverviewRuler: true, // Oculta el cursor en el rótulo de vista general
   matchBrackets: 'never', // No muestra el resaltado de los paréntesis coincidentes
 
-  setLanguage: language => set({ language }),
-  setTypography: typography => set({ typography }),
   setLineNumbers: lineNumbers => set({ lineNumbers }),
   setMinimap: minimap => set({ minimap }),
   setFontLigatures: fontLigatures => set({ fontLigatures }),

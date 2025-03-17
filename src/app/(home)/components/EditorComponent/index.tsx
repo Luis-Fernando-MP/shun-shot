@@ -3,11 +3,13 @@ import { type FC } from 'react'
 
 import useMonacoEditor from '../../hooks/useMonacoEditor'
 import useMonacoStore from '../../store/monaco.store'
+import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
 import LoaderEditor from './LoaderEditor'
 import './style.scss'
 
 const EditorComponent: FC = () => {
-  const { typography, language, ...rest } = useMonacoStore()
+  const monacoConfig = useMonacoStore()
+  const { typography, language } = useMonacoBasicOptionsStore()
 
   const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor({ typography })
 
@@ -17,9 +19,9 @@ const EditorComponent: FC = () => {
       className={`editorComponent ${moveBoard ? 'zoom' : ''}`}
       height='100%'
       options={{
+        ...monacoConfig,
         theme: themeName,
-        fontFamily: typography,
-        ...rest
+        fontFamily: typography
       }}
       language={language}
       defaultLanguage='typescript'

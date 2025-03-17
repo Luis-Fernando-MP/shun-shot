@@ -2,12 +2,12 @@ import { monacoFonts } from '@/shared/fonts/monaco-fonts'
 import dynamic from 'next/dynamic'
 import type { FC } from 'react'
 
-import useMonacoStore from '../../store/monaco.store'
+import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
 
 const TypographyDisplay = dynamic(() => import('../../ui/TypographyDisplay'), { ssr: false })
 
 const MonacoFonts: FC = () => {
-  const { setTypography, typography } = useMonacoStore()
+  const { setTypography, typography } = useMonacoBasicOptionsStore()
 
   const handleClick = (fontFamily: string): void => {
     setTypography(fontFamily)
