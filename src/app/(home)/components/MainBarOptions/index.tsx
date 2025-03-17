@@ -1,7 +1,7 @@
 'use client'
 
 import IconButton from '@/shared/ui/IconButton'
-import { LetterText, Settings } from 'lucide-react'
+import { LetterText } from 'lucide-react'
 import type { FC } from 'react'
 
 import useReferenceMonacoStore from '../../store/referenceMonaco'

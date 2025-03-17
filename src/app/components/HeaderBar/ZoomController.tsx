@@ -16,7 +16,7 @@ const ZoomController: FC = () => {
       <IconButton transparent label='Disminuir zoom' position='bottom' onClick={() => setScale(scale - 0.3)}>
         <MinusIcon />
       </IconButton>
-      <h5>{Number(scale * 100).toFixed(0)}%</h5>
+      <h5 className='headerBar-percentage'>{Number(scale * 100).toFixed(0)}%</h5>
     </>
   )
 }
