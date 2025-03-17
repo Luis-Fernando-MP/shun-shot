@@ -23,4 +23,11 @@
 
     width: 100%;
   }
+
+  &-fonts {
+    @include d.flex($dir: row, $gap: v.$padding * 0.5);
+
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }

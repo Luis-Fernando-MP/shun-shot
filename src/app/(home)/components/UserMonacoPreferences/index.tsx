@@ -8,6 +8,7 @@ import { Settings } from 'lucide-react'
 import { type FC, MouseEvent, useState } from 'react'
 
 import MonacoLanguages from '../MonacoLanguages'
+import MonacoFonts from './MonacoFonts'
 import ThemeSelectorPreference from './ThemeSelectorPreference'
 import './style.scss'
 
@@ -47,8 +48,18 @@ const UserMonacoPreferences: FC = () => {
             <h3 className='paragraph-highlight'># Lenguajes de Programación:</h3>
           </div>
 
-          <SliceContainer maxHeight={100} extendedMaxHeight={500} className='monacoPreferences-languages'>
+          <SliceContainer maxHeight={130} extendedMaxHeight={500} className='monacoPreferences-languages'>
             <MonacoLanguages />
+          </SliceContainer>
+        </div>
+
+        <div className='monacoPreferences-section'>
+          <div className='paragraph'>
+            <h3 className='paragraph-highlight'># Tipografía:</h3>
+          </div>
+
+          <SliceContainer maxHeight={130} extendedMaxHeight={500} className='monacoPreferences-fonts'>
+            <MonacoFonts />
           </SliceContainer>
         </div>
       </Popup>

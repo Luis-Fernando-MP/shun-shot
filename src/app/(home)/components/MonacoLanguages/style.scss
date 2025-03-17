@@ -4,12 +4,6 @@
 .monacoThemeCategory {
   @include d.flex($gap: v.$padding * 0.5);
 
-  // &__action {
-  //   &.selected {
-  //     background-color: rgb(v.$tn1);
-  //   }
-  // }
-
   &-icons {
     flex-wrap: wrap;
 
@@ -18,12 +12,20 @@
 
   &-languageAction {
     padding: v.$padding * 0.5;
-    border: 1px solid v.$bg3;
+    border: 2px solid transparent;
     border-radius: 5px;
 
     .icon {
       width: v.$icon * 1.5;
       height: v.$icon * 1.5;
+    }
+
+    &.selected {
+      border-color: rgb(v.$tn1);
+
+      .icon {
+        filter: drop-shadow(0 5px 7px rgb(v.$tn1));
+      }
     }
   }
 }

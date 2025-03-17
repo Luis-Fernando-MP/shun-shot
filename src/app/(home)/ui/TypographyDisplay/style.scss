@@ -2,10 +2,8 @@
 @use '@sass/utils/defs' as d;
 
 .typographyDisplay {
-  width: 100vw;
   width: fit-content;
-  height: 100vh;
-  height: 150px;
+  height: 100px;
   padding: v.$padding;
   border: 1.5px solid transparent;
   border-radius: v.$radius * 0.5;

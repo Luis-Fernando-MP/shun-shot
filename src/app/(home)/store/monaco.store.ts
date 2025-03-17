@@ -1,3 +1,4 @@
+import { monacoFonts } from '@/shared/fonts/monaco-fonts'
 import { editor } from 'monaco-editor'
 import { StateCreator, create } from 'zustand'
 
@@ -75,7 +76,7 @@ interface Props {
 
 const state: StateCreator<Props> = set => ({
   language: 'javascript', // Lenguaje de programación predeterminado
-  typography: 'monospace', // Tipografía utilizada en el editor
+  typography: monacoFonts.monospace.style.fontFamily, // Tipografía utilizada en el editor
 
   lineNumbers: 'on', // Activa los números de línea (anteriormente desactivados para una apariencia más limpia)
 

@@ -25,3 +25,15 @@
     text-align: center;
   }
 }
+
+.monaco-editor {
+  outline: none !important;
+
+  * {
+    font-family: var(--monaco-font-family) !important;
+  }
+
+  .scroll-decoration {
+    display: none;
+  }
+}

@@ -1,4 +1,3 @@
-import { acl } from '@/shared/acl'
 import type { FC, ReactNode } from 'react'
 
 import LabelText from '../LabelText'
@@ -9,11 +8,10 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   label?: string
   position?: 'top' | 'bottom' | 'left' | 'right'
   className?: string
-  active?: boolean
 }
 
-const SimpleButtonLabel: FC<Props> = ({ children, label, position, className, active = false, ...props }) => {
-  const parsedClassName = `simpleButtonLabel ${acl(active, 'selected')} ${className}`
+const SimpleButtonLabel: FC<Props> = ({ children, label, position, className, ...props }) => {
+  const parsedClassName = `simpleButtonLabel  ${className}`
 
   return (
     <button className={parsedClassName} {...props}>

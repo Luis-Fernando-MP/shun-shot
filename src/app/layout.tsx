@@ -1,5 +1,6 @@
 import Hydration from '@/shared/components/Hydration'
 import Offline from '@/shared/components/Offline'
+import { monacoClassFonts } from '@/shared/fonts/monaco-fonts'
 import { bodyFonts } from '@/shared/fonts/page-fonts'
 import '@sass/config/global.scss'
 import NextTopLoader from 'nextjs-toploader'
