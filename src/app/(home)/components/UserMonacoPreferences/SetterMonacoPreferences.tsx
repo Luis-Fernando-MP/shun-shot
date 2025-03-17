@@ -3,8 +3,10 @@ import IconButton from '@/shared/ui/IconButton'
 import type { FC } from 'react'
 
 import useMonacoStore from '../../store/monaco.store'
+import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
 
 const SetterMonacoPreferences: FC = () => {
+  const { showLanguageIcon, setShowLanguageIcon } = useMonacoBasicOptionsStore()
   const {
     lineNumbers,
     minimap,
@@ -94,6 +96,17 @@ const SetterMonacoPreferences: FC = () => {
           {['on', 'off', 'relative', 'interval'].map(style => (
             <IconButton key={newKey()} onClick={() => setLineNumbers(style as any)} active={lineNumbers === style}>
               {style}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h4 className='paragraph-normal'>Mostrar icono del lenguaje</h4>
+        <div className='monacoPreferences-switch'>
+          {[true, false].map(style => (
+            <IconButton key={newKey()} onClick={() => setShowLanguageIcon(style)} active={showLanguageIcon === style}>
+              {style ? 'On' : 'Off'}
             </IconButton>
           ))}
         </div>

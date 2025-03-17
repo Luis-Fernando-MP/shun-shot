@@ -46,9 +46,18 @@
   &-field {
     @include d.flex($dir: row, $ali: center, $gap: 0);
 
+    justify-content: center;
+
     input {
       max-width: 300px;
       background-color: transparent;
+    }
+
+    .icon {
+      width: v.$icon;
+      height: v.$icon;
+      margin-right: v.$padding * 0.5;
+      filter: drop-shadow(0 0 7px rgba(v.$fn1, 0.7));
     }
   }
 

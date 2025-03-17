@@ -33,7 +33,8 @@
     font-family: var(--monaco-font-family) !important;
   }
 
-  .scroll-decoration {
-    display: none;
+  .relative-current-line-number {
+    color: var(--vscode-editorLineNumber-foreground) !important;
+    text-align: right !important;
   }
 }

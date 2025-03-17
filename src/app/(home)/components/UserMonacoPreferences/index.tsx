@@ -18,7 +18,7 @@ const UserMonacoPreferences: FC = () => {
   const [positions, setPositions] = useState<PopupPositions>()
 
   const handleOpenPopup = (e: MouseEvent) => {
-    setIsOpen(true)
+    setIsOpen(!isOpen)
     setPositions({ x: e.clientX, y: e.clientY })
   }
 

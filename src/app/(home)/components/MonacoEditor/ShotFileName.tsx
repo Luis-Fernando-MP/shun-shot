@@ -11,7 +11,7 @@ interface Props {
 
 const ShotFileName: FC<Props> = ({ foreground }) => {
   const { fileName, setFileName } = useCodeShotStore()
-  const { language } = useMonacoBasicOptionsStore()
+  const { language, showLanguageIcon } = useMonacoBasicOptionsStore()
 
   const debouncedSetFileName = useDebounceCallback(setFileName, 500)
 
@@ -21,6 +21,7 @@ const ShotFileName: FC<Props> = ({ foreground }) => {
 
   return (
     <div className='monacoEditor-field'>
+      {showLanguageIcon && <language.Icon />}
       <Input fieldSizing='content' defaultValue={fileName} style={{ color: foreground }} onChange={handleChange} />
       <p className='monacoEditor-extension' style={{ color: foreground }}>
         .{language.short}
