@@ -10,6 +10,14 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   onExtend?: () => void
 }
 
+/**
+ * @description Component that allows you to extend and contract a content container.
+ * @param {ReactNode} children - The child elements that will be displayed inside the container.
+ * @param {number} maxHeight - The maximum height of the container when it is contracted.
+ * @param {() => void} onExtend - The function that will be executed when the extension button is clicked.
+ * @param {HTMLAttributes<HTMLDivElement>} props - Additional properties of the component.
+ */
+
 const SliceContainer: FC<Props> = ({ children, maxHeight, className, onExtend, ...props }) => {
   const [isExtended, setIsExtended] = useState(false)
 
@@ -20,7 +28,7 @@ const SliceContainer: FC<Props> = ({ children, maxHeight, className, onExtend, .
 
   return (
     <article className='sliceContainer' {...props}>
-      <IconButton onClick={handleClick}>
+      <IconButton onClick={handleClick} className='sliceContainer-action'>
         {isExtended ? 'Contraer' : 'Extender'}
         <MoreHorizontalIcon />
       </IconButton>

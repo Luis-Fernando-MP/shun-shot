@@ -3,6 +3,7 @@
 @use '@sass/utils/scrollbar' as *;
 
 .sliceContainer {
+  position: relative;
   width: fit-content;
 
   @include d.flex;
@@ -12,5 +13,11 @@
 
     overflow: auto;
     transition: max-height 0.5s ease-in-out;
+  }
+
+  &-action {
+    position: sticky;
+    z-index: 1;
+    top: -1 * v.$padding;
   }
 }
