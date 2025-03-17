@@ -17,10 +17,20 @@ const Icons = {
   pending: LoaderIcon
 }
 
+/**
+ * @description Custom basic toast component
+ * @param toastProps - Hot toast props
+ * @param title - Title (required)
+ * @param description - Description (optional)
+ * @param icon - Icon (optional)
+ * @param type - Type default: info - (success, error, warning, info, pending)
+ */
+
 const CustomToast: FC<Props> = ({ toastProps, title, description, icon, type = 'info' }) => {
   const Icon = Icons[type]
 
   const handleClick = () => {
+    if (type === 'pending') return
     hotToast.dismiss(toastProps.id)
   }
 

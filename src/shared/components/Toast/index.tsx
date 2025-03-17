@@ -15,8 +15,24 @@ export interface IToastProps {
 
 type ToastType = Omit<Toast, 'type' | 'message' | 'icon' | 'style' | 'className' | 'iconTheme' | 'height'>
 
-const toastAction = (props: Partial<ToastType> & IToastProps & { onAction: () => void; actionLabel?: string }) => {
-  const { title, description, icon, type, duration, onAction, actionLabel, ...rest } = props
+/**
+ * @description Custom toast component with action button
+ * @param toastProps - Toast props
+ * @param title - Title
+ * @param description - Description (optional)
+ * @param icon - Icon (optional)
+ * @param type - Type (success, error, warning, info, pending) default: info
+ * @param onAction - Action to be executed when the action button is clicked
+ * @param actionLabel - Action label (optional)
+ * @param secondActionLabel - Second action label (optional)
+ * @param onSecondAction - Action to be executed when the second action button is clicked
+ */
+
+const toastAction = (
+  props: Partial<ToastType> &
+    IToastProps & { onAction: () => void; actionLabel?: string; secondActionLabel?: string; onSecondAction?: () => void }
+) => {
+  const { title, description, icon, type, duration, onAction, actionLabel, secondActionLabel, onSecondAction, ...rest } = props
   return hotToast(
     t => {
       return (
@@ -28,6 +44,8 @@ const toastAction = (props: Partial<ToastType> & IToastProps & { onAction: () =>
           type={type}
           onAction={onAction}
           actionLabel={actionLabel}
+          secondActionLabel={secondActionLabel}
+          onSecondAction={onSecondAction}
         />
       )
     },
@@ -37,6 +55,15 @@ const toastAction = (props: Partial<ToastType> & IToastProps & { onAction: () =>
     }
   )
 }
+
+/**
+ * @description Custom basic toast component
+ * @param props - Hot toast props
+ * @param title - Title (required)
+ * @param description - Description (optional)
+ * @param icon - Icon (optional)
+ * @param type - Type default: info - (success, error, warning, info, pending)
+ */
 
 export const toaster = (props: Partial<ToastType> & IToastProps) => {
   const { title, description, icon, type, duration, ...rest } = props
@@ -51,4 +78,4 @@ export const toaster = (props: Partial<ToastType> & IToastProps) => {
   )
 }
 
-toaster.action = toastAction
+toaster.question = toastAction
