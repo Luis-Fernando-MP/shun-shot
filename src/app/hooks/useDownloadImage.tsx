@@ -119,7 +119,7 @@ const useDownloadImage = () => {
     const paragraph = isCopy ? 'copiar' : 'descargar'
 
     toaster.question({
-      title: isCopy ? 'Estilo de copia' : 'Tipo de descarga',
+      title: isCopy ? 'Que estilo quieres usar' : 'Que tipo de descarga quieres',
       description: `¿Cómo quieres ${paragraph} la imagen?`,
       type: 'warning',
       position: 'bottom-center',

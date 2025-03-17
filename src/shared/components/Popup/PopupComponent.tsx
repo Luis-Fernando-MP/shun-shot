@@ -31,6 +31,7 @@ const PopupComponent = ({
       tabIndex={0}
       ref={$popupRef}
       className='popup border'
+      id='popup'
       onMouseDown={handleMouseDown}
       style={{
         left: `${position.x}px`,
