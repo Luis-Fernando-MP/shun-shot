@@ -39,6 +39,8 @@ import XcodeDefault from 'monaco-themes/themes/Xcode_default.json'
 import krTheme from 'monaco-themes/themes/krTheme.json'
 import Monoindustrial from 'monaco-themes/themes/monoindustrial.json'
 
+import roseQuartz from './data/RoseQuartz.json'
+import starryNight from './data/StarryNight.json'
 import amethystLight from './data/amethyst-light.json'
 import amethyst from './data/amethyst.json'
 import augustArstotzka from './data/august-arstotzka.json'
@@ -61,6 +63,7 @@ import enfocado from './data/enfocado.json'
 import gruvboxLight from './data/gruvbox-light.json'
 import gruvbox from './data/gruvbox.json'
 import kimbie from './data/kimbie.json'
+import neon from './data/neon.json'
 import redefinedAyu from './data/redefined-ayu.json'
 import redefinedSnazzy from './data/redefined-snazzy.json'
 import tinaciousBlack from './data/tinacious-black.json'
@@ -76,6 +79,9 @@ export type ThemeMonacoName = keyof typeof monacoThemes
 export type ThemeMonaco = (typeof monacoThemes)[ThemeMonacoName]
 
 export const monacoThemes = {
+  neon: { ...neon, name: 'neon' },
+  roseQuartz: { ...roseQuartz, name: 'roseQuartz' },
+  starryNight: { ...starryNight, name: 'starryNight' },
   redefinedSnazzy: { ...redefinedSnazzy, name: 'redefinedSnazzy' },
   redefinedAyu: { ...redefinedAyu, name: 'redefinedAyu' },
   earthbound: { ...earthbound, name: 'earthbound' },

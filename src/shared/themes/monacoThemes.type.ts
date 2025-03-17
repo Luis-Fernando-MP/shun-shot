@@ -5,7 +5,7 @@ type ThemeRule = {
   token: string
 }
 
-type ThemeColors = {
+export type ThemeColors = {
   'editor.foreground': string
   'editor.background': string
   'editor.selectionBackground': string
