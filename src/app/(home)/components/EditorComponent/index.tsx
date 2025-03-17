@@ -1,5 +1,5 @@
 import Editor from '@monaco-editor/react'
-import { type FC } from 'react'
+import { type FC, useEffect, useRef } from 'react'
 
 import useMonacoEditor from '../../hooks/useMonacoEditor'
 import useMonacoStore from '../../store/monaco.store'
@@ -7,8 +7,6 @@ import LoaderEditor from './LoaderEditor'
 import './style.scss'
 
 const EditorComponent: FC = () => {
-  const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor()
-
   const {
     language,
     typography,
@@ -41,6 +39,7 @@ const EditorComponent: FC = () => {
     renderWhitespace,
     scrollbar
   } = useMonacoStore()
+  const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor({ typography })
 
   return (
     <Editor
@@ -78,9 +77,9 @@ const EditorComponent: FC = () => {
         scrollbar
       }}
       language={language}
-      // defaultLanguage={}
+      defaultLanguage='typescript'
       defaultValue={exampleCode}
-      theme={'vs-dark'}
+      theme={themeName}
       onMount={handleMount}
       beforeMount={handleBeforeMount}
     />

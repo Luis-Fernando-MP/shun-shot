@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Cpp = (): JSX.Element => {
   return (
-    <svg viewBox='0 0 38.000089 42.000031'>
+    <svg viewBox='0 0 38.000089 42.000031' className='icon'>
       <defs id='defs14' />
 
       <path

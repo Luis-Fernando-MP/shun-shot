@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Graphql = (): JSX.Element => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='#e10098'>
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='#e10098' className='icon'>
       <path
         fillRule='evenodd'
         clipRule='evenodd'

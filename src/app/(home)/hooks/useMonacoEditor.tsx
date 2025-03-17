@@ -13,7 +13,11 @@ const exampleCode = {
   },
 }`
 
-const useMonacoEditor = () => {
+interface Props {
+  typography: string
+}
+
+const useMonacoEditor = ({ typography }: Props) => {
   const { $editor, setMonaco, setEditor } = useReferenceMonacoStore()
   const [moveBoard, setMoveBoard] = useState(false)
   const { themeName } = useMonacoThemeStore()
@@ -29,20 +33,6 @@ const useMonacoEditor = () => {
   const handleKeyUp = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Control') setMoveBoard(false)
   }, [])
-
-  useEffect(() => {
-    const domNode = $editor?.getDomNode()
-    if (!$editor || !domNode) return
-    domNode.addEventListener('wheel', handleWheel, { passive: false })
-    window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('keyup', handleKeyUp)
-
-    return () => {
-      if (domNode) domNode.removeEventListener('wheel', handleWheel)
-      window.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('keyup', handleKeyUp)
-    }
-  }, [$editor, handleWheel, handleKeyDown, handleKeyUp])
 
   const loadAllThemes = useCallback((monaco: Monaco) => {
     Object.keys(monacoThemes).forEach(themeName => {
@@ -66,12 +56,32 @@ const useMonacoEditor = () => {
     [setEditor, themeName]
   )
 
+  useEffect(() => {
+    const domNode = $editor?.getDomNode()
+    if (!$editor || !domNode) return
+    domNode.addEventListener('wheel', handleWheel, { passive: false })
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
+
+    return () => {
+      if (domNode) domNode.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
+    }
+  }, [$editor, handleWheel, handleKeyDown, handleKeyUp])
+
+  useEffect(() => {
+    if (!document.documentElement) return
+    document.documentElement.style.setProperty('--monaco-font-family', typography)
+  }, [typography])
+
   return {
     moveBoard,
     exampleCode,
     handleMount,
     handleBeforeMount,
-    themeName
+    themeName,
+    $editor
   }
 }
 

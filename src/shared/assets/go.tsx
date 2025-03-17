@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Go = (): JSX.Element => {
   return (
-    <svg viewBox='15.7 3.6 94.4 121.6'>
+    <svg viewBox='15.7 3.6 94.4 121.6' className='icon'>
       <path
         clipRule='evenodd'
         d='m21.1 68.7c.2 3.5 3.7 1.9 5.3.8 1.5-1.1 2-.2 2.1-2.3.1-1.4.2-2.7.2-4.1-2.3-.2-4.8.3-6.7 1.7-.9.7-2.8 3-.9 3.9'

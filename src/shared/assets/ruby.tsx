@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Ruby = (): JSX.Element => {
   return (
-    <svg viewBox='0 -0.5 256 256' preserveAspectRatio='xMidYMid'>
+    <svg viewBox='0 -0.5 256 256' preserveAspectRatio='xMidYMid' className='icon'>
       <defs>
         <linearGradient x1='84.7503645%' y1='111.399353%' x2='58.2543962%' y2='64.5837087%' id='linearGradient-1'>
           <stop stopColor='#FB7655' offset='0%'></stop>

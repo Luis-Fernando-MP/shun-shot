@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react'
 
 const Markdown = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox='0 0 208 128' xmlSpace='preserve' width='1em' height='1em' {...props}>
+  <svg viewBox='0 0 208 128' xmlSpace='preserve' width='1em' height='1em' className='icon' {...props}>
     <path
       fill='none'
       stroke='#FFF'

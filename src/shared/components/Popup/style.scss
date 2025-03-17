@@ -37,6 +37,12 @@
     transition: height 0.3s ease-in-out;
   }
 
+  &.block-children-events {
+    .popup-container {
+      pointer-events: none;
+    }
+  }
+
   &.animate {
     animation: delay-opacity 0.5s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
 

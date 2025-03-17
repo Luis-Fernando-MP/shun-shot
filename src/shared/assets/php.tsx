@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Php = (): JSX.Element => {
   return (
-    <svg viewBox='0 0 32 32'>
+    <svg viewBox='0 0 32 32' className='icon'>
       <defs>
         <linearGradient
           id='a3'

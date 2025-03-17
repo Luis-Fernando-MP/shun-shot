@@ -9,9 +9,18 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   selected?: boolean
 }
 
+/**
+ * @description Display a typography with a font and a title
+ * @param font - The font to display
+ * @param title - The title to display
+ * @param className - The class name to apply
+ * @param selected - Whether the typography is selected
+ * @param props - The props to apply to the button
+ * @returns A typography display
+ */
+
 const TypographyDisplay: FC<Props> = ({ font, title, className = '', selected = false, ...props }) => {
-  console.log(font)
-  const { className: fontClassName } = font.font
+  const { className: fontClassName } = font
   return (
     <button className={`typographyDisplay ${className} ${fontClassName} antialiased ${selected ? 'selected' : ''}`} {...props}>
       <p className={`typographyDisplay-extra ${fontClassName}`}>Shum shot's</p>

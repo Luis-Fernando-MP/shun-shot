@@ -42,11 +42,15 @@ const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
 
   const handleMouseUp = useCallback(() => {
     setIsDragging(false)
+    $popupRef.current?.classList.remove('block-children-events')
   }, [])
 
   const handleMouseDown = (e: MouseEvent) => {
     const moveOnHeader = (e.target as HTMLElement).closest('#popup-header')
     if (!$popupRef.current || (!moveOnHeader && !e.ctrlKey)) return
+    if (e.ctrlKey) {
+      $popupRef.current?.classList.add('block-children-events')
+    }
     setIsDragging(true)
     $dragPosition.current = { x: e.clientX, y: e.clientY }
   }
@@ -121,8 +125,8 @@ const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
 
   return {
     $popupRef,
-    position,
     handleMouseDown,
+    position,
     isDragging
   }
 }

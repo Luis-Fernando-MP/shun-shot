@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 
 const Cpp = (): JSX.Element => {
   return (
-    <svg viewBox='0 0 306 344.35'>
+    <svg viewBox='0 0 306 344.35' className='icon'>
       <path
         fill='#00599C'
         d='M302.107,258.262c2.401-4.159,3.893-8.845,3.893-13.053V99.14c0-4.208-1.49-8.893-3.892-13.052L153,172.175  L302.107,258.262z'
