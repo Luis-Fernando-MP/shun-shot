@@ -40,6 +40,37 @@ interface Props {
   renderWhitespace: Monaco['renderWhitespace']
 
   scrollbar: Monaco['scrollbar']
+
+  setLanguage: (language: string) => void
+  setTypography: (typography: string) => void
+  setLineNumbers: (lineNumbers: Monaco['lineNumbers']) => void
+  setMinimap: (minimap: Monaco['minimap']) => void
+  setFontLigatures: (fontLigatures: Monaco['fontLigatures']) => void
+  setWordWrap: (wordWrap: Monaco['wordWrap']) => void
+  setFontSize: (fontSize: Monaco['fontSize']) => void
+  setLineHeight: (lineHeight: Monaco['lineHeight']) => void
+
+  setStickyScroll: (stickyScroll: Monaco['stickyScroll']) => void
+  setCursorBlinking: (cursorBlinking: Monaco['cursorBlinking']) => void
+  setMouseStyle: (mouseStyle: Monaco['mouseStyle']) => void
+  setCursorStyle: (cursorStyle: Monaco['cursorStyle']) => void
+  setWrappingIndent: (wrappingIndent: Monaco['wrappingIndent']) => void
+  setFolding: (folding: Monaco['folding']) => void
+  setFoldingStrategy: (foldingStrategy: Monaco['foldingStrategy']) => void
+  setLetterSpacing: (letterSpacing: Monaco['letterSpacing']) => void
+
+  setAutoClosingBrackets: (autoClosingBrackets: Monaco['autoClosingBrackets']) => void
+  setAutoClosingQuotes: (autoClosingQuotes: Monaco['autoClosingQuotes']) => void
+  setAutoIndent: (autoIndent: Monaco['autoIndent']) => void
+  setAccessibilitySupport: (accessibilitySupport: Monaco['accessibilitySupport']) => void
+  setQuickSuggestions: (quickSuggestions: Monaco['quickSuggestions']) => void
+  setParameterHints: (parameterHints: Monaco['parameterHints']) => void
+  setFormatOnPaste: (formatOnPaste: Monaco['formatOnPaste']) => void
+  setFormatOnType: (formatOnType: Monaco['formatOnType']) => void
+  setScrollBeyondLastLine: (scrollBeyondLastLine: Monaco['scrollBeyondLastLine']) => void
+  setRenderLineHighlight: (renderLineHighlight: Monaco['renderLineHighlight']) => void
+  setRenderWhitespace: (renderWhitespace: Monaco['renderWhitespace']) => void
+  setScrollbar: (scrollbar: Monaco['scrollbar']) => void
 }
 
 const state: StateCreator<Props> = set => ({
@@ -122,7 +153,36 @@ const state: StateCreator<Props> = set => ({
     useShadows: true, // Activa las sombras en la barra de desplazamiento (anteriormente desactivadas)
     verticalScrollbarSize: 10, // Tamaño de la barra de desplazamiento vertical (anteriormente configurado como 0)
     horizontalScrollbarSize: 10 // Tamaño de la barra de desplazamiento horizontal (anteriormente configurado como 0)
-  }
+  },
+
+  setLanguage: language => set({ language }),
+  setTypography: typography => set({ typography }),
+  setLineNumbers: lineNumbers => set({ lineNumbers }),
+  setMinimap: minimap => set({ minimap }),
+  setFontLigatures: fontLigatures => set({ fontLigatures }),
+  setWordWrap: wordWrap => set({ wordWrap }),
+  setFontSize: fontSize => set({ fontSize }),
+  setLineHeight: lineHeight => set({ lineHeight }),
+  setStickyScroll: stickyScroll => set({ stickyScroll }),
+  setCursorBlinking: cursorBlinking => set({ cursorBlinking }),
+  setMouseStyle: mouseStyle => set({ mouseStyle }),
+  setCursorStyle: cursorStyle => set({ cursorStyle }),
+  setWrappingIndent: wrappingIndent => set({ wrappingIndent }),
+  setFolding: folding => set({ folding }),
+  setFoldingStrategy: foldingStrategy => set({ foldingStrategy }),
+  setLetterSpacing: letterSpacing => set({ letterSpacing }),
+  setAutoClosingBrackets: autoClosingBrackets => set({ autoClosingBrackets }),
+  setAutoClosingQuotes: autoClosingQuotes => set({ autoClosingQuotes }),
+  setAutoIndent: autoIndent => set({ autoIndent }),
+  setAccessibilitySupport: accessibilitySupport => set({ accessibilitySupport }),
+  setQuickSuggestions: quickSuggestions => set({ quickSuggestions }),
+  setParameterHints: parameterHints => set({ parameterHints }),
+  setFormatOnPaste: formatOnPaste => set({ formatOnPaste }),
+  setFormatOnType: formatOnType => set({ formatOnType }),
+  setScrollBeyondLastLine: scrollBeyondLastLine => set({ scrollBeyondLastLine }),
+  setRenderLineHighlight: renderLineHighlight => set({ renderLineHighlight }),
+  setRenderWhitespace: renderWhitespace => set({ renderWhitespace }),
+  setScrollbar: scrollbar => set({ scrollbar })
 })
 
 const useMonacoStore = create(state)

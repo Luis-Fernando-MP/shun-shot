@@ -11,6 +11,7 @@ import { Settings } from 'lucide-react'
 import { type FC, MouseEvent, useState } from 'react'
 
 import useMonacoThemeStore from '../../store/monacoTheme.store'
+import MonacoLanguages from '../MonacoLanguages'
 import './style.scss'
 
 const UserMonacoPreferences: FC = () => {
@@ -42,7 +43,7 @@ const UserMonacoPreferences: FC = () => {
             <h3 className='paragraph-highlight'># Temas:</h3>
           </div>
 
-          <SliceContainer maxHeight={300} className='monacoPreferences-themes'>
+          <SliceContainer maxHeight={100} className='monacoPreferences-themes'>
             {Object.values(monacoThemes).map(theme => {
               const { name } = theme
               const colors = theme.colors as ThemeColors
@@ -54,12 +55,25 @@ const UserMonacoPreferences: FC = () => {
                   onClick={() => setThemeName(name as ThemeMonacoName)}
                   theme={{
                     'tn-primary': colors['editor.foreground'],
-                    'tn-secondary': colors['editor.selectionBackground'],
+                    'tn-secondary':
+                      colors['activityBarBadge.background'] ??
+                      colors['editor.selectionBackground'] ??
+                      colors['editor.selectionHighlightBackground'],
                     'bg-primary': colors['editor.background']
                   }}
                 />
               )
             })}
+          </SliceContainer>
+        </div>
+
+        <div className='monacoPreferences-section'>
+          <div className='paragraph'>
+            <h3 className='paragraph-highlight'># Lenguajes de Programación:</h3>
+          </div>
+
+          <SliceContainer maxHeight={100} className='monacoPreferences-languages'>
+            <MonacoLanguages />
           </SliceContainer>
         </div>
       </Popup>

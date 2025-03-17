@@ -49,7 +49,6 @@ const EditorComponent: FC = () => {
       height={400}
       options={{
         theme: themeName,
-        language,
         fontFamily: typography,
         lineNumbers,
         minimap: { enabled: minimap?.enabled },
@@ -78,7 +77,8 @@ const EditorComponent: FC = () => {
         renderWhitespace,
         scrollbar
       }}
-      defaultLanguage='javascript'
+      language={language}
+      // defaultLanguage={}
       defaultValue={exampleCode}
       theme={'vs-dark'}
       onMount={handleMount}

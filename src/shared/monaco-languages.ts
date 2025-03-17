@@ -33,7 +33,7 @@ import swift from './assets/swift'
 import typescript from './assets/typescript'
 import yaml from './assets/yaml'
 
-const languageIcons = {
+const monacoLanguagesIcons = {
   'Frontend Web': {
     html: {
       Icon: html,
@@ -232,4 +232,4 @@ const languageIcons = {
   }
 }
 
-export default languageIcons
+export default monacoLanguagesIcons

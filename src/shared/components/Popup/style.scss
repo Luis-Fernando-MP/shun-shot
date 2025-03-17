@@ -20,7 +20,7 @@
   background-color: rgb(v.$bg1, 0.75);
   backdrop-filter: blur(10px);
 
-  @include d.flex;
+  @include d.flex($gap: v.$padding * 0.5);
 
   &-container {
     @include scroll-hidden;
@@ -32,7 +32,7 @@
 
     min-width: 100%;
     min-height: 100%;
-    padding: v.$padding;
+    padding: 0 v.$padding v.$padding * 2;
 
     transition: height 0.3s ease-in-out;
   }

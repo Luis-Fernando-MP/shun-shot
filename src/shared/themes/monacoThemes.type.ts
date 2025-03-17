@@ -12,6 +12,8 @@ export type ThemeColors = {
   'editor.lineHighlightBackground': string
   'editorCursor.foreground': string
   'editorWhitespace.foreground': string
+  'editor.selectionHighlightBackground': string
+  'activityBarBadge.background': string
 }
 
 type Theme = {
