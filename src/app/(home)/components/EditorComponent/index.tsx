@@ -23,7 +23,7 @@ const EditorComponent: FC = () => {
         theme: themeName,
         fontFamily: typography
       }}
-      language={language}
+      language={language.language}
       defaultLanguage='typescript'
       defaultValue={exampleCode}
       theme={themeName}

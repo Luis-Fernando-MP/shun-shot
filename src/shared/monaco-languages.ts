@@ -33,6 +33,8 @@ import swift from './assets/swift'
 import typescript from './assets/typescript'
 import yaml from './assets/yaml'
 
+export type MonacoLanguage = { Icon: React.ElementType; language: string; short: string }
+
 const monacoLanguagesIcons = {
   'Frontend Web': {
     html: {

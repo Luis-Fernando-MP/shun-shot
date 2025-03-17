@@ -1,17 +1,18 @@
 import { monacoFonts } from '@/shared/fonts/monaco-fonts'
+import monacoLanguagesIcons, { MonacoLanguage } from '@/shared/monaco-languages'
 import { StateCreator, create } from 'zustand'
 
 interface IMonacoBasicOptionsStore {
-  language: string
+  language: MonacoLanguage
   typography: string
 
-  setLanguage: (language: string) => void
+  setLanguage: (language: MonacoLanguage) => void
   setTypography: (typography: string) => void
 }
 
 const state: StateCreator<IMonacoBasicOptionsStore> = set => ({
-  language: 'typescript', // Lenguaje de programación predeterminado
-  typography: monacoFonts.monospace.style.fontFamily, // Tipografía utilizada en el editor
+  language: monacoLanguagesIcons['Frontend Web'].typescript,
+  typography: monacoFonts.monospace.style.fontFamily,
 
   setLanguage: language => set({ language }),
   setTypography: typography => set({ typography })

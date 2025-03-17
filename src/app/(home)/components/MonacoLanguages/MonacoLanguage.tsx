@@ -1,18 +1,19 @@
+import { MonacoLanguage as MonacoLanguageType } from '@/shared/monaco-languages'
 import type { FC } from 'react'
 
-import useMonacoStore from '../../store/monaco.store'
+import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
 import IconLanguage from './IconLanguage'
 
 interface Props {
-  language: [string, { [key: string]: { Icon: React.ElementType; language: string; status: string } }]
+  language: [string, { [key: string]: { Icon: React.ElementType; language: string; short: string } }]
 }
 
 const MonacoLanguage: FC<Props> = ({ language }) => {
   const [section, languages] = language
-  const { language: userLanguage, setLanguage } = useMonacoStore()
+  const { language: userLanguage, setLanguage } = useMonacoBasicOptionsStore()
 
-  const handleClick = (language: string) => {
-    if (userLanguage === language) return
+  const handleClick = (language: MonacoLanguageType) => {
+    if (userLanguage.language === language.language) return
     setLanguage(language)
   }
 
@@ -28,7 +29,7 @@ const MonacoLanguage: FC<Props> = ({ language }) => {
               key={key}
               language={languageProps}
               onClick={handleClick}
-              selected={userLanguage === languageProps.language}
+              selected={userLanguage.language === languageProps.language}
             />
           )
         })}
