@@ -19,12 +19,9 @@
   }
 
   &-fileName {
-    align-items: flex-start;
-    width: 130px;
-    padding: 0;
-
-    input {
-      max-width: 60px;
+    p {
+      padding: 0 v.$padding * 0.5;
+      color: rgb(v.$fn1);
     }
   }
 }

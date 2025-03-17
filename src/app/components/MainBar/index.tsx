@@ -3,7 +3,7 @@
 import MainBarOptions from '@/app/(home)/components/MainBarOptions'
 import IconButton from '@/shared/ui/IconButton'
 import ShumShots from '@/shared/ui/ShumShots'
-import { AppWindow, CircleHelpIcon, LayersIcon } from 'lucide-react'
+import { AppWindow, LayersIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { FC } from 'react'

@@ -1,10 +1,11 @@
 'use client'
 
 import IconButton from '@/shared/ui/IconButton'
-import LabeledInput from '@/shared/ui/LabeledInput'
+import LabelText from '@/shared/ui/LabelText'
 import { copyImage } from '@lucide/lab'
 import { CloudDownload, Icon, LetterText, Settings } from 'lucide-react'
 import type { FC } from 'react'
+import { Input } from 'react-field-sizing-content'
 
 import useReferenceMonacoStore from '../../store/referenceMonaco'
 
@@ -22,11 +23,10 @@ const MainBarOptions: FC = () => {
         <LetterText />
       </IconButton>
 
-      <IconButton label='Formatear código' transparent outline>
+      <IconButton label='Formatear código' transparent outline className='mainBar-fileName'>
         <CloudDownload />
-        <LabeledInput transparent defaultValue='Nombre de archivo' className='mainBar-fileName'>
-          .png
-        </LabeledInput>
+        <p>ShumShots</p>
+        <LabelText>.png</LabelText>
       </IconButton>
 
       <IconButton label='Copiar imagen' transparent outline>
