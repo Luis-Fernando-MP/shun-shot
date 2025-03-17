@@ -17,7 +17,7 @@
   border-radius: v.$radius;
 
   opacity: 1;
-  background-color: rgb(v.$bg1, 0.7);
+  background-color: rgb(v.$bg1, 0.75);
   backdrop-filter: blur(10px);
 
   @include d.flex;
