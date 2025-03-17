@@ -7,38 +7,8 @@ import LoaderEditor from './LoaderEditor'
 import './style.scss'
 
 const EditorComponent: FC = () => {
-  const {
-    language,
-    typography,
+  const { typography, language, ...rest } = useMonacoStore()
 
-    lineNumbers,
-    minimap,
-    fontLigatures,
-    wordWrap,
-    fontSize,
-    lineHeight,
-    stickyScroll,
-    cursorBlinking,
-    mouseStyle,
-    cursorStyle,
-    wrappingIndent,
-    folding,
-    foldingStrategy,
-    letterSpacing,
-
-    autoClosingBrackets,
-    autoClosingQuotes,
-    autoIndent,
-    accessibilitySupport,
-    quickSuggestions,
-    parameterHints,
-    formatOnPaste,
-    formatOnType,
-    scrollBeyondLastLine,
-    renderLineHighlight,
-    renderWhitespace,
-    scrollbar
-  } = useMonacoStore()
   const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor({ typography })
 
   return (
@@ -49,32 +19,7 @@ const EditorComponent: FC = () => {
       options={{
         theme: themeName,
         fontFamily: typography,
-        lineNumbers,
-        minimap: { enabled: minimap?.enabled },
-        fontLigatures,
-        wordWrap,
-        fontSize,
-        lineHeight,
-        stickyScroll: { enabled: stickyScroll?.enabled },
-        cursorBlinking,
-        mouseStyle,
-        cursorStyle,
-        wrappingIndent,
-        folding,
-        foldingStrategy,
-        letterSpacing,
-        autoClosingBrackets,
-        autoClosingQuotes,
-        autoIndent,
-        accessibilitySupport,
-        quickSuggestions,
-        parameterHints,
-        formatOnPaste,
-        formatOnType,
-        scrollBeyondLastLine,
-        renderLineHighlight,
-        renderWhitespace,
-        scrollbar
+        ...rest
       }}
       language={language}
       defaultLanguage='typescript'

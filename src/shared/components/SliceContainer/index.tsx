@@ -39,7 +39,8 @@ const SliceContainer: FC<Props> = ({ children, maxHeight, className, onExtend, e
       <section
         className={`sliceContainer-content ${className}`}
         style={{
-          maxHeight: isExtended ? exMaxHeight : `${maxHeight}px`
+          maxHeight: isExtended ? exMaxHeight : `${maxHeight}px`,
+          overflow: isExtended ? 'auto' : 'hidden'
         }}
       >
         {children}

@@ -9,6 +9,7 @@ import { type FC, MouseEvent, useState } from 'react'
 
 import MonacoLanguages from '../MonacoLanguages'
 import MonacoFonts from './MonacoFonts'
+import SetterMonacoPreferences from './SetterMonacoPreferences'
 import ThemeSelectorPreference from './ThemeSelectorPreference'
 import './style.scss'
 
@@ -62,6 +63,7 @@ const UserMonacoPreferences: FC = () => {
             <MonacoFonts />
           </SliceContainer>
         </div>
+        <SetterMonacoPreferences />
       </Popup>
     </>
   )

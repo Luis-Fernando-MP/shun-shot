@@ -3,12 +3,13 @@ import { Input } from 'react-field-sizing-content'
 import { useDebounceCallback } from 'usehooks-ts'
 
 import useCodeShotStore from '../../store/codeShot.store'
+import MonacoExtensionName from './MonacoExtensionName'
 
 interface Props {
-  theme: string
+  foreground: string
 }
 
-const ShotFileName: FC<Props> = ({ theme }) => {
+const ShotFileName: FC<Props> = ({ foreground }) => {
   const { fileName, setFileName } = useCodeShotStore()
 
   const debouncedSetFileName = useDebounceCallback(setFileName, 500)
@@ -19,8 +20,8 @@ const ShotFileName: FC<Props> = ({ theme }) => {
 
   return (
     <div className='monacoEditor-field'>
-      <Input fieldSizing='content' defaultValue={fileName} style={{ color: theme }} onChange={handleChange} />
-      <p className='monacoEditor-extension'>.ts</p>
+      <Input fieldSizing='content' defaultValue={fileName} style={{ color: foreground }} onChange={handleChange} />
+      <MonacoExtensionName foreground={foreground} />
     </div>
   )
 }
