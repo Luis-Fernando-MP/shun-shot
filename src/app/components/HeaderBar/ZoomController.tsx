@@ -10,12 +10,13 @@ const ZoomController: FC = () => {
   return (
     <>
       <h5>Zoom :</h5>
-      <IconButton transparent label='Aumentar zoom' position='bottom' onClick={() => setScale(scale + 0.1)}>
+      <IconButton transparent label='Aumentar zoom' position='bottom' onClick={() => setScale(scale + 0.3)}>
         <PlusIcon />
       </IconButton>
-      <IconButton transparent label='Disminuir zoom' position='bottom' onClick={() => setScale(scale - 0.1)}>
+      <IconButton transparent label='Disminuir zoom' position='bottom' onClick={() => setScale(scale - 0.3)}>
         <MinusIcon />
       </IconButton>
+      <h5>{Number(scale * 100).toFixed(0)}%</h5>
     </>
   )
 }
