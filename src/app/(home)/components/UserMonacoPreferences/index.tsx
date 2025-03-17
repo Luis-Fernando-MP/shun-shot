@@ -9,6 +9,7 @@ import { type FC, MouseEvent, useState } from 'react'
 
 import MonacoLanguages from '../MonacoLanguages'
 import MonacoFonts from './MonacoFonts'
+import SetterMonacoPreferences from './SetterMonacoPreferences'
 import ThemeSelectorPreference from './ThemeSelectorPreference'
 import './style.scss'
 
@@ -17,7 +18,7 @@ const UserMonacoPreferences: FC = () => {
   const [positions, setPositions] = useState<PopupPositions>()
 
   const handleOpenPopup = (e: MouseEvent) => {
-    setIsOpen(true)
+    setIsOpen(!isOpen)
     setPositions({ x: e.clientX, y: e.clientY })
   }
 
@@ -62,6 +63,7 @@ const UserMonacoPreferences: FC = () => {
             <MonacoFonts />
           </SliceContainer>
         </div>
+        <SetterMonacoPreferences />
       </Popup>
     </>
   )

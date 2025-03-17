@@ -23,9 +23,7 @@ const MonacoEditor: FC = () => {
           <span className='monacoEditor-sphere green' />
         </div>
 
-        <div className='monacoEditor-field'>
-          <ShotFileName theme={theme?.colors['editor.foreground']} />
-        </div>
+        <ShotFileName foreground={theme?.colors['editor.foreground']} />
       </header>
       <EditorComponent />
     </article>

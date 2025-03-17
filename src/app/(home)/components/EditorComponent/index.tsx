@@ -1,82 +1,29 @@
 import Editor from '@monaco-editor/react'
-import { type FC, useEffect, useRef } from 'react'
+import { type FC } from 'react'
 
 import useMonacoEditor from '../../hooks/useMonacoEditor'
 import useMonacoStore from '../../store/monaco.store'
+import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
 import LoaderEditor from './LoaderEditor'
 import './style.scss'
 
 const EditorComponent: FC = () => {
-  const {
-    language,
-    typography,
+  const monacoConfig = useMonacoStore()
+  const { typography, language } = useMonacoBasicOptionsStore()
 
-    lineNumbers,
-    minimap,
-    fontLigatures,
-    wordWrap,
-    fontSize,
-    lineHeight,
-    stickyScroll,
-    cursorBlinking,
-    mouseStyle,
-    cursorStyle,
-    wrappingIndent,
-    folding,
-    foldingStrategy,
-    letterSpacing,
-
-    autoClosingBrackets,
-    autoClosingQuotes,
-    autoIndent,
-    accessibilitySupport,
-    quickSuggestions,
-    parameterHints,
-    formatOnPaste,
-    formatOnType,
-    scrollBeyondLastLine,
-    renderLineHighlight,
-    renderWhitespace,
-    scrollbar
-  } = useMonacoStore()
   const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor({ typography })
 
   return (
     <Editor
       loading={<LoaderEditor />}
       className={`editorComponent ${moveBoard ? 'zoom' : ''}`}
-      height={400}
+      height='100%'
       options={{
+        ...monacoConfig,
         theme: themeName,
-        fontFamily: typography,
-        lineNumbers,
-        minimap: { enabled: minimap?.enabled },
-        fontLigatures,
-        wordWrap,
-        fontSize,
-        lineHeight,
-        stickyScroll: { enabled: stickyScroll?.enabled },
-        cursorBlinking,
-        mouseStyle,
-        cursorStyle,
-        wrappingIndent,
-        folding,
-        foldingStrategy,
-        letterSpacing,
-        autoClosingBrackets,
-        autoClosingQuotes,
-        autoIndent,
-        accessibilitySupport,
-        quickSuggestions,
-        parameterHints,
-        formatOnPaste,
-        formatOnType,
-        scrollBeyondLastLine,
-        renderLineHighlight,
-        renderWhitespace,
-        scrollbar
+        fontFamily: typography
       }}
-      language={language}
+      language={language.language}
       defaultLanguage='typescript'
       defaultValue={exampleCode}
       theme={themeName}

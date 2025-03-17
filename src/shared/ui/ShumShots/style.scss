@@ -29,11 +29,11 @@
   }
 
   &.sm {
-    padding: v.$padding;
+    padding: v.$padding * 0.7;
 
     .shumShots-logo {
-      width: v.$icon * 1.7;
-      height: v.$icon * 1.7;
+      width: v.$icon * 1.5;
+      height: v.$icon * 1.5;
     }
   }
 

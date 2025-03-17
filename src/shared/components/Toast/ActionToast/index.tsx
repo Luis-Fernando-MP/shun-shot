@@ -5,12 +5,6 @@ import hotToast, { LoaderIcon, Toast } from 'react-hot-toast'
 import type { IToastProps } from '..'
 import './style.scss'
 
-interface Props extends IToastProps {
-  toastProps: Toast
-  onAction: () => void
-  actionLabel?: string
-}
-
 const Icons = {
   success: CheckIcon,
   error: XIcon,
@@ -19,7 +13,38 @@ const Icons = {
   pending: LoaderIcon
 }
 
-const ActionToast: FC<Props> = ({ toastProps, title, description, icon, type = 'info', onAction, actionLabel }) => {
+interface Props extends IToastProps {
+  toastProps: Toast
+  onAction?: () => void
+  actionLabel?: string
+  secondActionLabel?: string
+  onSecondAction?: () => void
+}
+
+/**
+ * @description Custom toast component with action button
+ * @param toastProps - Toast props
+ * @param title - Title
+ * @param description - Description (optional)
+ * @param icon - Icon (optional)
+ * @param type - Type (success, error, warning, info, pending) default: info
+ * @param onAction - Action to be executed when the action button is clicked
+ * @param actionLabel - Action label (optional)
+ * @param secondActionLabel - Second action label (optional)
+ * @param onSecondAction - Action to be executed when the second action button is clicked
+ */
+
+const ActionToast: FC<Props> = ({
+  toastProps,
+  title,
+  description,
+  icon,
+  type = 'info',
+  onAction,
+  actionLabel,
+  secondActionLabel,
+  onSecondAction
+}) => {
   const Icon = Icons[type]
 
   const handleToastDismiss = () => {
@@ -28,7 +53,12 @@ const ActionToast: FC<Props> = ({ toastProps, title, description, icon, type = '
 
   const handleAction = () => {
     handleToastDismiss()
-    onAction()
+    onAction?.()
+  }
+
+  const handleSecondAction = () => {
+    handleToastDismiss()
+    onSecondAction?.()
   }
 
   return (
@@ -44,6 +74,12 @@ const ActionToast: FC<Props> = ({ toastProps, title, description, icon, type = '
         {actionLabel && (
           <button className='actionToast-action active' onClick={handleAction}>
             {actionLabel}
+          </button>
+        )}
+
+        {secondActionLabel && (
+          <button className='actionToast-action underline' onClick={handleSecondAction}>
+            {secondActionLabel}
           </button>
         )}
       </div>

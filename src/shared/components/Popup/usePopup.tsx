@@ -18,7 +18,7 @@ const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
   const handleMouseMove = useCallback(
     (e: globalThis.MouseEvent) => {
       requestAnimationFrame(() => {
-        if (!isDragging || !$dragPosition.current || !$popupRef.current) return
+        if (!isDragging || !$dragPosition.current || !$popupRef.current || !e.ctrlKey) return
         e.preventDefault()
         const rect = $popupRef.current.getBoundingClientRect()
         const deltaX = e.clientX - $dragPosition.current.x
@@ -45,6 +45,16 @@ const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
     $popupRef.current?.classList.remove('block-children-events')
   }, [])
 
+  const bringPopupToFront = useCallback(() => {
+    if (!$popupRef.current) return
+    const popups = document.querySelectorAll('.popup')
+    popups.forEach(popup => {
+      if (!(popup instanceof HTMLElement)) return
+      popup.style.zIndex = '10'
+    })
+    if ($popupRef.current) $popupRef.current.style.zIndex = '11'
+  }, [$popupRef])
+
   const handleMouseDown = (e: MouseEvent) => {
     const moveOnHeader = (e.target as HTMLElement).closest('#popup-header')
     if (!$popupRef.current || (!moveOnHeader && !e.ctrlKey)) return
@@ -52,6 +62,7 @@ const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
       $popupRef.current?.classList.add('block-children-events')
     }
     setIsDragging(true)
+    bringPopupToFront()
     $dragPosition.current = { x: e.clientX, y: e.clientY }
   }
 

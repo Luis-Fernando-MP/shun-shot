@@ -33,52 +33,54 @@ import swift from './assets/swift'
 import typescript from './assets/typescript'
 import yaml from './assets/yaml'
 
+export type MonacoLanguage = { Icon: React.ElementType; language: string; short: string }
+
 const monacoLanguagesIcons = {
   'Frontend Web': {
     html: {
       Icon: html,
       language: 'html',
-      status: 'ok'
+      short: 'html'
     },
     css: {
       Icon: css,
       language: 'css',
-      status: 'ok'
+      short: 'css'
     },
     javascript: {
       Icon: javascriptreact,
       language: 'javascript',
-      status: 'soon'
+      short: 'js'
     },
     typescript: {
       Icon: typescript,
       language: 'typescript',
-      status: 'soon'
+      short: 'ts'
     },
     astro: {
       Icon: astro,
       language: 'astro',
-      status: 'beta'
+      short: 'astro'
     },
     pug: {
       Icon: pug,
       language: 'pug',
-      status: 'ok'
+      short: 'pug'
     },
     handlebars: {
       Icon: handlebars,
       language: 'handlebars',
-      status: 'ok'
+      short: 'handlebars'
     },
     sass: {
       Icon: scss,
       language: 'scss',
-      status: 'ok'
+      short: 'scss'
     },
     markdown: {
       Icon: markdown,
       language: 'markdown',
-      status: 'ok'
+      short: 'md'
     }
   },
 
@@ -86,52 +88,52 @@ const monacoLanguagesIcons = {
     php: {
       Icon: php,
       language: 'php',
-      status: 'ok'
+      short: 'php'
     },
     python: {
       Icon: python,
       language: 'python',
-      status: 'ok'
+      short: 'py'
     },
     ruby: {
       Icon: ruby,
       language: 'ruby',
-      status: 'ok'
+      short: 'rb'
     },
     go: {
       Icon: go,
       language: 'go',
-      status: 'ok'
+      short: 'go'
     },
     java: {
       Icon: java,
       language: 'java',
-      status: 'ok'
+      short: 'java'
     },
     c: {
       Icon: c,
       language: 'c',
-      status: 'ok'
+      short: 'c'
     },
     'c#': {
       Icon: csharp,
       language: 'csharp',
-      status: 'ok'
+      short: 'c#'
     },
     'c++': {
       Icon: cpp,
       language: 'cpp',
-      status: 'ok'
+      short: 'c++'
     },
     kotlin: {
       Icon: kotlin,
       language: 'kotlin',
-      status: 'ok'
+      short: 'kt'
     },
     rust: {
       Icon: rust,
       language: 'rust',
-      status: 'ok'
+      short: 'rs'
     }
   },
 
@@ -139,17 +141,17 @@ const monacoLanguagesIcons = {
     sql: {
       Icon: sql,
       language: 'sql',
-      status: 'ok'
+      short: 'sql'
     },
     graphql: {
       Icon: graphql,
       language: 'graphql',
-      status: 'ok'
+      short: 'gql'
     },
     prisma: {
       Icon: prisma,
       language: 'graphql',
-      status: 'dev'
+      short: 'prisma'
     }
   },
 
@@ -157,17 +159,17 @@ const monacoLanguagesIcons = {
     bash: {
       Icon: shell,
       language: 'shell',
-      status: 'ok'
+      short: 'bash'
     },
     powershell: {
       Icon: powershell,
       language: 'powershell',
-      status: 'ok'
+      short: 'ps'
     },
     bat: {
       Icon: bat,
       language: 'bat',
-      status: 'ok'
+      short: 'bat'
     }
   },
 
@@ -175,7 +177,7 @@ const monacoLanguagesIcons = {
     dockerfile: {
       Icon: dockerfile,
       language: 'dockerfile',
-      status: 'ok'
+      short: 'json'
     }
   },
 
@@ -183,7 +185,7 @@ const monacoLanguagesIcons = {
     clojure: {
       Icon: clojure,
       language: 'clojure',
-      status: 'ok'
+      short: 'clojure'
     }
   },
 
@@ -191,12 +193,12 @@ const monacoLanguagesIcons = {
     yaml: {
       Icon: yaml,
       language: 'yaml',
-      status: 'ok'
+      short: 'yaml'
     },
     json: {
       Icon: json,
       language: 'json',
-      status: 'ok'
+      short: 'json'
     }
   },
 
@@ -204,12 +206,12 @@ const monacoLanguagesIcons = {
     dart: {
       Icon: dart,
       language: 'dart',
-      status: 'ok'
+      short: 'dart'
     },
     swift: {
       Icon: swift,
       language: 'swift',
-      status: 'ok'
+      short: 'swift'
     }
   },
 
@@ -217,17 +219,17 @@ const monacoLanguagesIcons = {
     coffeescript: {
       Icon: coffeescript,
       language: 'coffeescript',
-      status: 'ok'
+      short: 'coffeescript'
     },
     lua: {
       Icon: lua,
       language: 'lua',
-      status: 'ok'
+      short: 'lua'
     },
     shell: {
       Icon: shell,
       language: 'shell',
-      status: 'ok'
+      short: 'bash'
     }
   }
 }

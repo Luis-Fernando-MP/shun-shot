@@ -1,5 +1,6 @@
 import useDownloadImage from '@/app/hooks/useDownloadImage'
 import { acl } from '@/shared/acl'
+import { toaster } from '@/shared/components/Toast'
 import IconButton from '@/shared/ui/IconButton'
 import LabelText from '@/shared/ui/LabelText'
 import { copyImage } from '@lucide/lab'
@@ -11,20 +12,31 @@ import useCodeShotStore from '../../store/codeShot.store'
 const ShotFileName: FC = () => {
   const { fileName } = useCodeShotStore()
 
-  const { isDownloading, downloadPngImage, copyToClipboard } = useDownloadImage()
+  const { isDownloading, downloadPngImage, copyToClipboard, questionDownload } = useDownloadImage()
 
   const handleDownload = async () => {
-    const $monacoEditor = document.getElementById('monacoEditor')
-    if (!($monacoEditor instanceof HTMLElement)) return
-
-    downloadPngImage({ fileName, $element: $monacoEditor, scaleFactor: 5 })
+    questionDownload({
+      containerId: 'monacoEditor-container',
+      childId: 'monacoEditor',
+      onResponse: (element: HTMLElement) => {
+        downloadPngImage({
+          fileName,
+          scaleFactor: 5,
+          $element: element
+        })
+      }
+    })
   }
 
   const handleCopy = () => {
-    const $monacoEditor = document.getElementById('monacoEditor')
-    if (!($monacoEditor instanceof HTMLElement)) return
-
-    copyToClipboard({ $element: $monacoEditor, scaleFactor: 5 })
+    questionDownload({
+      containerId: 'monacoEditor-container',
+      childId: 'monacoEditor',
+      isCopy: true,
+      onResponse: (element: HTMLElement) => {
+        copyToClipboard({ $element: element, scaleFactor: 5 })
+      }
+    })
   }
 
   return (

@@ -11,7 +11,7 @@ const Page: FC = () => {
     <main className='app-main home'>
       <Board isCenter={false} normalScale>
         {() => (
-          <div className='app-board home-board border'>
+          <div className='app-board home-board border' id='monacoEditor-container'>
             <MonacoEditor />
           </div>
         )}

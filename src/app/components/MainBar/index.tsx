@@ -40,7 +40,7 @@ const MainBar: FC<Props> = ({ className = '' }) => {
   return (
     <article className={`mainBar border ${className}`}>
       <Link href='/' aria-label='Volver a la página principal'>
-        <ShumShots size='xs' radius='circle' />
+        <ShumShots size='sm' radius='circle' transparent />
       </Link>
 
       {RenderForPage && <RenderForPage />}

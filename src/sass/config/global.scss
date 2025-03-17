@@ -84,10 +84,11 @@ body {
   .icon,
   .lucide {
     display: block;
-
     width: $icon;
     height: $icon;
+  }
 
+  .lucide {
     stroke: rgb($fn1);
     stroke-width: 1.5;
   }

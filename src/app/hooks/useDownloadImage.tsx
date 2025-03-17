@@ -9,8 +9,22 @@ interface HandleDownloadProps {
   scaleFactor: number
 }
 
+interface HandleQuestionDownloadProps {
+  containerId: string
+  childId: string
+  onResponse: (response: HTMLElement) => void
+  isCopy?: boolean
+}
+
 const useDownloadImage = () => {
   const [isDownloading, setIsDownloading] = useState(false)
+
+  /**
+   * @description Download html element as png image
+   * @param fileName - The name of the file
+   * @param $element - The html element to download
+   * @param scaleFactor - The scale factor
+   */
 
   const downloadPngImage = useCallback(
     async ({ fileName, $element, scaleFactor }: HandleDownloadProps) => {
@@ -90,10 +104,42 @@ const useDownloadImage = () => {
     [setIsDownloading]
   )
 
+  const questionDownload = ({ containerId, childId, onResponse, isCopy = false }: HandleQuestionDownloadProps) => {
+    const $monacoEditorContainer = document.getElementById(containerId) as HTMLElement
+    const $monacoEditor = document.getElementById(childId) as HTMLElement
+    if (!$monacoEditor || !$monacoEditorContainer || !$monacoEditorContainer?.contains($monacoEditor)) {
+      toaster({
+        title: 'No se puede proceder',
+        description: 'No se encontró el editor de código',
+        type: 'error'
+      })
+      return
+    }
+
+    const paragraph = isCopy ? 'copiar' : 'descargar'
+
+    toaster.question({
+      title: isCopy ? 'Que estilo quieres usar' : 'Que tipo de descarga quieres',
+      description: `¿Cómo quieres ${paragraph} la imagen?`,
+      type: 'warning',
+      position: 'bottom-center',
+      actionLabel: `${paragraph} con fondo`,
+      id: 'download-with-background',
+      onAction: () => {
+        onResponse($monacoEditorContainer)
+      },
+      secondActionLabel: `${paragraph} sin fondo`,
+      onSecondAction: () => {
+        onResponse($monacoEditor)
+      }
+    })
+  }
+
   return {
     isDownloading,
     downloadPngImage,
-    copyToClipboard
+    copyToClipboard,
+    questionDownload
   }
 }
 

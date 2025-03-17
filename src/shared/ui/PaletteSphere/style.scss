@@ -27,15 +27,15 @@
 
       position: absolute;
       top: 50%;
-      left: 50%;
+      left: 20%;
       transform: translate(-50%, -50%);
 
       width: 60px;
-      height: 30px;
+      height: 100%;
       border-radius: 50%;
 
-      background-color: rgb(v.$fn1);
-      filter: blur(30px);
+      background-color: rgb(v.$bg1);
+      filter: blur(8px);
     }
   }
 
@@ -47,17 +47,20 @@
     }
   }
 
-  &-spheres {
-    @include d.flex($dir: row, $ali: center, $gap: v.$padding * 0.5);
-
+  &-spheres,
+  &-title {
     position: relative;
     z-index: 1;
+  }
+
+  &-spheres {
+    @include d.flex($dir: row, $ali: center, $gap: v.$padding * 0.5);
   }
 
   &-sphere {
     width: 20px;
     height: 20px;
-    border: 1px solid rgb(v.$fn1);
+    border: 1.5px solid rgb(v.$bg3, 1);
     border-radius: 50%;
   }
 

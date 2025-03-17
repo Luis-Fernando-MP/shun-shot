@@ -5,29 +5,28 @@
   &-popup {
     width: 400px;
 
-    @include d.flex($gap: v.$padding * 1.5);
+    @include d.flex($gap: v.$padding * 2);
 
     height: 700px;
     max-height: 700px;
   }
 
-  &-themes {
+  &-section {
+    @include d.flex;
+  }
+
+  &-switch,
+  &-themes,
+  &-fonts {
+    @include d.flex($dir: row, $gap: v.$padding * 0.5);
+
     flex-wrap: wrap;
     width: 100%;
-
-    @include d.flex($dir: row, $gap: v.$padding * 0.5);
   }
 
   &-languages {
     @include d.flex;
 
-    width: 100%;
-  }
-
-  &-fonts {
-    @include d.flex($dir: row, $gap: v.$padding * 0.5);
-
-    flex-wrap: wrap;
     width: 100%;
   }
 }

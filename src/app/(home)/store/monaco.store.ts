@@ -5,9 +5,6 @@ import { StateCreator, create } from 'zustand'
 type Monaco = editor.IEditorOptions
 
 interface Props {
-  language: string
-  typography: string
-
   lineNumbers: Monaco['lineNumbers']
   minimap: Monaco['minimap']
 
@@ -15,7 +12,6 @@ interface Props {
   wordWrap: Monaco['wordWrap']
 
   fontSize: Monaco['fontSize']
-
   lineHeight: Monaco['lineHeight']
 
   stickyScroll: Monaco['stickyScroll']
@@ -42,15 +38,21 @@ interface Props {
 
   scrollbar: Monaco['scrollbar']
 
-  setLanguage: (language: string) => void
-  setTypography: (typography: string) => void
+  bracketPairColorization: Monaco['bracketPairColorization']
+  guides: Monaco['guides']
+  glyphMargin: Monaco['glyphMargin']
+
+  renderValidationDecorations: Monaco['renderValidationDecorations']
+  selectionHighlight: Monaco['selectionHighlight']
+  hideCursorInOverviewRuler: Monaco['hideCursorInOverviewRuler']
+  matchBrackets: Monaco['matchBrackets']
+
   setLineNumbers: (lineNumbers: Monaco['lineNumbers']) => void
   setMinimap: (minimap: Monaco['minimap']) => void
   setFontLigatures: (fontLigatures: Monaco['fontLigatures']) => void
   setWordWrap: (wordWrap: Monaco['wordWrap']) => void
   setFontSize: (fontSize: Monaco['fontSize']) => void
   setLineHeight: (lineHeight: Monaco['lineHeight']) => void
-
   setStickyScroll: (stickyScroll: Monaco['stickyScroll']) => void
   setCursorBlinking: (cursorBlinking: Monaco['cursorBlinking']) => void
   setMouseStyle: (mouseStyle: Monaco['mouseStyle']) => void
@@ -59,7 +61,6 @@ interface Props {
   setFolding: (folding: Monaco['folding']) => void
   setFoldingStrategy: (foldingStrategy: Monaco['foldingStrategy']) => void
   setLetterSpacing: (letterSpacing: Monaco['letterSpacing']) => void
-
   setAutoClosingBrackets: (autoClosingBrackets: Monaco['autoClosingBrackets']) => void
   setAutoClosingQuotes: (autoClosingQuotes: Monaco['autoClosingQuotes']) => void
   setAutoIndent: (autoIndent: Monaco['autoIndent']) => void
@@ -72,92 +73,98 @@ interface Props {
   setRenderLineHighlight: (renderLineHighlight: Monaco['renderLineHighlight']) => void
   setRenderWhitespace: (renderWhitespace: Monaco['renderWhitespace']) => void
   setScrollbar: (scrollbar: Monaco['scrollbar']) => void
+  setBracketPairColorization: (bracketPairColorization: { enabled: boolean }) => void
+  setGuides: (guides: { indentation: boolean; highlightActiveIndentation: boolean }) => void
+  setGlyphMargin: (glyphMargin: boolean) => void
+  setRenderValidationDecorations: (renderValidationDecorations: Monaco['renderValidationDecorations']) => void
+  setSelectionHighlight: (selectionHighlight: Monaco['selectionHighlight']) => void
+  setHideCursorInOverviewRuler: (hideCursorInOverviewRuler: Monaco['hideCursorInOverviewRuler']) => void
+  setMatchBrackets: (matchBrackets: Monaco['matchBrackets']) => void
 }
 
 const state: StateCreator<Props> = set => ({
-  language: 'javascript', // Lenguaje de programación predeterminado
-  typography: monacoFonts.monospace.style.fontFamily, // Tipografía utilizada en el editor
-
-  lineNumbers: 'on', // Activa los números de línea (anteriormente desactivados para una apariencia más limpia)
+  lineNumbers: 'on', // Activa los números de línea
 
   minimap: {
-    enabled: true, // Activa el minimapa (anteriormente desactivado para una apariencia más limpia)
-    // Otras opciones del minimapa pueden incluirse aquí
-    showSlider: 'always',
-    showFoldingControls: 'always',
-    showLineNumbers: 'always',
-    showTokens: 'always',
-    showWhitespace: 'always',
-    showUnused: 'always',
-    showActiveLineIndicator: 'always'
+    enabled: false,
+    showSlider: 'always', // Muestra el control deslizante del minimapa
+    showFoldingControls: 'always', // Muestra los controles de plegado en el minimapa
+    showLineNumbers: 'always', // Muestra los números de línea en el minimapa
+    showTokens: 'always', // Muestra los tokens en el minimapa
+    showWhitespace: 'always', // Muestra los espacios en blanco en el minimapa
+    showUnused: 'always', // Muestra las áreas no utilizadas en el minimapa
+    showActiveLineIndicator: 'always' // Muestra el indicador de línea activa en el minimapa
   },
 
-  fontLigatures: 'on', // Activa las ligaduras de fuente (anteriormente desactivadas para una apariencia más uniforme)
-  wordWrap: 'off', // Desactiva el ajuste de línea (anteriormente activado para evitar el desplazamiento horizontal)
+  fontLigatures: true, // Activa las ligaduras de fuente para mejorar la legibilidad
+  wordWrap: 'off', // Desactiva el ajuste de línea
 
   fontSize: 14, // Tamaño de la fuente
-  lineHeight: 22, // Altura de la línea para mejorar la legibilidad (anteriormente configurada para mejorar la legibilidad)
+  lineHeight: 22, // Altura de la línea para mejorar la legibilidad
 
   stickyScroll: {
-    enabled: true, // Activa el desplazamiento pegajoso (anteriormente desactivado para una experiencia más limpia)
-    // Otras opciones de desplazamiento pegajoso pueden incluirse aquí
-    scrollBeyondLastLine: true, // Activa el desplazamiento más allá de la última línea (anteriormente desactivado)
-    renderLineHighlight: 'line', // Resalta la línea actual (anteriormente desactivado)
-    renderWhitespace: 'boundary', // Resalta los espacios en blanco (anteriormente desactivado)
-    scrollbar: {
-      vertical: 'visible', // Muestra la barra de desplazamiento vertical (anteriormente oculta)
-      horizontal: 'visible', // Muestra la barra de desplazamiento horizontal (anteriormente oculta)
-      useShadows: true // Activa las sombras en la barra de desplazamiento (anteriormente desactivadas)
-    }
+    enabled: false
   },
 
-  cursorBlinking: 'blink', // Parpadeo del cursor (anteriormente configurado como suave)
+  cursorBlinking: 'expand', // Parpadeo del cursor
   mouseStyle: 'default', // Estilo del cursor del ratón
-  cursorStyle: 'line', // Estilo de cursor predeterminado (anteriormente configurado como más discreto)
-  wrappingIndent: 'same', // Ajuste de línea sin sangría (anteriormente configurado con sangría)
+  cursorStyle: 'line', // Estilo de cursor predeterminado
+  wrappingIndent: 'same', // Ajuste de línea sin sangría
 
-  folding: true, // Activa el plegado de código (anteriormente desactivado)
-  foldingStrategy: 'auto', // Estrategia de plegado automática (anteriormente basada en la indentación)
-  letterSpacing: 0, // Espaciado entre letras predeterminado (anteriormente aumentado para mejorar la legibilidad)
+  folding: true, // Activa el plegado de código
+  foldingStrategy: 'auto', // Estrategia de plegado automática
+  letterSpacing: 0, // Espaciado entre letras predeterminado
 
-  autoClosingBrackets: 'beforeWhitespace', // Cierra automáticamente paréntesis, corchetes y llaves (anteriormente siempre activado)
-  autoClosingQuotes: 'beforeWhitespace', // Cierra automáticamente comillas (anteriormente siempre activado)
-  autoIndent: 'brackets', // Indentación automática para llaves (anteriormente completa)
+  autoClosingBrackets: 'beforeWhitespace', // Cierra automáticamente paréntesis, corchetes y llaves
+  autoClosingQuotes: 'beforeWhitespace', // Cierra automáticamente comillas
+  autoIndent: 'brackets', // Indentación automática para llaves
 
-  accessibilitySupport: 'off', // Desactiva el soporte de accesibilidad (anteriormente activado para mejorar la experiencia de usuarios con discapacidades visuales)
+  accessibilitySupport: 'off', // Desactiva el soporte de accesibilidad
 
-  semanticHighlighting: {
-    enabled: false // Desactiva el resaltado semántico (anteriormente activado para mejorar la legibilidad del código)
+  // Colorización de pares de paréntesis
+  bracketPairColorization: {
+    enabled: false
   },
+
+  guides: {
+    indentation: false, // Desactiva las guías de indentación
+    highlightActiveIndentation: false // Desactiva el resaltado de la indentación activa
+  },
+
+  // Desactiva los glifos en el margen izquierdo
+  glyphMargin: false,
 
   quickSuggestions: {
-    other: false, // Desactiva sugerencias rápidas para otros elementos (anteriormente activadas)
-    comments: false, // Desactiva sugerencias rápidas en comentarios (anteriormente activadas)
-    strings: false // Desactiva sugerencias rápidas en cadenas de texto (anteriormente activadas)
+    other: false, // Desactiva sugerencias rápidas para otros elementos
+    comments: false, // Desactiva sugerencias rápidas en comentarios
+    strings: false // Desactiva sugerencias rápidas en cadenas de texto
   },
 
   parameterHints: {
-    enabled: false // Desactiva las sugerencias de parámetros para funciones y métodos (anteriormente activadas)
+    enabled: false // Desactiva las sugerencias de parámetros para funciones y métodos
   },
 
-  formatOnPaste: false, // Desactiva el formateo automático al pegar (anteriormente activado)
-  formatOnType: false, // Desactiva el formateo automático mientras se escribe (anteriormente activado)
+  formatOnPaste: true, // Desactiva el formateo automático al pegar
+  formatOnType: true, // Desactiva el formateo automático mientras se escribe
 
-  scrollBeyondLastLine: true, // Activa el desplazamiento más allá de la última línea (anteriormente desactivado)
+  scrollBeyondLastLine: false, // Desplazamiento más allá de la última línea
 
-  renderLineHighlight: 'none', // No resalta la línea actual (anteriormente configurado para mejorar la visibilidad)
-  renderWhitespace: 'none', // No muestra los espacios en blanco (anteriormente configurado para una mejor comprensión del formato del código)
+  renderLineHighlight: 'none', // No resalta la línea actual
+  renderWhitespace: 'none', // No muestra los espacios en blanco
 
   scrollbar: {
-    vertical: 'visible', // Muestra la barra de desplazamiento vertical (anteriormente oculta)
-    horizontal: 'visible', // Muestra la barra de desplazamiento horizontal (anteriormente oculta)
-    useShadows: true, // Activa las sombras en la barra de desplazamiento (anteriormente desactivadas)
-    verticalScrollbarSize: 10, // Tamaño de la barra de desplazamiento vertical (anteriormente configurado como 0)
-    horizontalScrollbarSize: 10 // Tamaño de la barra de desplazamiento horizontal (anteriormente configurado como 0)
+    vertical: 'hidden', // Muestra la barra de desplazamiento vertical
+    horizontal: 'hidden', // Muestra la barra de desplazamiento horizontal
+    useShadows: false, // Activa las sombras en la barra de desplazamiento
+    verticalScrollbarSize: 10, // Tamaño de la barra de desplazamiento vertical
+    horizontalScrollbarSize: 10 // Tamaño de la barra de desplazamiento horizontal
   },
 
-  setLanguage: language => set({ language }),
-  setTypography: typography => set({ typography }),
+  renderValidationDecorations: 'off', // No muestra las decoraciones de validación
+  selectionHighlight: false, // Desactiva el resaltado de la selección
+  hideCursorInOverviewRuler: true, // Oculta el cursor en el rótulo de vista general
+  matchBrackets: 'never', // No muestra el resaltado de los paréntesis coincidentes
+
   setLineNumbers: lineNumbers => set({ lineNumbers }),
   setMinimap: minimap => set({ minimap }),
   setFontLigatures: fontLigatures => set({ fontLigatures }),
@@ -183,7 +190,14 @@ const state: StateCreator<Props> = set => ({
   setScrollBeyondLastLine: scrollBeyondLastLine => set({ scrollBeyondLastLine }),
   setRenderLineHighlight: renderLineHighlight => set({ renderLineHighlight }),
   setRenderWhitespace: renderWhitespace => set({ renderWhitespace }),
-  setScrollbar: scrollbar => set({ scrollbar })
+  setScrollbar: scrollbar => set({ scrollbar }),
+  setBracketPairColorization: bracketPairColorization => set({ bracketPairColorization }),
+  setGuides: guides => set({ guides }),
+  setGlyphMargin: glyphMargin => set({ glyphMargin }),
+  setRenderValidationDecorations: renderValidationDecorations => set({ renderValidationDecorations }),
+  setSelectionHighlight: selectionHighlight => set({ selectionHighlight }),
+  setHideCursorInOverviewRuler: hideCursorInOverviewRuler => set({ hideCursorInOverviewRuler }),
+  setMatchBrackets: matchBrackets => set({ matchBrackets })
 })
 
 const useMonacoStore = create(state)

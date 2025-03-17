@@ -130,7 +130,7 @@ export const THEMES: Record<string, Theme> = {
     'fnt-primary': '50, 30, 70',
     'fnt-secondary': '80, 60, 100',
     'fnt-active': '0, 0, 0',
-    'tn-primary': '200, 180, 255',
+    'tn-primary': '178 150, 255',
     'tn-secondary': '180, 160, 220'
   },
   'Nebula Light': {
