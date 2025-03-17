@@ -6,12 +6,30 @@ import useMonacoThemeStore from '../store/monacoTheme.store'
 import useReferenceMonacoStore from '../store/referenceMonaco'
 
 const exampleCode = `
-const exampleCode = {
-  javascript: {
-    language: 'javascript',
-    code: someJSCodeExample
-  },
-}`
+import { themes } from 'code-scape'
+
+const platformName = 'Code Scape';
+let userWelcomeMessage = \`👋 ¡Hola! Bienvenido a \${platformName}.\`;
+
+function showWelcomeMessage() {
+  console.log(userWelcomeMessage);
+  console.log('✨ Funcionalidades principales:');
+  console.log('➡️ Captura y ajusta tu código como imagen.');
+  console.log('➡️ Personalización avanzada de temas y diseño.');
+  console.log('➡️ Comparte y exporta tu código con estilo.');
+}
+
+function listAvailableThemes() {
+  console.log('🎨 Temas disponibles:');
+  themes.forEach((theme, index) => {
+    console.log(\`🖌️ \${index + 1}. \${theme}\`);
+  });
+}
+
+showWelcomeMessage();
+listAvailableThemes();
+
+  // ✨ Explora y diviértete`
 
 interface Props {
   typography: string

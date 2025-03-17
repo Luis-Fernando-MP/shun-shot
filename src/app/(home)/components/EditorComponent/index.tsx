@@ -1,5 +1,5 @@
 import Editor from '@monaco-editor/react'
-import { type FC, useEffect, useRef } from 'react'
+import { type FC } from 'react'
 
 import useMonacoEditor from '../../hooks/useMonacoEditor'
 import useMonacoStore from '../../store/monaco.store'
@@ -45,7 +45,7 @@ const EditorComponent: FC = () => {
     <Editor
       loading={<LoaderEditor />}
       className={`editorComponent ${moveBoard ? 'zoom' : ''}`}
-      height={400}
+      height='100%'
       options={{
         theme: themeName,
         fontFamily: typography,

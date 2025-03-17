@@ -75,7 +75,7 @@ interface Props {
 }
 
 const state: StateCreator<Props> = set => ({
-  language: 'javascript', // Lenguaje de programación predeterminado
+  language: 'typescript', // Lenguaje de programación predeterminado
   typography: monacoFonts.monospace.style.fontFamily, // Tipografía utilizada en el editor
 
   lineNumbers: 'on', // Activa los números de línea (anteriormente desactivados para una apariencia más limpia)
