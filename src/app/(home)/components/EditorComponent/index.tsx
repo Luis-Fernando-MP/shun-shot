@@ -21,7 +21,8 @@ const EditorComponent: FC = () => {
       options={{
         ...monacoConfig,
         theme: themeName,
-        fontFamily: typography
+        fontFamily: typography,
+        contextmenu: false
       }}
       language={language.language}
       defaultLanguage='typescript'

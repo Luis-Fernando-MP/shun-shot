@@ -1,4 +1,3 @@
-import { monacoFonts } from '@/shared/fonts/monaco-fonts'
 import { editor } from 'monaco-editor'
 import { StateCreator, create } from 'zustand'
 
@@ -10,6 +9,7 @@ interface Props {
 
   fontLigatures: Monaco['fontLigatures']
   wordWrap: Monaco['wordWrap']
+  wordWrapColumn: Monaco['wordWrapColumn']
 
   fontSize: Monaco['fontSize']
   lineHeight: Monaco['lineHeight']
@@ -27,9 +27,6 @@ interface Props {
   autoClosingBrackets: Monaco['autoClosingBrackets']
   autoClosingQuotes: Monaco['autoClosingQuotes']
   autoIndent: Monaco['autoIndent']
-  accessibilitySupport: Monaco['accessibilitySupport']
-  quickSuggestions: Monaco['quickSuggestions']
-  parameterHints: Monaco['parameterHints']
   formatOnPaste: Monaco['formatOnPaste']
   formatOnType: Monaco['formatOnType']
   scrollBeyondLastLine: Monaco['scrollBeyondLastLine']
@@ -47,10 +44,18 @@ interface Props {
   hideCursorInOverviewRuler: Monaco['hideCursorInOverviewRuler']
   matchBrackets: Monaco['matchBrackets']
 
+  overviewRulerLanes: Monaco['overviewRulerLanes']
+  overviewRulerBorder: Monaco['overviewRulerBorder']
+  roundedSelection: Monaco['roundedSelection']
+  renderFinalNewline: Monaco['renderFinalNewline']
+  renderControlCharacters: Monaco['renderControlCharacters']
+  smoothScrolling: Monaco['smoothScrolling']
+
   setLineNumbers: (lineNumbers: Monaco['lineNumbers']) => void
   setMinimap: (minimap: Monaco['minimap']) => void
   setFontLigatures: (fontLigatures: Monaco['fontLigatures']) => void
   setWordWrap: (wordWrap: Monaco['wordWrap']) => void
+  setWordWrapColumn: (wordWrapColumn: Monaco['wordWrapColumn']) => void
   setFontSize: (fontSize: Monaco['fontSize']) => void
   setLineHeight: (lineHeight: Monaco['lineHeight']) => void
   setStickyScroll: (stickyScroll: Monaco['stickyScroll']) => void
@@ -64,9 +69,6 @@ interface Props {
   setAutoClosingBrackets: (autoClosingBrackets: Monaco['autoClosingBrackets']) => void
   setAutoClosingQuotes: (autoClosingQuotes: Monaco['autoClosingQuotes']) => void
   setAutoIndent: (autoIndent: Monaco['autoIndent']) => void
-  setAccessibilitySupport: (accessibilitySupport: Monaco['accessibilitySupport']) => void
-  setQuickSuggestions: (quickSuggestions: Monaco['quickSuggestions']) => void
-  setParameterHints: (parameterHints: Monaco['parameterHints']) => void
   setFormatOnPaste: (formatOnPaste: Monaco['formatOnPaste']) => void
   setFormatOnType: (formatOnType: Monaco['formatOnType']) => void
   setScrollBeyondLastLine: (scrollBeyondLastLine: Monaco['scrollBeyondLastLine']) => void
@@ -80,95 +82,109 @@ interface Props {
   setSelectionHighlight: (selectionHighlight: Monaco['selectionHighlight']) => void
   setHideCursorInOverviewRuler: (hideCursorInOverviewRuler: Monaco['hideCursorInOverviewRuler']) => void
   setMatchBrackets: (matchBrackets: Monaco['matchBrackets']) => void
+
+  setOverviewRulerLanes: (overviewRulerLanes: Monaco['overviewRulerLanes']) => void
+  setOverviewRulerBorder: (overviewRulerBorder: Monaco['overviewRulerBorder']) => void
+  setRoundedSelection: (roundedSelection: Monaco['roundedSelection']) => void
+  setRenderFinalNewline: (renderFinalNewline: Monaco['renderFinalNewline']) => void
+  setRenderControlCharacters: (renderControlCharacters: Monaco['renderControlCharacters']) => void
+  setSmoothScrolling: (smoothScrolling: Monaco['smoothScrolling']) => void
 }
 
 const state: StateCreator<Props> = set => ({
-  lineNumbers: 'on', // Activa los números de línea
+  // Edición
+  autoClosingBrackets: 'beforeWhitespace',
+  autoClosingQuotes: 'beforeWhitespace',
+  autoIndent: 'brackets',
+  folding: true,
+  formatOnPaste: true,
+  formatOnType: true,
+  matchBrackets: 'never',
+  wordWrap: 'off',
+  wordWrapColumn: 80,
+  wrappingIndent: 'same',
 
+  // Tipografía
+  lineNumbers: 'on',
+  renderLineHighlight: 'none',
+  renderWhitespace: 'none',
+  selectionHighlight: false,
+  letterSpacing: 0,
+
+  // Visual
+  fontLigatures: true,
+  fontSize: 14,
+  lineHeight: 22,
+  overviewRulerLanes: 2, // carriles
+  overviewRulerBorder: false, // Borde de la regla de vista general
+  roundedSelection: true, // Selecciones con esquinas redondeadas
+  renderFinalNewline: 'off', // Muestra la nueva línea final
+  renderControlCharacters: false, // No muestra los caracteres de control
+
+  // Minimap
   minimap: {
     enabled: false,
-    showSlider: 'always', // Muestra el control deslizante del minimapa
-    showFoldingControls: 'always', // Muestra los controles de plegado en el minimapa
-    showLineNumbers: 'always', // Muestra los números de línea en el minimapa
-    showTokens: 'always', // Muestra los tokens en el minimapa
-    showWhitespace: 'always', // Muestra los espacios en blanco en el minimapa
-    showUnused: 'always', // Muestra las áreas no utilizadas en el minimapa
-    showActiveLineIndicator: 'always' // Muestra el indicador de línea activa en el minimapa
+    autohide: false,
+    side: 'right',
+    size: 'proportional',
+    showSlider: 'always',
+    renderCharacters: true,
+    maxColumn: 100,
+    scale: 1
   },
 
-  fontLigatures: true, // Activa las ligaduras de fuente para mejorar la legibilidad
-  wordWrap: 'off', // Desactiva el ajuste de línea
+  // Barras de Desplazamiento
+  scrollbar: {
+    vertical: 'hidden',
+    horizontal: 'hidden',
+    useShadows: false,
+    verticalScrollbarSize: 10,
+    horizontalScrollbarSize: 10
+  },
 
-  fontSize: 14, // Tamaño de la fuente
-  lineHeight: 22, // Altura de la línea para mejorar la legibilidad
-
+  // Desplazamiento Pegajoso
   stickyScroll: {
-    enabled: false
+    enabled: false,
+    scrollbarSize: 10,
+    scrollbarColor: '#000',
+    scrollbarWidth: 10,
+    scrollbarHeight: 10,
+    scrollbarBorderRadius: 10,
+    scrollbarBorderColor: '#000',
+    scrollbarBorderWidth: 10
   },
 
-  cursorBlinking: 'expand', // Parpadeo del cursor
-  mouseStyle: 'default', // Estilo del cursor del ratón
-  cursorStyle: 'line', // Estilo de cursor predeterminado
-  wrappingIndent: 'same', // Ajuste de línea sin sangría
+  // Cursor
+  cursorBlinking: 'expand',
+  mouseStyle: 'default',
+  cursorStyle: 'line',
 
-  folding: true, // Activa el plegado de código
-  foldingStrategy: 'auto', // Estrategia de plegado automática
-  letterSpacing: 0, // Espaciado entre letras predeterminado
+  // Indentación y Guías
+  guides: {
+    indentation: false,
+    highlightActiveIndentation: false
+  },
 
-  autoClosingBrackets: 'beforeWhitespace', // Cierra automáticamente paréntesis, corchetes y llaves
-  autoClosingQuotes: 'beforeWhitespace', // Cierra automáticamente comillas
-  autoIndent: 'brackets', // Indentación automática para llaves
-
-  accessibilitySupport: 'off', // Desactiva el soporte de accesibilidad
-
-  // Colorización de pares de paréntesis
+  // Plegado y Corchetes
   bracketPairColorization: {
     enabled: false
   },
+  foldingStrategy: 'auto',
 
-  guides: {
-    indentation: false, // Desactiva las guías de indentación
-    highlightActiveIndentation: false // Desactiva el resaltado de la indentación activa
-  },
+  // Avanzado
+  // Margen y Validaciones
+  smoothScrolling: true, // Desplazamiento suave
 
-  // Desactiva los glifos en el margen izquierdo
   glyphMargin: false,
-
-  quickSuggestions: {
-    other: false, // Desactiva sugerencias rápidas para otros elementos
-    comments: false, // Desactiva sugerencias rápidas en comentarios
-    strings: false // Desactiva sugerencias rápidas en cadenas de texto
-  },
-
-  parameterHints: {
-    enabled: false // Desactiva las sugerencias de parámetros para funciones y métodos
-  },
-
-  formatOnPaste: true, // Desactiva el formateo automático al pegar
-  formatOnType: true, // Desactiva el formateo automático mientras se escribe
-
-  scrollBeyondLastLine: false, // Desplazamiento más allá de la última línea
-
-  renderLineHighlight: 'none', // No resalta la línea actual
-  renderWhitespace: 'none', // No muestra los espacios en blanco
-
-  scrollbar: {
-    vertical: 'hidden', // Muestra la barra de desplazamiento vertical
-    horizontal: 'hidden', // Muestra la barra de desplazamiento horizontal
-    useShadows: false, // Activa las sombras en la barra de desplazamiento
-    verticalScrollbarSize: 10, // Tamaño de la barra de desplazamiento vertical
-    horizontalScrollbarSize: 10 // Tamaño de la barra de desplazamiento horizontal
-  },
-
-  renderValidationDecorations: 'off', // No muestra las decoraciones de validación
-  selectionHighlight: false, // Desactiva el resaltado de la selección
-  hideCursorInOverviewRuler: true, // Oculta el cursor en el rótulo de vista general
-  matchBrackets: 'never', // No muestra el resaltado de los paréntesis coincidentes
+  hideCursorInOverviewRuler: true,
+  renderValidationDecorations: 'off',
+  scrollBeyondLastLine: false,
 
   setLineNumbers: lineNumbers => set({ lineNumbers }),
   setMinimap: minimap => set({ minimap }),
   setFontLigatures: fontLigatures => set({ fontLigatures }),
   setWordWrap: wordWrap => set({ wordWrap }),
+  setWordWrapColumn: wordWrapColumn => set({ wordWrapColumn }),
   setFontSize: fontSize => set({ fontSize }),
   setLineHeight: lineHeight => set({ lineHeight }),
   setStickyScroll: stickyScroll => set({ stickyScroll }),
@@ -182,9 +198,6 @@ const state: StateCreator<Props> = set => ({
   setAutoClosingBrackets: autoClosingBrackets => set({ autoClosingBrackets }),
   setAutoClosingQuotes: autoClosingQuotes => set({ autoClosingQuotes }),
   setAutoIndent: autoIndent => set({ autoIndent }),
-  setAccessibilitySupport: accessibilitySupport => set({ accessibilitySupport }),
-  setQuickSuggestions: quickSuggestions => set({ quickSuggestions }),
-  setParameterHints: parameterHints => set({ parameterHints }),
   setFormatOnPaste: formatOnPaste => set({ formatOnPaste }),
   setFormatOnType: formatOnType => set({ formatOnType }),
   setScrollBeyondLastLine: scrollBeyondLastLine => set({ scrollBeyondLastLine }),
@@ -197,7 +210,13 @@ const state: StateCreator<Props> = set => ({
   setRenderValidationDecorations: renderValidationDecorations => set({ renderValidationDecorations }),
   setSelectionHighlight: selectionHighlight => set({ selectionHighlight }),
   setHideCursorInOverviewRuler: hideCursorInOverviewRuler => set({ hideCursorInOverviewRuler }),
-  setMatchBrackets: matchBrackets => set({ matchBrackets })
+  setMatchBrackets: matchBrackets => set({ matchBrackets }),
+  setOverviewRulerLanes: overviewRulerLanes => set({ overviewRulerLanes }),
+  setOverviewRulerBorder: overviewRulerBorder => set({ overviewRulerBorder }),
+  setRoundedSelection: roundedSelection => set({ roundedSelection }),
+  setRenderFinalNewline: renderFinalNewline => set({ renderFinalNewline }),
+  setRenderControlCharacters: renderControlCharacters => set({ renderControlCharacters }),
+  setSmoothScrolling: smoothScrolling => set({ smoothScrolling })
 })
 
 const useMonacoStore = create(state)

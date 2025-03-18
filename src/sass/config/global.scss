@@ -169,10 +169,17 @@ body {
 .paragraph {
   &-normal,
   &-highlight,
-  &-link {
+  &-link,
+  &-emphasis {
     display: inline;
     margin: 0;
     padding: 0;
+  }
+
+  &-emphasis {
+    font-size: $fH5;
+    font-weight: lighter;
+    color: rgb($fn1) !important;
   }
 
   &-break {
