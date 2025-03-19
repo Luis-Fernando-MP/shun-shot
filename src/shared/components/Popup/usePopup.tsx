@@ -18,7 +18,7 @@ const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
   const handleMouseMove = useCallback(
     (e: globalThis.MouseEvent) => {
       requestAnimationFrame(() => {
-        if (!isDragging || !$dragPosition.current || !$popupRef.current || !e.ctrlKey) return
+        if (!isDragging || !$dragPosition.current || !$popupRef.current || !e.ctrlKey || !e.buttons) return
         e.preventDefault()
         const rect = $popupRef.current.getBoundingClientRect()
         const deltaX = e.clientX - $dragPosition.current.x
@@ -47,6 +47,7 @@ const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
 
   const bringPopupToFront = useCallback(() => {
     if (!$popupRef.current) return
+
     const popups = document.querySelectorAll('.popup')
     popups.forEach(popup => {
       if (!(popup instanceof HTMLElement)) return
@@ -100,6 +101,10 @@ const usePopup = ({ isOpen, clickPosition, onClose }: IUsePopupHook) => {
 
     $popupRef.current.addEventListener('animationend', removeClass)
   }, [])
+
+  useEffect(() => {
+    bringPopupToFront()
+  }, [isOpen, bringPopupToFront])
 
   useEffect(() => {
     if (!$popupRef.current || !isOpen) return

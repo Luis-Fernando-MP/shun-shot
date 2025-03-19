@@ -5,18 +5,22 @@
 .monacoEditor {
   overflow: hidden;
 
-  width: 100%;
-  height: 100%;
+  width: 900px;
+  height: 600px;
   padding-top: v.$padding;
   padding-bottom: v.$padding * 1.5;
-  border-radius: v.$radius;
+  border-radius: 20px;
 
   background-color: rgba(v.$bg1);
+
+  transition:
+    height 0.3s v.$bezier,
+    width 0.3s v.$bezier;
 
   @include d.flex;
 
   &-header {
-    @include d.flex($dir: row, $ali: center);
+    @include d.flex($dir: row, $ali: center, $gap: v.$padding * 2);
   }
 
   &-spheres {
@@ -52,12 +56,17 @@
       max-width: 300px;
       background-color: transparent;
     }
+  }
+
+  &-languageIcon {
+    width: v.$icon;
+    height: v.$icon;
+    margin-right: v.$padding;
+    filter: drop-shadow(0 0 5px rgba(v.$fn1));
 
     .icon {
-      width: v.$icon;
-      height: v.$icon;
-      margin-right: v.$padding * 0.5;
-      filter: drop-shadow(0 0 7px rgba(v.$fn1, 0.7));
+      width: 100%;
+      height: 100%;
     }
   }
 

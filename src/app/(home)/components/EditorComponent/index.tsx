@@ -3,15 +3,18 @@ import { type FC } from 'react'
 
 import useMonacoEditor from '../../hooks/useMonacoEditor'
 import useMonacoStore from '../../store/monaco.store'
-import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
+import useShumOptionsStore from '../../store/shumOptions.store'
 import LoaderEditor from './LoaderEditor'
 import './style.scss'
 
 const EditorComponent: FC = () => {
   const monacoConfig = useMonacoStore()
-  const { typography, language } = useMonacoBasicOptionsStore()
+  const { typography, language } = useShumOptionsStore()
 
-  const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor({ typography })
+  const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor({
+    typography,
+    fontSize: monacoConfig.fontSize ?? 14
+  })
 
   return (
     <Editor
@@ -21,7 +24,8 @@ const EditorComponent: FC = () => {
       options={{
         ...monacoConfig,
         theme: themeName,
-        fontFamily: typography
+        fontFamily: typography,
+        contextmenu: false
       }}
       language={language.language}
       defaultLanguage='typescript'

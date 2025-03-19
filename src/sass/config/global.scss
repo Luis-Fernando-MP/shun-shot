@@ -169,10 +169,17 @@ body {
 .paragraph {
   &-normal,
   &-highlight,
-  &-link {
+  &-link,
+  &-emphasis {
     display: inline;
     margin: 0;
     padding: 0;
+  }
+
+  &-emphasis {
+    font-size: $fH5;
+    font-weight: lighter;
+    color: rgb($fn1) !important;
   }
 
   &-break {
@@ -192,5 +199,12 @@ body {
     color: rgb($fn1);
     text-decoration: wavy underline rgb($tn1) 1.5px;
     text-underline-offset: 3px;
+  }
+
+  &-precaution {
+    cursor: help;
+    font-style: italic;
+    text-decoration: dotted underline rgb($tn1) 3px;
+    text-underline-offset: 5px;
   }
 }

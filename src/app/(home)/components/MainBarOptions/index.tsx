@@ -22,9 +22,7 @@ const MainBarOptions: FC = () => {
       <IconButton label='Formatear código' transparent onClick={handleFormatCode}>
         <LetterText />
       </IconButton>
-
       <ShotFileName />
-
       <UserMonacoPreferences />
     </section>
   )
