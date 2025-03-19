@@ -200,4 +200,11 @@ body {
     text-decoration: wavy underline rgb($tn1) 1.5px;
     text-underline-offset: 3px;
   }
+
+  &-precaution {
+    cursor: help;
+    font-style: italic;
+    text-decoration: dotted underline rgb($tn1) 3px;
+    text-underline-offset: 5px;
+  }
 }

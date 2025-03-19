@@ -9,18 +9,12 @@ interface Props {
 }
 
 const FontSizePreference: FC<Props> = ({ fontSize, setFontSize }) => {
+  if (!fontSize) return null
   return (
     <>
       <h5 className='paragraph-emphasis'>Tamaño de la fuente</h5>
       <div className='monacoPreferences-switch'>
-        <LabeledInput
-          value={fontSize}
-          min={10}
-          max={30}
-          type='number'
-          onDebounce={value => setFontSize(Number(value))}
-          debounceTime={500}
-        >
+        <LabeledInput value={fontSize} min={10} max={22} type='number' onChange={e => setFontSize(Number(e.target.value))}>
           px
         </LabeledInput>
       </div>

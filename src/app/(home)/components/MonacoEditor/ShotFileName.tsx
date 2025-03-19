@@ -11,17 +11,22 @@ interface Props {
 
 const ShotFileName: FC<Props> = ({ foreground }) => {
   const { fileName, setFileName } = useCodeShotStore()
-  const { language, showLanguageIcon } = useShumOptionsStore()
+  const { language, showLanguageIcon, shadowLanguage } = useShumOptionsStore()
 
   const debouncedSetFileName = useDebounceCallback(setFileName, 500)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     debouncedSetFileName(e.target.value)
   }
+  const disableFilter = { filter: 'none' }
 
   return (
     <div className='monacoEditor-field'>
-      {showLanguageIcon && <language.Icon />}
+      {showLanguageIcon && (
+        <div className='monacoEditor-languageIcon' style={!shadowLanguage ? disableFilter : {}}>
+          <language.Icon />
+        </div>
+      )}
       <Input fieldSizing='content' defaultValue={fileName} style={{ color: foreground }} onChange={handleChange} />
       <p className='monacoEditor-extension' style={{ color: foreground }}>
         .{language.short}

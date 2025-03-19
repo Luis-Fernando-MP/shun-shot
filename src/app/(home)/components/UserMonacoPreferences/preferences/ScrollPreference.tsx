@@ -112,7 +112,7 @@ const ScrollPreference: FC<Props> = ({ scrollbar, setScrollbar }) => {
           <div className='monacoPreferences-section'>
             <h5 className='paragraph-emphasis'>Escuchar eventos</h5>
             <span className='paragraph-normal'>
-              <i className='paragraph-link'>Si se establece en off no se podrá hacer scroll en el editor.</i>
+              <i className='paragraph-precaution'>Si se establece en off no se podrá hacer scroll en el editor.</i>
             </span>
             <div className='monacoPreferences-switch'>
               {[true, false].map(state => (

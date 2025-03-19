@@ -78,7 +78,7 @@ const StickyScrollPreference: FC<Props> = ({ stickyScroll, setStickyScroll }) =>
             <h5 className='paragraph-emphasis'>Desplazamiento con el editor</h5>
             <span className='paragraph-normal'>
               El scroll pegajoso se moverá cuando se desplace el editor horizontalmente.{' '}
-              <i className='paragraph-link'>Requiere que el scroll horizontal esté activo.</i>
+              <i className='paragraph-precaution'>Requiere que el scroll horizontal esté activo.</i>
             </span>
             <div className='monacoPreferences-switch'>
               {[true, false].map(state => (

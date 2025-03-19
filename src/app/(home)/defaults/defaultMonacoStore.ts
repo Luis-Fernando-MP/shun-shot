@@ -45,7 +45,7 @@ export const defaultMonacoStore: DefaultMonacoStore = {
   formatOnPaste: true,
   formatOnType: true,
   matchBrackets: 'never',
-  wordWrap: 'off',
+  wordWrap: 'wordWrapColumn',
   wordWrapColumn: 80,
   wrappingIndent: 'indent',
 

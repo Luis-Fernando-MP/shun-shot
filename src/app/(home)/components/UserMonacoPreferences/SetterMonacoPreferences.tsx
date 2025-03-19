@@ -1,8 +1,10 @@
 import { newKey } from '@/shared/key'
 import IconButton from '@/shared/ui/IconButton'
-import type { FC } from 'react'
+import LabeledInput from '@/shared/ui/LabeledInput'
+import { type FC, useMemo } from 'react'
 
 import useMonacoStore from '../../store/monaco.store'
+import useMonacoThemeStore from '../../store/monacoTheme.store'
 import useShumOptionsStore from '../../store/shumOptions.store'
 import FontSizePreference from './preferences/FontSizePreference'
 import MinimapPreference from './preferences/MinimapPreference'
@@ -12,9 +14,22 @@ import StickyScrollPreference from './preferences/StickyScrollPreference'
 
 const SetterMonacoPreferences: FC = () => {
   const monaco = useMonacoStore()
+  const { resetShumPreferences } = useShumOptionsStore()
+  const { resetTheme } = useMonacoThemeStore()
+
+  const $editor = useMemo(() => document.querySelector('#monacoEditor') as HTMLElement, [])
+  const $editorContainer = useMemo(() => document.querySelector('#monacoEditor-container') as HTMLElement, [])
 
   const handleResetPreferences = () => {
     monaco.resetPreferences()
+    resetShumPreferences()
+    resetTheme()
+    if (!$editor || !$editorContainer) return
+    $editor.style.borderRadius = '20px'
+    $editor.style.height = '600px'
+    $editor.style.width = '900px'
+    $editorContainer.style.borderRadius = '20px'
+    $editorContainer.style.padding = '10px'
   }
 
   return (
@@ -46,7 +61,7 @@ const SetterMonacoPreferences: FC = () => {
       <div className='monacoPreferences-section'>
         <h5 className='paragraph-emphasis'>Validación de código</h5>
         <span className='paragraph-normal'>
-          Resalta los errores de sintaxis <i className='paragraph-link'>soportados por monaco.</i>
+          Resalta los errores de sintaxis <i className='paragraph-precaution'>soportados por monaco.</i>
         </span>
         <div className='monacoPreferences-switch'>
           {['editable', 'on', 'off'].map(style => (
@@ -97,8 +112,20 @@ const SetterMonacoPreferences: FC = () => {
         <h5 className='paragraph-emphasis'>Columna de salto de línea</h5>
         <span className='paragraph-normal'>
           Limita el ancho de las líneas para dar el salto de línea en el ancho especificado.{' '}
-          <i className='paragraph-link'>Depende de la configuración de salto de línea.</i>
+          <i className='paragraph-precaution'>Depende de la configuración de salto de línea.</i>
         </span>
+        <div className='monacoPreferences-switch'>
+          <LabeledInput
+            type='number'
+            value={monaco.wordWrapColumn ?? 80}
+            min={10}
+            max={200}
+            step={10}
+            onChange={e => monaco.setWordWrapColumn(Number(e.target.value))}
+          >
+            px
+          </LabeledInput>
+        </div>
         <div className='monacoPreferences-switch'>
           {[50, 60, 70, 80, 90, 100, 110, 120].map(style => {
             const normal = 80
@@ -115,7 +142,7 @@ const SetterMonacoPreferences: FC = () => {
         <h5 className='paragraph-emphasis'>Ajuste de saltos</h5>
         <span className='paragraph-normal'>
           Ajusta el sangrado de las palabras cuando se da un salto de línea. None: ninguno,{' '}
-          <i className='paragraph-link'>Depende de la configuración de salto de línea.</i>
+          <i className='paragraph-precaution'>Depende de la configuración de salto de línea.</i>
           <br />
           <br />- none: ninguno,
           <br />- indent: sangrado
@@ -138,7 +165,7 @@ const SetterMonacoPreferences: FC = () => {
         <h5 className='paragraph-emphasis'>Resaltado de línea</h5>
         <span className='paragraph-normal'>
           Resalta la línea actual en la que se encuentra el cursor,{' '}
-          <i className='paragraph-link'>dependiendo del tema puede ser mas pronunciado o no.</i>
+          <i className='paragraph-precaution'>dependiendo del tema puede ser mas pronunciado o no.</i>
           <br />
           <br />- None: ninguno
           <br />- Gutter: solo el gutter
@@ -186,7 +213,7 @@ const SetterMonacoPreferences: FC = () => {
         <h5 className='paragraph-emphasis'>Ligaduras</h5>
         <span className='paragraph-normal'>
           Activa o desactiva la combinación de caracteres para mejorar la legibilidad.{' '}
-          <i className='paragraph-link'>Depende de la tipografía empleada.</i>
+          <i className='paragraph-precaution'>Depende de la tipografía empleada.</i>
         </span>
         <div className='monacoPreferences-switch'>
           {[true, false].map(style => (
@@ -202,7 +229,20 @@ const SetterMonacoPreferences: FC = () => {
       </div>
 
       <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>Altura de las líneas</h5>
+        <h5 className='paragraph-emphasis'>Altura entre líneas</h5>
+
+        <div className='monacoPreferences-switch'>
+          <LabeledInput
+            type='number'
+            value={monaco.lineHeight ?? 22}
+            min={8}
+            max={32}
+            step={2}
+            onChange={e => monaco.setLineHeight(Number(e.target.value))}
+          >
+            px
+          </LabeledInput>
+        </div>
         <div className='monacoPreferences-switch'>
           {[18, 20, 22, 24, 26, 28].map(style => {
             const normal = 22

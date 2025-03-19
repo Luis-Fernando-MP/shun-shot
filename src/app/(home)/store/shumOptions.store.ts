@@ -2,6 +2,8 @@ import { monacoFonts } from '@/shared/fonts/monaco-fonts'
 import monacoLanguagesIcons, { MonacoLanguage } from '@/shared/monaco-languages'
 import { StateCreator, create } from 'zustand'
 
+import { defaultShumOptions } from '../defaults/defaultShumOptions'
+
 interface IShumOptionsStore {
   language: MonacoLanguage
   typography: string
@@ -24,19 +26,11 @@ interface IShumOptionsStore {
   setContainerHeight: (containerHeight: number) => void
   setContainerPadding: (containerPadding: number) => void
   setContainerBorderRadius: (containerBorderRadius: number) => void
+  resetShumPreferences: () => void
 }
 
 const state: StateCreator<IShumOptionsStore> = set => ({
-  language: monacoLanguagesIcons['Frontend Web'].typescript,
-  typography: monacoFonts.monospace.style.fontFamily,
-  showLanguageIcon: true,
-
-  shadowLanguage: true,
-  borderRadius: 0,
-  containerWidth: 0,
-  containerHeight: 0,
-  containerPadding: 0,
-  containerBorderRadius: 0,
+  ...defaultShumOptions,
 
   setLanguage: language => set({ language }),
   setTypography: typography => set({ typography }),
@@ -47,7 +41,8 @@ const state: StateCreator<IShumOptionsStore> = set => ({
   setContainerWidth: containerWidth => set({ containerWidth }),
   setContainerHeight: containerHeight => set({ containerHeight }),
   setContainerPadding: containerPadding => set({ containerPadding }),
-  setContainerBorderRadius: containerBorderRadius => set({ containerBorderRadius })
+  setContainerBorderRadius: containerBorderRadius => set({ containerBorderRadius }),
+  resetShumPreferences: () => set(defaultShumOptions)
 })
 
 const useShumOptionsStore = create(state)

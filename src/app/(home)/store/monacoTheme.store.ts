@@ -6,15 +6,19 @@ interface IMonacoThemeStore {
   themeName: ThemeMonacoName
   setThemeName: (themeName: ThemeMonacoName) => void
   getCurrentTheme: () => ThemeMonaco
+  resetTheme: () => void
 }
 
+const defaultThemeName = 'vs-light'
+
 const state: StateCreator<IMonacoThemeStore> = (set, get) => ({
-  themeName: 'vs-light',
+  themeName: defaultThemeName,
   setThemeName: themeName => set({ themeName }),
   getCurrentTheme: () => {
     const { themeName } = get()
     return monacoThemes[themeName] as any as ThemeMonaco
-  }
+  },
+  resetTheme: () => set({ themeName: defaultThemeName })
 })
 
 const useMonacoThemeStore = create(state)
