@@ -107,14 +107,14 @@ const useMonacoEditor = ({ typography }: Props) => {
             stickiness: 1,
             isWholeLine: false,
             inlineClassName: 'user-monaco-highlight',
+            glyphMarginClassName: 'user-monaco-icon',
             shouldFillLineOnLineBreak: false,
             blockDoesNotCollapse: true,
             showIfCollapsed: true,
             hoverMessage: {
               value: hoverMessage,
               isTrusted: true
-            },
-            glyphMarginClassName: 'user-monaco-icon'
+            }
           }
         })
       })

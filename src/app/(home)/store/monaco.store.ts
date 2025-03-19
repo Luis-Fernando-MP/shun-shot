@@ -102,7 +102,7 @@ const state: StateCreator<Props> = set => ({
   matchBrackets: 'never',
   wordWrap: 'off',
   wordWrapColumn: 80,
-  wrappingIndent: 'same',
+  wrappingIndent: 'indent',
 
   // Tipografía
   lineNumbers: 'on',
@@ -138,20 +138,18 @@ const state: StateCreator<Props> = set => ({
     vertical: 'hidden',
     horizontal: 'hidden',
     useShadows: false,
+    handleMouseWheel: true,
+    horizontalScrollbarSize: 10,
     verticalScrollbarSize: 10,
-    horizontalScrollbarSize: 10
+    ignoreHorizontalScrollbarInContentHeight: false
   },
 
   // Desplazamiento Pegajoso
   stickyScroll: {
     enabled: false,
-    scrollbarSize: 10,
-    scrollbarColor: '#000',
-    scrollbarWidth: 10,
-    scrollbarHeight: 10,
-    scrollbarBorderRadius: 10,
-    scrollbarBorderColor: '#000',
-    scrollbarBorderWidth: 10
+    maxLineCount: 5,
+    defaultModel: 'outlineModel',
+    scrollWithEditor: true
   },
 
   // Cursor

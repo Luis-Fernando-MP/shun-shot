@@ -9,7 +9,7 @@ interface IMonacoThemeStore {
 }
 
 const state: StateCreator<IMonacoThemeStore> = (set, get) => ({
-  themeName: 'amethyst',
+  themeName: 'vs-light',
   setThemeName: themeName => set({ themeName }),
   getCurrentTheme: () => {
     const { themeName } = get()

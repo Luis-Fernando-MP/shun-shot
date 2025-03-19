@@ -5,6 +5,8 @@ import type { FC } from 'react'
 import useMonacoStore from '../../store/monaco.store'
 import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
 import MinimapPreference from './preferences/MinimapPreference'
+import ScrollPreference from './preferences/ScrollPreference'
+import StickyScrollPreference from './preferences/StickyScrollPreference'
 
 const SetterMonacoPreferences: FC = () => {
   const { showLanguageIcon, setShowLanguageIcon } = useMonacoBasicOptionsStore()
@@ -102,22 +104,35 @@ const SetterMonacoPreferences: FC = () => {
         </div>
       </div>
 
+      {/* Visual */}
+
       <div className='paragraph'>
-        <h3 className='paragraph-highlight'># Editor:</h3>
+        <h3 className='paragraph-highlight'># Visual:</h3>
       </div>
 
       <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>Cierre de paréntesis</h5>
+        <h5 className='paragraph-emphasis'>Margen de glyph</h5>
+        <span className='paragraph-normal'>Mostrar iconos en el margen de glyph.</span>
+        <div className='monacoPreferences-switch'>
+          {[true, false].map(style => (
+            <IconButton key={newKey()} onClick={() => setGlyphMargin(style)} active={glyphMargin === style}>
+              {style ? 'On' : 'Off'}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Validación de código</h5>
         <span className='paragraph-normal'>
-          Cierra automáticamente paréntesis, corchetes y llaves. Always: siempre, BeforeWhitespace: antes de los espacios,
-          LanguageDefined: definido por el lenguaje, Never: nunca.
+          Resalta los errores de sintaxis <i className='paragraph-link'>soportados por monaco.</i>
         </span>
         <div className='monacoPreferences-switch'>
-          {['always', 'beforeWhitespace', 'languageDefined', 'never'].map(style => (
+          {['editable', 'on', 'off'].map(style => (
             <IconButton
               key={newKey()}
-              onClick={() => setAutoClosingBrackets(style as any)}
-              active={autoClosingBrackets === style}
+              onClick={() => setRenderValidationDecorations(style as any)}
+              active={renderValidationDecorations === style}
             >
               {style}
             </IconButton>
@@ -126,20 +141,99 @@ const SetterMonacoPreferences: FC = () => {
       </div>
 
       <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>Cierre de comillas</h5>
-        <span className='paragraph-normal'>
-          Always: siempre, BeforeWhitespace: antes de los espacios, LanguageDefined: definido por el lenguaje, Never: nunca.
-        </span>
+        <h5 className='paragraph-emphasis'>Números de línea</h5>
         <div className='monacoPreferences-switch'>
-          {['always', 'beforeWhitespace', 'languageDefined', 'never'].map(style => (
-            <IconButton key={newKey()} onClick={() => setAutoClosingQuotes(style as any)} active={autoClosingQuotes === style}>
+          {['on', 'off', 'relative', 'interval'].map(style => (
+            <IconButton key={newKey()} onClick={() => setLineNumbers(style as any)} active={lineNumbers === style}>
               {style}
             </IconButton>
           ))}
         </div>
       </div>
 
-      {/*  */}
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Salto de línea</h5>
+        <span className='paragraph-normal'>
+          Permite ajustar el salto de línea de las palabras para mejorar la visualización del código.
+          <br />
+          - On: siempre
+          <br />
+          - Off: nunca
+          <br />
+          - WordWrapColumn: ajustar por columna
+          <br />- Bounded: ajustar por columna y límite
+        </span>
+        <div className='monacoPreferences-switch'>
+          {['on', 'off', 'wordWrapColumn', 'bounded'].map(style => (
+            <IconButton key={newKey()} onClick={() => setWordWrap(style as any)} active={wordWrap === style}>
+              {style}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Columna de salto de línea</h5>
+        <span className='paragraph-normal'>
+          Limita el ancho de las líneas para dar el salto de línea en el ancho especificado.{' '}
+          <i className='paragraph-link'>Depende de la configuración de salto de línea.</i>
+        </span>
+        <div className='monacoPreferences-switch'>
+          {[50, 60, 70, 80, 90, 100, 110, 120].map(style => {
+            const normal = 80
+            return (
+              <IconButton key={newKey()} onClick={() => setWordWrapColumn(style)} active={wordWrapColumn === style}>
+                {style === normal ? 'Normal' : style}
+              </IconButton>
+            )
+          })}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Ajuste de saltos</h5>
+        <span className='paragraph-normal'>
+          Ajusta el sangrado de las palabras cuando se da un salto de línea. None: ninguno,{' '}
+          <i className='paragraph-link'>Depende de la configuración de salto de línea.</i>
+          <br />
+          <br />- none: ninguno,
+          <br />- indent: sangrado
+          <br />- deepIndent: sangrado profundo.
+        </span>
+        <div className='monacoPreferences-switch'>
+          {['none', 'indent', 'deepIndent'].map(style => (
+            <IconButton key={newKey()} onClick={() => setWrappingIndent(style as any)} active={wrappingIndent === style}>
+              {style}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Resaltado de línea</h5>
+        <span className='paragraph-normal'>
+          Resalta la línea actual en la que se encuentra el cursor,{' '}
+          <i className='paragraph-link'>dependiendo del tema puede ser mas pronunciado o no.</i>
+          <br />
+          <br />- None: ninguno
+          <br />- Gutter: solo el gutter
+          <br />- Line: toda la linea
+          <br />- Full: todo
+        </span>
+        <div className='monacoPreferences-switch'>
+          {['none', 'gutter', 'line', 'full'].map(style => (
+            <IconButton
+              key={newKey()}
+              onClick={() => setRenderLineHighlight(style as any)}
+              active={renderLineHighlight === style}
+            >
+              {style}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      {/* Tipografía */}
 
       <div className='paragraph'>
         <h3 className='paragraph-highlight'># Tipografía:</h3>
@@ -189,85 +283,21 @@ const SetterMonacoPreferences: FC = () => {
         </div>
       </div>
 
-      {/*  */}
+      {/* Minimap */}
       <div className='monacoPreferences-section'>
         <MinimapPreference minimap={minimap} setMinimap={setMinimap} />
       </div>
 
-      {/* SCROLL */}
+      {/* Scroll */}
 
       <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>🔍 Barra de scroll</h5>
-        <span className='paragraph-normal'>Muestra u oculta las barras de scroll vertical y horizontal en el editor.</span>
-        <div className='monacoPreferences-switch'>
-          <IconButton
-            key={newKey()}
-            onClick={() =>
-              setScrollbar({
-                vertical: scrollbar?.vertical === 'hidden' ? 'visible' : 'hidden',
-                horizontal: scrollbar?.horizontal === 'hidden' ? 'visible' : 'hidden'
-              })
-            }
-            active={scrollbar?.vertical === 'visible'}
-          >
-            {scrollbar?.vertical === 'visible' ? 'On' : 'Off'}
-          </IconButton>
-        </div>
-        {scrollbar?.vertical === 'visible' && (
-          <div className='monacoPreferences-subsection'>
-            <h6 className='paragraph-emphasis'>Configuración de la Barra de Scroll</h6>
-            <div className='monacoPreferences-switch'>
-              <span className='paragraph-normal'>Usar sombras</span>
-              <IconButton
-                key={newKey()}
-                onClick={() => setScrollbar({ ...scrollbar, useShadows: !scrollbar.useShadows })}
-                active={scrollbar?.useShadows}
-              >
-                {scrollbar?.useShadows ? 'On' : 'Off'}
-              </IconButton>
-            </div>
-            <div className='monacoPreferences-switch'>
-              <span className='paragraph-normal'>Tamaño de la barra vertical</span>
-              <input
-                type='range'
-                min='0'
-                max='20'
-                value={scrollbar?.verticalScrollbarSize}
-                onChange={e => setScrollbar({ ...scrollbar, verticalScrollbarSize: parseInt(e.target.value) })}
-              />
-              {scrollbar?.verticalScrollbarSize}
-            </div>
-            <div className='monacoPreferences-switch'>
-              <span className='paragraph-normal'>Tamaño de la barra horizontal</span>
-              <input
-                type='range'
-                min='0'
-                max='20'
-                value={scrollbar?.horizontalScrollbarSize}
-                onChange={e => setScrollbar({ ...scrollbar, horizontalScrollbarSize: parseInt(e.target.value) })}
-              />
-              {scrollbar?.horizontalScrollbarSize}
-            </div>
-          </div>
-        )}
+        <ScrollPreference scrollbar={scrollbar} setScrollbar={setScrollbar} />
       </div>
 
-      {/*  */}
+      {/* Scroll sticky */}
 
       <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>🔍 Scroll sticky</h5>
-        <span className='paragraph-normal'>Mantiene el scroll pegajoso, lo que facilita la navegación por el código.</span>
-        <div className='monacoPreferences-switch'>
-          {[true, false].map(style => (
-            <IconButton
-              key={newKey()}
-              onClick={() => setStickyScroll({ enabled: style })}
-              active={stickyScroll?.enabled === style}
-            >
-              {style ? 'On' : 'Off'}
-            </IconButton>
-          ))}
-        </div>
+        <StickyScrollPreference stickyScroll={stickyScroll} setStickyScroll={setStickyScroll} />
       </div>
 
       {/*  */}
@@ -310,93 +340,9 @@ const SetterMonacoPreferences: FC = () => {
         </div>
       </div>
 
-      {/*  */}
-
-      <div className='paragraph'>
-        <h3 className='paragraph-highlight'>Guías:</h3>
-      </div>
-
       <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>📏 Guides</h5>
-        <span className='paragraph-normal'>
-          Muestra las guías de indentación, lo que puede ayudar a mantener el código organizado y legible.
-        </span>
-        <div className='monacoPreferences-switch'>
-          {[true, false].map(style => (
-            <IconButton
-              key={newKey()}
-              onClick={() => setGuides({ indentation: style, highlightActiveIndentation: style })}
-              active={guides?.indentation === style && guides?.highlightActiveIndentation === style}
-            >
-              {style ? 'On' : 'Off'}
-            </IconButton>
-          ))}
-        </div>
-      </div>
-
-      {/*  */}
-
-      <div className='paragraph'>
-        <h3 className='paragraph-highlight'># Plegado y Corchetes:</h3>
-      </div>
-
-      <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>🌈 Colorización de pares de paréntesis</h5>
-        <span className='paragraph-normal'>
-          Coloriza los pares de paréntesis, lo que puede ayudar a identificar bloques de código anidados.
-        </span>
-        <div className='monacoPreferences-switch'>
-          {[true, false].map(style => (
-            <IconButton
-              key={newKey()}
-              onClick={() => setBracketPairColorization({ enabled: style })}
-              active={bracketPairColorization?.enabled === style}
-            >
-              {style ? 'On' : 'Off'}
-            </IconButton>
-          ))}
-        </div>
-      </div>
-
-      <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>📑 Estrategia de plegado</h5>
-        <span className='paragraph-normal'>
-          Define la estrategia de plegado, que puede ser automática o basada en la indentación.
-        </span>
-        <div className='monacoPreferences-switch'>
-          {['auto', 'indentation'].map(style => (
-            <IconButton key={newKey()} onClick={() => setFoldingStrategy(style as any)} active={foldingStrategy === style}>
-              {style}
-            </IconButton>
-          ))}
-        </div>
-      </div>
-
-      {/*  */}
-
-      <div className='paragraph'>
-        <h3 className='paragraph-highlight'># Avanzado:</h3>
-      </div>
-
-      <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>📐 Margen de glyph</h5>
-        <span className='paragraph-normal'>
-          Muestra el margen de glyph, que puede ser útil para identificar errores y advertencias en el código.
-        </span>
-        <div className='monacoPreferences-switch'>
-          {[true, false].map(style => (
-            <IconButton key={newKey()} onClick={() => setGlyphMargin(style)} active={glyphMargin === style}>
-              {style ? 'On' : 'Off'}
-            </IconButton>
-          ))}
-        </div>
-      </div>
-
-      <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>🔍 Ocultar el cursor en el rótulo de resumen</h5>
-        <span className='paragraph-normal'>
-          Oculta el cursor en el rótulo de resumen, lo que puede ser útil para reducir distracciones.
-        </span>
+        <h5 className='paragraph-emphasis'>Rótulo de resumen</h5>
+        <span className='paragraph-normal'>Oculta el cursor en el rótulo derecho de resumen.</span>
         <div className='monacoPreferences-switch'>
           {[true, false].map(style => (
             <IconButton
@@ -410,17 +356,90 @@ const SetterMonacoPreferences: FC = () => {
         </div>
       </div>
 
+      <div className='paragraph'>
+        <h3 className='paragraph-highlight'># Editor:</h3>
+      </div>
+
       <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>🔍 Resaltado de validación</h5>
+        <h5 className='paragraph-emphasis'>Plegado de código</h5>
+        <span className='paragraph-normal'>Si está activo, el editor plegará el código automáticamente.</span>
+        <div className='monacoPreferences-switch'>
+          {[true, false].map(style => (
+            <IconButton key={newKey()} onClick={() => setFolding(style)} active={folding === style}>
+              {style ? 'On' : 'Off'}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Scroll adicional</h5>
+        <span className='paragraph-normal'>Amplia el desplazamiento más allá de la última línea del código.</span>
+        <div className='monacoPreferences-switch'>
+          {[true, false].map(style => (
+            <IconButton key={newKey()} onClick={() => setScrollBeyondLastLine(style)} active={scrollBeyondLastLine === style}>
+              {style ? 'On' : 'Off'}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Formateo automático</h5>
+        <span className='paragraph-normal'>Formatea el código automáticamente al pegar.</span>
+        <div className='monacoPreferences-switch'>
+          {[true, false].map(style => (
+            <IconButton key={newKey()} onClick={() => setFormatOnPaste(style)} active={formatOnPaste === style}>
+              {style ? 'On' : 'Off'}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Formateo automático</h5>
+        <span className='paragraph-normal'>Formatea el código automáticamente mientras se escribe.</span>
+        <div className='monacoPreferences-switch'>
+          {[true, false].map(style => (
+            <IconButton key={newKey()} onClick={() => setFormatOnType(style)} active={formatOnType === style}>
+              {style ? 'On' : 'Off'}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Coincidencia de paréntesis</h5>
         <span className='paragraph-normal'>
-          Resalta las decoraciones de validación, lo que puede ayudar a identificar errores en el código.
+          Agrega Coincidencias de paréntesis al código al lado derecho del editor.
+          <br />- Never: nunca,
+          <br />- Near: cerca,
+          <br />- Always: siempre.
         </span>
         <div className='monacoPreferences-switch'>
-          {['editable', 'on', 'off'].map(style => (
+          {['never', 'near', 'always'].map(style => (
+            <IconButton key={newKey()} onClick={() => setMatchBrackets(style as any)} active={matchBrackets === style}>
+              {style}
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <h5 className='paragraph-emphasis'>Cierre de paréntesis</h5>
+        <span className='paragraph-normal'>
+          Cierra automáticamente paréntesis, corchetes y llaves.
+          <br />- Always: siempre,
+          <br />- BeforeWhitespace: antes de los espacios,
+          <br />- LanguageDefined: definido por el lenguaje,
+          <br />- Never: nunca.
+        </span>
+        <div className='monacoPreferences-switch'>
+          {['always', 'beforeWhitespace', 'languageDefined', 'never'].map(style => (
             <IconButton
               key={newKey()}
-              onClick={() => setRenderValidationDecorations(style as any)}
-              active={renderValidationDecorations === style}
+              onClick={() => setAutoClosingBrackets(style as any)}
+              active={autoClosingBrackets === style}
             >
               {style}
             </IconButton>
@@ -429,14 +448,17 @@ const SetterMonacoPreferences: FC = () => {
       </div>
 
       <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>🔍 Desplazamiento más allá de la última línea</h5>
+        <h5 className='paragraph-emphasis'>Cierre de comillas</h5>
         <span className='paragraph-normal'>
-          Permite desplazarse más allá de la última línea del código, lo que puede ser útil para una mejor navegación.
+          - Always: siempre,
+          <br />- BeforeWhitespace: antes de los espacios,
+          <br />- LanguageDefined: definido por el lenguaje,
+          <br />- Never: nunca.
         </span>
         <div className='monacoPreferences-switch'>
-          {[true, false].map(style => (
-            <IconButton key={newKey()} onClick={() => setScrollBeyondLastLine(style)} active={scrollBeyondLastLine === style}>
-              {style ? 'On' : 'Off'}
+          {['always', 'beforeWhitespace', 'languageDefined', 'never'].map(style => (
+            <IconButton key={newKey()} onClick={() => setAutoClosingQuotes(style as any)} active={autoClosingQuotes === style}>
+              {style}
             </IconButton>
           ))}
         </div>
