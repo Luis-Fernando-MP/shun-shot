@@ -1,7 +1,7 @@
 import { MonacoLanguage as MonacoLanguageType } from '@/shared/monaco-languages'
 import type { FC } from 'react'
 
-import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
+import useShumOptionsStore from '../../store/shumOptions.store'
 import IconLanguage from './IconLanguage'
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 
 const MonacoLanguage: FC<Props> = ({ language }) => {
   const [section, languages] = language
-  const { language: userLanguage, setLanguage } = useMonacoBasicOptionsStore()
+  const { language: userLanguage, setLanguage } = useShumOptionsStore()
 
   const handleClick = (language: MonacoLanguageType) => {
     if (userLanguage.language === language.language) return

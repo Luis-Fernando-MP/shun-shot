@@ -1,73 +1,20 @@
 import { newKey } from '@/shared/key'
 import IconButton from '@/shared/ui/IconButton'
-import LabeledInput from '@/shared/ui/LabeledInput'
 import type { FC } from 'react'
 
 import useMonacoStore from '../../store/monaco.store'
-import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
+import useShumOptionsStore from '../../store/shumOptions.store'
 import FontSizePreference from './preferences/FontSizePreference'
 import MinimapPreference from './preferences/MinimapPreference'
 import ScrollPreference from './preferences/ScrollPreference'
+import ShumShotsPreferences from './preferences/ShumShotsPreferences'
 import StickyScrollPreference from './preferences/StickyScrollPreference'
 
 const SetterMonacoPreferences: FC = () => {
-  const { showLanguageIcon, setShowLanguageIcon } = useMonacoBasicOptionsStore()
-  const {
-    lineNumbers,
-    minimap,
-    fontLigatures,
-    wordWrap,
-    wordWrapColumn,
-    fontSize,
-    lineHeight,
-    stickyScroll,
-    cursorBlinking,
-    mouseStyle,
-    cursorStyle,
-    wrappingIndent,
-    folding,
-    letterSpacing,
-    autoClosingBrackets,
-    autoClosingQuotes,
-    formatOnPaste,
-    formatOnType,
-    scrollBeyondLastLine,
-    renderLineHighlight,
-    scrollbar,
-    glyphMargin,
-    renderValidationDecorations,
-    hideCursorInOverviewRuler,
-    matchBrackets,
-    setLineNumbers,
-    setMinimap,
-    setFontLigatures,
-    setWordWrap,
-    setWordWrapColumn,
-    setFontSize,
-    setLineHeight,
-    setStickyScroll,
-    setCursorBlinking,
-    setMouseStyle,
-    setCursorStyle,
-    setWrappingIndent,
-    setFolding,
-    setLetterSpacing,
-    setAutoClosingBrackets,
-    setAutoClosingQuotes,
-    setFormatOnPaste,
-    setFormatOnType,
-    setScrollBeyondLastLine,
-    setRenderLineHighlight,
-    setScrollbar,
-    setGlyphMargin,
-    setRenderValidationDecorations,
-    setHideCursorInOverviewRuler,
-    setMatchBrackets,
-    resetPreferences
-  } = useMonacoStore()
+  const monaco = useMonacoStore()
 
   const handleResetPreferences = () => {
-    resetPreferences()
+    monaco.resetPreferences()
   }
 
   return (
@@ -76,20 +23,7 @@ const SetterMonacoPreferences: FC = () => {
         <h4>Restablecer configuración</h4>
       </IconButton>
 
-      <div className='paragraph'>
-        <h3 className='paragraph-highlight'># Shum shot's:</h3>
-      </div>
-
-      <div className='monacoPreferences-section'>
-        <h5 className='paragraph-emphasis'>Mostrar icono del lenguaje</h5>
-        <div className='monacoPreferences-switch'>
-          {[true, false].map(style => (
-            <IconButton key={newKey()} onClick={() => setShowLanguageIcon(style)} active={showLanguageIcon === style}>
-              {style ? 'On' : 'Off'}
-            </IconButton>
-          ))}
-        </div>
-      </div>
+      <ShumShotsPreferences />
 
       {/* Visual */}
 
@@ -102,7 +36,7 @@ const SetterMonacoPreferences: FC = () => {
         <span className='paragraph-normal'>Mostrar iconos en el margen de glyph.</span>
         <div className='monacoPreferences-switch'>
           {[true, false].map(style => (
-            <IconButton key={newKey()} onClick={() => setGlyphMargin(style)} active={glyphMargin === style}>
+            <IconButton key={newKey()} onClick={() => monaco.setGlyphMargin(style)} active={monaco.glyphMargin === style}>
               {style ? 'On' : 'Off'}
             </IconButton>
           ))}
@@ -118,8 +52,8 @@ const SetterMonacoPreferences: FC = () => {
           {['editable', 'on', 'off'].map(style => (
             <IconButton
               key={newKey()}
-              onClick={() => setRenderValidationDecorations(style as any)}
-              active={renderValidationDecorations === style}
+              onClick={() => monaco.setRenderValidationDecorations(style as any)}
+              active={monaco.renderValidationDecorations === style}
             >
               {style}
             </IconButton>
@@ -131,7 +65,7 @@ const SetterMonacoPreferences: FC = () => {
         <h5 className='paragraph-emphasis'>Números de línea</h5>
         <div className='monacoPreferences-switch'>
           {['on', 'off', 'relative', 'interval'].map(style => (
-            <IconButton key={newKey()} onClick={() => setLineNumbers(style as any)} active={lineNumbers === style}>
+            <IconButton key={newKey()} onClick={() => monaco.setLineNumbers(style as any)} active={monaco.lineNumbers === style}>
               {style}
             </IconButton>
           ))}
@@ -152,7 +86,7 @@ const SetterMonacoPreferences: FC = () => {
         </span>
         <div className='monacoPreferences-switch'>
           {['on', 'off', 'wordWrapColumn', 'bounded'].map(style => (
-            <IconButton key={newKey()} onClick={() => setWordWrap(style as any)} active={wordWrap === style}>
+            <IconButton key={newKey()} onClick={() => monaco.setWordWrap(style as any)} active={monaco.wordWrap === style}>
               {style}
             </IconButton>
           ))}
@@ -169,7 +103,7 @@ const SetterMonacoPreferences: FC = () => {
           {[50, 60, 70, 80, 90, 100, 110, 120].map(style => {
             const normal = 80
             return (
-              <IconButton key={newKey()} onClick={() => setWordWrapColumn(style)} active={wordWrapColumn === style}>
+              <IconButton key={newKey()} onClick={() => monaco.setWordWrapColumn(style)} active={monaco.wordWrapColumn === style}>
                 {style === normal ? 'Normal' : style}
               </IconButton>
             )
@@ -189,7 +123,11 @@ const SetterMonacoPreferences: FC = () => {
         </span>
         <div className='monacoPreferences-switch'>
           {['none', 'indent', 'deepIndent'].map(style => (
-            <IconButton key={newKey()} onClick={() => setWrappingIndent(style as any)} active={wrappingIndent === style}>
+            <IconButton
+              key={newKey()}
+              onClick={() => monaco.setWrappingIndent(style as any)}
+              active={monaco.wrappingIndent === style}
+            >
               {style}
             </IconButton>
           ))}
@@ -211,8 +149,8 @@ const SetterMonacoPreferences: FC = () => {
           {['none', 'gutter', 'line', 'full'].map(style => (
             <IconButton
               key={newKey()}
-              onClick={() => setRenderLineHighlight(style as any)}
-              active={renderLineHighlight === style}
+              onClick={() => monaco.setRenderLineHighlight(style as any)}
+              active={monaco.renderLineHighlight === style}
             >
               {style}
             </IconButton>
@@ -227,7 +165,7 @@ const SetterMonacoPreferences: FC = () => {
       </div>
 
       <div className='monacoPreferences-section'>
-        <FontSizePreference fontSize={fontSize} setFontSize={setFontSize} />
+        <FontSizePreference fontSize={monaco.fontSize} setFontSize={monaco.setFontSize} />
       </div>
 
       <div className='monacoPreferences-section'>
@@ -236,7 +174,7 @@ const SetterMonacoPreferences: FC = () => {
           {[-1, -0.5, 0, 0.5, 1, 2, 3].map(style => {
             const normal = 0
             return (
-              <IconButton key={newKey()} onClick={() => setLetterSpacing(style)} active={letterSpacing === style}>
+              <IconButton key={newKey()} onClick={() => monaco.setLetterSpacing(style)} active={monaco.letterSpacing === style}>
                 {style === normal ? 'Normal' : style}
               </IconButton>
             )
@@ -252,7 +190,11 @@ const SetterMonacoPreferences: FC = () => {
         </span>
         <div className='monacoPreferences-switch'>
           {[true, false].map(style => (
-            <IconButton key={newKey()} onClick={() => setFontLigatures(style as any)} active={fontLigatures === style}>
+            <IconButton
+              key={newKey()}
+              onClick={() => monaco.setFontLigatures(style as any)}
+              active={monaco.fontLigatures === style}
+            >
               {style ? 'On' : 'Off'}
             </IconButton>
           ))}
@@ -266,7 +208,7 @@ const SetterMonacoPreferences: FC = () => {
             const normal = 22
             const factor = (style / normal).toFixed(1)
             return (
-              <IconButton key={newKey()} onClick={() => setLineHeight(style)} active={lineHeight === style}>
+              <IconButton key={newKey()} onClick={() => monaco.setLineHeight(style)} active={monaco.lineHeight === style}>
                 {style === normal ? 'Normal' : `x${factor}`}
               </IconButton>
             )
@@ -276,19 +218,19 @@ const SetterMonacoPreferences: FC = () => {
 
       {/* Minimap */}
       <div className='monacoPreferences-section'>
-        <MinimapPreference minimap={minimap} setMinimap={setMinimap} />
+        <MinimapPreference minimap={monaco.minimap} setMinimap={monaco.setMinimap} />
       </div>
 
       {/* Scroll */}
 
       <div className='monacoPreferences-section'>
-        <ScrollPreference scrollbar={scrollbar} setScrollbar={setScrollbar} />
+        <ScrollPreference scrollbar={monaco.scrollbar} setScrollbar={monaco.setScrollbar} />
       </div>
 
       {/* Scroll sticky */}
 
       <div className='monacoPreferences-section'>
-        <StickyScrollPreference stickyScroll={stickyScroll} setStickyScroll={setStickyScroll} />
+        <StickyScrollPreference stickyScroll={monaco.stickyScroll} setStickyScroll={monaco.setStickyScroll} />
       </div>
 
       {/*  */}
@@ -301,7 +243,11 @@ const SetterMonacoPreferences: FC = () => {
         <h5 className='paragraph-emphasis'>Estilo de parpadeo</h5>
         <div className='monacoPreferences-switch'>
           {['blink', 'smooth', 'phase', 'expand', 'solid'].map(style => (
-            <IconButton key={newKey()} onClick={() => setCursorBlinking(style as any)} active={cursorBlinking === style}>
+            <IconButton
+              key={newKey()}
+              onClick={() => monaco.setCursorBlinking(style as any)}
+              active={monaco.cursorBlinking === style}
+            >
               {style}
             </IconButton>
           ))}
@@ -312,7 +258,7 @@ const SetterMonacoPreferences: FC = () => {
         <h5 className='paragraph-emphasis'>Estilo del cursor</h5>
         <div className='monacoPreferences-switch'>
           {['block', 'block-outline', 'underline', 'underline-thin', 'line', 'line-thin'].map(style => (
-            <IconButton key={newKey()} onClick={() => setCursorStyle(style as any)} active={cursorStyle === style}>
+            <IconButton key={newKey()} onClick={() => monaco.setCursorStyle(style as any)} active={monaco.cursorStyle === style}>
               {style}
             </IconButton>
           ))}
@@ -324,7 +270,7 @@ const SetterMonacoPreferences: FC = () => {
         <span className='paragraph-normal'>Estilo del cursor al pasar el mouse por el editor.</span>
         <div className='monacoPreferences-switch'>
           {['default', 'copy', 'text'].map(style => (
-            <IconButton key={newKey()} onClick={() => setMouseStyle(style as any)} active={mouseStyle === style}>
+            <IconButton key={newKey()} onClick={() => monaco.setMouseStyle(style as any)} active={monaco.mouseStyle === style}>
               {style}
             </IconButton>
           ))}
@@ -338,8 +284,8 @@ const SetterMonacoPreferences: FC = () => {
           {[true, false].map(style => (
             <IconButton
               key={newKey()}
-              onClick={() => setHideCursorInOverviewRuler(style)}
-              active={hideCursorInOverviewRuler === style}
+              onClick={() => monaco.setHideCursorInOverviewRuler(style)}
+              active={monaco.hideCursorInOverviewRuler === style}
             >
               {style ? 'On' : 'Off'}
             </IconButton>
@@ -356,7 +302,7 @@ const SetterMonacoPreferences: FC = () => {
         <span className='paragraph-normal'>Si está activo, el editor plegará el código automáticamente.</span>
         <div className='monacoPreferences-switch'>
           {[true, false].map(style => (
-            <IconButton key={newKey()} onClick={() => setFolding(style)} active={folding === style}>
+            <IconButton key={newKey()} onClick={() => monaco.setFolding(style)} active={monaco.folding === style}>
               {style ? 'On' : 'Off'}
             </IconButton>
           ))}
@@ -368,7 +314,11 @@ const SetterMonacoPreferences: FC = () => {
         <span className='paragraph-normal'>Amplia el desplazamiento más allá de la última línea del código.</span>
         <div className='monacoPreferences-switch'>
           {[true, false].map(style => (
-            <IconButton key={newKey()} onClick={() => setScrollBeyondLastLine(style)} active={scrollBeyondLastLine === style}>
+            <IconButton
+              key={newKey()}
+              onClick={() => monaco.setScrollBeyondLastLine(style)}
+              active={monaco.scrollBeyondLastLine === style}
+            >
               {style ? 'On' : 'Off'}
             </IconButton>
           ))}
@@ -380,7 +330,7 @@ const SetterMonacoPreferences: FC = () => {
         <span className='paragraph-normal'>Formatea el código automáticamente al pegar.</span>
         <div className='monacoPreferences-switch'>
           {[true, false].map(style => (
-            <IconButton key={newKey()} onClick={() => setFormatOnPaste(style)} active={formatOnPaste === style}>
+            <IconButton key={newKey()} onClick={() => monaco.setFormatOnPaste(style)} active={monaco.formatOnPaste === style}>
               {style ? 'On' : 'Off'}
             </IconButton>
           ))}
@@ -392,7 +342,7 @@ const SetterMonacoPreferences: FC = () => {
         <span className='paragraph-normal'>Formatea el código automáticamente mientras se escribe.</span>
         <div className='monacoPreferences-switch'>
           {[true, false].map(style => (
-            <IconButton key={newKey()} onClick={() => setFormatOnType(style)} active={formatOnType === style}>
+            <IconButton key={newKey()} onClick={() => monaco.setFormatOnType(style)} active={monaco.formatOnType === style}>
               {style ? 'On' : 'Off'}
             </IconButton>
           ))}
@@ -409,7 +359,11 @@ const SetterMonacoPreferences: FC = () => {
         </span>
         <div className='monacoPreferences-switch'>
           {['never', 'near', 'always'].map(style => (
-            <IconButton key={newKey()} onClick={() => setMatchBrackets(style as any)} active={matchBrackets === style}>
+            <IconButton
+              key={newKey()}
+              onClick={() => monaco.setMatchBrackets(style as any)}
+              active={monaco.matchBrackets === style}
+            >
               {style}
             </IconButton>
           ))}
@@ -429,8 +383,8 @@ const SetterMonacoPreferences: FC = () => {
           {['always', 'beforeWhitespace', 'languageDefined', 'never'].map(style => (
             <IconButton
               key={newKey()}
-              onClick={() => setAutoClosingBrackets(style as any)}
-              active={autoClosingBrackets === style}
+              onClick={() => monaco.setAutoClosingBrackets(style as any)}
+              active={monaco.autoClosingBrackets === style}
             >
               {style}
             </IconButton>
@@ -448,7 +402,11 @@ const SetterMonacoPreferences: FC = () => {
         </span>
         <div className='monacoPreferences-switch'>
           {['always', 'beforeWhitespace', 'languageDefined', 'never'].map(style => (
-            <IconButton key={newKey()} onClick={() => setAutoClosingQuotes(style as any)} active={autoClosingQuotes === style}>
+            <IconButton
+              key={newKey()}
+              onClick={() => monaco.setAutoClosingQuotes(style as any)}
+              active={monaco.autoClosingQuotes === style}
+            >
               {style}
             </IconButton>
           ))}
