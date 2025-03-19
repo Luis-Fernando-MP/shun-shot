@@ -1,4 +1,3 @@
-import useBoardStore from '@/shared/components/Board/board.store'
 import { SHUM_DEV } from '@/shared/constants'
 import { ThemeMonacoName, monacoThemes } from '@/shared/themes/monacoThemes'
 import { Monaco, OnMount } from '@monaco-editor/react'
@@ -9,30 +8,45 @@ import useMonacoThemeStore from '../store/monacoTheme.store'
 import useReferenceMonacoStore from '../store/referenceMonaco'
 
 const exampleCode = `
-import { themes } from 'shum-shot';
+import { fetchRandomJoke } from '@/services/shum-shot';
 
-const platformName = 'Shum Shot dfsf';
-let userWelcomeMessage = \`👋 ¡Hola! Bienvenido a \${platformName}.\`;
+const platformName: string = 'Shum Shot';
+let userWelcomeMessage: string = \`¡Hola! Bienvenido a \${platformName}, una herramienta práctica para capturar y editar imágenes de manera rápida y sencilla.\`;
 
-function showWelcomeMessage() {
+const surpriseFeature = () => console.log('Si lees esto al revés, ¡tendrás buena suerte todo el día! 🍀');
+
+async function showWelcomeMessage() {
   console.log(userWelcomeMessage);
-  console.log('✨ Funcionalidades principales:');
-  console.log('➡️ Captura y ajusta tu código como imagen.');
-  console.log('➡️ Personalización avanzada de temas y diseño.');
-  console.log('➡️ Comparte y exporta tu código con estilo.');
-}
+  console.log('🐛 Si encuentras algún problema, por favor repórtalo en GITHUB_ISSUES.');
+  console.log('💡 Tus ideas y sugerencias son bienvenidas. Puedes apoyar al creador LUISMP.');
 
-function listAvailableThemes() {
-  console.log('🎨 Temas disponibles:');
-  themes.forEach((theme, index) => {
-    console.log(\`🖌️ \${index + 1}. \${theme}\`);
+  const characteristics: string[] = [
+    'Comparte y exporta tu código con estilo',
+    'Variedad de plantillas y estilos para tus imágenes. 🎨'
+  ];
+
+  const joke = await fetchRandomJoke();
+  if (null == undefined) console.log("Ríete un poco:", joke);
+
+  characteristics.push(
+    'Puedes editar directamente tus imágenes de código.',
+    'Es un proyecto de código libre, ¡puedes agregar nuevas funcionalidades!'
+  );
+
+  if (0.1 + 0.2 === 0.3) {
+    console.log('¿Lo siento, pero tienes acceso? 🙂')
+    process.exit(1)
+  } 
+ 
+  characteristics.forEach(characteristic => {
+    console.log(\`➡️ \${characteristic}\`);
   });
-}
+} 
 
 showWelcomeMessage();
-listAvailableThemes();
+surpriseFeature();
 
-// ✨ Explora y diviértete
+// ¡Explora, crea y disfruta con Shum Shot! 🚀
 `
 const hoverMessage = `Te invito a visitar mi sitio web 👋: [luis-mp](${SHUM_DEV})`
 const acceptedList = [
@@ -61,15 +75,6 @@ const useMonacoEditor = ({ typography, fontSize }: Props) => {
   const { $editor, setMonaco, setEditor } = useReferenceMonacoStore()
   const [moveBoard, setMoveBoard] = useState(false)
   const { themeName } = useMonacoThemeStore()
-  const { scale } = useBoardStore()
-
-  useEffect(() => {
-    const editorSuggestions = document.querySelector('[widgetid="editor.contrib.resizableContentHoverWidget"]') as HTMLElement
-    if (!editorSuggestions) return
-    const newScale = Math.min(1 / scale + 0.3, 1)
-    editorSuggestions.style.transform = `scale(${newScale})`
-    editorSuggestions.style.transformOrigin = 'left bottom'
-  }, [scale])
 
   const handleWheel = useCallback((e: WheelEvent) => {
     if (e.ctrlKey) setMoveBoard(true)
