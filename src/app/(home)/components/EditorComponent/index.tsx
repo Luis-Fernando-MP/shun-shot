@@ -11,7 +11,10 @@ const EditorComponent: FC = () => {
   const monacoConfig = useMonacoStore()
   const { typography, language } = useMonacoBasicOptionsStore()
 
-  const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor({ typography })
+  const { moveBoard, exampleCode, handleMount, handleBeforeMount, themeName } = useMonacoEditor({
+    typography,
+    fontSize: monacoConfig.fontSize ?? 14
+  })
 
   return (
     <Editor

@@ -52,11 +52,12 @@ const acceptedList = [
 
 interface Props {
   typography: string
+  fontSize: number
 }
 
 let previousDecorations: string[] = []
 
-const useMonacoEditor = ({ typography }: Props) => {
+const useMonacoEditor = ({ typography, fontSize }: Props) => {
   const { $editor, setMonaco, setEditor } = useReferenceMonacoStore()
   const [moveBoard, setMoveBoard] = useState(false)
   const { themeName } = useMonacoThemeStore()
@@ -167,7 +168,8 @@ const useMonacoEditor = ({ typography }: Props) => {
   useEffect(() => {
     if (!document.documentElement) return
     document.documentElement.style.setProperty('--monaco-font-family', typography)
-  }, [typography])
+    document.documentElement.style.setProperty('--monaco-font-size', `${fontSize}px`)
+  }, [typography, fontSize])
 
   return {
     moveBoard,

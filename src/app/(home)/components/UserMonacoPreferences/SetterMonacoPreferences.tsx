@@ -1,9 +1,11 @@
 import { newKey } from '@/shared/key'
 import IconButton from '@/shared/ui/IconButton'
+import LabeledInput from '@/shared/ui/LabeledInput'
 import type { FC } from 'react'
 
 import useMonacoStore from '../../store/monaco.store'
 import useMonacoBasicOptionsStore from '../../store/monacoBasicOptions.store'
+import FontSizePreference from './preferences/FontSizePreference'
 import MinimapPreference from './preferences/MinimapPreference'
 import ScrollPreference from './preferences/ScrollPreference'
 import StickyScrollPreference from './preferences/StickyScrollPreference'
@@ -24,30 +26,18 @@ const SetterMonacoPreferences: FC = () => {
     cursorStyle,
     wrappingIndent,
     folding,
-    foldingStrategy,
     letterSpacing,
     autoClosingBrackets,
     autoClosingQuotes,
-    autoIndent,
     formatOnPaste,
     formatOnType,
     scrollBeyondLastLine,
     renderLineHighlight,
-    renderWhitespace,
     scrollbar,
-    bracketPairColorization,
-    guides,
     glyphMargin,
     renderValidationDecorations,
-    selectionHighlight,
     hideCursorInOverviewRuler,
     matchBrackets,
-    overviewRulerLanes,
-    overviewRulerBorder,
-    roundedSelection,
-    renderFinalNewline,
-    renderControlCharacters,
-    smoothScrolling,
     setLineNumbers,
     setMinimap,
     setFontLigatures,
@@ -61,34 +51,31 @@ const SetterMonacoPreferences: FC = () => {
     setCursorStyle,
     setWrappingIndent,
     setFolding,
-    setFoldingStrategy,
     setLetterSpacing,
     setAutoClosingBrackets,
     setAutoClosingQuotes,
-    setAutoIndent,
     setFormatOnPaste,
     setFormatOnType,
     setScrollBeyondLastLine,
     setRenderLineHighlight,
-    setRenderWhitespace,
     setScrollbar,
-    setBracketPairColorization,
-    setGuides,
     setGlyphMargin,
     setRenderValidationDecorations,
-    setSelectionHighlight,
     setHideCursorInOverviewRuler,
     setMatchBrackets,
-    setOverviewRulerLanes,
-    setOverviewRulerBorder,
-    setRoundedSelection,
-    setRenderFinalNewline,
-    setRenderControlCharacters,
-    setSmoothScrolling
+    resetPreferences
   } = useMonacoStore()
+
+  const handleResetPreferences = () => {
+    resetPreferences()
+  }
 
   return (
     <>
+      <IconButton outline onClick={handleResetPreferences}>
+        <h4>Restablecer configuración</h4>
+      </IconButton>
+
       <div className='paragraph'>
         <h3 className='paragraph-highlight'># Shum shot's:</h3>
       </div>
@@ -237,6 +224,10 @@ const SetterMonacoPreferences: FC = () => {
 
       <div className='paragraph'>
         <h3 className='paragraph-highlight'># Tipografía:</h3>
+      </div>
+
+      <div className='monacoPreferences-section'>
+        <FontSizePreference fontSize={fontSize} setFontSize={setFontSize} />
       </div>
 
       <div className='monacoPreferences-section'>

@@ -37,4 +37,8 @@
 
     width: 100%;
   }
+
+  &-fontSize {
+    @include d.flex($gap: v.$padding * 0.5);
+  }
 }
