@@ -7,6 +7,9 @@ import type { FC } from 'react'
 const MainBarOptions: FC = () => {
   return (
     <section className='mainBar-section'>
+      <div className='separator' />
+
+      <h5>Fondo: </h5>
       <IconButton label='Posicionamiento' transparent>
         <Move3dIcon />
       </IconButton>
