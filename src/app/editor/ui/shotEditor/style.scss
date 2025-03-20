@@ -1,0 +1,19 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.editor {
+  position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 3 / 2;
+  width: 900;
+  height: 600;
+  padding: 10px;
+  border-radius: v.$radius;
+
+  &-canvas {
+    position: absolute;
+    inset: 0;
+  }
+}

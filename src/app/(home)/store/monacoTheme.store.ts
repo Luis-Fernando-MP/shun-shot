@@ -1,6 +1,7 @@
 import { ThemeMonacoName, monacoThemes } from '@/shared/themes/monacoThemes'
 import { ThemeMonaco } from '@/shared/themes/monacoThemes.type'
 import { StateCreator, create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 interface IMonacoThemeStore {
   themeName: ThemeMonacoName
@@ -21,6 +22,6 @@ const state: StateCreator<IMonacoThemeStore> = (set, get) => ({
   resetTheme: () => set({ themeName: defaultThemeName })
 })
 
-const useMonacoThemeStore = create(state)
+const useMonacoThemeStore = create(persist(state, { name: 'monacoTheme' }))
 
 export default useMonacoThemeStore
