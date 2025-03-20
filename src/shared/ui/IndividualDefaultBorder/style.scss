@@ -1,0 +1,59 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.individualDefaultBorder {
+  user-select: none;
+  width: 100px;
+  padding: v.$padding * 2 v.$padding * 0.5 v.$padding;
+
+  @include d.flex($ali: center);
+
+  border-radius: v.$radius;
+
+  &-wrapper {
+    position: relative;
+    width: 65px;
+    height: 70px;
+  }
+
+  &-square {
+    width: 100%;
+    height: 100%;
+    border-radius: v.$radius;
+    background-color: rgb(v.$bg3, 0.35);
+  }
+
+  &-squareRotate {
+    position: absolute;
+    top: -3px;
+    right: -10px;
+    transform-origin: top right;
+    transform: rotate(10deg);
+
+    width: 50px;
+    height: 60px;
+
+    background-color: rgb(v.$bg3);
+    box-shadow: rgb(0 0 0 / 20%) -15px 10px 15px -4px;
+  }
+
+  &-label {
+    color: rgb(v.$fn2);
+  }
+
+  &.selected {
+    border-color: rgb(v.$tn1);
+
+    .individualDefaultBorder-square {
+      background-color: rgb(v.$fn2, 0.5);
+    }
+
+    .individualDefaultBorder-squareRotate {
+      background-color: rgb(v.$fn1);
+    }
+
+    .individualDefaultBorder-label {
+      color: rgb(v.$fn1);
+    }
+  }
+}

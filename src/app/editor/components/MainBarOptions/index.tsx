@@ -1,26 +1,22 @@
 'use client'
 
 import IconButton from '@/shared/ui/IconButton'
-import { CloudSunIcon, Layers2Icon, Move3dIcon, SquareRoundCornerIcon } from 'lucide-react'
+import { ImagePlusIcon, SlidersHorizontalIcon } from 'lucide-react'
 import type { FC } from 'react'
+
+import BackgroundConfiguration from '../../Popups/BackgroundConfiguration'
 
 const MainBarOptions: FC = () => {
   return (
     <section className='mainBar-section'>
       <div className='separator' />
-
       <h5>Fondo: </h5>
-      <IconButton label='Posicionamiento' transparent>
-        <Move3dIcon />
+      <BackgroundConfiguration />
+      <IconButton label='Imagen del fondo' transparent>
+        <ImagePlusIcon />
       </IconButton>
-      <IconButton label='Sombras' transparent>
-        <CloudSunIcon />
-      </IconButton>
-      <IconButton label='Redondeados' transparent>
-        <SquareRoundCornerIcon />
-      </IconButton>
-      <IconButton label='Capas' transparent>
-        <Layers2Icon />
+      <IconButton label='Filtros del fondo' transparent>
+        <SlidersHorizontalIcon />
       </IconButton>
     </section>
   )
