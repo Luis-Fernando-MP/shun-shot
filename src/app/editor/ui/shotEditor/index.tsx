@@ -8,7 +8,7 @@ const ShotEditor: FC = () => {
     <div className='app-board editor border'>
       <BackgroundCanvas />
 
-      <canvas className='editor-canvas'></canvas>
+      <canvas className='editor-image' />
       <canvas className='editor-canvas'></canvas>
       <canvas className='editor-canvas'></canvas>
       <canvas className='editor-canvas'></canvas>

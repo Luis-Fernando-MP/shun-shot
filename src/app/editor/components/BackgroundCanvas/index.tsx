@@ -20,14 +20,14 @@ const BackgroundCanvas: FC = () => {
   }, [background, backgroundHeight, backgroundWidth, defaultBackground])
 
   useEffect(() => {
-    setDefaultBackground(getDefaultCssVariable('--tn-primary'))
-    const observer = observeCSSVariables(document.documentElement, style => {
+    let observer: MutationObserver | null
+    observer = observeCSSVariables(document.documentElement, style => {
       const newBackground = style.getPropertyValue('--tn-primary')
-      if (newBackground === defaultBackground) return
-      setDefaultBackground(newBackground)
+      setDefaultBackground(`rgb(${newBackground})`)
     })
-    return () => observer.disconnect()
-  }, [])
+    setDefaultBackground(getDefaultCssVariable('--tn-primary'))
+    return () => observer?.disconnect()
+  }, [setDefaultBackground])
 
   return (
     <canvas
