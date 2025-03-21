@@ -5,7 +5,7 @@
   user-select: none;
 
   width: 100px;
-  padding: v.$padding * 2 v.$padding * 0.5 v.$padding;
+  padding: v.$padding v.$padding * 0.5 v.$padding * 0.5;
   border-radius: v.$radius;
 
   background-color: rgb(v.$bg1);
@@ -14,8 +14,8 @@
 
   &-wrapper {
     position: relative;
-    width: 65px;
-    height: 70px;
+    width: 55px;
+    height: 60px;
   }
 
   &-square {
@@ -34,8 +34,8 @@
     transform-origin: top right;
     transform: rotate(10deg);
 
-    width: 50px;
-    height: 60px;
+    width: 40px;
+    height: 50px;
     border-bottom: 2px solid rgb(v.$tn1, 0.3);
     border-left: 2px solid rgb(v.$tn1, 0.3);
 

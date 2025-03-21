@@ -14,10 +14,6 @@
 
   background-color: rgba(v.$bg1);
 
-  transition:
-    height 0.3s v.$bezier,
-    width 0.3s v.$bezier;
-
   @include d.flex;
 
   &-header {

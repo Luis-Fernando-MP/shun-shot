@@ -3,12 +3,8 @@
 
 .editor {
   position: relative;
-
-  overflow: hidden;
-
   width: fit-content;
   height: fit-content;
-  padding: 10px;
   border-radius: v.$radius;
 
   &-image {
@@ -23,6 +19,12 @@
     border-radius: v.$radius;
 
     background-color: rgb(v.$bg2);
+  }
+
+  &-background {
+    position: relative;
+    inset: 0;
+    box-shadow: -18px 15px 108px 42px #00000041;
   }
 
   &-canvas {

@@ -85,9 +85,8 @@ const SizeController: FC<Props> = ({ width, height, setWidth, setHeight }) => {
   )
 
   return (
-    <section className='sizeController'>
+    <section className='sizeController border'>
       <IconButton
-        label={lockAspectRatio ? 'Desbloquear relación' : 'Bloquear relación'}
         transparent
         position='right'
         onClick={toggleAspectRatioLock}
@@ -95,12 +94,13 @@ const SizeController: FC<Props> = ({ width, height, setWidth, setHeight }) => {
         className='sizeController-lock'
       >
         <ProportionsIcon />
+        <h5>{lockAspectRatio ? 'Desbloquear relación' : 'Bloquear relación'}</h5>
       </IconButton>
 
       <div
         className='sizeController-preview'
         style={{
-          width: Math.min(200, Math.max(70, width * 0.2)),
+          width: Math.min(200, Math.max(70, width * 0.1)),
           aspectRatio: aspectRatio
         }}
       >

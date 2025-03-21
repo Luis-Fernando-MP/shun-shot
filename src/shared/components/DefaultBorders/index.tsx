@@ -12,7 +12,7 @@ interface Props {
 const borders = [
   { radius: 20, label: 'Simple' },
   { radius: 40, label: 'Curvo' },
-  { radius: 80, label: 'Redondeado' }
+  { radius: 80, label: 'Circular' }
 ]
 
 /**

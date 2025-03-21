@@ -39,7 +39,7 @@ const BackgroundCanvas: FC = () => {
       ref={$canvasRef}
       width={backgroundWidth}
       height={backgroundHeight}
-      className='editor-background cmvBackground'
+      className='editor-background'
       style={{ height: backgroundHeight, width: backgroundWidth, ...getStyleBorderRadius() }}
     />
   )

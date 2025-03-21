@@ -25,7 +25,7 @@ const IndividualDefaultBorder: FC<Props> = ({ value, onClick, label, selected })
         <div className='individualDefaultBorder-square' />
         <div className='individualDefaultBorder-squareRotate' style={{ borderBottomLeftRadius: value }} />
       </div>
-      <h4 className='individualDefaultBorder-label'>{label}</h4>
+      <h5 className='individualDefaultBorder-label'>{label}</h5>
     </button>
   )
 }

@@ -1,4 +1,5 @@
 import BorderConfiguration from '@/shared/components/BorderConfiguration'
+import ColorsController from '@/shared/components/ColorsController'
 import Popup from '@/shared/components/Popup'
 import { PopupPositions } from '@/shared/components/Popup/usePopup'
 import SizeController from '@/shared/components/SizeController'
@@ -14,7 +15,8 @@ const BackgroundConfiguration: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [positions, setPositions] = useState<PopupPositions>()
 
-  const { backgroundWidth, backgroundHeight, setBackgroundWidth, setBackgroundHeight } = useBackgroundStore()
+  const { backgroundWidth, backgroundHeight, setBackgroundWidth, setBackgroundHeight, background, setBackground } =
+    useBackgroundStore()
 
   const handleOpenPopup = (e: MouseEvent) => {
     setIsOpen(!isOpen)
@@ -43,6 +45,11 @@ const BackgroundConfiguration: FC = () => {
             setWidth={setBackgroundWidth}
             setHeight={setBackgroundHeight}
           />
+        </div>
+
+        <div className='bgConfig-section'>
+          <h3 className='paragraph-highlight'># Colores:</h3>
+          <ColorsController background={background} setBackground={setBackground} />
         </div>
       </Popup>
     </>
