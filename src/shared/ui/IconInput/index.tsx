@@ -1,21 +1,15 @@
-import type { FC, InputHTMLAttributes, ReactNode } from 'react';
-import { Input } from 'react-field-sizing-content';
+import type { FC, InputHTMLAttributes, ReactNode } from 'react'
+import { Input } from 'react-field-sizing-content'
 
-
-
-import LabelText from '../LabelText';
-import './style.scss';
-
-
-
-
+import LabelText from '../LabelText'
+import './style.scss'
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   children?: Readonly<ReactNode[]> | null | Readonly<ReactNode>
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   value: string | number
-  Icon: ReactNode 
-  label?: string 
+  Icon?: ReactNode
+  label?: string
   fieldSizing?: 'content' | 'fixed'
   width?: string
 }
@@ -35,7 +29,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
  * @param {string} [width='100'] - Width of the input field.
  * @param {function} onChange - Function that is executed when the value of the input field changes.
  * @param {InputHTMLAttributes<HTMLInputElement>} props - Other properties of the input element.
- */ 
+ */
 
 const IconInput: FC<Props> = ({
   Icon,
@@ -50,7 +44,7 @@ const IconInput: FC<Props> = ({
 }) => {
   return (
     <div className='iconInput border'>
-      <div className='iconInput-icon'>{Icon}</div>
+      {Icon && <div className='iconInput-icon'>{Icon}</div>}
       <Input
         className={`iconInput-input ${className}`}
         {...props}

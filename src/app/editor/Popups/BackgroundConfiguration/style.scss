@@ -3,7 +3,13 @@
 
 .bgConfig {
   &-popup {
-    width: 400px;
+    width: 370px;
     height: 700px;
+
+    @include d.flex($gap: v.$padding * 2);
+  }
+
+  &-section {
+    @include d.flex($gap: v.$padding * 1.5);
   }
 }

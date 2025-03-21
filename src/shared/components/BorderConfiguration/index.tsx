@@ -1,10 +1,10 @@
 import { IBorderRadiusStore } from '@/app/editor/store/background/backgroundRadius.store'
 import type { FC } from 'react'
-import { StoreApi, UseBoundStore } from 'zustand'
 
 import DefaultBorders from '../DefaultBorders'
 import IndividualBorderController from '../IndividualBorderController'
 import SliderControl from '../SliderControl'
+import './style.scss'
 
 interface Props {
   borderState: IBorderRadiusStore
@@ -16,7 +16,7 @@ const BorderConfiguration: FC<Props> = ({ borderState }) => {
   const { borderRadius, setBorderRadius } = borderState
 
   return (
-    <article>
+    <article className='borderConfiguration'>
       <DefaultBorders borderValue={borderRadius} changeBorder={setBorderRadius} />
       <SliderControl
         label='Redondeado'

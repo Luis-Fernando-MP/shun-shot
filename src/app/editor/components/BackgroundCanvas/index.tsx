@@ -18,6 +18,8 @@ const BackgroundCanvas: FC = () => {
     const ctx = $canvasRef.current.getContext('2d')
     if (!ctx) return
 
+    ctx.clearRect(0, 0, backgroundWidth, backgroundHeight)
+
     ctx.fillStyle = background ?? defaultBackground
     ctx.fillRect(0, 0, backgroundWidth, backgroundHeight)
   }, [background, backgroundHeight, backgroundWidth, defaultBackground])
@@ -35,7 +37,9 @@ const BackgroundCanvas: FC = () => {
   return (
     <canvas
       ref={$canvasRef}
-      className='editor-canvas cmvBackground'
+      width={backgroundWidth}
+      height={backgroundHeight}
+      className='editor-background cmvBackground'
       style={{ height: backgroundHeight, width: backgroundWidth, ...getStyleBorderRadius() }}
     />
   )

@@ -11,13 +11,6 @@ interface IBackgroundStore {
 }
 
 const state: StateCreator<IBackgroundStore> = set => ({
-  activeIndividualBorder: false,
-  borderLTRadius: 20,
-  borderRTRadius: 20,
-  borderLBRadius: 20,
-  borderRBRadius: 20,
-  borderRadius: 20,
-
   background: null,
   backgroundWidth: 900,
   backgroundHeight: 600,
