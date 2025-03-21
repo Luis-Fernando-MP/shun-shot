@@ -149,7 +149,7 @@ export const darkGradients = [
   }
 ]
 
-export const onlyGradients = [
+export const gradients = [
   {
     gradient: 'linear-gradient(135deg, rgb(238, 221, 243), rgb(238, 146, 177), rgb(99, 48, 180))'
   },
@@ -314,7 +314,7 @@ export const onlyGradients = [
   }
 ]
 
-export const circleGradients = [
+export const circularGradients = [
   {
     gradient:
       'radial-gradient(at 40% 3%, hsla(83,62%,70%,1) 0px, transparent 50%),radial-gradient(at 87% 14%, hsla(350,74%,71%,1) 0px, transparent 50%),radial-gradient(at 33% 46%, hsla(324,96%,61%,1) 0px, transparent 50%),radial-gradient(at 52% 14%, hsla(253,95%,76%,1) 0px, transparent 50%),radial-gradient(at 78% 56%, hsla(333,65%,67%,1) 0px, transparent 50%),radial-gradient(at 70% 78%, hsla(253,83%,73%,1) 0px, transparent 50%),radial-gradient(at 13% 13%, hsla(228,77%,78%,1) 0px, transparent 50%),radial-gradient(at 38% 60%, hsla(159,93%,72%,1) 0px, transparent 50%),radial-gradient(at 87% 83%, hsla(272,66%,72%,1) 0px, transparent 50%),radial-gradient(at 59% 44%, hsla(27,100%,60%,1) 0px, transparent 50%),radial-gradient(at 15% 86%, hsla(23,71%,69%,1) 0px, transparent 50%)'

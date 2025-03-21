@@ -3,7 +3,7 @@
 import Board from '@/shared/components/Board'
 import { type FC } from 'react'
 
-import ShotEditor from './ui/shotEditor'
+import ShotEditor from './components/shotEditor'
 
 const Page: FC = () => {
   return (

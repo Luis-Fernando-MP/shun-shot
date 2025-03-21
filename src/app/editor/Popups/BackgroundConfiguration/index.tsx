@@ -1,8 +1,10 @@
 import BorderConfiguration from '@/shared/components/BorderConfiguration'
 import ColorsController from '@/shared/components/ColorsController'
+import GradientsController from '@/shared/components/GradientsController'
 import Popup from '@/shared/components/Popup'
 import { PopupPositions } from '@/shared/components/Popup/usePopup'
 import SizeController from '@/shared/components/SizeController'
+import UploadImageController from '@/shared/components/UploadImageController'
 import IconButton from '@/shared/ui/IconButton'
 import { BlendIcon } from 'lucide-react'
 import { type FC, MouseEvent, useState } from 'react'
@@ -15,8 +17,16 @@ const BackgroundConfiguration: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [positions, setPositions] = useState<PopupPositions>()
 
-  const { backgroundWidth, backgroundHeight, setBackgroundWidth, setBackgroundHeight, background, setBackground } =
-    useBackgroundStore()
+  const {
+    backgroundWidth,
+    backgroundHeight,
+    setBackgroundWidth,
+    setBackgroundHeight,
+    background,
+    setBackground,
+    blendMode,
+    setBlendMode
+  } = useBackgroundStore()
 
   const handleOpenPopup = (e: MouseEvent) => {
     setIsOpen(!isOpen)
@@ -50,6 +60,19 @@ const BackgroundConfiguration: FC = () => {
         <div className='bgConfig-section'>
           <h3 className='paragraph-highlight'># Colores:</h3>
           <ColorsController background={background} setBackground={setBackground} />
+        </div>
+
+        <div className='bgConfig-section'>
+          <GradientsController
+            background={background}
+            setBackground={setBackground}
+            blendMode={blendMode}
+            setBlendMode={setBlendMode}
+          />
+        </div>
+
+        <div className='bgConfig-section'>
+          <UploadImageController background={background} setBackground={setBackground} />
         </div>
       </Popup>
     </>
