@@ -5,14 +5,13 @@ import IconButton from '@/shared/ui/IconButton'
 import { BlendIcon } from 'lucide-react'
 import { type FC, MouseEvent, useState } from 'react'
 
-import useBackgroundStore from '../../store/background.store'
+import useBackgroundRadiusStore from '../../store/background/backgroundRadius.store'
 import './style.scss'
 
 const BackgroundConfiguration: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [positions, setPositions] = useState<PopupPositions>()
-
-  const { borderRadius, setBorderRadius } = useBackgroundStore()
+  const borderStroke = useBackgroundRadiusStore()
 
   const handleOpenPopup = (e: MouseEvent) => {
     setIsOpen(!isOpen)
@@ -32,7 +31,7 @@ const BackgroundConfiguration: FC = () => {
         className='bgConfig-popup'
       >
         <h3 className='paragraph-highlight'># Redondeado:</h3>
-        <BorderConfiguration borderValue={borderRadius} changeBorder={setBorderRadius} />
+        <BorderConfiguration borderState={borderStroke} />
       </Popup>
     </>
   )

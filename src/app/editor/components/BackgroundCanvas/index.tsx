@@ -3,12 +3,15 @@
 import { getDefaultCssVariable, observeCSSVariables } from '@/shared/elementCssVariables'
 import { type FC, useEffect, useRef, useState } from 'react'
 
-import useBackgroundStore from '../../store/background.store'
+import useBackgroundStore from '../../store/background/background.store'
+import useBackgroundRadiusStore from '../../store/background/backgroundRadius.store'
 
 const BackgroundCanvas: FC = () => {
   const $canvasRef = useRef<HTMLCanvasElement>(null)
-  const { background, backgroundHeight, backgroundWidth, borderRadius } = useBackgroundStore()
+  const { background, backgroundHeight, backgroundWidth } = useBackgroundStore()
   const [defaultBackground, setDefaultBackground] = useState('')
+
+  const { getStyleBorderRadius } = useBackgroundRadiusStore()
 
   useEffect(() => {
     if (!$canvasRef.current) return
@@ -33,7 +36,7 @@ const BackgroundCanvas: FC = () => {
     <canvas
       ref={$canvasRef}
       className='editor-canvas cmvBackground'
-      style={{ height: backgroundHeight, width: backgroundWidth, borderRadius }}
+      style={{ height: backgroundHeight, width: backgroundWidth, ...getStyleBorderRadius() }}
     />
   )
 }

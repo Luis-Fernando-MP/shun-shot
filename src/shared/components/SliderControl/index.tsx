@@ -25,6 +25,7 @@ const SliderControl = ({
   containerClassName,
   label = '',
   value,
+  width,
   onChangeRange,
   className,
   max = 100,
@@ -38,7 +39,7 @@ const SliderControl = ({
   }
 
   return (
-    <section className={`sliderControl border ${containerClassName ?? ''}`}>
+    <section className={`sliderControl border ${containerClassName ?? ''}`} style={{ width: width ?? '100%' }}>
       <input
         {...props}
         type='range'

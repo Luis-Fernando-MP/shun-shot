@@ -9,7 +9,6 @@
 
   overflow: hidden;
 
-  width: 100%;
   padding: v.$padding 0;
   border-radius: v.$radius * 0.7;
 
@@ -34,9 +33,12 @@
 
   &-value {
     font-family: v.$font2;
+    color: rgb(v.$fn1);
   }
 
   &-range {
+    cursor: col-resize;
+
     position: absolute;
     top: 0;
     left: 0;
@@ -47,48 +49,49 @@
     height: 100%;
 
     appearance: none;
-    background-color: rgba(v.$bg1);
+    background-color: rgba(v.$tn1, 0.2);
     outline: none;
 
     &::-webkit-slider-thumb {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-
-      width: 6px;
-      height: 60%;
-      border: 2px solid rgb(v.$bg3);
-      border-radius: 5px;
-
-      appearance: none;
-      background: rgb(v.$bg1);
-      box-shadow: -200px 0 50px 185px rgb(v.$bg3);
-    }
-
-    &::-moz-range-thumb {
       cursor: col-resize;
 
       position: relative;
       top: 50%;
       transform: translateY(-50%);
 
-      width: 6px;
+      width: 3px;
       height: 60%;
-      border: 2px solid rgb(v.$bg3);
       border-radius: 5px;
 
-      background: rgb(v.$bg1);
-      box-shadow: -200px 0 50px 185px rgb(v.$bg3);
+      appearance: none;
+      background: rgb(v.$fn1);
+      box-shadow: -200px 0 50px 185px rgb(v.$bg1);
+    }
+
+    &::-moz-range-thumb {
+      cursor: col-resize;
+
+      width: 3px;
+      height: 60%;
+      border-radius: 5px;
+
+      background: rgb(v.$fn1);
+      box-shadow: -200px 0 50px 185px rgb(v.$bg1);
     }
 
     &::-ms-thumb {
-      width: 4px;
-      height: 70%;
-      border: 2px solid rgb(v.$fn2);
+      cursor: col-resize;
+
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 3px;
+      height: 60%;
       border-radius: 5px;
 
-      background: rgb(v.$bg3);
-      box-shadow: -200px 0 50px 185px rgb(v.$bg3);
+      background: rgb(v.$fn1);
+      box-shadow: -200px 0 50px 185px rgb(v.$bg1);
     }
 
     &::-webkit-slider-runnable-track {
