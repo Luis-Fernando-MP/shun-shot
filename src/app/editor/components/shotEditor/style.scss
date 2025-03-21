@@ -3,9 +3,14 @@
 
 .editor {
   position: relative;
+
+  overflow: hidden;
+
   width: fit-content;
   height: fit-content;
   border-radius: v.$radius;
+
+  box-shadow: -18px 15px 108px 42px #00000052;
 
   &-image {
     position: absolute;
@@ -13,6 +18,8 @@
     left: 50%;
     transform-origin: center;
     transform: translate(-50%, -50%) rotate(20deg);
+
+    overflow: hidden;
 
     width: 500;
     height: 350px;
@@ -23,7 +30,6 @@
 
   &-background {
     position: relative;
-    box-shadow: -18px 15px 108px 42px #00000029;
   }
 
   &-canvas {

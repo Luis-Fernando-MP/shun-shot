@@ -16,8 +16,6 @@
   &-children {
     position: absolute;
     transform-origin: 0 0;
-    transform-style: preserve-3d;
-    perspective: 1000px;
 
     &.animate {
       transition:
