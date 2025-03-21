@@ -5,6 +5,7 @@
 .monacoEditor {
   overflow: hidden;
 
+  aspect-ratio: 3 / 2;
   width: 900px;
   height: 600px;
   padding-top: v.$padding;
@@ -12,10 +13,6 @@
   border-radius: 20px;
 
   background-color: rgba(v.$bg1);
-
-  transition:
-    height 0.3s v.$bezier,
-    width 0.3s v.$bezier;
 
   @include d.flex;
 

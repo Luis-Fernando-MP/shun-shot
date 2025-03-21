@@ -1,6 +1,7 @@
 'use client'
 
 import MainBarOptions from '@/app/(home)/components/MainBarOptions'
+import EditorMainBarOptions from '@/app/editor/components/MainBarOptions'
 import IconButton from '@/shared/ui/IconButton'
 import ShumShots from '@/shared/ui/ShumShots'
 import { AppWindow, LayersIcon } from 'lucide-react'
@@ -29,7 +30,8 @@ const pages = [
 ]
 
 const mainBarPages = {
-  '/': MainBarOptions
+  '/': MainBarOptions,
+  '/editor': EditorMainBarOptions
 }
 
 const MainBar: FC<Props> = ({ className = '' }) => {

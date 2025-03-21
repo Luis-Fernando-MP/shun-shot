@@ -75,7 +75,7 @@ body {
   label,
   span,
   input {
-    font-family: map.get(map.get($typography, 'p'), family);
+    font-family: $font2;
     font-size: map.get(map.get($typography, 'p'), size);
     font-weight: map.get(map.get($typography, 'p'), weight);
     color: map.get(map.get($typography, 'p'), color);
@@ -135,12 +135,15 @@ body {
   .separator {
     width: 1px;
     height: 25px;
-    background-color: rgb($bg3);
+    background-color: rgba($fn2, 0.5);
   }
 
   .active {
-    color: rgb($fnA) !important;
     background-color: rgb($tn1) !important;
+
+    * {
+      color: rgb($fnA) !important;
+    }
 
     svg {
       stroke: rgb($fnA) !important;

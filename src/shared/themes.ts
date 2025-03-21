@@ -28,7 +28,7 @@ export const THEMES: Record<string, Theme> = {
     'bg-tertiary': '80, 80, 85',
     'fnt-primary': '230, 230, 235',
     'fnt-secondary': '190, 190, 195',
-    'fnt-active': '140, 140, 160',
+    'fnt-active': '0, 0, 0',
     'tn-primary': '110, 110, 130',
     'tn-secondary': '180, 180, 200'
   },
@@ -37,7 +37,7 @@ export const THEMES: Record<string, Theme> = {
     'bg-secondary': '20, 20, 30',
     'bg-tertiary': '30, 30, 40',
     'fnt-primary': '240, 240, 250',
-    'fnt-secondary': '128 128 147',
+    'fnt-secondary': '128, 128, 147',
     'fnt-active': '0, 0, 0',
     'tn-primary': '150, 150, 190',
     'tn-secondary': '200, 200, 230'
