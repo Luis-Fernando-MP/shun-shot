@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "rimraf .next && pnpm store prune && next dev --turbopack",
-    "dev:workers": "tsc -p tsconfig.worker.json --watch",
     "build": "pnpm lint && next build",
     "start": "next start",
     "lint": "npx stylelint '**/*.{css,scss}' && next lint",
