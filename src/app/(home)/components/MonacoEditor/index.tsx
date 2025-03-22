@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import type { FC } from 'react'
+import { type FC, memo } from 'react'
 
 import useMonacoThemeStore from '../../store/monacoTheme.store'
 import ShotFileName from './ShotFileName'
@@ -30,4 +30,4 @@ const MonacoEditor: FC = () => {
   )
 }
 
-export default MonacoEditor
+export default memo(MonacoEditor)
