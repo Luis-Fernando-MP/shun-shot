@@ -1,12 +1,13 @@
 import { StateCreator, create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 interface Picture {
-  selected?: boolean
   url: string
 }
 
 interface IPicturesStore {
   pictures: Picture[]
+  setFirstPicture: (pictures: Picture) => void
   addPicture: (picture: Picture) => void
   addPictures: (pictures: Picture[]) => void
   getCurrentPicture: () => Picture | null
@@ -14,6 +15,10 @@ interface IPicturesStore {
 
 const state: StateCreator<IPicturesStore> = (set, get) => ({
   pictures: [],
+  setFirstPicture: picture => {
+    const prev = get().pictures
+    set({ pictures: [picture, ...prev] })
+  },
   addPicture: picture => {
     const prev = get().pictures
     const newPictures = [...prev, picture]
@@ -27,12 +32,11 @@ const state: StateCreator<IPicturesStore> = (set, get) => ({
   getCurrentPicture: () => {
     const pictures = get().pictures
     if (pictures.length === 0) return null
-    const currentSelected = pictures.find(path => path.selected)
-    if (!currentSelected) return pictures[0]
-    return currentSelected
+    return pictures[0]
   }
 })
 
+// const usePicturesStore = create(persist(state, { name: 'pictures' }))
 const usePicturesStore = create(state)
 
 export default usePicturesStore

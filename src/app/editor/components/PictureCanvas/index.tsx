@@ -1,88 +1,71 @@
 import Dropzone, { DropzoneFile } from '@/shared/components/Dropzone'
-import { WORKER_STATUS, useWorker } from '@koale/useworker'
-import { Image as ImageComponent } from '@unpic/react'
-import { type FC, use, useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import { toaster } from '@/shared/components/Toast'
+import { HOST_URL } from '@/shared/constants'
+import { useWorker } from '@koale/useworker'
+import React, { FC, MouseEvent, useCallback, useState } from 'react'
 
 import useImagesStore from '../../store/images/images.store'
 import usePicturesStore from '../../store/images/pictures.store'
+import PictureViewer from './PictureViewer'
 import './style.scss'
-import uploadImage from './upload'
-
-const MAX_WIDTH = 624
-const MAX_HEIGHT = 416
+import uploadImage from './upload.worker'
 
 const PictureCanvas: FC = () => {
-  const { addPicture, getCurrentPicture } = usePicturesStore()
-  const { width, height, scale, aspectRatio, setWidth, setHeight, setAspectRatio } = useImagesStore()
+  const { getCurrentPicture, setFirstPicture, pictures } = usePicturesStore()
+  const { width, height, scale, aspectRatio } = useImagesStore()
 
-  const currentPicture = getCurrentPicture()
+  const [currentPicture, setCurrentPicture] = useState(getCurrentPicture())
+  const [isLoading, setIsLoading] = useState(true)
 
   const [upload] = useWorker(uploadImage)
 
-  const runSort = useCallback(
+  const sendImage = useCallback(
     async (file: DropzoneFile) => {
-      const result = await upload(file)
-      console.log(result)
+      try {
+        const result = await upload(file, `${HOST_URL}/api/upload`)
+        if (result instanceof Error) throw result
+        setFirstPicture({ url: result.image })
+      } catch (error) {
+        toaster({ title: 'Error al subir la imagen', type: 'error', id: 'upload-error' })
+      }
     },
-    [upload]
+    [upload, setFirstPicture]
   )
+
+  const handleLoadError = (): void => {
+    toaster({ title: 'Carga una nueva imagen', type: 'error', id: 'load-error' })
+    setCurrentPicture(null)
+    setIsLoading(false)
+  }
+
+  const handleNewPicture = (e: MouseEvent) => {
+    e.preventDefault()
+    console.log('pictures----------------------', pictures)
+    setCurrentPicture(null)
+  }
 
   const handleDropFile = useCallback(
-    async (files: DropzoneFile[]) => {
-      if (files.length > 1) return
-      runSort(files[0])
-
-      addPicture({ url: files[0].preview, selected: false })
+    (files: DropzoneFile[]) => {
+      setIsLoading(true)
+      setCurrentPicture({ url: files[0].preview })
+      sendImage(files[0])
     },
-    [addPicture]
+    [sendImage]
   )
-
-  useEffect(() => {
-    if (currentPicture) {
-      const img = new Image()
-      img.src = currentPicture.url
-      img.onload = () => {
-        const { naturalWidth, naturalHeight } = img
-        const aspectRatio = naturalWidth / naturalHeight
-        let newWidth = naturalWidth
-        let newHeight = naturalHeight
-
-        if (naturalWidth > MAX_WIDTH) {
-          newWidth = MAX_WIDTH
-          newHeight = newWidth / aspectRatio
-        }
-
-        if (newHeight > MAX_HEIGHT) {
-          newHeight = MAX_HEIGHT
-          newWidth = newHeight * aspectRatio
-        }
-
-        setWidth(Math.round(newWidth))
-        setHeight(Math.round(newHeight))
-        setAspectRatio(aspectRatio)
-      }
-    }
-  }, [currentPicture, setWidth, setHeight, setAspectRatio])
 
   return (
     <section
       className='editor-image cvnPicture'
       style={{ transform: `translate(-50%, -50%) scale(${scale})`, width: `${width}px`, height: `${height}px`, aspectRatio }}
     >
-      {/* {currentPicture && (
-        <ImageComponent
-          key={currentPicture.url}
-          src={currentPicture.url}
-          className='cvnPicture-image'
-          alt='imagen cargada por el usuario'
-          layout='constrained'
-          width={width}
-          height={height}
-        />
-      )} */}
-      {/* {!currentPicture &&  */}
-      <Dropzone onDrop={handleDropFile} maxFiles={1} />
-      {/* } */}
+      <PictureViewer
+        imageUrl={currentPicture?.url}
+        handleError={handleLoadError}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+        handleImageClick={handleNewPicture}
+      />
+      {!currentPicture && <Dropzone onDrop={handleDropFile} maxFiles={1} />}
     </section>
   )
 }

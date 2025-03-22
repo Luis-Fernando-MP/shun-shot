@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import { FC, memo } from 'react'
 
 import BackgroundCanvas from '../../components/BackgroundCanvas'
 import PictureCanvas from '../PictureCanvas'
@@ -18,4 +18,4 @@ const ShotEditor: FC = () => {
   )
 }
 
-export default ShotEditor
+export default memo(ShotEditor)
