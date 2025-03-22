@@ -2,7 +2,7 @@
 @use '@sass/config/vars' as v;
 
 .emptyBlock {
-  width: 90px;
+  width: 100px;
   height: 50px;
 
   &-wrapper {
@@ -12,7 +12,7 @@
     width: 100%;
     height: 100%;
     border: 3px solid rgb(v.$bg3);
-    border-radius: v.$radius * 0.5;
+    border-radius: v.$radius * 0.8;
 
     background-color: rgb(v.$bg1);
 

@@ -5,6 +5,10 @@ import { SquareRoundCornerIcon } from 'lucide-react'
 import { type FC, MouseEvent, useState } from 'react'
 
 import './style.scss'
+import BorderBoxSizingController from './wrappers/BorderBoxSizingController'
+import BorderColorsController from './wrappers/BorderColorsController'
+import BorderGradientsController from './wrappers/BorderGradientsController'
+import BorderSizeController from './wrappers/BorderSizeController'
 import BorderStyleController from './wrappers/BorderStyleController'
 import ImagesRadiusController from './wrappers/ImagesRadiusController'
 
@@ -31,6 +35,11 @@ const CornerConfiguration: FC = () => {
       >
         <ImagesRadiusController />
         <BorderStyleController />
+        <BorderSizeController />
+        <BorderBoxSizingController />
+        <BorderColorsController />
+        {/* TODO: Verificar la efectividad de los gradientes
+        <BorderGradientsController /> */}
       </Popup>
     </>
   )

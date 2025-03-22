@@ -1,9 +1,10 @@
-import UseImagesBorderStoreStore from '@/app/editor/store/images/useImagesBorderStore'
+import UseImagesBorderStore from '@/app/editor/store/images/useImagesBorderStore'
 import BorderConfiguration from '@/shared/components/BorderConfiguration'
 import type { FC } from 'react'
 
 const BorderStyleController: FC = () => {
-  const borderState = UseImagesBorderStoreStore()
+  const borderState = UseImagesBorderStore()
+
   return (
     <div className='borderConfig-section'>
       <h3 className='paragraph-highlight'># Estilo de borde:</h3>

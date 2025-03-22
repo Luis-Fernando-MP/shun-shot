@@ -23,7 +23,6 @@ const ApplyImageStyles: FC<Props> = ({ $containerRef }) => {
   }, [$containerRef.current])
 
   useEffect(() => {
-    console.log('borderStyles', borderStyles)
     const elements = $canvasElements
     if (!elements) return
     const { $images } = elements

@@ -10,6 +10,12 @@ interface Props {
   setBackground: (background: string) => void
 }
 
+/**
+ * ColorsController component allows users to select a color from a predefined set of basic colors.
+ *
+ * @param {string | null} background - The current background color.
+ * @param {(background: string) => void} setBackground - Function to update the background color.
+ */
 const ColorsController: FC<Props> = ({ background, setBackground }) => {
   return (
     <section className='colorsController'>

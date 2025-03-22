@@ -11,16 +11,6 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   onChangeRange: (value: number) => void
 }
 
-/**
- * @description SliderControl component allows users to select a value from a range.
- * @param containerClassName - Optional class name for the container.
- * @param label - Optional label for the slider.
- * @param value - The current value of the slider.
- * @param onChangeRange - Callback function to handle value changes.
- * @param className - Optional class name for the input element.
- * @param max - Maximum value for the slider (default is 100).
- */
-
 const SliderControl = ({
   containerClassName,
   label = '',
@@ -55,5 +45,16 @@ const SliderControl = ({
     </section>
   )
 }
+
+/**
+ * @description SliderControl component allows users to select a value from a range.
+ * @param containerClassName - Optional class name for the container.
+ * @param label - Optional label for the slider.
+ * @param value - The current value of the slider.
+ * @param onChangeRange - Callback function to handle value changes.
+ * @param className - Optional class name for the input element.
+ * @param max - Maximum value for the slider (default is 100).
+ * @param width - Optional width for the container.
+ */
 
 export default memo(SliderControl)
