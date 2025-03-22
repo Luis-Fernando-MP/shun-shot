@@ -22,11 +22,11 @@
     "paths": {
       "@/*": ["./src/*"],
       "@shared/*": ["./src/shared/*"],
-      "@pages/*": ["./src/app/(pages)/*"],
-      "@editor/*": ["./src/app/(pages)/editor/*"],
-      "@editor-store/*": ["./src/app/(pages)/editor/store/*"],
-      "@code/*": ["./src/app/(pages)/(current)/*"],
-      "@code-store/*": ["./src/app/(pages)/(current)/store/*"],
+      "@pages/*": ["./src/app/*"],
+      "@editor/*": ["./src/app/editor/*"],
+      "@editor-store/*": ["./src/app/editor/store/*"],
+      "@code/*": ["./src/app/(current)/*"],
+      "@code-store/*": ["./src/app/(current)/store/*"],
       "@sass/*": ["./src/sass/*"]
     }
   },

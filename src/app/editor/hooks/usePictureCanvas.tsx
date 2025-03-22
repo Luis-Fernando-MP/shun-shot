@@ -38,6 +38,7 @@ const usePictureCanvas = () => {
 
   const handleNewPicture = (e: MouseEvent) => {
     e.preventDefault()
+    // TODO: Abrir el modal para subir nuevas imágenes
     console.log('pictures----------------------', pictures)
   }
 

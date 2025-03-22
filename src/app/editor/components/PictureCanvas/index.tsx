@@ -1,7 +1,7 @@
 import Dropzone from '@/shared/components/Dropzone'
+import usePictureCanvas from '@editor/hooks/usePictureCanvas'
 import React, { type FC, useRef } from 'react'
 
-import usePictureCanvas from '../../hooks/usePictureCanvas'
 import ApplyImageStyles from './ApplyImageStyles'
 import PictureViewer from './PictureViewer'
 import './style.scss'
