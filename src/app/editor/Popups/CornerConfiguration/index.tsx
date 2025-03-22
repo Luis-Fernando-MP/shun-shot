@@ -4,8 +4,9 @@ import IconButton from '@/shared/ui/IconButton'
 import { SquareRoundCornerIcon } from 'lucide-react'
 import { type FC, MouseEvent, useState } from 'react'
 
-import ImagesRadiusController from './ImagesRadiusController'
 import './style.scss'
+import BorderStyleController from './wrappers/BorderStyleController'
+import ImagesRadiusController from './wrappers/ImagesRadiusController'
 
 const CornerConfiguration: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -30,9 +31,7 @@ const CornerConfiguration: FC = () => {
       >
         <ImagesRadiusController />
 
-        <div className='borderConfig-section'>
-          <h3 className='paragraph-highlight'># Tamaño:</h3>
-        </div>
+        <BorderStyleController />
       </Popup>
     </>
   )
