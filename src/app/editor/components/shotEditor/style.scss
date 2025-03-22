@@ -10,7 +10,8 @@
   height: fit-content;
   border-radius: v.$radius;
 
-  box-shadow: -18px 15px 108px 42px #00000052;
+  // TODO: Configurar el shadow en las preferencias de usuario
+  // ->  box-shadow: -18px 15px 108px 42px #00000052;
 
   &-background {
     position: relative;

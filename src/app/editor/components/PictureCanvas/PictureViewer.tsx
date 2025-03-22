@@ -70,6 +70,7 @@ const PictureViewer: FC<Props> = ({ handleError, imageUrl, isLoading, setIsLoadi
         <ImageComponent
           key={newKey('main-image')}
           src={imageUrl}
+          id='picture-image'
           className='cvnPicture-image'
           alt='User uploaded image'
           layout='fullWidth'

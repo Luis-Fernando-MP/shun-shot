@@ -28,6 +28,8 @@ const RenderInputBorders: FC<Props> = ({
         value={borderLTRadius}
         onChange={e => setBorderLTRadius(Number(e.target.value))}
         width='70px'
+        min={0}
+        max={320}
         step={10}
       />
 
@@ -38,6 +40,8 @@ const RenderInputBorders: FC<Props> = ({
         value={borderRTRadius}
         onChange={e => setBorderRTRadius(Number(e.target.value))}
         width='70px'
+        min={0}
+        max={320}
         step={10}
       />
 
@@ -45,9 +49,11 @@ const RenderInputBorders: FC<Props> = ({
         Icon={<Corner rotate={270} />}
         type='number'
         label='px'
-        value={borderLBRadius}
-        onChange={e => setBorderLBRadius(Number(e.target.value))}
+        value={borderRBRadius}
+        onChange={e => setBorderRBRadius(Number(e.target.value))}
         width='70px'
+        min={0}
+        max={320}
         step={10}
       />
 
@@ -55,9 +61,11 @@ const RenderInputBorders: FC<Props> = ({
         Icon={<Corner rotate={180} />}
         type='number'
         label='px'
-        value={borderRBRadius}
-        onChange={e => setBorderRBRadius(Number(e.target.value))}
+        value={borderLBRadius}
+        onChange={e => setBorderLBRadius(Number(e.target.value))}
         width='70px'
+        min={0}
+        max={320}
         step={10}
       />
     </>
