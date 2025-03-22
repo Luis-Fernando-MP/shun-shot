@@ -1,4 +1,4 @@
-import BorderConfiguration from '@/shared/components/BorderConfiguration'
+import BorderRadiusConfiguration from '@/shared/components/BorderRadiusConfiguration'
 import ColorsController from '@/shared/components/ColorsController'
 import GradientsController from '@/shared/components/GradientsController'
 import Popup from '@/shared/components/Popup'
@@ -86,7 +86,7 @@ const RadiusController: FC = () => {
   return (
     <div className='bgConfig-section'>
       <h3 className='paragraph-highlight'># Redondeado:</h3>
-      <BorderConfiguration borderState={borderStore} />
+      <BorderRadiusConfiguration borderState={borderStore} />
     </div>
   )
 }

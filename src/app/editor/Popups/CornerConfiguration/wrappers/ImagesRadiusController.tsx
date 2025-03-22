@@ -1,5 +1,5 @@
 import useImagesRadiusStore from '@/app/editor/store/images/imagesRadius.store'
-import BorderConfiguration from '@/shared/components/BorderConfiguration'
+import BorderRadiusConfiguration from '@/shared/components/BorderRadiusConfiguration'
 import type { FC } from 'react'
 
 const ImagesRadiusController: FC = () => {
@@ -7,7 +7,7 @@ const ImagesRadiusController: FC = () => {
   return (
     <div className='borderConfig-section'>
       <h3 className='paragraph-highlight'># Redondeado:</h3>
-      <BorderConfiguration borderState={borderStore} />
+      <BorderRadiusConfiguration borderState={borderStore} />
     </div>
   )
 }

@@ -30,7 +30,6 @@ const CornerConfiguration: FC = () => {
         className='borderConfig-popup'
       >
         <ImagesRadiusController />
-
         <BorderStyleController />
       </Popup>
     </>

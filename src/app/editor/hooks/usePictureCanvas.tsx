@@ -22,7 +22,7 @@ const usePictureCanvas = () => {
       try {
         const result = await upload(file, `${HOST_URL}/api/upload`)
         if (result instanceof Error) throw result
-        setFirstPicture({ url: result.image })
+        setFirstPicture({ url: result.original_image })
       } catch (error) {
         toaster({ title: 'Error al subir la imagen', type: 'error', id: 'upload-error' })
       }

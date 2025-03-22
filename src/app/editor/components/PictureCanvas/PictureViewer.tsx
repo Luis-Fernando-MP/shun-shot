@@ -56,6 +56,7 @@ const PictureViewer: FC<Props> = ({ handleError, imageUrl, isLoading, setIsLoadi
     }
 
     img.onload = handleImageLoad
+    img.onerror = handleError
   }, [imageUrl])
 
   return (
