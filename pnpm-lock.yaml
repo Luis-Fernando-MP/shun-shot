@@ -8,93 +8,99 @@ importers:
 
   .:
     dependencies:
+      '@koale/useworker':
+        specifier: ^4.1.2
+        version: 4.1.2(react@19.0.0)
       '@lucide/lab':
-        specifier: ^0.1.2
+        specifier: 0.1.2
         version: 0.1.2
       '@midudev/tailwind-animations':
         specifier: 0.2.0
         version: 0.2.0(tailwindcss@4.0.14)
       '@monaco-editor/react':
-        specifier: ^4.7.0
+        specifier: 4.7.0
         version: 4.7.0(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tanstack/react-query':
         specifier: 5.67.3
         version: 5.67.3(react@19.0.0)
       '@uiw/react-color-colorful':
-        specifier: ^2.4.3
+        specifier: 2.4.3
         version: 2.4.3(@babel/runtime@7.26.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@unpic/react':
+        specifier: ^1.0.1
+        version: 1.0.1(next@15.2.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.85.1))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       cloudinary:
-        specifier: ^2.6.0
+        specifier: 2.6.0
         version: 2.6.0
       dom-to-image-more:
-        specifier: ^3.5.0
+        specifier: 3.5.0
         version: 3.5.0
       html2canvas:
-        specifier: ^1.4.1
+        specifier: 1.4.1
         version: 1.4.1
       jspdf:
-        specifier: ^3.0.0
+        specifier: 3.0.0
         version: 3.0.0
       lucide-react:
         specifier: 0.479.0
         version: 0.479.0(react@19.0.0)
       monaco-themes:
-        specifier: ^0.4.4
+        specifier: 0.4.4
         version: 0.4.4
       next:
         specifier: 15.2.2
         version: 15.2.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.85.1)
       nextjs-toploader:
-        specifier: ^3.7.15
+        specifier: 3.7.15
         version: 3.7.15(next@15.2.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.85.1))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: 19.0.0
         version: 19.0.0
       react-color:
-        specifier: ^2.19.3
+        specifier: 2.19.3
         version: 2.19.3(react@19.0.0)
       react-dom:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
       react-dropzone:
-        specifier: ^14.3.8
+        specifier: 14.3.8
         version: 14.3.8(react@19.0.0)
       react-field-sizing-content:
-        specifier: ^1.0.0
+        specifier: 1.0.0
         version: 1.0.0(react@19.0.0)
       react-hot-toast:
         specifier: 2.5.2
         version: 2.5.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       unsplash-js:
-        specifier: ^7.0.19
+        specifier: 7.0.19
         version: 7.0.19
       usehooks-ts:
-        specifier: ^3.1.1
+        specifier: 3.1.1
         version: 3.1.1(react@19.0.0)
       zustand:
         specifier: 5.0.3
         version: 5.0.3(@types/react@19.0.10)(react@19.0.0)
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^3.3.0
+        specifier: 3.3.0
         version: 3.3.0
       '@trivago/prettier-plugin-sort-imports':
         specifier: 5.2.2
         version: 5.2.2(prettier@3.5.3)
       '@types/dom-to-image':
-        specifier: ^2.6.7
+        specifier: 2.6.7
         version: 2.6.7
       '@types/node':
         specifier: 22.13.10
         version: 22.13.10
       '@types/prettier':
-        specifier: ^3.0.0
+        specifier: 3.0.0
         version: 3.0.0
       '@types/react':
         specifier: 19.0.10
         version: 19.0.10
       '@types/react-color':
-        specifier: ^3.0.13
+        specifier: 3.0.13
         version: 3.0.13(@types/react@19.0.10)
       '@types/react-dom':
         specifier: 19.0.4
@@ -112,7 +118,7 @@ importers:
         specifier: 3.18.0
         version: 3.18.0(tailwindcss@4.0.14)
       monaco-editor:
-        specifier: ^0.52.2
+        specifier: 0.52.2
         version: 0.52.2
       postcss:
         specifier: 8.5.3
@@ -121,7 +127,7 @@ importers:
         specifier: 3.5.3
         version: 3.5.3
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.11
+        specifier: 0.6.11
         version: 0.6.11(@trivago/prettier-plugin-sort-imports@5.2.2(prettier@3.5.3))(prettier@3.5.3)
       rimraf:
         specifier: 6.0.1
@@ -411,6 +417,11 @@ packages:
 
   '@keyv/serialize@1.0.3':
     resolution: {integrity: sha512-qnEovoOp5Np2JDGonIDL6Ayihw0RhnRh6vxPuHo4RDn1UOzwEo4AeIfpL6UGIrsceWrCMiVPgwRjbHu4vYFc3g==}
+
+  '@koale/useworker@4.1.2':
+    resolution: {integrity: sha512-rVS9qs5prEBBw1YnvBlIN/jc1MLbchtv54mI1OGH8rQrE1jYfXg2+1p+4O5vFcU96cy2dafosnwZw8HXDpY//w==}
+    peerDependencies:
+      react: '>=16.8.0 <20.0.0'
 
   '@lucide/lab@0.1.2':
     resolution: {integrity: sha512-VprF2BJa7ZuTGOhUd5cf8tHJXyL63wdxcGieAiVVoR9hO0YmPsnZO0AGqDiX2/br+/MC6n8BoJcmPilltOXIJA==}
@@ -748,6 +759,19 @@ packages:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
 
+  '@unpic/core@1.0.1':
+    resolution: {integrity: sha512-e0cwxOhtWPd4J32rV1V6jFmDGAi1r4p/f+lDqlnx+fhgFwMTyQQKw5lL7VEthUPBHFNaNBsXNbNKwnaIs2V71Q==}
+
+  '@unpic/react@1.0.1':
+    resolution: {integrity: sha512-JmKVmf7ZhKDlVFK8yfbgiWp9K4rXXovE8mWrbkqjDJHKhDqbF5uUp7754Tk7oNSYJcvIXfH8P/nYRCfG2ca0/w==}
+    peerDependencies:
+      next: ^13.0.0 || ^14.0.0 || ^15.0.0
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -1028,6 +1052,10 @@ packages:
   define-properties@1.2.1:
     resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
     engines: {node: '>= 0.4'}
+
+  dequal@2.0.3:
+    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
+    engines: {node: '>=6'}
 
   detect-libc@1.0.3:
     resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
@@ -2428,6 +2456,9 @@ packages:
   undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
+  unpic@4.1.2:
+    resolution: {integrity: sha512-sau6i25EUxumNIL7e0kDpPWkVw3yxghLYcEwxPvm08263UfABDxtUJPT3H55z7W15cVXJB/PEhw4z6Oc+idWCA==}
+
   unsplash-js@7.0.19:
     resolution: {integrity: sha512-j6qT2floy5Q2g2d939FJpwey1yw/GpQecFiSouyJtsHQPj3oqmqq3K4rI+GF8vU1zwGCT7ZwIGQd2dtCQLjYJw==}
     engines: {node: '>=10'}
@@ -2749,6 +2780,11 @@ snapshots:
     dependencies:
       buffer: 6.0.3
 
+  '@koale/useworker@4.1.2(react@19.0.0)':
+    dependencies:
+      dequal: 2.0.3
+      react: 19.0.0
+
   '@lucide/lab@0.1.2': {}
 
   '@midudev/tailwind-animations@0.2.0(tailwindcss@4.0.14)':
@@ -3060,6 +3096,18 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
+  '@unpic/core@1.0.1':
+    dependencies:
+      unpic: 4.1.2
+
+  '@unpic/react@1.0.1(next@15.2.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.85.1))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@unpic/core': 1.0.1
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    optionalDependencies:
+      next: 15.2.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.85.1)
+
   acorn-jsx@5.3.2(acorn@8.14.1):
     dependencies:
       acorn: 8.14.1
@@ -3360,6 +3408,8 @@ snapshots:
       define-data-property: 1.1.4
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
+
+  dequal@2.0.3: {}
 
   detect-libc@1.0.3:
     optional: true
@@ -4953,6 +5003,8 @@ snapshots:
       which-boxed-primitive: 1.1.1
 
   undici-types@6.20.0: {}
+
+  unpic@4.1.2: {}
 
   unsplash-js@7.0.19: {}
 

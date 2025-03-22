@@ -1,0 +1,20 @@
+@use '@sass/config/vars' as v;
+@use '@sass/utils/defs' as d;
+
+.cvnPicture {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+
+  width: 624px;
+  height: 416px;
+  border-radius: v.$radius;
+
+  background-color: rgb(v.$bg2);
+
+  &-image {
+    border-radius: v.$radius;
+    object-fit: cover;
+  }
+}

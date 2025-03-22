@@ -12,22 +12,6 @@
 
   box-shadow: -18px 15px 108px 42px #00000052;
 
-  &-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: center;
-    transform: translate(-50%, -50%) rotate(20deg);
-
-    overflow: hidden;
-
-    width: 500;
-    height: 350px;
-    border-radius: v.$radius;
-
-    background-color: rgb(v.$bg2);
-  }
-
   &-background {
     position: relative;
   }

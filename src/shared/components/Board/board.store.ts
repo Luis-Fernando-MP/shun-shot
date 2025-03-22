@@ -20,7 +20,7 @@ interface IBoardStore {
 }
 
 export const MIN_SCALE = 0.5
-export const MAX_SCALE = 2.5
+export const MAX_SCALE = 3
 export const INITIAL_SCALE = 1
 
 const state: StateCreator<IBoardStore> = set => ({

@@ -17,23 +17,22 @@ const acceptedFileTypes = {
 interface ChildrenProps {
   missingFiles: boolean
   openFileExplorer: () => void
-  files: DropzonePreview[]
+  files: DropzoneFile[]
   maxFiles: number
-  removeFile: (_file: DropzonePreview) => void
+  removeFile: (_file: DropzoneFile) => void
 }
 
 interface Props extends Omit<DropzoneOptions, 'onDrop' | 'accept'> {
-  paths: string[]
   removeAfterUpload?: boolean
-  setPaths: (paths: DropzonePreview[]) => void
+  onDrop: (paths: DropzoneFile[]) => void
   maxFiles?: number
   children?: (_props: ChildrenProps) => ReactNode
 }
 
-export type DropzonePreview = File & { preview: string }
+export type DropzoneFile = File & { preview: string }
 
-const Dropzone: FC<Props> = ({ paths, setPaths, removeAfterUpload = false, maxFiles = 1, children, ...dropzoneProps }) => {
-  const [files, setFiles] = useState<DropzonePreview[]>([])
+const Dropzone: FC<Props> = ({ onDrop, removeAfterUpload = false, maxFiles = 1, children, ...dropzoneProps }) => {
+  const [files, setFiles] = useState<DropzoneFile[]>([])
 
   const handleDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -44,9 +43,9 @@ const Dropzone: FC<Props> = ({ paths, setPaths, removeAfterUpload = false, maxFi
 
       const slicedFiles = updatedFiles.slice(0, maxFiles)
       setFiles(slicedFiles)
-      setPaths(slicedFiles)
+      onDrop(slicedFiles)
     },
-    [files, maxFiles, setPaths]
+    [files, maxFiles, onDrop]
   )
 
   const dropzone = useDropzone({
@@ -60,18 +59,18 @@ const Dropzone: FC<Props> = ({ paths, setPaths, removeAfterUpload = false, maxFi
   const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject, open } = dropzone
 
   const handleRemoveFile = useCallback(
-    (fileToRemove: DropzonePreview) => {
+    (fileToRemove: DropzoneFile) => {
       URL.revokeObjectURL(fileToRemove.preview)
       const updatedFiles = files.filter(file => file !== fileToRemove)
       setFiles(updatedFiles)
-      setPaths(updatedFiles)
+      onDrop(updatedFiles)
     },
-    [files, setPaths]
+    [files, onDrop]
   )
 
-  useEffect(() => {
-    return () => files.forEach(file => URL.revokeObjectURL(file.preview))
-  }, [files])
+  // useEffect(() => {
+  //   return () => files.forEach(file => URL.revokeObjectURL(file.preview))
+  // }, [files])
 
   if (removeAfterUpload && files.length > 0) return null
   const IconHover = isDragAccept ? WandIcon : XIcon

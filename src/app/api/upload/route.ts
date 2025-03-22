@@ -6,6 +6,7 @@ import cloudinary, { cloudPreset } from './cloud'
 export async function POST(req: Request) {
   try {
     const data = await req.json()
+    console.log(data)
     if (!data?.imageBase64) throw new Error('No image provided')
     const matches = data.imageBase64.match(/^data:(.+);base64,(.+)$/)
     if (!matches) {
