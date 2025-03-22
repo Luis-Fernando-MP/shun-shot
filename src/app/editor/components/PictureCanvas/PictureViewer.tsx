@@ -16,6 +16,15 @@ interface Props {
 const MAX_WIDTH = 624
 const MAX_HEIGHT = 416
 
+/**
+ * PictureViewer component for displaying an image with loading state.
+ *
+ * @param {string} imageUrl - The URL of the image to be displayed.
+ * @param {function} handleError - Function to handle errors when loading the image.
+ * @param {boolean} isLoading - Indicates whether the image is currently loading.
+ * @param {function} setIsLoading - Function to set the loading state.
+ * @param {function} handleImageClick - Optional function to handle click events on the image.
+ */
 const PictureViewer: FC<Props> = ({ handleError, imageUrl, isLoading, setIsLoading, handleImageClick }) => {
   const { width, height, aspectRatio, setWidth, setHeight, setAspectRatio } = useImagesStore()
 
@@ -62,7 +71,7 @@ const PictureViewer: FC<Props> = ({ handleError, imageUrl, isLoading, setIsLoadi
           key={newKey('main-image')}
           src={imageUrl}
           className='cvnPicture-image'
-          alt='imagen cargada por el usuario'
+          alt='User uploaded image'
           layout='fullWidth'
           fetchPriority='high'
           cdn='cloudinary'

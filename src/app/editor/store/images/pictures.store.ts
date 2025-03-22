@@ -36,7 +36,7 @@ const state: StateCreator<IPicturesStore> = (set, get) => ({
   }
 })
 
-// const usePicturesStore = create(persist(state, { name: 'pictures' }))
-const usePicturesStore = create(state)
+const usePicturesStore = create(persist(state, { name: 'pictures' }))
+// const usePicturesStore = create(state)
 
 export default usePicturesStore

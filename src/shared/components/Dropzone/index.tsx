@@ -2,7 +2,7 @@
 
 import { acl } from '@/shared/acl'
 import { ImagePlusIcon, WandIcon, XIcon } from 'lucide-react'
-import { FC, ReactNode, useCallback, useEffect, useState } from 'react'
+import { FC, ReactNode, memo, useCallback, useEffect, useState } from 'react'
 import { DropzoneOptions, useDropzone } from 'react-dropzone'
 
 import { toaster } from '../Toast'
@@ -38,8 +38,10 @@ const Dropzone: FC<Props> = ({ onDrop, removeAfterUpload = false, maxFiles = 1, 
     (acceptedFiles: File[]) => {
       const previewFiles = acceptedFiles.map(file => Object.assign(file, { preview: URL.createObjectURL(file) }))
       const updatedFiles = [...files, ...previewFiles]
-      if (updatedFiles.length > maxFiles)
-        return toaster({ title: 'Haz supera el limite de imágenes', type: 'error', id: 'dropzone-max-files' })
+      if (updatedFiles.length > maxFiles) {
+        toaster({ title: 'Haz supera el limite de imágenes', type: 'error', id: 'dropzone-max-files' })
+        return
+      }
 
       const slicedFiles = updatedFiles.slice(0, maxFiles)
       setFiles(slicedFiles)
@@ -68,15 +70,7 @@ const Dropzone: FC<Props> = ({ onDrop, removeAfterUpload = false, maxFiles = 1, 
     [files, onDrop]
   )
 
-  // useEffect(() => {
-  //   return () => files.forEach(file => URL.revokeObjectURL(file.preview))
-  // }, [files])
-
-  if (removeAfterUpload && files.length > 0) return null
-  const IconHover = isDragAccept ? WandIcon : XIcon
-  const IconDragging = isDragActive ? IconHover : ImagePlusIcon
-
-  const renderContent = () => {
+  const renderContent = useCallback(() => {
     if (isDragActive) {
       return (
         <section className='dropzone-content'>
@@ -117,7 +111,15 @@ const Dropzone: FC<Props> = ({ onDrop, removeAfterUpload = false, maxFiles = 1, 
         </section>
       </section>
     )
-  }
+  }, [isDragActive, isDragAccept, files, children, maxFiles, open, handleRemoveFile])
+
+  useEffect(() => {
+    return () => files.forEach(file => URL.revokeObjectURL(file.preview))
+  }, [files])
+
+  if (removeAfterUpload && files.length > 0) return null
+  const IconHover = isDragAccept ? WandIcon : XIcon
+  const IconDragging = isDragActive ? IconHover : ImagePlusIcon
 
   return (
     <article
@@ -131,4 +133,12 @@ const Dropzone: FC<Props> = ({ onDrop, removeAfterUpload = false, maxFiles = 1, 
   )
 }
 
-export default Dropzone
+/**
+ * @description Dropzone component for uploading images.
+ * @param { (paths: DropzoneFile[]) => void } onDrop - Callback function to handle dropped files.
+ * @param { boolean } removeAfterUpload - Whether to remove the dropped files after uploading.
+ * @param { number } maxFiles - Maximum number of allowed files.
+ * @param { ReactNode } children - Custom children component, if provided, will render the children component with the following props: missingFiles, openFileExplorer, files, maxFiles, removeFile
+ * @param { DropzoneOptions } dropzoneProps - Additional props for the Dropzone component.
+ */
+export default memo(Dropzone)
