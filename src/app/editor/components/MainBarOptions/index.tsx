@@ -6,6 +6,7 @@ import type { FC } from 'react'
 
 import BackgroundConfiguration from '../../Popups/BackgroundConfiguration'
 import CornerConfiguration from '../../Popups/CornerConfiguration'
+import ShadowConfiguration from '../../Popups/ShadowConfiguration'
 
 const MainBarOptions: FC = () => {
   return (
@@ -25,6 +26,7 @@ const MainBarOptions: FC = () => {
         <div className='separator' />
         <h5>Imágenes: </h5>
         <CornerConfiguration />
+        <ShadowConfiguration />
 
         <IconButton label='Filtros del fondo' transparent>
           <SlidersHorizontalIcon />
