@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react'
 import { StateCreator, create } from 'zustand'
 
-interface IBackgroundStore {
+interface Props {
   background: string | null
   backgroundWidth: number
   backgroundHeight: number
@@ -15,7 +15,7 @@ interface IBackgroundStore {
   getBackground: () => CSSProperties
 }
 
-const state: StateCreator<IBackgroundStore> = (set, get) => ({
+const state: StateCreator<Props> = (set, get) => ({
   background: null,
   backgroundWidth: 900,
   backgroundHeight: 600,

@@ -30,7 +30,7 @@ const DefaultBorders: FC<Props> = ({ borderValue, changeBorder }) => {
         return (
           <IndividualDefaultBorder
             key={newKey()}
-            value={radius * 0.8}
+            value={radius * 0.6}
             onClick={() => changeBorder(radius)}
             label={label}
             selected={radius === borderValue}

@@ -1,11 +1,14 @@
 import Dropzone from '@/shared/components/Dropzone'
-import React, { type FC } from 'react'
+import usePictureCanvas from '@editor/hooks/usePictureCanvas'
+import React, { type FC, useRef } from 'react'
 
-import usePictureCanvas from '../../hooks/usePictureCanvas'
+import ApplyImageStyles from './ApplyImageStyles'
 import PictureViewer from './PictureViewer'
 import './style.scss'
 
 const PictureCanvas: FC = () => {
+  const $containerRef = useRef<HTMLDivElement>(null)
+
   const {
     scale,
     width,
@@ -21,9 +24,12 @@ const PictureCanvas: FC = () => {
 
   return (
     <section
+      ref={$containerRef}
       className='editor-image cvnPicture'
       style={{ transform: `translate(-50%, -50%) scale(${scale})`, width: `${width}px`, height: `${height}px`, aspectRatio }}
     >
+      <ApplyImageStyles $containerRef={$containerRef} />
+
       <PictureViewer
         imageUrl={currentPicture?.url}
         handleError={handleLoadError}

@@ -1,8 +1,8 @@
 'use client'
 
+import Logo from '@/shared/assets/Logo'
 import React, { useLayoutEffect, useRef, useState } from 'react'
 
-import Logo from '../../assets/Logo'
 import './style.scss'
 
 const LoaderPage = () => {

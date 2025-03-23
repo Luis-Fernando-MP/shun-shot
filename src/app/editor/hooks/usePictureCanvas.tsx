@@ -22,7 +22,7 @@ const usePictureCanvas = () => {
       try {
         const result = await upload(file, `${HOST_URL}/api/upload`)
         if (result instanceof Error) throw result
-        setFirstPicture({ url: result.image })
+        setFirstPicture({ url: result.original_image })
       } catch (error) {
         toaster({ title: 'Error al subir la imagen', type: 'error', id: 'upload-error' })
       }
@@ -38,6 +38,7 @@ const usePictureCanvas = () => {
 
   const handleNewPicture = (e: MouseEvent) => {
     e.preventDefault()
+    // TODO: Abrir el modal para subir nuevas imágenes
     console.log('pictures----------------------', pictures)
   }
 

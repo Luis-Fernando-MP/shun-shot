@@ -1,25 +1,17 @@
 'use client'
 
-import { type FC } from 'react'
+import { type FC, useRef } from 'react'
 
-import useBackgroundStore from '../../store/background/background.store'
-import useBackgroundRadiusStore from '../../store/background/backgroundRadius.store'
+import ApplyBackgroundStyles from './ApplyBackgroundStyles'
 
 const BackgroundCanvas: FC = () => {
-  const { backgroundHeight, backgroundWidth, getBackground } = useBackgroundStore()
-
-  const { getStyleBorderRadius } = useBackgroundRadiusStore()
+  const $containerRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <div
-      className='editor-background'
-      style={{
-        height: backgroundHeight,
-        width: backgroundWidth,
-        ...getStyleBorderRadius(),
-        ...getBackground()
-      }}
-    />
+    <>
+      <div ref={$containerRef} className='editor-background' />
+      <ApplyBackgroundStyles $containerRef={$containerRef} />
+    </>
   )
 }
 

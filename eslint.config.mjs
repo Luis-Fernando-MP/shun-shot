@@ -12,6 +12,7 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.config({
     extends: ['next/core-web-vitals', 'next/typescript', 'prettier'],
+    plugins: ['import'],
     rules: {
       'tailwindcss/no-custom-classname': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
@@ -20,8 +21,20 @@ const eslintConfig = [
       '@typescript-eslint/no-floating-promises': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
-      '@next/next/no-img-element': 'off'
-    }
+      '@next/next/no-img-element': 'off',
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['../../'],
+              message: 'Relative imports from parent directories are not allowed.'
+            }
+          ]
+        }
+      ]
+    },
+    ignorePatterns: ['src/app/v1']
   })
 ]
 

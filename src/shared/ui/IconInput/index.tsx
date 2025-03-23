@@ -48,6 +48,7 @@ const IconInput: FC<Props> = ({
       <Input
         className={`iconInput-input ${className}`}
         {...props}
+        fieldSizing={fieldSizing}
         value={value}
         onChange={onChange}
         style={{ width, ...style }}

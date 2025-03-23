@@ -1,4 +1,3 @@
-/* stylelint-disable keyframes-name-pattern */
 @use '@/sass/config/vars' as v;
 @use '@/sass/utils/defs' as d;
 
@@ -24,9 +23,6 @@
   &.dragging {
     background-color: rgb(v.$fn3);
     outline-color: rgb(v.$fn3);
-  }
-
-  &.loading {
   }
 
   &-content {

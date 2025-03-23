@@ -56,6 +56,7 @@ const PictureViewer: FC<Props> = ({ handleError, imageUrl, isLoading, setIsLoadi
     }
 
     img.onload = handleImageLoad
+    img.onerror = handleError
   }, [imageUrl])
 
   return (
@@ -67,24 +68,32 @@ const PictureViewer: FC<Props> = ({ handleError, imageUrl, isLoading, setIsLoadi
       )}
 
       {imageUrl && !isLoading && (
-        <ImageComponent
-          key={newKey('main-image')}
-          src={imageUrl}
-          className='cvnPicture-image'
-          alt='User uploaded image'
-          layout='fullWidth'
-          fetchPriority='high'
-          cdn='cloudinary'
-          onClick={handleImageClick}
-          priority
-          onError={handleError}
-          operations={{
-            cloudinary: {
-              quality: 'auto:best',
-              q: 100
-            }
-          }}
-        />
+        <div
+          className='cvnPicture-container'
+          id='picture-image'
+          style={{ width: `${width}px`, minHeight: `${height}px`, aspectRatio }}
+        >
+          <ImageComponent
+            key={newKey('main-image')}
+            src={imageUrl}
+            className='cvnPicture-image'
+            alt='User uploaded image'
+            layout='fixed'
+            width={width}
+            height={height}
+            fetchPriority='high'
+            cdn='cloudinary'
+            onClick={handleImageClick}
+            priority
+            onError={handleError}
+            operations={{
+              cloudinary: {
+                quality: 'auto:best',
+                q: 100
+              }
+            }}
+          />
+        </div>
       )}
     </>
   )

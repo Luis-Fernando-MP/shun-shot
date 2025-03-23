@@ -10,13 +10,13 @@
     "format": "pnpx stylelint '**/*.{css,scss}' --fix && prettier --write '**/*.{js,jsx,ts,tsx,json,md,scss,css}'"
   },
   "dependencies": {
-    "@koale/useworker": "^4.1.2",
+    "@koale/useworker": "4.1.2",
     "@lucide/lab": "0.1.2",
     "@midudev/tailwind-animations": "0.2.0",
     "@monaco-editor/react": "4.7.0",
     "@tanstack/react-query": "5.67.3",
     "@uiw/react-color-colorful": "2.4.3",
-    "@unpic/react": "^1.0.1",
+    "@unpic/react": "1.0.1",
     "cloudinary": "2.6.0",
     "dom-to-image-more": "3.5.0",
     "html2canvas": "1.4.1",
@@ -47,6 +47,7 @@
     "eslint": "9.22.0",
     "eslint-config-next": "15.2.2",
     "eslint-config-prettier": "10.1.1",
+    "eslint-import-resolver-typescript": "4.2.2",
     "eslint-plugin-tailwindcss": "3.18.0",
     "monaco-editor": "0.52.2",
     "postcss": "8.5.3",

@@ -12,10 +12,17 @@
   height: auto;
   border-radius: v.$radius;
 
+  &-container {
+    overflow: hidden;
+
+    box-sizing: content-box;
+    width: fit-content;
+    height: fit-content;
+    border-radius: v.$radius;
+  }
+
   &-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   &-loader {
