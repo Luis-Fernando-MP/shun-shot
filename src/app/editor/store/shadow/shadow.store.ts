@@ -29,7 +29,7 @@ const state: StateCreator<Props> = (set, get) => ({
   opacity: 0,
   blur: 0,
   spread: 0,
-  color: 'red',
+  color: '0,0,0',
   type: 'none',
   position: { x: 0, y: 0 },
 
@@ -41,16 +41,15 @@ const state: StateCreator<Props> = (set, get) => ({
   setPosition: (position: Positions) => set({ position }),
 
   getShadowStyle: () => {
-    const { opacity, blur, spread, type, position } = get()
+    const { opacity, blur, spread, type, position, color } = get()
+    console.log('color', color)
     if (type === 'none') return 'none'
 
-    const shadow1 = `${position.x / 2}px ${position.y / 2}px ${blur / 2}px ${spread / 2}px rgba(0,0,0, ${Math.min(opacity * 0.6, 0.5).toFixed(2)})`
+    const shadow1 = `${position.x / 2}px ${position.y / 2}px ${blur / 2}px ${spread / 2}px rgba(${color}, ${Math.min(opacity * 0.6, 0.5).toFixed(2)})`
 
-    const shadow2 = `${position.x}px ${position.y}px ${blur}px ${spread}px rgba(0,0,0, ${opacity.toFixed(2)})`
+    const shadow2 = `${position.x}px ${position.y}px ${blur}px ${spread}px rgba(${color}, ${opacity.toFixed(2)})`
 
-    const shadow3 = `${position.x * 1.2}px ${position.y * 1.2}px ${blur * 1.5}px ${spread * 1.5}px rgba(0,0,0, ${(opacity * 0.7).toFixed(2)})`
-
-    return `${shadow1}, ${shadow2}, ${shadow3}`
+    return `${shadow1}, ${shadow2}`
   }
 })
 

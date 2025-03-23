@@ -6,6 +6,7 @@ import { type FC, MouseEvent, useState } from 'react'
 
 import './style.scss'
 import ShadowBlurSpreadWrapper from './wrappers/ShadowBlurSpreadWrapper'
+import ShadowColorsWrapper from './wrappers/ShadowColorsWrapper'
 import ShadowOpacityWrapper from './wrappers/ShadowOpacityWrapper'
 import ShadowPositionWrapper from './wrappers/ShadowPositionWrapper'
 
@@ -34,6 +35,7 @@ const ShadowConfiguration: FC = () => {
         <ShadowOpacityWrapper />
         <ShadowBlurSpreadWrapper />
         <ShadowPositionWrapper />
+        <ShadowColorsWrapper />
       </Popup>
     </>
   )

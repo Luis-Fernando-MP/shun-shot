@@ -1,4 +1,4 @@
-import { type FC, RefObject, memo, useEffect, useMemo } from 'react'
+import { type FC, RefObject, memo, useCallback, useEffect } from 'react'
 
 import useImagesRadiusStore from '../../store/images/imagesRadius.store'
 import useImagesBorderStore from '../../store/images/useImagesBorderStore'
@@ -17,7 +17,7 @@ const ApplyImageStyles: FC<Props> = ({ $containerRef }) => {
   const { getShadowStyle } = useShadowStore()
   const shadowStyle = getShadowStyle()
 
-  const $canvasElements = useMemo(() => {
+  const $canvasElements = useCallback(() => {
     const $container = $containerRef?.current
     if (!$container) return null
     const $images: HTMLImageElement[] = Array.from($container.querySelectorAll('div#picture-image'))
@@ -26,7 +26,7 @@ const ApplyImageStyles: FC<Props> = ({ $containerRef }) => {
   }, [$containerRef.current])
 
   useEffect(() => {
-    const elements = $canvasElements
+    const elements = $canvasElements()
     if (!elements) return
     const { $images } = elements
 

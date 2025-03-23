@@ -6,7 +6,7 @@ import './style.scss'
 
 const ShotEditor: FC = () => {
   return (
-    <div className='app-board editor'>
+    <div className='app-board editor' id='editor'>
       <BackgroundCanvas />
       <PictureCanvas />
 
