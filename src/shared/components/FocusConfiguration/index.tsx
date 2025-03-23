@@ -1,5 +1,4 @@
 import { ShadowType } from '@/app/editor/store/shadow/shadow.store'
-import { log } from 'console'
 import { SunIcon, TreePineIcon } from 'lucide-react'
 import { type FC, type MouseEvent, useEffect, useRef, useState } from 'react'
 
@@ -32,8 +31,8 @@ const defaultShadows = [
   },
   {
     type: 'light',
-    blur: 80,
-    spread: 10
+    blur: 50,
+    spread: 5
   }
 ]
 
@@ -66,16 +65,11 @@ const FocusConfiguration: FC<Props> = ({ shadowType, setPosition, setBlur, setSp
     if (!$containerRef.current) return
     const { width, height } = $containerRef.current.getBoundingClientRect()
     calculateShadowFromPositions(sunPositions.x, sunPositions.y, width, height)
-    console.log('revalidate')
   }, [sunPositions, shadowType])
 
   const calculateShadowFromPositions = (x: number, y: number, containerWidth: number, containerHeight: number) => {
     if (!$containerRef.current) return
-
-    if (shadowType === 'none') {
-      setShadowStyle('none')
-      return
-    }
+    if (shadowType === 'none') return setShadowStyle('none')
 
     const shadowConfig = defaultShadows.find(s => s.type === shadowType) || defaultShadows[0]
 
@@ -90,14 +84,12 @@ const FocusConfiguration: FC<Props> = ({ shadowType, setPosition, setBlur, setSp
 
     const distance = Math.sqrt(relX * relX + relY * relY)
 
-    let blur = 5 + distance * SHADOW_DISPERSION
-    let spread = 2 + distance * SHADOW_SPREAD
-    let opacity = 0.3 + distance
+    let blur, spread, opacity
 
     switch (shadowType) {
       case 'simple':
-        shadowX = -relX * 30
-        shadowY = -relY * 30
+        shadowX = -relX * 50
+        shadowY = -relY * 50
         blur = shadowConfig.blur
         spread = shadowConfig.spread
         opacity = 0.3 + distance * 0.4
@@ -113,9 +105,9 @@ const FocusConfiguration: FC<Props> = ({ shadowType, setPosition, setBlur, setSp
         // La luz no depende tanto de la dirección sino de la distancia
         shadowX = 0
         shadowY = 0
-        blur = shadowConfig.blur + distance * 15
+        blur = shadowConfig.blur + distance
         spread = shadowConfig.spread + distance * SHADOW_SPREAD
-        opacity = 0.5 + distance * 0.5
+        opacity = 0.5 + distance * 0.2
         break
       default:
         blur = 0
@@ -123,7 +115,7 @@ const FocusConfiguration: FC<Props> = ({ shadowType, setPosition, setBlur, setSp
         opacity = 0
     }
 
-    const newShadowStyle = `${shadowX}px ${shadowY}px ${spread * 0.1}px rgba(var(--fnt-primary, ${opacity.toFixed(2)})`
+    const newShadowStyle = `drop-shadow(${shadowX}px ${shadowY}px ${spread * 0.2}px rgba(var(--fnt-primary), ${opacity.toFixed(2)}))`
     setPosition({ x: shadowX, y: shadowY })
     setBlur(blur)
     setSpread(spread)
@@ -183,7 +175,7 @@ const FocusConfiguration: FC<Props> = ({ shadowType, setPosition, setBlur, setSp
         className='focusConfig-objective'
         ref={$objectiveRef}
         style={{
-          filter: `drop-shadow(${shadowStyle})`
+          filter: shadowStyle
         }}
       >
         <TreePineIcon />

@@ -20,7 +20,7 @@ const ApplyImageStyles: FC<Props> = ({ $containerRef }) => {
   const $canvasElements = useMemo(() => {
     const $container = $containerRef?.current
     if (!$container) return null
-    const $images: HTMLImageElement[] = Array.from($container.querySelectorAll('img#picture-image'))
+    const $images: HTMLImageElement[] = Array.from($container.querySelectorAll('div#picture-image'))
 
     return { $images, $container }
   }, [$containerRef.current])
