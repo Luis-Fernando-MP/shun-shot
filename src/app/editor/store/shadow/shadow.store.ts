@@ -2,7 +2,11 @@ import { StateCreator, create } from 'zustand'
 
 export type ShadowType = 'none' | 'simple' | 'extended' | 'light'
 
+type Positions = { x: number; y: number }
+
 interface Props {
+  position: Positions
+
   type: ShadowType
   opacity: number
   blur: number
@@ -14,6 +18,7 @@ interface Props {
   setSpread: (spread: number) => void
   setColor: (color: string) => void
   setShadowType: (type: ShadowType) => void
+  setPosition: (position: Positions) => void
 
   getShadowStyle: () => string
 }
@@ -24,19 +29,21 @@ const state: StateCreator<Props> = (set, get) => ({
   opacity: 0,
   blur: 0,
   spread: 0,
-  color: 'rgba(0, 0, 0, 0.5)',
+  color: 'red',
   type: 'none',
+  position: { x: 0, y: 0 },
 
   setOpacity: opacity => set({ opacity }),
   setBlur: blur => set({ blur }),
   setSpread: spread => set({ spread }),
   setColor: color => set({ color }),
   setShadowType: type => set({ type }),
+  setPosition: (position: Positions) => set({ position }),
 
   getShadowStyle: () => {
-    const { opacity, blur, spread, color, type } = get()
+    const { opacity, blur, spread, color, type, position } = get()
     if (type === 'none') return 'none'
-    return `${opacity}px ${blur}px ${spread}px ${color}`
+    return `${position.x}px ${position.y}px ${blur}px ${spread}px rgba(0,0,0, ${opacity.toFixed(2)})`
   }
 })
 

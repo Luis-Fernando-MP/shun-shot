@@ -7,7 +7,9 @@ const ShadowOpacityWrapper: FC = () => {
   return (
     <section className='shadowConfig-section'>
       <h3 className='paragraph-highlight'># Opacidad:</h3>
-      <SliderControl onChangeRange={setOpacity} value={opacity} step={10} width={200} />
+      <p className='paragraph-normal'>La opacidad se ajusta automáticamente con el movimiento del foco.</p>
+
+      <SliderControl onChangeRange={v => setOpacity(v / 100)} value={Math.round(opacity * 100)} step={10} width={200} />
     </section>
   )
 }

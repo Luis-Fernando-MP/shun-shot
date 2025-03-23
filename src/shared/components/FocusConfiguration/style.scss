@@ -6,16 +6,18 @@
 
   position: relative;
 
+  overflow: hidden;
   justify-content: center;
 
-  width: 250px;
-  height: 250px;
+  width: 280px;
+  height: 280px;
   border-radius: v.$radius;
 
   background-color: rgb(v.$bg1);
 
   &-sun {
     position: absolute;
+    z-index: 1;
     top: 0;
     left: 0;
 
@@ -26,9 +28,11 @@
   }
 
   &-objective {
+    pointer-events: none;
+
     .lucide {
-      width: v.$icon * 3;
-      height: v.$icon * 3;
+      width: v.$icon * 5;
+      height: v.$icon * 5;
     }
   }
 }

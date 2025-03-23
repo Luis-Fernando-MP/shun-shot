@@ -2,6 +2,7 @@ import { type FC, RefObject, memo, useEffect, useMemo } from 'react'
 
 import useImagesRadiusStore from '../../store/images/imagesRadius.store'
 import useImagesBorderStore from '../../store/images/useImagesBorderStore'
+import useShadowStore from '../../store/shadow/shadow.store'
 
 interface Props {
   $containerRef: RefObject<HTMLDivElement | null>
@@ -13,6 +14,8 @@ const ApplyImageStyles: FC<Props> = ({ $containerRef }) => {
 
   const { borderRadius } = getStyleBorderRadius()
   const borderStyles = getBorderStyle()
+  const { getShadowStyle } = useShadowStore()
+  const shadowStyle = getShadowStyle()
 
   const $canvasElements = useMemo(() => {
     const $container = $containerRef?.current
@@ -30,8 +33,9 @@ const ApplyImageStyles: FC<Props> = ({ $containerRef }) => {
     $images.forEach(image => {
       Object.assign(image.style, borderStyles)
       image.style.borderRadius = borderRadius
+      image.style.boxShadow = shadowStyle
     })
-  }, [$canvasElements, borderStyles, borderRadius])
+  }, [$canvasElements, borderStyles, borderRadius, shadowStyle])
 
   return null
 }
